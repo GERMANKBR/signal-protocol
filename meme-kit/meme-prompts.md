@@ -1,4 +1,4 @@
-# $SIGNAL — Meme Prompts & Ideas
+﻿# $SIGNAL — Meme Prompts & Ideas
 
 ## AI Image Generation Prompts
 
@@ -180,3 +180,4 @@ Here's what's inside 👇
 - Use "pump" excessively
 - Copy other projects' mascots
 - Make it look like a security offering
+

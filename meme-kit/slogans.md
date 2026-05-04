@@ -1,4 +1,4 @@
-# $SIGNAL — Slogan Collection
+﻿# $SIGNAL — Slogan Collection
 
 ## Primary Slogans
 
@@ -65,3 +65,4 @@ AI가 먼저 냄새 맡은 코인
 4. **Never use** "pump", "moon", "100x", "guaranteed"
 5. **Preferred words**: discover, signal, hunt, build, create, experiment
 6. **Tone**: Curious, experimental, slightly mysterious, meme-friendly
+

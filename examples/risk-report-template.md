@@ -1,4 +1,4 @@
-# Risk Report Template — $SIGNAL
+﻿# Risk Report Template — $SIGNAL
 
 > **Submission Type**: Risk Report  
 > **Reward Level**: 🟢 Low  
@@ -16,7 +16,7 @@
 | **Ticker** | $SIGNAL |
 | **Chain** | Solana |
 | **Total Supply** | 100,000,000,000,000 |
-| **Mint Address** | `YOUR_MINT_ADDRESS` |
+| **Mint Address** | `GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2` |
 | **Protocol** | AHD v0.1 |
 
 ### Project Description
@@ -158,3 +158,4 @@ This risk report is the author's independent analysis and does not constitute fi
 
 **Submitted for $SIGNAL AI Hunter Round**  
 **Template version: 1.0**
+

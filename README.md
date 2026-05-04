@@ -1,4 +1,4 @@
-<![CDATA[<p align="center">
+﻿<![CDATA[<p align="center">
   <img src="./website/assets/signal-mascot.png" alt="SIGNAL Mascot" width="200" />
 </p>
 
@@ -41,7 +41,7 @@ It rewards **scanners, agents, indexers, meme creators, and early contributors**
 | **Chain** | Solana |
 | **Standard** | SPL Token |
 | **Total Supply** | 100,000,000,000,000 (100T) |
-| **Mint Address** | `YOUR_MINT_ADDRESS` |
+| **Mint Address** | `GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2` |
 | **Protocol** | AHD (AI Hunter Distribution) v0.1 |
 | **Trading Required** | No |
 | **Volume Farming** | No |
@@ -240,7 +240,7 @@ Full disclosure: [`risk-disclosure.md`](./risk-disclosure.md)
 | X (Twitter) | Coming soon |
 | Telegram | Coming soon |
 | Website | Coming soon |
-| Solscan | `YOUR_MINT_ADDRESS` |
+| Solscan | `GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2` |
 
 ---
 
@@ -260,4 +260,5 @@ AHD_PROTOCOL_OPEN was recorded on Solana mainnet as an on-chain memo.
 - Round: AI_HUNTER_ROUND_1
 - No trading required: true
 - Transaction: 3Yky5hr6N3QVbtjiGFp7H59PGw3qXMLBS2xpfvgm1eCBRqwsnDEFGB9ebn2ZQuzowmD7aozfmbfoPaNsMBXkheMU
+
 
