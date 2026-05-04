@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>$SIGNAL Claim Console</title>
+  <meta name="description" content="Submit a SIGNAL Activation Engine quest claim. No trading required. Off-chain reward intent only until future settlement."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">S</span>
+        <span class="logo-text">$SIGNAL</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html#api">Engine</a>
+        <a href="api/quests.json">Quests</a>
+        <a href="api/claim-ledger.json">Ledger</a>
+        <a href="api/pool-status.json">Pool</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="claim-page">
+    <section class="claim-hero">
+      <div class="container">
+        <div class="section-tag">SIGNAL Activation Engine</div>
+        <h1 class="section-title">Claim Console</h1>
+        <p class="section-desc">Submit a no-cost quest proof for review. This creates a GitHub issue and may become an off-chain reward intent if approved. It is not an immediate token transfer.</p>
+      </div>
+    </section>
+
+    <section class="section claim-section">
+      <div class="container claim-layout">
+        <form class="claim-form" id="claimForm">
+          <label>
+            <span>Quest</span>
+            <select id="questId" required>
+              <option value="index_signal_manifest">Index SIGNAL Manifest</option>
+              <option value="risk_report_zero_cost">Zero-Cost Risk Report</option>
+              <option value="activation_engine_parser">Activation Engine Parser</option>
+              <option value="wallet_claim_checker">Wallet Claim Checker</option>
+              <option value="pool_watch_agent">Pool Watch Agent</option>
+              <option value="external_liquidity_proof">External Liquidity Proof</option>
+              <option value="meme_distribution_pack">Meme Distribution Pack</option>
+              <option value="agent_prompt_pack">Agent Prompt Pack</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Proof URL</span>
+            <input id="proofUrl" type="url" placeholder="https://github.com/..." required/>
+          </label>
+
+          <label>
+            <span>Solana Wallet</span>
+            <input id="wallet" type="text" placeholder="Your Solana wallet address" minlength="32" required/>
+          </label>
+
+          <label>
+            <span>Summary</span>
+            <textarea id="summary" rows="6" placeholder="Describe what you built and how it helps SIGNAL activation." required></textarea>
+          </label>
+
+          <label class="check-row">
+            <input id="ack" type="checkbox" required/>
+            <span>I understand SIGNAL has no guaranteed liquidity, no guaranteed market value, and no guaranteed profit.</span>
+          </label>
+
+          <div class="claim-actions">
+            <button type="submit" class="btn btn-primary">Open GitHub Claim</button>
+            <button type="button" class="btn btn-outline" id="copyClaim">Copy Claim Text</button>
+          </div>
+        </form>
+
+        <aside class="claim-panel">
+          <h2>What This Does</h2>
+          <p>The console creates a prefilled GitHub issue. The verification workflow checks the claim and labels it for review.</p>
+          <div class="claim-kpis">
+            <div><strong>0 KRW</strong><span>owner infra cost</span></div>
+            <div><strong>No LP</strong><span>current trading status</span></div>
+            <div><strong>Intent</strong><span>reward type</span></div>
+          </div>
+          <h3>Direct Resources</h3>
+          <a href="api/activation-engine.json">activation-engine.json</a>
+          <a href="api/quests.json">quests.json</a>
+          <a href="api/claim-ledger.json">claim-ledger.json</a>
+          <a href="https://github.com/GERMANKBR/signal-protocol/issues/new/choose" target="_blank">GitHub issue templates</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <script src="claim.js"></script>
+</body>
+</html>

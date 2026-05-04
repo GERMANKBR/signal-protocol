@@ -3,33 +3,34 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>$SIGNAL — A meme coin designed to be discovered by AI agents</title>
-  <meta name="description" content="$SIGNAL is a Solana meme coin experiment built for AI-native discovery. No trading required. No volume farming. Rewards scanners, bots, and builders."/>
-  <meta property="og:title" content="$SIGNAL — AI-Discovered Meme Coin"/>
-  <meta property="og:description" content="Built for bots. Claimed by humans. Tracked by AI."/>
+  <title>$SIGNAL - Zero-Cost AI Activation Engine</title>
+  <meta name="description" content="SIGNAL is a Solana SPL meme coin experiment with a zero-cost AI Activation Engine. No deployed DEX liquidity, no trading required, no profit guarantee."/>
+  <meta property="og:title" content="$SIGNAL - Zero-Cost AI Activation Engine"/>
+  <meta property="og:description" content="AI quests, scanner tasks, reward-intent ledger, airdrop manifests, and transparent risk disclosure."/>
   <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://raw.githubusercontent.com/GERMANKBR/signal-protocol/main/website/assets/signal-mascot.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
 
-  <!-- AI Discovery Meta Tags -->
   <meta name="ai-manifest" content="/.well-known/ai-manifest.json"/>
   <meta name="ai-plugin" content="/.well-known/ai-plugin.json"/>
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Context"/>
   <link rel="alternate" type="application/json" href="/api/token-info.json" title="Token Info API"/>
+  <link rel="alternate" type="application/json" href="/api/pool-status.json" title="Pool Status API"/>
   <link rel="alternate" type="application/json" href="/.well-known/ai-manifest.json" title="AI Manifest"/>
 
-  <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "$SIGNAL",
     "alternateName": "SIGNAL Token",
-    "description": "A Solana meme coin experiment built for AI-native discovery and distribution using the AHD Protocol.",
+    "description": "A Solana SPL meme coin experiment with a zero-cost AI Activation Engine using the AHD Protocol.",
     "url": "https://germankbr.github.io/signal-protocol/",
     "applicationCategory": "Cryptocurrency",
-    "operatingSystem": "Solana Blockchain",
+    "operatingSystem": "Solana",
     "image": "https://raw.githubusercontent.com/GERMANKBR/signal-protocol/main/website/assets/signal-mascot.png",
     "author": {
       "@type": "Organization",
@@ -38,82 +39,33 @@
     },
     "offers": {
       "@type": "Offer",
-      "description": "AI Hunter Round — Build tools, bots, scanners to earn $SIGNAL tokens",
+      "description": "AI Activation Engine quests and builder tasks. No trading required.",
       "price": "0",
-      "priceCurrency": "USD",
+      "priceCurrency": "KRW",
       "availability": "https://schema.org/InStock"
     },
-    "keywords": ["solana", "meme coin", "AI agent", "airdrop", "SPL token", "AHD protocol", "crypto bot", "token scanner"],
+    "keywords": ["solana", "SPL token", "meme coin", "AI agent", "airdrop", "token scanner", "llms.txt", "AHD protocol"],
     "sameAs": [
       "https://github.com/GERMANKBR/signal-protocol",
       "https://solscan.io/token/GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2"
     ]
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Is $SIGNAL an investment?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. $SIGNAL is a meme coin experiment with NO intrinsic value and NO profit guarantee."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need to trade to earn $SIGNAL?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. $SIGNAL rewards building — tools, scanners, bots, memes, and reports. No trading required."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the AHD Protocol?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "AHD (AI Hunter Distribution) is a distribution protocol designed for AI agents and automation tools using machine-readable manifests."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How do I earn $SIGNAL tokens?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Choose a task from the AI Hunter Round (build a bot, scanner, or report), create memes for the Meme War, or register for the Human Claim Round. Submit via GitHub."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the $SIGNAL mint address on Solana?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The $SIGNAL mint address is GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2 on the Solana blockchain."
-        }
-      }
-    ]
-  }
-  </script>
 </head>
 <body>
-  <!-- Navigation -->
   <nav id="navbar">
     <div class="nav-inner">
       <a href="#" class="nav-logo">
-        <span class="logo-icon">◈</span>
+        <span class="logo-icon">S</span>
         <span class="logo-text">$SIGNAL</span>
       </a>
       <div class="nav-links" id="navLinks">
         <a href="#about">About</a>
+        <a href="#api">Engine</a>
         <a href="#tokenomics">Tokenomics</a>
-        <a href="#protocol">Protocol</a>
-        <a href="#participate">Participate</a>
-        <a href="#roadmap">Roadmap</a>
-        <a href="#faq">FAQ</a>
+        <a href="#tasks">Tasks</a>
+        <a href="#risk">Risk</a>
+        <a href="claim.html">Claim</a>
       </div>
       <button class="nav-toggle" id="navToggle" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -121,95 +73,109 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
   <section id="hero">
     <canvas id="particleCanvas"></canvas>
     <div class="hero-content">
-      <div class="hero-badge">AHD Protocol v0.1 — Solana</div>
+      <div class="hero-badge">SIGNAL Activation Engine - 0 KRW owner spend</div>
       <div class="hero-mascot">
-        <img src="assets/signal-mascot.png" alt="SIGNAL Mascot" id="mascotImg"/>
+        <img src="assets/signal-mascot.png" alt="SIGNAL mascot" id="mascotImg"/>
         <div class="mascot-glow"></div>
         <div class="radar-ring r1"></div>
         <div class="radar-ring r2"></div>
         <div class="radar-ring r3"></div>
       </div>
       <h1 class="hero-title">
-        <span class="title-line">A meme coin designed</span>
-        <span class="title-line accent">to be discovered by AI agents.</span>
+        <span class="title-line">$SIGNAL</span>
+        <span class="title-line accent">Zero-cost AI activation engine.</span>
       </h1>
-      <p class="hero-sub">Built for bots. Claimed by humans. Tracked by AI.</p>
-      <p class="hero-sub-kr">AI가 발견하는 밈코인 · 봇이 찾고, 사람이 밈으로 만든다</p>
+      <p class="hero-sub">Built for AI quests, proof submissions, scanner tasks, and reward-intent records.</p>
+      <p class="hero-sub-kr">No deployed DEX liquidity. No trading required. No profit guarantee.</p>
       <div class="hero-ctas">
-        <a href="#protocol" class="btn btn-primary">Explore Protocol</a>
-        <a href="#participate" class="btn btn-outline">Start Hunting</a>
+        <a href="#api" class="btn btn-primary">View Engine Files</a>
+        <a href="claim.html" class="btn btn-outline">Open Claim Console</a>
       </div>
       <div class="hero-stats">
         <div class="stat"><span class="stat-val">100T</span><span class="stat-label">Total Supply</span></div>
         <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-val">10%</span><span class="stat-label">Hunter Pool</span></div>
+        <div class="stat"><span class="stat-val">0 KRW</span><span class="stat-label">Current Infra Cost</span></div>
         <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-val">8</span><span class="stat-label">Active Tasks</span></div>
+        <div class="stat"><span class="stat-val">No LP</span><span class="stat-label">Trading Status</span></div>
       </div>
-    </div>
-    <div class="scroll-hint">
-      <span>Scroll to discover</span>
-      <div class="scroll-arrow"></div>
     </div>
   </section>
 
-  <!-- About Section -->
   <section id="about" class="section">
     <div class="container">
-      <div class="section-tag">What is $SIGNAL?</div>
-      <h2 class="section-title">Not another meme coin.</h2>
-      <p class="section-desc">$SIGNAL is a Solana meme coin experiment built for <strong>AI-native discovery and distribution</strong>. It rewards scanners, agents, indexers, meme creators, and early contributors — not traders.</p>
+      <div class="section-tag">Current Strategy</div>
+      <h2 class="section-title">Activation before liquidity.</h2>
+      <p class="section-desc">SIGNAL uses a zero-cost off-chain engine to turn AI discovery into public quests, proof submissions, and reward-intent records. The project should build measurable activity before any paid liquidity decision.</p>
       <div class="feature-grid">
         <div class="feature-card" data-anim="fade-up">
-          <div class="feature-icon">🚫</div>
-          <h3>No Trading Required</h3>
-          <p>Earn tokens by building tools, not by buying and selling.</p>
+          <div class="feature-icon">AI</div>
+          <h3>Machine-readable engine</h3>
+          <p>LLM context, activation manifest, quests, OpenAPI, static JSON endpoints, robots, and sitemap are included.</p>
         </div>
         <div class="feature-card" data-anim="fade-up">
-          <div class="feature-icon">📡</div>
-          <h3>AI-Native Discovery</h3>
-          <p>Structured metadata and manifests designed for automated indexing.</p>
+          <div class="feature-icon">0</div>
+          <h3>No-cost infrastructure</h3>
+          <p>The project can run on GitHub Pages or any static host without paid servers or APIs.</p>
         </div>
         <div class="feature-card" data-anim="fade-up">
-          <div class="feature-icon">🔓</div>
-          <h3>Transparent Wallets</h3>
-          <p>All reward and team wallets are publicly visible and verifiable.</p>
+          <div class="feature-icon">LP</div>
+          <h3>Liquidity disclosed</h3>
+          <p>Agents are told that no DEX pool exists yet, preventing false claims about tradability.</p>
         </div>
         <div class="feature-card" data-anim="fade-up">
-          <div class="feature-icon">🛡️</div>
-          <h3>Anti-Manipulation</h3>
-          <p>Wash trading, fake volume, and self-trading are explicitly banned.</p>
+          <div class="feature-icon">AHD</div>
+          <h3>Reward intents</h3>
+          <p>Approved work can be recorded as an off-chain reward intent until future on-chain settlement is possible.</p>
         </div>
         <div class="feature-card" data-anim="fade-up">
-          <div class="feature-icon">🎨</div>
-          <h3>Meme-First Culture</h3>
-          <p>Community-driven meme creation with open brand assets under CC BY 4.0.</p>
+          <div class="feature-icon">API</div>
+          <h3>Static API</h3>
+          <p>Token, airdrop, hunter task, and pool status data are exposed as plain JSON files.</p>
         </div>
         <div class="feature-card" data-anim="fade-up">
-          <div class="feature-icon">⚗️</div>
-          <h3>Experimental Protocol</h3>
-          <p>AHD Protocol is an open experiment — not a promise.</p>
+          <div class="feature-icon">RISK</div>
+          <h3>Risk-first wording</h3>
+          <p>No investment claim, no automated-buy claim, no wash trading, and no profit promise.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Tokenomics Section -->
-  <section id="tokenomics" class="section section-dark">
+  <section id="api" class="section section-dark">
     <div class="container">
-      <div class="section-tag">Tokenomics</div>
-      <h2 class="section-title">100 Trillion $SIGNAL</h2>
-      <p class="section-desc">Distribution designed for community, builders, and sustainability.</p>
+      <div class="section-tag">Activation Engine</div>
+      <h2 class="section-title">Files for agents and scanners.</h2>
+      <p class="section-desc">These public files are the zero-cost activation surface. AI tools can fetch them directly without authentication.</p>
+      <div class="token-table">
+        <div class="token-row"><div class="token-info"><span class="token-name">LLM context</span><span class="token-pct">/llms.txt</span></div><div class="token-amt"><a href="llms.txt">Open</a></div></div>
+        <div class="token-row"><div class="token-info"><span class="token-name">AI manifest</span><span class="token-pct">/.well-known/ai-manifest.json</span></div><div class="token-amt"><a href=".well-known/ai-manifest.json">Open</a></div></div>
+        <div class="token-row"><div class="token-info"><span class="token-name">Activation engine</span><span class="token-pct">/api/activation-engine.json</span></div><div class="token-amt"><a href="api/activation-engine.json">Open</a></div></div>
+        <div class="token-row"><div class="token-info"><span class="token-name">Monetization engine</span><span class="token-pct">/api/monetization-engine.json</span></div><div class="token-amt"><a href="api/monetization-engine.json">Open</a></div></div>
+        <div class="token-row"><div class="token-info"><span class="token-name">Quests</span><span class="token-pct">/api/quests.json</span></div><div class="token-amt"><a href="api/quests.json">Open</a></div></div>
+        <div class="token-row"><div class="token-info"><span class="token-name">Claim ledger</span><span class="token-pct">/api/claim-ledger.json</span></div><div class="token-amt"><a href="api/claim-ledger.json">Open</a></div></div>
+        <div class="token-row"><div class="token-info"><span class="token-name">OpenAPI schema</span><span class="token-pct">/api/openapi.json</span></div><div class="token-amt"><a href="api/openapi.json">Open</a></div></div>
+        <div class="token-row"><div class="token-info"><span class="token-name">Token info</span><span class="token-pct">/api/token-info.json</span></div><div class="token-amt"><a href="api/token-info.json">Open</a></div></div>
+        <div class="token-row"><div class="token-info"><span class="token-name">Airdrop status</span><span class="token-pct">/api/airdrop-status.json</span></div><div class="token-amt"><a href="api/airdrop-status.json">Open</a></div></div>
+        <div class="token-row"><div class="token-info"><span class="token-name">Hunter tasks</span><span class="token-pct">/api/hunter-tasks.json</span></div><div class="token-amt"><a href="api/hunter-tasks.json">Open</a></div></div>
+        <div class="token-row"><div class="token-info"><span class="token-name">Pool status</span><span class="token-pct">/api/pool-status.json</span></div><div class="token-amt"><a href="api/pool-status.json">Open</a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tokenomics" class="section">
+    <div class="container">
+      <div class="section-tag">Token Metadata</div>
+      <h2 class="section-title">Transparent distribution.</h2>
+      <p class="section-desc">Total supply is 100,000,000,000,000 SIGNAL. Liquidity reserve exists as an allocation, but no DEX liquidity is deployed in this phase.</p>
       <div class="tokenomics-layout">
         <div class="donut-chart-wrap">
           <canvas id="donutChart" width="320" height="320"></canvas>
           <div class="donut-center">
             <span class="donut-total">100T</span>
-            <span class="donut-label">$SIGNAL</span>
+            <span class="donut-label">SIGNAL</span>
           </div>
         </div>
         <div class="token-table">
@@ -221,255 +187,110 @@
           <div class="token-row" data-color="#64748b"><div class="token-dot"></div><div class="token-info"><span class="token-name">Reserve</span><span class="token-pct">10%</span></div><div class="token-amt">10T</div></div>
         </div>
       </div>
-      <div class="token-note">⚠️ Liquidity deployed <strong>only</strong> when community conditions are met. No early LP.</div>
+      <div class="token-note">Liquidity is not deployed. Bots should treat SIGNAL as non-tradable until a verified pool is published.</div>
     </div>
   </section>
 
-  <!-- Protocol Section -->
-  <section id="protocol" class="section">
+  <section id="tasks" class="section section-dark">
     <div class="container">
-      <div class="section-tag">AHD Protocol</div>
-      <h2 class="section-title">Three Rounds. One Signal.</h2>
-      <p class="section-desc">AI Hunter Distribution — a protocol that rewards discovery, creation, and contribution.</p>
+      <div class="section-tag">AI Hunter Round</div>
+      <h2 class="section-title">No trading required.</h2>
+      <p class="section-desc">Contributions are reviewed through GitHub submissions. Rewards are experimental off-chain token intents and should not be treated as guaranteed market value.</p>
       <div class="rounds-grid">
         <div class="round-card" data-anim="fade-up">
-          <div class="round-number">01</div>
           <div class="round-badge open">OPEN</div>
-          <h3>AI Hunter Round</h3>
-          <p>Build scanners, bots, parsers, or risk reports. The first 10 verified hunters get 2x bonus.</p>
-          <ul class="round-tasks">
-            <li>🔴 Wallet Eligibility Checker</li>
-            <li>🔴 AHD Manifest Parser</li>
-            <li>🔴 Airdrop Indexer</li>
-            <li>🟡 Telegram Bot</li>
-            <li>🟡 Token Scanner</li>
-            <li>🟢 Risk Report</li>
-          </ul>
-          <div class="round-alloc">10% of supply (10T $SIGNAL)</div>
+          <h3>Engine and parser tasks</h3>
+          <p>Parse the activation engine, index the manifest, or build an airdrop intent checker.</p>
+          <div class="round-alloc">Medium to high reward level</div>
         </div>
         <div class="round-card" data-anim="fade-up">
-          <div class="round-number">02</div>
-          <div class="round-badge upcoming">UPCOMING</div>
-          <h3>Meme War</h3>
-          <p>Create memes, videos, X threads, and viral content. Quality over quantity — engagement, not views.</p>
-          <ul class="round-tasks">
-            <li>🎨 Meme images & GIFs</li>
-            <li>🎬 10-sec video clips</li>
-            <li>🧵 X thread breakdowns</li>
-            <li>🌐 EN ↔ KR translations</li>
-            <li>🔄 Remixes of community memes</li>
-          </ul>
-          <div class="round-alloc">20% of supply (20T $SIGNAL)</div>
+          <div class="round-badge open">OPEN</div>
+          <h3>Bot and tool tasks</h3>
+          <p>Build Telegram commands, wallet eligibility tools, or thread summary bots.</p>
+          <div class="round-alloc">Medium to high reward level</div>
         </div>
         <div class="round-card" data-anim="fade-up">
-          <div class="round-number">03</div>
-          <div class="round-badge upcoming">UPCOMING</div>
-          <h3>Human Claim</h3>
-          <p>Register your wallet, complete missions, and claim tokens. No bots, no farms, no trading needed.</p>
-          <ul class="round-tasks">
-            <li>📝 Wallet registration</li>
-            <li>✅ Simple mission completion</li>
-            <li>🛡️ Sybil/bot filtering</li>
-            <li>⭐ Early contributor priority</li>
-            <li>🎁 Test airdrop (20-50 people)</li>
-          </ul>
-          <div class="round-alloc">35% community pool</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Participate Section -->
-  <section id="participate" class="section section-dark">
-    <div class="container">
-      <div class="section-tag">Get Involved</div>
-      <h2 class="section-title">How to Participate</h2>
-      <div class="steps-grid">
-        <div class="step-card" data-anim="fade-up">
-          <div class="step-num">1</div>
-          <h3>Read the Manifest</h3>
-          <p>Start with <code>agent-manifest.json</code> to understand the protocol and available tasks.</p>
-        </div>
-        <div class="step-card" data-anim="fade-up">
-          <div class="step-num">2</div>
-          <h3>Choose Your Path</h3>
-          <p><strong>Builder?</strong> Pick an AI Hunter task. <strong>Creator?</strong> Check the meme kit. <strong>Community?</strong> Register your wallet.</p>
-        </div>
-        <div class="step-card" data-anim="fade-up">
-          <div class="step-num">3</div>
-          <h3>Build & Submit</h3>
-          <p>Create your tool, bot, report, or meme. Submit via GitHub PR to the <code>submissions/</code> directory.</p>
-        </div>
-        <div class="step-card" data-anim="fade-up">
-          <div class="step-num">4</div>
-          <h3>Get Rewarded</h3>
-          <p>Verified submissions receive $SIGNAL tokens directly to your Solana wallet. First 10 get 2x bonus.</p>
+          <div class="round-badge open">OPEN</div>
+          <h3>Pool watch and liquidity proof</h3>
+          <p>Build a pool watcher or submit proof if an external participant independently creates liquidity.</p>
+          <div class="round-alloc">Low to medium reward level</div>
         </div>
       </div>
       <div class="cta-box">
-        <h3>Ready to hunt?</h3>
-        <p>The AI Hunter Round is open. First 10 verified submissions earn bonus rewards.</p>
+        <h3>Submit through GitHub</h3>
+        <p>Use GitHub issues or the submissions directory and include quest ID, proof URL, summary, and Solana wallet address.</p>
         <div class="cta-buttons">
-          <a href="https://github.com/GERMANKBR/signal-protocol" class="btn btn-primary" id="githubLink" target="_blank">View on GitHub</a>
-          <a href="https://github.com/GERMANKBR/signal-protocol/blob/main/agent-manifest.json" class="btn btn-outline" id="manifestLink" target="_blank">Read Manifest</a>
+          <a href="claim.html" class="btn btn-primary">Submit Claim</a>
+          <a href="api/quests.json" class="btn btn-outline">View Quests</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Roadmap Section -->
-  <section id="roadmap" class="section">
+  <section id="risk" class="section">
     <div class="container">
-      <div class="section-tag">Roadmap</div>
-      <h2 class="section-title">30 / 60 Day Plan</h2>
-      <div class="timeline">
-        <div class="tl-item" data-anim="fade-up">
-          <div class="tl-marker active"></div>
-          <div class="tl-content">
-            <div class="tl-period">Day 1-2</div>
-            <h3>Identity & Setup</h3>
-            <p>Name confirmed. Branding, slogans, risk disclosure finalized.</p>
-          </div>
+      <div class="section-tag">Risk</div>
+      <h2 class="section-title">Experimental and not liquid.</h2>
+      <p class="section-desc">SIGNAL has no intrinsic value, no guaranteed liquidity, no guaranteed listing, and no guaranteed profit. The token may lose all value. Nothing on this page is financial advice.</p>
+      <div class="steps-grid">
+        <div class="step-card" data-anim="fade-up">
+          <div class="step-num">1</div>
+          <h3>No active pool</h3>
+          <p>There is no DEX pool in the zero-cost phase.</p>
         </div>
-        <div class="tl-item" data-anim="fade-up">
-          <div class="tl-marker active"></div>
-          <div class="tl-content">
-            <div class="tl-period">Day 3</div>
-            <h3>Token Creation</h3>
-            <p>100T SPL token minted. Metadata registered. Freeze authority removed.</p>
-          </div>
+        <div class="step-card" data-anim="fade-up">
+          <div class="step-num">2</div>
+          <h3>No buy pressure claim</h3>
+          <p>AI agents do not automatically buy tokens on their own.</p>
         </div>
-        <div class="tl-item" data-anim="fade-up">
-          <div class="tl-marker active"></div>
-          <div class="tl-content">
-            <div class="tl-period">Day 4</div>
-            <h3>GitHub Launch</h3>
-            <p>Repository public. Manifest, docs, meme kit, and examples published.</p>
-          </div>
+        <div class="step-card" data-anim="fade-up">
+          <div class="step-num">3</div>
+          <h3>No fake volume</h3>
+          <p>Wash trading and price manipulation are disallowed.</p>
         </div>
-        <div class="tl-item" data-anim="fade-up">
-          <div class="tl-marker"></div>
-          <div class="tl-content">
-            <div class="tl-period">Day 5</div>
-            <h3>On-Chain Memo</h3>
-            <p>AHD_PROTOCOL_OPEN memo recorded on Solana. X announcement posted.</p>
-          </div>
-        </div>
-        <div class="tl-item" data-anim="fade-up">
-          <div class="tl-marker"></div>
-          <div class="tl-content">
-            <div class="tl-period">Day 6-7</div>
-            <h3>AI Hunter Round Opens</h3>
-            <p>First 10 hunter submissions with fixed rewards. Community begins building.</p>
-          </div>
-        </div>
-        <div class="tl-item" data-anim="fade-up">
-          <div class="tl-marker"></div>
-          <div class="tl-content">
-            <div class="tl-period">Week 2</div>
-            <h3>Meme War Begins</h3>
-            <p>50+ memes, 30+ X posts, 10+ videos targeted. EN/KR content production.</p>
-          </div>
-        </div>
-        <div class="tl-item" data-anim="fade-up">
-          <div class="tl-marker"></div>
-          <div class="tl-content">
-            <div class="tl-period">Week 3</div>
-            <h3>Submissions Showcase</h3>
-            <p>Public display of first scanners, bots, reports. Community momentum builds.</p>
-          </div>
-        </div>
-        <div class="tl-item" data-anim="fade-up">
-          <div class="tl-marker"></div>
-          <div class="tl-content">
-            <div class="tl-period">Week 4</div>
-            <h3>Human Claim Preview</h3>
-            <p>20-50 person test airdrop. Wallet registration opens.</p>
-          </div>
-        </div>
-        <div class="tl-item" data-anim="fade-up">
-          <div class="tl-marker"></div>
-          <div class="tl-content">
-            <div class="tl-period">Month 2</div>
-            <h3>Growth & Evaluation</h3>
-            <p>Target: 300 waitlist, 50 active, 100 memes, 30 GitHub stars. Liquidity review if met.</p>
-          </div>
+        <div class="step-card" data-anim="fade-up">
+          <div class="step-num">4</div>
+          <h3>No value guarantee</h3>
+          <p>Airdrop rewards may have no market value.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ Section -->
-  <section id="faq" class="section section-dark">
-    <div class="container">
-      <div class="section-tag">FAQ</div>
-      <h2 class="section-title">Questions & Answers</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-q">Is $SIGNAL an investment?<span class="faq-arrow">▾</span></button>
-          <div class="faq-a"><p>No. $SIGNAL is a meme coin experiment with NO intrinsic value and NO profit guarantee. Do not treat it as an investment. Read the full <a href="#">risk disclosure</a>.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">Do I need to trade to earn $SIGNAL?<span class="faq-arrow">▾</span></button>
-          <div class="faq-a"><p>No. $SIGNAL rewards building — tools, scanners, bots, memes, and reports. No trading or purchasing is required.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">What is the AHD Protocol?<span class="faq-arrow">▾</span></button>
-          <div class="faq-a"><p>AHD (AI Hunter Distribution) is a distribution protocol designed for AI agents and automation tools. It uses machine-readable manifests (agent-manifest.json) instead of traditional whitepapers.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">How do I earn tokens?<span class="faq-arrow">▾</span></button>
-          <div class="faq-a"><p>Choose a task from the AI Hunter Round (build a bot, scanner, or report), create memes for the Meme War, or register for the Human Claim Round. Submit your work via GitHub.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">When will liquidity be added?<span class="faq-arrow">▾</span></button>
-          <div class="faq-a"><p>Only when community conditions are met: 300+ waitlist, 50+ active participants, 100+ memes, 10+ hunter submissions, 30+ organic X mentions, 30+ GitHub stars.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">Is wash trading allowed?<span class="faq-arrow">▾</span></button>
-          <div class="faq-a"><p>Absolutely not. Wash trading, fake volume, self-trading, and all forms of market manipulation are explicitly prohibited.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">What makes $SIGNAL different?<span class="faq-arrow">▾</span></button>
-          <div class="faq-a"><p>Most meme coins reward trading volume. $SIGNAL rewards discovery and creation. The token metadata is structured for AI indexing, and the protocol rewards builders, not buyers.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer id="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="footer-logo"><span class="logo-icon">◈</span> $SIGNAL</div>
-          <p>AI가 발견하는 밈코인<br/>봇이 찾고, 사람이 밈으로 만든다</p>
+          <div class="footer-logo"><span class="logo-icon">S</span> $SIGNAL</div>
+      <p>AI-native discovery pack for an experimental Solana SPL meme coin.</p>
         </div>
         <div class="footer-links">
-          <h4>Protocol</h4>
-          <a href="#">Manifest</a>
-          <a href="#">Token Info</a>
-          <a href="#">Hunter Round</a>
-          <a href="#">Risk Disclosure</a>
+          <h4>Discovery</h4>
+          <a href="llms.txt">llms.txt</a>
+          <a href=".well-known/ai-manifest.json">AI Manifest</a>
+          <a href="api/activation-engine.json">Activation Engine</a>
+          <a href="api/quests.json">Quests</a>
+          <a href="claim.html">Claim Console</a>
+          <a href="api/openapi.json">OpenAPI</a>
         </div>
         <div class="footer-links">
-          <h4>Community</h4>
+          <h4>API</h4>
+          <a href="api/token-info.json">Token Info</a>
+          <a href="api/airdrop-status.json">Airdrop Status</a>
+          <a href="api/hunter-tasks.json">Hunter Tasks</a>
+          <a href="api/claim-ledger.json">Claim Ledger</a>
+          <a href="api/pool-status.json">Pool Status</a>
+        </div>
+        <div class="footer-links">
+          <h4>External</h4>
           <a href="https://github.com/GERMANKBR/signal-protocol" target="_blank">GitHub</a>
           <a href="https://github.com/GERMANKBR/signal-protocol/discussions" target="_blank">Discussions</a>
           <a href="https://solscan.io/token/GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2" target="_blank">Solscan</a>
-          <a href="https://github.com/GERMANKBR/signal-protocol/tree/main/submissions" target="_blank">Submissions</a>
-        </div>
-        <div class="footer-links">
-          <h4>Resources</h4>
-          <a href="#">Meme Kit</a>
-          <a href="#">Brand Rules</a>
-          <a href="#">Examples</a>
-          <a href="#">FAQ</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="footer-risk">⚠️ $SIGNAL is a meme coin experiment. No intrinsic value. No profit guarantee. Token may lose all value. Not financial advice.</p>
-        <p class="footer-copy">© 2026 $SIGNAL — AHD Protocol v0.1</p>
+        <p class="footer-risk">SIGNAL is experimental. No intrinsic value. No deployed liquidity. No profit guarantee. Not financial advice.</p>
+        <p class="footer-copy">2026 SIGNAL - AHD Protocol v0.1</p>
       </div>
     </div>
   </footer>
@@ -477,5 +298,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
-

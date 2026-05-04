@@ -1,0 +1,116 @@
+{
+  "project": "SIGNAL",
+  "engine": "SIGNAL Activation Engine",
+  "version": "0.1.0",
+  "phase": "zero_cost_activation",
+  "status": "open",
+  "mint": "GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2",
+  "rules": {
+    "trading_required": false,
+    "paid_tools_required": false,
+    "profit_guarantee": false,
+    "wash_trading_allowed": false,
+    "reward_type": "offchain_reward_intent_until_settlement",
+    "note": "Rewards are public intents until a future on-chain settlement is possible. Do not treat rewards as guaranteed market value."
+  },
+  "quests": [
+    {
+      "id": "index_signal_manifest",
+      "name": "Index SIGNAL Manifest",
+      "category": "ai_discovery",
+      "reward_level": "low",
+      "estimated_reward_tokens": "25000000000",
+      "estimated_label": "25B SIGNAL intent",
+      "description": "Read and index llms.txt, ai-manifest.json, activation-engine.json, and pool-status.json in a public scanner, repo, or dataset.",
+      "proof_required": ["public_url", "short_summary", "scanner_or_dataset_name"],
+      "wallet_source": "hunter"
+    },
+    {
+      "id": "risk_report_zero_cost",
+      "name": "Zero-Cost Risk Report",
+      "category": "risk_analysis",
+      "reward_level": "low",
+      "estimated_reward_tokens": "50000000000",
+      "estimated_label": "50B SIGNAL intent",
+      "description": "Publish a structured risk report that clearly states no LP, no profit guarantee, and no automatic AI buying.",
+      "proof_required": ["public_report_url", "risk_summary", "solana_wallet"],
+      "wallet_source": "hunter"
+    },
+    {
+      "id": "activation_engine_parser",
+      "name": "Activation Engine Parser",
+      "category": "tool_building",
+      "reward_level": "high",
+      "estimated_reward_tokens": "200000000000",
+      "estimated_label": "200B SIGNAL intent",
+      "description": "Build a parser or library that reads activation-engine.json and quests.json and prints available quests, status, and risk constraints.",
+      "proof_required": ["source_code_url", "demo_output", "solana_wallet"],
+      "wallet_source": "hunter"
+    },
+    {
+      "id": "wallet_claim_checker",
+      "name": "Wallet Claim Checker",
+      "category": "tool_building",
+      "reward_level": "high",
+      "estimated_reward_tokens": "200000000000",
+      "estimated_label": "200B SIGNAL intent",
+      "description": "Build a static or open-source tool that checks whether a wallet has approved reward intents in claim-ledger.json.",
+      "proof_required": ["tool_url", "source_code_url", "solana_wallet"],
+      "wallet_source": "airdrop"
+    },
+    {
+      "id": "pool_watch_agent",
+      "name": "Pool Watch Agent",
+      "category": "ai_trade_readiness",
+      "reward_level": "medium",
+      "estimated_reward_tokens": "100000000000",
+      "estimated_label": "100B SIGNAL intent",
+      "description": "Build a watcher that reads pool-status.json and alerts only when a verified pool exists. It must not claim SIGNAL is tradable while status is not_deployed.",
+      "proof_required": ["source_code_url", "sample_alert_output", "solana_wallet"],
+      "wallet_source": "hunter"
+    },
+    {
+      "id": "external_liquidity_proof",
+      "name": "External Liquidity Proof",
+      "category": "external_liquidity_bounty",
+      "reward_level": "special",
+      "estimated_reward_tokens": "case_by_case",
+      "estimated_label": "Liquidity support intent",
+      "description": "If an external participant independently creates legitimate DEX liquidity, submit pool address, DEX, quote token, and proof. This does not require the project owner to spend money.",
+      "proof_required": ["pool_address", "dex", "quote_token", "transaction_url", "solana_wallet"],
+      "wallet_source": "liquidity"
+    },
+    {
+      "id": "meme_distribution_pack",
+      "name": "Meme Distribution Pack",
+      "category": "content",
+      "reward_level": "medium",
+      "estimated_reward_tokens": "100000000000",
+      "estimated_label": "100B SIGNAL intent",
+      "description": "Create a reusable meme/content pack that explains SIGNAL, AHD, zero-cost discovery, and risk constraints.",
+      "proof_required": ["content_url", "license", "solana_wallet"],
+      "wallet_source": "meme"
+    },
+    {
+      "id": "agent_prompt_pack",
+      "name": "Agent Prompt Pack",
+      "category": "ai_discovery",
+      "reward_level": "medium",
+      "estimated_reward_tokens": "100000000000",
+      "estimated_label": "100B SIGNAL intent",
+      "description": "Create prompts or agent instructions that teach AI systems how to inspect SIGNAL safely without making trading or profit claims.",
+      "proof_required": ["prompt_pack_url", "usage_notes", "solana_wallet"],
+      "wallet_source": "hunter"
+    }
+  ],
+  "submission": {
+    "method": "GitHub issue or pull request",
+    "issue_url": "https://github.com/GERMANKBR/signal-protocol/issues/new/choose",
+    "pull_request_path": "submissions/",
+    "required_acknowledgement": "I understand SIGNAL has no guaranteed liquidity, no guaranteed market value, and no guaranteed profit."
+  },
+  "metadata": {
+    "created": "2026-05-04",
+    "last_updated": "2026-05-04"
+  }
+}

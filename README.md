@@ -1,303 +1,185 @@
-<![CDATA[<p align="center">
-  <img src="./website/assets/signal-mascot.png" alt="SIGNAL Mascot" width="200" />
-</p>
+# $SIGNAL
 
-<h1 align="center">$SIGNAL</h1>
+AI-native discovery pack for a Solana SPL meme coin experiment.
 
-<p align="center">
-  <strong>A meme coin designed to be discovered by AI agents.</strong>
-</p>
+$SIGNAL is designed to be indexed, analyzed, and documented by AI agents, scanners, bot builders, and community tools. It does not require trading, does not reward fake volume, and does not promise profit.
 
-<p align="center">
-  <em>AI가 발견하는 밈코인 · Built for bots. Claimed by humans. Tracked by AI.</em>
-</p>
+## Current Phase
 
-<p align="center">
-  <a href="#ahd-protocol">AHD Protocol</a> •
-  <a href="#tokenomics">Tokenomics</a> •
-  <a href="#ai-hunter-round">AI Hunter Round</a> •
-  <a href="#meme-war">Meme War</a> •
-  <a href="#how-to-participate">Participate</a> •
-  <a href="#risk-disclosure">Risk</a>
-</p>
+**Zero-cost discovery phase.**
 
----
+- No paid hosting required.
+- No paid APIs required.
+- No DEX liquidity deployed yet.
+- No trading is required to participate.
+- No profit is guaranteed.
 
-## What is $SIGNAL?
+The current strategy is to make the project easy for crawlers, AI agents, and contributors to understand before spending money on liquidity.
 
-**$SIGNAL** is a Solana meme coin experiment built for **AI-native discovery and distribution**.
-
-It does not reward trading volume. It does not promise profit.  
-It rewards **scanners, agents, indexers, meme creators, and early contributors**.
-
-> "Not another meme coin. A coin designed to be discovered by AI agents."
-
-### Key Facts
+## Key Facts
 
 | Field | Value |
 |---|---|
-| **Name** | SIGNAL |
-| **Ticker** | $SIGNAL |
-| **Chain** | Solana |
-| **Standard** | SPL Token |
-| **Total Supply** | 100,000,000,000,000 (100T) |
-| **Mint Address** | `GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2` |
-| **Protocol** | AHD (AI Hunter Distribution) v0.1 |
-| **Trading Required** | No |
-| **Volume Farming** | No |
-| **Profit Guarantee** | None |
+| Name | SIGNAL |
+| Ticker | SIGNAL |
+| Chain | Solana |
+| Standard | SPL Token |
+| Mint | `GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2` |
+| Decimals | 5 |
+| Total Supply | 100,000,000,000,000 |
+| Protocol | AHD v0.1 |
+| Liquidity Status | Not deployed |
+| Trading Required | No |
+| Volume Farming | No |
+| Profit Guarantee | None |
 
----
+## AI Discovery Resources
+
+| Resource | Purpose |
+|---|---|
+| [`llms.txt`](./llms.txt) | LLM-readable project summary |
+| [`agent-manifest.json`](./agent-manifest.json) | Machine-readable AI agent manifest |
+| [`token.json`](./token.json) | Token metadata and distribution |
+| [`airdrop.json`](./airdrop.json) | Airdrop structure |
+| [`hunter-round.json`](./hunter-round.json) | Available builder/scanner tasks |
+| [`activation-engine.json`](./activation-engine.json) | Zero-cost activation engine |
+| [`monetization-engine.json`](./monetization-engine.json) | No-cost conversion and sponsor-intent routes |
+| [`quests.json`](./quests.json) | AI agent quest list |
+| [`claim-ledger.json`](./claim-ledger.json) | Off-chain reward intent ledger |
+| [`pool.json`](./pool.json) | Liquidity and trading status |
+| [`risk-disclosure.md`](./risk-disclosure.md) | Risk disclosure |
+| [`ZERO_COST_STRATEGY.md`](./ZERO_COST_STRATEGY.md) | Current no-cost execution plan |
+
+## Static API
+
+The website can be hosted for free on GitHub Pages, Netlify, Vercel, or any static host.
+
+| Endpoint | Purpose |
+|---|---|
+| `/api/token-info.json` | Token information |
+| `/api/airdrop-status.json` | Airdrop status |
+| `/api/hunter-tasks.json` | AI Hunter tasks |
+| `/api/activation-engine.json` | SIGNAL Activation Engine |
+| `/api/monetization-engine.json` | Conversion and sponsor-intent routes |
+| `/api/quests.json` | No-cost AI quests |
+| `/api/claim-ledger.json` | Reward intent ledger |
+| `/api/pool-status.json` | Liquidity status |
+| `/.well-known/ai-manifest.json` | AI crawler manifest |
+| `/.well-known/ai-plugin.json` | Plugin-style manifest |
+| `/api/openapi.json` | OpenAPI schema |
+| `/llms.txt` | LLM context |
+| `/robots.txt` | Crawler policy |
+| `/sitemap.xml` | Sitemap |
 
 ## AHD Protocol
 
-**AHD (AI Hunter Distribution)** is a distribution protocol designed for AI agents, bots, scanners, and automation tools.
+AHD means **AI Hunter Distribution**.
 
-Instead of rewarding trading or liquidity, AHD rewards **discovery, analysis, tool creation, and community contribution**.
+Instead of rewarding wash trading or fake volume, AHD rewards:
 
-### Core Principles
+1. Token scanners and indexers
+2. Risk reports
+3. Telegram/Discord/X bots
+4. Airdrop eligibility tools
+5. Manifest parsers
+6. Meme and content contributions
+7. Community documentation
 
-1. **No Trading Required** — Participants earn tokens by building, not buying.
-2. **No Volume Farming** — Wash trading and fake volume are explicitly banned.
-3. **AI-Native Discovery** — Token metadata and manifests are structured for automated indexing.
-4. **Open Submission** — Anyone can submit tools, reports, bots, or memes to earn rewards.
-5. **Transparent Wallets** — All reward and team wallets are publicly visible.
+## SIGNAL Activation Engine
 
-### Protocol Files
+SIGNAL Activation Engine is the 0 KRW activation layer.
 
-| File | Description |
-|---|---|
-| [`agent-manifest.json`](./agent-manifest.json) | AI-readable project manifest |
-| [`token.json`](./token.json) | Token metadata and distribution |
-| [`airdrop.json`](./airdrop.json) | Airdrop structure and eligibility |
-| [`hunter-round.json`](./hunter-round.json) | AI Hunter Round details |
-| [`reward-wallet.json`](./reward-wallet.json) | Reward wallet information |
-| [`risk-disclosure.md`](./risk-disclosure.md) | Full risk disclosure |
+It does not force AI systems to buy tokens, create DEX liquidity, or send airdrops. Those actions need wallets, SOL fees, and verified liquidity.
 
----
+Instead, it gives AI agents and builders a free loop:
 
-## Tokenomics
+1. Read the public manifests.
+2. Pick a quest from `quests.json`.
+3. Build a scanner, parser, report, bot, content pack, or pool watcher.
+4. Submit proof through GitHub.
+5. Get reviewed.
+6. If approved, receive a public off-chain reward intent in `claim-ledger.json`.
 
-Total Supply: **100,000,000,000,000 $SIGNAL** (100 Trillion)
+The engine also includes an external liquidity proof quest. If someone else independently creates legitimate liquidity, they can submit proof for review without the project owner spending money.
 
-| Allocation | Percentage | Amount | Purpose |
-|---|---|---|---|
-| **AI Hunter Round** | 10% | 10T | Bot, scanner, report, tool creation rewards |
-| **Community Airdrop** | 35% | 35T | Early waitlist, meme creators, active contributors |
-| **Meme War Rewards** | 20% | 20T | Meme images, videos, X threads, challenges |
-| **Liquidity Reserve** | 15% | 15T | DEX liquidity (conditional deployment) |
-| **Core/Dev/Ops** | 10% | 10T | Operations, development, management |
-| **Reserve** | 10% | 10T | Partnerships, contingency |
+## Claim Console
 
-### Liquidity Policy
+The static claim console is available at `/claim.html`.
 
-Initial DEX liquidity is **NOT** deployed at launch. Liquidity will only be added when the following conditions are met:
-
-- 300+ waitlist registrations
-- 50+ active participants
-- 100+ meme/content pieces
-- 10+ AI Hunter submissions
-- 30+ organic X mentions
-- 30+ GitHub stars
-
----
+It lets a participant choose a quest, paste a proof URL, add a Solana wallet, and open a prefilled GitHub claim issue. This creates a public review record at 0 KRW infrastructure cost.
 
 ## AI Hunter Round
 
-**Round 1** of the AHD Protocol. Open to AI agents, developers, bot builders, and researchers.
+Round 1 is open for builder submissions.
 
-### Reward Tasks
-
-| Task | Reward Level | Description |
+| Task | Reward Level | Format |
 |---|---|---|
-| Risk Report | 🟢 Low | Write a structured risk analysis of $SIGNAL |
-| Telegram Bot Command | 🟡 Medium | Build bot commands for $SIGNAL info/lookup |
-| Token Scanner Entry | 🟡 Medium | Register $SIGNAL in a token scanner/tracker |
-| Wallet Eligibility Checker | 🔴 High | Build a tool to check airdrop eligibility |
-| AHD Parser | 🔴 High | Build a parser for agent-manifest.json |
-| X Thread Auto-Summary Bot | 🟡 Medium | Auto-summarize X threads about $SIGNAL |
+| Risk Report | Low | Markdown or PDF |
+| Token Scanner Registration | Medium | URL or screenshot |
+| Telegram Bot Command | Medium | Bot link and source |
+| Wallet Eligibility Checker | High | Tool URL and source |
+| AHD Manifest Parser | High | Library/tool and source |
+| Meme Distribution Bot | Medium | Bot link and source |
+| Airdrop Indexer | High | Indexer URL and source |
+| X Thread Summary Bot | Medium | Bot link and source |
 
-### Rules
+Submit work through [`submissions/`](./submissions/).
 
-- ✅ Build tools, scanners, bots, reports
-- ✅ Open source encouraged
-- ✅ Multiple submissions allowed
-- ❌ No wash trading
-- ❌ No fake volume
-- ❌ No self-trading
-- ❌ No price manipulation
-- ❌ No bot farm claims
+## Distribution
 
-### First 10 Verified Hunters
+| Allocation | Percentage | Amount | Purpose |
+|---|---:|---:|---|
+| Community Airdrop | 35% | 35T | Early contributors and claim rounds |
+| Meme War Rewards | 20% | 20T | Meme/content missions |
+| Liquidity Reserve | 15% | 15T | Future DEX liquidity if conditions are met |
+| AI Hunter Round | 10% | 10T | Scanner, bot, report, and tool rewards |
+| Core/Dev/Ops | 10% | 10T | Operations and development |
+| Reserve | 10% | 10T | Partnerships and contingency |
 
-The first 10 verified AI hunter submissions receive **fixed token rewards**.  
-No trading required. Build scanners, bots, checkers, or reports.
+## Liquidity Policy
 
-📂 Submit via [`submissions/`](./submissions/)
+Liquidity is not deployed in the zero-cost phase.
 
----
+Future DEX liquidity should only be considered after measurable organic activity exists, such as:
 
-## Meme War
+- 300+ waitlist registrations
+- 50+ active participants
+- 100+ content pieces
+- 10+ verified hunter submissions
+- 30+ organic X mentions
+- 30+ GitHub stars
 
-**Round 2** of the AHD Protocol. Create memes, videos, threads, and viral content.
-
-### Missions
-
-1. Create **"The first meme coin discovered by AI"** memes
-2. Explain AHD Protocol in meme format
-3. Bot vs. Human battle memes
-4. 10-second video clips
-5. X thread breakdowns
-6. Korean/English translations
-
-### Reward Criteria
-
-Rewards are **NOT** based on views or likes alone.
-
-- Actual engagement (genuine comments)
-- Remix count (how many people reused your meme)
-- Community votes
-- Quality assessment by core team
-
-📂 Submit via [`submissions/`](./submissions/)
-
----
-
-## How to Participate
-
-### For AI Agents & Developers
-
-1. Read [`agent-manifest.json`](./agent-manifest.json)
-2. Choose a task from the [AI Hunter Round](#ai-hunter-round)
-3. Build your tool, bot, scanner, or report
-4. Submit via PR to [`submissions/`](./submissions/)
-5. Receive token rewards upon verification
-
-### For Meme Creators
-
-1. Check [`meme-kit/`](./meme-kit/) for slogans, prompts, and brand rules
-2. Create memes, videos, or threads
-3. Post on X with relevant hashtags
-4. Submit links via [`submissions/`](./submissions/)
-
-### For Community Members
-
-1. Register your wallet address (coming soon)
-2. Complete simple missions
-3. Engage with the community
-4. Wait for Human Claim Round (Round 3)
-
----
-
-## Project Structure
-
-```
-$SIGNAL/
-├── README.md                          # This file
-├── agent-manifest.json                # AI-readable project manifest
-├── token.json                         # Token metadata
-├── airdrop.json                       # Airdrop structure
-├── hunter-round.json                  # AI Hunter Round details
-├── reward-wallet.json                 # Reward wallet info
-├── risk-disclosure.md                 # Full risk disclosure
-├── meme-kit/
-│   ├── slogans.md                     # Slogan collection
-│   ├── meme-prompts.md                # AI image generation prompts
-│   └── brand-rules.md                 # Brand guidelines
-├── submissions/
-│   └── README.md                      # Submission guide
-├── examples/
-│   ├── telegram-bot-response.json     # Bot response example
-│   ├── scanner-output.json            # Scanner output example
-│   └── risk-report-template.md        # Report template
-└── website/
-    ├── index.html                     # Landing page
-    ├── style.css                      # Styles
-    └── script.js                      # Interactions
-```
-
----
-
-## Topics
-
-`solana` `spl-token` `meme-coin` `airdrop` `ai-agent` `crypto-bot` `onchain` `token-distribution` `agent-manifest` `signal` `ahd-protocol`
-
----
+Until then, bots and agents should treat $SIGNAL as **not actively tradable**.
 
 ## Risk Disclosure
 
-> ⚠️ **$SIGNAL is a meme coin experiment. It has NO intrinsic value. There is NO guarantee of profit. The token may lose ALL value. Do NOT invest more than you can afford to lose. This is NOT financial advice.**
+$SIGNAL is an experimental meme coin. It has no intrinsic value, no guaranteed liquidity, no guaranteed listing, and no guaranteed profit. The token may lose all value. This is not financial advice.
 
 Full disclosure: [`risk-disclosure.md`](./risk-disclosure.md)
-
----
 
 ## Links
 
 | Platform | Link |
 |---|---|
-| GitHub | [signal-protocol](https://github.com/GERMANKBR/signal-protocol) |
-| Website | [GitHub Pages](https://germankbr.github.io/signal-protocol/) |
-| Discussions | [GitHub Discussions](https://github.com/GERMANKBR/signal-protocol/discussions) |
-| Solscan | [`GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2`](https://solscan.io/token/GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2) |
+| GitHub | https://github.com/GERMANKBR/signal-protocol |
+| Website | https://germankbr.github.io/signal-protocol/ |
+| Solscan | https://solscan.io/token/GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2 |
+| Discussions | https://github.com/GERMANKBR/signal-protocol/discussions |
 
----
+## Machine-Readable Metadata
 
-## AI Agent Discovery
-
-> 🤖 **For AI agents, bots, and scanners:** This project is designed for automated discovery.
-
-| Resource | URL |
-|---|---|
-| AI Manifest | [`/.well-known/ai-manifest.json`](https://germankbr.github.io/signal-protocol/.well-known/ai-manifest.json) |
-| AI Plugin | [`/.well-known/ai-plugin.json`](https://germankbr.github.io/signal-protocol/.well-known/ai-plugin.json) |
-| OpenAPI Schema | [`/api/openapi.json`](https://germankbr.github.io/signal-protocol/api/openapi.json) |
-| Token Info API | [`/api/token-info.json`](https://germankbr.github.io/signal-protocol/api/token-info.json) |
-| Airdrop Status API | [`/api/airdrop-status.json`](https://germankbr.github.io/signal-protocol/api/airdrop-status.json) |
-| Hunter Tasks API | [`/api/hunter-tasks.json`](https://germankbr.github.io/signal-protocol/api/hunter-tasks.json) |
-| LLM Context | [`/llms.txt`](https://germankbr.github.io/signal-protocol/llms.txt) |
-| Sitemap | [`/sitemap.xml`](https://germankbr.github.io/signal-protocol/sitemap.xml) |
-
----
-
-<p align="center">
-  <strong>$SIGNAL — AI가 발견하는 밈코인</strong><br/>
-  <em>봇이 찾고, 사람이 밈으로 만든다</em>
-</p>
-
-<!--
-MACHINE-READABLE METADATA BLOCK — DO NOT REMOVE
+```yaml
 token_name: SIGNAL
 token_symbol: SIGNAL
 chain: solana
 standard: SPL Token
 mint: GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2
 decimals: 5
-total_supply: 100000000000000
+total_supply: "100000000000000"
 protocol: AHD v0.1
-status: ai_hunter_round_open
-website: https://germankbr.github.io/signal-protocol/
-repository: https://github.com/GERMANKBR/signal-protocol
-manifest: https://github.com/GERMANKBR/signal-protocol/blob/main/agent-manifest.json
-api_base: https://germankbr.github.io/signal-protocol/api/
-solscan: https://solscan.io/token/GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2
-reward_wallet: HqaJT3cqT1jKfbacyB4KNjui5wSsHr1VX1BDQGHzYb4m
-no_trading_required: true
-no_volume_farming: true
-no_profit_guarantee: true
--->
-]]>
-
-## On-chain AHD Declaration
-
-AHD_PROTOCOL_OPEN was recorded on Solana mainnet as an on-chain memo.
-
-- Project: SIGNAL
-- Mint: GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2
-- Manifest: https://github.com/GERMANKBR/signal-protocol/blob/main/agent-manifest.json
-- Round: AI_HUNTER_ROUND_1
-- No trading required: true
-- Transaction: 3Yky5hr6N3QVbtjiGFp7H59PGw3qXMLBS2xpfvgm1eCBRqwsnDEFGB9ebn2ZQuzowmD7aozfmbfoPaNsMBXkheMU
-
-
-
+phase: zero_cost_activation
+liquidity_status: not_deployed
+trading_required: false
+volume_farming_allowed: false
+profit_guarantee: false
+```

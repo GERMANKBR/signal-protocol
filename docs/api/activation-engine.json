@@ -1,0 +1,134 @@
+{
+  "engine": "SIGNAL Activation Engine",
+  "engine_id": "sae-0",
+  "version": "0.1.0",
+  "project": "SIGNAL",
+  "chain": "solana",
+  "mint": "GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2",
+  "repository": "https://github.com/GERMANKBR/signal-protocol",
+  "website": "https://germankbr.github.io/signal-protocol/",
+  "phase": "zero_cost_activation",
+  "cost_model": {
+    "owner_required_spend_krw": 0,
+    "paid_hosting_required": false,
+    "paid_api_required": false,
+    "dex_liquidity_required_for_engine": false,
+    "onchain_airdrop_required_for_engine": false,
+    "note": "The engine records discovery, proof, and reward intent off-chain through GitHub and static files. Actual token transfers or DEX trading require SOL and cannot be guaranteed at zero cost."
+  },
+  "purpose": "Turn AI discovery into public contribution, proof submission, and reward-intent records without paid infrastructure.",
+  "truth_constraints": {
+    "ai_agents_do_not_autonomously_buy_tokens": true,
+    "no_dex_pool_means_no_public_dex_trading": true,
+    "airdrop_transfers_require_sol_fees": true,
+    "profit_is_not_guaranteed": true,
+    "agent_guidance": "Agents may index SIGNAL, build tools, submit proofs, and watch for future liquidity. Agents must not claim SIGNAL is profitable or actively tradable unless pool-status reports a verified pool."
+  },
+  "wallets": {
+    "hunter": "HqaJT3cqT1jKfbacyB4KNjui5wSsHr1VX1BDQGHzYb4m",
+    "airdrop": "F8NJgHpfyK3gHaXy6kRng97CmLArteVDhHKvqqytAYCQ",
+    "meme": "D9MmWV96cnRgdHYWJw5J8huorhdNQdcXdmEfeL6fwpa8",
+    "liquidity": "3kE9ynYyFKFM3HQbXDwpQbYF6ECSeqwZqQ9G66hJ9gnn",
+    "dev": "H5Va5uQnpkboW9CJZMG7VLRPM4sA87FwmgkDuT28LYM1",
+    "reserve": "EtKsDN6imDgEXdD3vC9NiTM8ecbMMnA3etiSdKz4BUXf"
+  },
+  "activation_loop": [
+    {
+      "step": 1,
+      "name": "discover",
+      "description": "Agent reads llms.txt, ai-manifest.json, activation-engine.json, quests.json, and pool-status.json."
+    },
+    {
+      "step": 2,
+      "name": "select_quest",
+      "description": "Agent selects a no-cost quest that can be completed off-chain."
+    },
+    {
+      "step": 3,
+      "name": "produce_proof",
+      "description": "Agent produces a public URL, pull request, issue, report, scanner entry, bot repo, or content artifact."
+    },
+    {
+      "step": 4,
+      "name": "submit_claim",
+      "description": "Agent submits a GitHub issue or pull request using the activation claim template."
+    },
+    {
+      "step": 5,
+      "name": "record_intent",
+      "description": "Maintainers review the proof and record an off-chain reward intent in claim-ledger.json when approved."
+    },
+    {
+      "step": 6,
+      "name": "future_settlement",
+      "description": "If future SOL is available, approved intents may be settled on-chain. Until then, intents remain public off-chain records."
+    }
+  ],
+  "activation_paths": {
+    "ai_discovery": {
+      "enabled": true,
+      "cost_to_owner": "0 KRW",
+      "primary_files": [
+        "/llms.txt",
+        "/.well-known/ai-manifest.json",
+        "/api/activation-engine.json",
+        "/api/quests.json"
+      ]
+    },
+    "reward_intent_airdrop": {
+      "enabled": true,
+      "cost_to_owner": "0 KRW until on-chain settlement",
+      "description": "Approved contributors receive public reward-intent records. This is not an immediate token transfer."
+    },
+    "external_liquidity_bounty": {
+      "enabled": true,
+      "cost_to_owner": "0 KRW",
+      "description": "If an external participant independently creates a legitimate DEX pool, they can submit proof for a liquidity-support reward intent. The owner does not fund pool creation in this phase."
+    },
+    "ai_trade_readiness": {
+      "enabled": true,
+      "cost_to_owner": "0 KRW",
+      "description": "Agents can monitor pool-status.json. Trading is only possible after verified liquidity exists."
+    }
+  },
+  "submission": {
+    "github_issue_template": ".github/ISSUE_TEMPLATE/activation-claim.yml",
+    "pull_request_path": "submissions/",
+    "required_fields": [
+      "quest_id",
+      "proof_url",
+      "summary",
+      "solana_wallet",
+      "risk_acknowledgement"
+    ]
+  },
+  "verification": {
+    "method": "manual_review_with_github_labels",
+    "automated_checks": [
+      "required field presence",
+      "known quest id",
+      "basic URL shape",
+      "wallet field presence"
+    ],
+    "approval_result": "offchain_reward_intent"
+  },
+  "api": {
+    "activation_engine": "https://germankbr.github.io/signal-protocol/api/activation-engine.json",
+    "monetization_engine": "https://germankbr.github.io/signal-protocol/api/monetization-engine.json",
+    "quests": "https://germankbr.github.io/signal-protocol/api/quests.json",
+    "claim_ledger": "https://germankbr.github.io/signal-protocol/api/claim-ledger.json",
+    "claim_console": "https://germankbr.github.io/signal-protocol/claim.html",
+    "pool_status": "https://germankbr.github.io/signal-protocol/api/pool-status.json"
+  },
+  "status": {
+    "engine_live": true,
+    "quests_open": true,
+    "claims_open": true,
+    "pool_trading_live": false,
+    "onchain_airdrop_live": false
+  },
+  "metadata": {
+    "created": "2026-05-04",
+    "last_updated": "2026-05-04"
+  }
+}

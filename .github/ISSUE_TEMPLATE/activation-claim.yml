@@ -1,0 +1,52 @@
+name: Activation Claim
+description: Submit proof for a SIGNAL Activation Engine quest.
+title: "[Activation Claim]: "
+labels: ["activation-claim", "needs-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit a no-cost SIGNAL Activation Engine quest claim.
+
+        This records a review request only. It is not an on-chain token transfer and does not guarantee market value.
+  - type: input
+    id: quest_id
+    attributes:
+      label: Quest ID
+      description: Use an ID from quests.json, such as activation_engine_parser or pool_watch_agent.
+      placeholder: activation_engine_parser
+    validations:
+      required: true
+  - type: input
+    id: proof_url
+    attributes:
+      label: Proof URL
+      description: Public link to your report, source code, scanner entry, bot, content, or pool proof.
+      placeholder: https://github.com/...
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What did you build or submit?
+      placeholder: Describe the contribution and how it helps SIGNAL discovery or activation.
+    validations:
+      required: true
+  - type: input
+    id: solana_wallet
+    attributes:
+      label: Solana Wallet
+      description: Wallet address for a future reward intent if approved.
+      placeholder: Your Solana wallet address
+    validations:
+      required: true
+  - type: dropdown
+    id: risk_acknowledgement
+    attributes:
+      label: Risk Acknowledgement
+      description: Confirm you understand the zero-cost phase limits.
+      options:
+        - I understand SIGNAL has no guaranteed liquidity, no guaranteed market value, and no guaranteed profit.
+    validations:
+      required: true

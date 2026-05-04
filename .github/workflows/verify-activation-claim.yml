@@ -1,0 +1,87 @@
+name: Verify Activation Claim
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  verify:
+    if: contains(github.event.issue.labels.*.name, 'activation-claim')
+    runs-on: ubuntu-latest
+    name: Verify Activation Claim
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate claim body
+        id: validate
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const quests = JSON.parse(fs.readFileSync('quests.json', 'utf8')).quests;
+            const knownQuestIds = new Set(quests.map((q) => q.id));
+            const body = context.payload.issue.body || '';
+
+            function sectionValue(label) {
+              const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+              const re = new RegExp(`### ${escaped}\\s*\\n\\s*([^#]+)`, 'i');
+              const match = body.match(re);
+              return match ? match[1].trim() : '';
+            }
+
+            const questId = sectionValue('Quest ID');
+            const proofUrl = sectionValue('Proof URL');
+            const wallet = sectionValue('Solana Wallet');
+            const riskAck = sectionValue('Risk Acknowledgement');
+
+            const errors = [];
+            if (!questId) errors.push('Missing Quest ID.');
+            if (questId && !knownQuestIds.has(questId)) errors.push(`Unknown Quest ID: ${questId}`);
+            if (!proofUrl || !/^https?:\/\//i.test(proofUrl)) errors.push('Proof URL must be a public http(s) URL.');
+            if (!wallet || wallet.length < 32) errors.push('Solana Wallet appears to be missing or too short.');
+            if (!riskAck.includes('no guaranteed liquidity')) errors.push('Risk acknowledgement is missing.');
+
+            const labels = [];
+            if (questId && knownQuestIds.has(questId)) labels.push(`quest:${questId}`);
+            labels.push(errors.length ? 'claim:needs-fix' : 'claim:ready-for-review');
+
+            for (const label of labels) {
+              try {
+                await github.rest.issues.getLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name: label
+                });
+              } catch (e) {
+                await github.rest.issues.createLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name: label,
+                  color: errors.length ? 'ef4444' : '00ff88'
+                });
+              }
+            }
+
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              labels
+            });
+
+            const statusText = errors.length
+              ? `Activation claim needs fixes:\n\n${errors.map((e) => `- ${e}`).join('\n')}`
+              : `Activation claim is ready for manual review.\n\nQuest ID: ${questId}\nProof: ${proofUrl}\n\nReminder: approval records an off-chain reward intent only. It is not an immediate on-chain transfer.`;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body: statusText
+            });

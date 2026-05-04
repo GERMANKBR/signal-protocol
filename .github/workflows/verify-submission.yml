@@ -3,11 +3,12 @@ name: Verify Submission
 on:
   pull_request:
     paths:
-      - 'submissions/**'
+      - "submissions/**"
 
 permissions:
   pull-requests: write
   contents: read
+  issues: write
 
 jobs:
   verify:
@@ -21,11 +22,10 @@ jobs:
       - name: Check submission structure
         id: check
         run: |
-          echo "## 🤖 AHD Submission Verification" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## AHD Submission Verification" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
 
-          # Get changed files
-          CHANGED=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} 2>/dev/null || echo "")
+          CHANGED=$(git diff --name-only "${{ github.event.pull_request.base.sha }}" "${{ github.sha }}" 2>/dev/null || echo "")
 
           if [ -z "$CHANGED" ]; then
             CHANGED=$(find submissions/ -type f ! -name "README.md" 2>/dev/null || echo "")
@@ -37,47 +37,46 @@ jobs:
           VALID=true
           HAS_SUBMISSION=false
 
-          # Check if files are in submissions/ directory
           for file in $CHANGED; do
             if [[ "$file" == submissions/* ]] && [[ "$file" != "submissions/README.md" ]]; then
               HAS_SUBMISSION=true
-              echo "✅ Found submission file: $file" >> $GITHUB_STEP_SUMMARY
+              echo "Found submission file: $file" >> "$GITHUB_STEP_SUMMARY"
 
-              # Check file extension
               ext="${file##*.}"
               case "$ext" in
                 md|json|py|js|ts|rs|go|txt|yaml|yml|toml|sh)
-                  echo "  ✅ Valid file type: .$ext" >> $GITHUB_STEP_SUMMARY
+                  echo "Valid file type: .$ext" >> "$GITHUB_STEP_SUMMARY"
                   ;;
                 png|jpg|jpeg|gif|svg|webp)
-                  echo "  ✅ Image file: .$ext" >> $GITHUB_STEP_SUMMARY
+                  echo "Image file: .$ext" >> "$GITHUB_STEP_SUMMARY"
                   ;;
                 *)
-                  echo "  ⚠️ Unusual file type: .$ext" >> $GITHUB_STEP_SUMMARY
+                  echo "Unusual file type: .$ext" >> "$GITHUB_STEP_SUMMARY"
                   ;;
               esac
             fi
           done
 
           if [ "$HAS_SUBMISSION" = false ]; then
-            echo "❌ No submission files found in submissions/ directory" >> $GITHUB_STEP_SUMMARY
+            echo "No submission files found in submissions/ directory" >> "$GITHUB_STEP_SUMMARY"
             VALID=false
           fi
 
-          echo "valid=$VALID" >> $GITHUB_OUTPUT
-          echo "has_submission=$HAS_SUBMISSION" >> $GITHUB_OUTPUT
+          echo "valid=$VALID" >> "$GITHUB_OUTPUT"
+          echo "has_submission=$HAS_SUBMISSION" >> "$GITHUB_OUTPUT"
 
       - name: Validate JSON files
         if: steps.check.outputs.has_submission == 'true'
         run: |
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### JSON Validation" >> $GITHUB_STEP_SUMMARY
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "### JSON Validation" >> "$GITHUB_STEP_SUMMARY"
 
-          find submissions/ -name "*.json" ! -name "README.md" -type f | while read f; do
+          find submissions/ -name "*.json" ! -name "README.md" -type f | while read -r f; do
             if python3 -m json.tool "$f" > /dev/null 2>&1; then
-              echo "✅ Valid JSON: $f" >> $GITHUB_STEP_SUMMARY
+              echo "Valid JSON: $f" >> "$GITHUB_STEP_SUMMARY"
             else
-              echo "❌ Invalid JSON: $f" >> $GITHUB_STEP_SUMMARY
+              echo "Invalid JSON: $f" >> "$GITHUB_STEP_SUMMARY"
+              exit 1
             fi
           done
 
@@ -87,35 +86,30 @@ jobs:
         with:
           script: |
             const labels = ['hunter-submission', 'needs-review'];
-
-            // Check for specific task types in PR title/body
             const prTitle = context.payload.pull_request.title.toLowerCase();
             const prBody = (context.payload.pull_request.body || '').toLowerCase();
-            const combined = prTitle + ' ' + prBody;
+            const combined = `${prTitle} ${prBody}`;
 
-            if (combined.includes('risk report') || combined.includes('risk_report')) {
-              labels.push('task:risk-report');
-            }
-            if (combined.includes('scanner') || combined.includes('token_scanner')) {
-              labels.push('task:scanner');
-            }
-            if (combined.includes('bot') || combined.includes('telegram')) {
-              labels.push('task:bot');
-            }
-            if (combined.includes('parser') || combined.includes('ahd_parser')) {
-              labels.push('task:parser');
-            }
-            if (combined.includes('checker') || combined.includes('eligibility')) {
-              labels.push('task:checker');
-            }
-            if (combined.includes('indexer') || combined.includes('airdrop_indexer')) {
-              labels.push('task:indexer');
-            }
-            if (combined.includes('meme')) {
-              labels.push('task:meme');
-            }
+            if (combined.includes('risk report') || combined.includes('risk_report')) labels.push('task:risk-report');
+            if (combined.includes('scanner') || combined.includes('token_scanner')) labels.push('task:scanner');
+            if (combined.includes('bot') || combined.includes('telegram')) labels.push('task:bot');
+            if (combined.includes('parser') || combined.includes('ahd_parser')) labels.push('task:parser');
+            if (combined.includes('checker') || combined.includes('eligibility')) labels.push('task:checker');
+            if (combined.includes('indexer') || combined.includes('airdrop_indexer')) labels.push('task:indexer');
+            if (combined.includes('meme')) labels.push('task:meme');
 
-            // Create labels if they don't exist, then add them
+            const colors = {
+              'hunter-submission': '00ff88',
+              'needs-review': 'ffd93d',
+              'task:risk-report': '22c55e',
+              'task:scanner': '3b82f6',
+              'task:bot': 'a855f7',
+              'task:parser': 'ef4444',
+              'task:checker': 'f97316',
+              'task:indexer': 'ec4899',
+              'task:meme': '06b6d4'
+            };
+
             for (const label of labels) {
               try {
                 await github.rest.issues.getLabel({
@@ -124,17 +118,6 @@ jobs:
                   name: label
                 });
               } catch (e) {
-                const colors = {
-                  'hunter-submission': '00ff88',
-                  'needs-review': 'ffd93d',
-                  'task:risk-report': '22c55e',
-                  'task:scanner': '3b82f6',
-                  'task:bot': 'a855f7',
-                  'task:parser': 'ef4444',
-                  'task:checker': 'f97316',
-                  'task:indexer': 'ec4899',
-                  'task:meme': '06b6d4'
-                };
                 await github.rest.issues.createLabel({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
@@ -148,7 +131,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.payload.pull_request.number,
-              labels: labels
+              labels
             });
 
       - name: Post verification comment
@@ -156,27 +139,25 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const comment = `## 🤖 AHD Protocol — Submission Received!
+            const comment = `## AHD Protocol Submission Received
 
-            Thank you for your submission to the **AI Hunter Round**!
+            Thank you for your AI Hunter Round submission.
 
-            ### ✅ Automated Checks Passed
+            Automated checks passed:
             - File structure validated
-            - Submission detected in \`submissions/\` directory
+            - Submission detected in \`submissions/\`
 
-            ### 📋 Next Steps
-            1. Core team will review your submission within **7 days**
-            2. If approved, you'll receive **$SIGNAL tokens** to your Solana wallet
-            3. First 10 verified hunters get **2x bonus** rewards!
+            Next steps:
+            1. The core team reviews the submission.
+            2. If approved, token rewards are sent to the Solana wallet listed in the PR.
+            3. First verified hunter submissions may receive the published bonus.
 
-            ### 📌 Important
-            - Make sure your PR description includes your **Solana wallet address**
-            - Describe what task this submission is for
-            - Include any relevant documentation or screenshots
+            Important:
+            - Include your Solana wallet address in the PR description.
+            - Describe which task this submission is for.
+            - Include relevant documentation, demo links, or screenshots.
 
-            ---
-            *This is an automated response from the AHD Protocol verification system.*
-            *$SIGNAL — Built for bots. Claimed by humans. Tracked by AI.*`;
+            SIGNAL is experimental. Rewards have no guaranteed market value.`;
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,

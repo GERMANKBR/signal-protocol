@@ -1,0 +1,53 @@
+name: Sponsor Intent
+description: Submit a partnership, liquidity, tooling, or ecosystem sponsorship intent.
+title: "[Sponsor Intent]: "
+labels: ["sponsor-intent", "needs-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit a public sponsor or partnership intent for SIGNAL.
+
+        Do not make market manipulation, guaranteed profit, or fake listing claims.
+  - type: dropdown
+    id: sponsor_type
+    attributes:
+      label: Sponsor Type
+      options:
+        - External liquidity support
+        - Tooling or scanner integration
+        - Community campaign
+        - Partnership proposal
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: offer
+    attributes:
+      label: Offer
+      description: What are you offering or proposing?
+    validations:
+      required: true
+  - type: input
+    id: public_url
+    attributes:
+      label: Public URL
+      description: Link to your project, proof, org, or announcement.
+      placeholder: https://...
+    validations:
+      required: false
+  - type: input
+    id: contact
+    attributes:
+      label: Wallet or Contact
+      description: Public contact or Solana wallet.
+    validations:
+      required: true
+  - type: dropdown
+    id: acknowledgement
+    attributes:
+      label: Acknowledgement
+      options:
+        - I understand SIGNAL has no guaranteed liquidity, market value, or profit.
+    validations:
+      required: true

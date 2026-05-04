@@ -4,9 +4,26 @@
 
 Anyone can submit tools, bots, scanners, reports, memes, or other contributions to earn $SIGNAL tokens.
 
+In the zero-cost activation phase, approved work is recorded as an off-chain reward intent first. Actual token transfers require SOL fees and are not guaranteed during this phase.
+
 ---
 
 ## Submission Types
+
+### SIGNAL Activation Engine
+
+Use [`../quests.json`](../quests.json) for the current no-cost quest list.
+
+Examples:
+
+- Activation Engine Parser
+- Wallet Claim Checker
+- Pool Watch Agent
+- Zero-Cost Risk Report
+- Agent Prompt Pack
+- External Liquidity Proof
+
+Activation claims can be submitted through GitHub Issues using the Activation Claim template.
 
 ### 🤖 AI Hunter Round (Round 1)
 

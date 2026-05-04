@@ -1,0 +1,58 @@
+{
+  "engine": "SIGNAL Monetization Engine",
+  "engine_id": "sme-0",
+  "version": "0.1.0",
+  "project": "SIGNAL",
+  "phase": "zero_cost_activation",
+  "mint": "GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2",
+  "purpose": "Create no-cost conversion routes from discovery into claims, external liquidity proof, sponsorship intent, and future settlement readiness.",
+  "constraints": {
+    "owner_required_spend_krw": 0,
+    "no_profit_guarantee": true,
+    "no_wash_trading": true,
+    "no_fake_volume": true,
+    "no_spam": true,
+    "no_deceptive_listing_claims": true
+  },
+  "conversion_routes": [
+    {
+      "id": "activation_claims",
+      "name": "Activation Claims",
+      "url": "https://germankbr.github.io/signal-protocol/claim.html",
+      "goal": "Turn AI/builder interest into GitHub issues and reviewed reward intents.",
+      "cost": "0 KRW"
+    },
+    {
+      "id": "external_liquidity_proof",
+      "name": "External Liquidity Proof",
+      "url": "https://germankbr.github.io/signal-protocol/api/quests.json",
+      "goal": "Allow a third party who independently funds liquidity to submit proof for review.",
+      "cost": "0 KRW to owner"
+    },
+    {
+      "id": "scanner_indexing",
+      "name": "Scanner Indexing",
+      "url": "https://germankbr.github.io/signal-protocol/api/activation-engine.json",
+      "goal": "Make SIGNAL easier for scanner builders and AI agents to index.",
+      "cost": "0 KRW"
+    },
+    {
+      "id": "sponsor_intent",
+      "name": "Sponsor Intent",
+      "url": "https://github.com/GERMANKBR/signal-protocol/issues/new?labels=sponsor-intent,needs-review&title=%5BSponsor%20Intent%5D%3A%20SIGNAL&body=Sponsor%20type%3A%0A%0AOffer%3A%0A%0APublic%20URL%3A%0A%0AWallet%20or%20contact%3A%0A%0AI%20understand%20SIGNAL%20has%20no%20guaranteed%20liquidity%2C%20market%20value%2C%20or%20profit.",
+      "goal": "Collect partnership or sponsor interest without paid forms or infrastructure.",
+      "cost": "0 KRW"
+    }
+  ],
+  "success_metrics": {
+    "claims_submitted": 0,
+    "approved_reward_intents": 0,
+    "external_liquidity_proofs": 0,
+    "sponsor_intents": 0,
+    "verified_pool_live": false
+  },
+  "metadata": {
+    "created": "2026-05-04",
+    "last_updated": "2026-05-04"
+  }
+}

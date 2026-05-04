@@ -1,0 +1,40 @@
+{
+  "project": "SIGNAL",
+  "engine": "SIGNAL Activation Engine",
+  "version": "0.1.0",
+  "phase": "zero_cost_activation",
+  "status": "open",
+  "ledger_type": "offchain_reward_intent",
+  "mint": "GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2",
+  "settlement_policy": {
+    "onchain_transfer_required_for_final_reward": true,
+    "settlement_requires_sol_fees": true,
+    "current_onchain_settlement_status": "not_active",
+    "note": "This ledger records approved reward intents only. It is not proof of completed token transfer and does not guarantee market value."
+  },
+  "wallet_sources": {
+    "hunter": "HqaJT3cqT1jKfbacyB4KNjui5wSsHr1VX1BDQGHzYb4m",
+    "airdrop": "F8NJgHpfyK3gHaXy6kRng97CmLArteVDhHKvqqytAYCQ",
+    "meme": "D9MmWV96cnRgdHYWJw5J8huorhdNQdcXdmEfeL6fwpa8",
+    "liquidity": "3kE9ynYyFKFM3HQbXDwpQbYF6ECSeqwZqQ9G66hJ9gnn",
+    "dev": "H5Va5uQnpkboW9CJZMG7VLRPM4sA87FwmgkDuT28LYM1",
+    "reserve": "EtKsDN6imDgEXdD3vC9NiTM8ecbMMnA3etiSdKz4BUXf"
+  },
+  "claims": [],
+  "claim_schema": {
+    "claim_id": "string",
+    "quest_id": "string",
+    "status": "submitted | under_review | approved_intent | rejected | settled_onchain",
+    "recipient_wallet": "solana_wallet_address",
+    "reward_source_wallet": "hunter | airdrop | meme | liquidity | dev | reserve",
+    "reward_intent_tokens": "string",
+    "proof_url": "string",
+    "review_url": "string",
+    "created_at": "ISO-8601 date",
+    "settlement_tx": "nullable string"
+  },
+  "metadata": {
+    "created": "2026-05-04",
+    "last_updated": "2026-05-04"
+  }
+}
