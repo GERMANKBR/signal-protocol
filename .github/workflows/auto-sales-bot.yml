@@ -1,0 +1,89 @@
+name: Auto Sales Bot
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+
+jobs:
+  respond:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check issue and respond
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const title = issue.title.toLowerCase();
+            const body = issue.body || "";
+            
+            let isOTC = title.includes('[otc]');
+            let isSponsor = title.includes('[sponsor]');
+            
+            if (!isOTC && !isSponsor) return; // Not a sales issue
+            
+            // Determine type and amount based on body
+            let amount = "0";
+            let typeLabel = "";
+            let offerName = "";
+            
+            if (isOTC) {
+              if (body.includes("otc_tier1")) {
+                amount = "0.5";
+                typeLabel = "OTC Tier 1 (1T SIGNAL)";
+                offerName = "otc_tier1";
+              } else if (body.includes("otc_tier2")) {
+                amount = "2.0";
+                typeLabel = "OTC Tier 2 (5T SIGNAL)";
+                offerName = "otc_tier2";
+              } else {
+                amount = "0.5"; // Default fallback
+                typeLabel = "OTC Purchase";
+                offerName = "otc_custom";
+              }
+            } else if (isSponsor) {
+              amount = "1.0";
+              typeLabel = "Standard Sponsorship";
+              offerName = "sponsor_standard";
+            }
+            
+            const checkoutUrl = `https://germankbr.github.io/signal-protocol/checkout.html?order=${issue.number}&amount=${amount}&type=${offerName}`;
+            
+            const comment = `## 🤖 Payment Information Request
+
+            Thank you for your interest in **${typeLabel}**.
+
+            ### 💳 Checkout Details
+            To complete your request securely, please use our Solana Pay portal. This ensures your payment is properly tracked to Issue #${issue.number}.
+
+            👉 **[Click here to open the Secure Checkout Page](${checkoutUrl})**
+
+            ### 📝 Next Steps
+            1. Complete the payment of **${amount} SOL** using the link above.
+            2. Reply to this issue with your **Transaction Hash (TX ID)**.
+            3. Our automated system will verify the TX hash and update your status.
+
+            > **⚠️ Disclaimer:** $SIGNAL currently has no liquidity pool. Payment is voluntary. Delivery of OTC tokens is manual and verified within 24 hours. No profit guarantees.
+            `;
+            
+            // Add comment
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              body: comment
+            });
+            
+            // Add awaiting payment label
+            try {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                labels: ['awaiting-payment']
+              });
+            } catch (e) {
+              console.log("Failed to add label, might need to be created first.");
+            }

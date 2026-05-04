@@ -198,9 +198,11 @@ Full disclosure: [`risk-disclosure.md`](./risk-disclosure.md)
 
 | Platform | Link |
 |---|---|
-| GitHub | https://github.com/GERMANKBR/signal-protocol |
-| Website | https://germankbr.github.io/signal-protocol/ |
-| Dashboard | https://germankbr.github.io/signal-protocol/dashboard.html |
+| OpenAPI Schema | [`/api/openapi.json`](https://germankbr.github.io/signal-protocol/api/openapi.json) |
+| Token Info API | [`/api/token-info.json`](https://germankbr.github.io/signal-protocol/api/token-info.json) |
+| Sales Offers | [`/api/sales-offers.json`](https://germankbr.github.io/signal-protocol/api/sales-offers.json) |
+| Airdrop Status API | [`/api/airdrop-status.json`](https://germankbr.github.io/signal-protocol/api/airdrop-status.json) |
+| OTC/Sponsor Checkout | https://germankbr.github.io/signal-protocol/checkout.html |
 | Solscan | https://solscan.io/token/GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2 |
 | Discussions | https://github.com/GERMANKBR/signal-protocol/discussions |
 

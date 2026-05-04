@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$SIGNAL Secure Checkout</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Load QRCode.js for static QR generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    .checkout-container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+    }
+    .order-summary {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .order-summary p { margin: 5px 0; }
+    .qr-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 20px 0;
+    }
+    .wallet-box {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      border-radius: 6px;
+      font-family: monospace;
+      word-break: break-all;
+      margin: 10px 0;
+      color: var(--primary-color);
+    }
+    .alert-box {
+      background: rgba(220, 38, 38, 0.1);
+      border-left: 4px solid #dc2626;
+      padding: 15px;
+      margin-bottom: 20px;
+      text-align: left;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">$SIGNAL</div>
+  </header>
+
+  <div class="container">
+    <div class="checkout-container">
+      <h2>Secure Payment Gateway</h2>
+      
+      <div class="alert-box">
+        <strong>⚠️ RISK DISCLOSURE:</strong> Payment is voluntary. There is NO liquidity pool and NO profit guarantee. Tokens will be delivered manually to your wallet within 24 hours of TX verification.
+      </div>
+
+      <div class="order-summary" id="orderSummary">
+        <p><strong>Order ID:</strong> <span id="displayOrderId">Loading...</span></p>
+        <p><strong>Type:</strong> <span id="displayType">Loading...</span></p>
+        <p><strong>Amount Due:</strong> <span id="displayAmount" style="color: var(--primary-color); font-weight: bold;">0.0 SOL</span></p>
+      </div>
+
+      <h3>Pay with Solana Pay</h3>
+      <p>Scan with your Phantom or Solflare wallet app</p>
+      
+      <div class="qr-box" id="qrcode"></div>
+
+      <p>Or click the button below to open your wallet</p>
+      <a href="#" id="solanaPayBtn" class="btn btn-primary">Pay with Wallet</a>
+
+      <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+        <h4>Manual Transfer</h4>
+        <p>If Solana Pay fails, send exactly <strong id="manualAmount">0.0 SOL</strong> to:</p>
+        <div class="wallet-box" id="walletAddress">H5Va5uQnpkboW9CJZMG7VLRPM4sA87FwmgkDuT28LYM1</div>
+        <button class="btn btn-outline" onclick="copyWallet()">Copy Address</button>
+      </div>
+
+      <div style="margin-top: 30px; background: rgba(0,255,136,0.1); padding: 15px; border-radius: 8px;">
+        <h4>Next Step</h4>
+        <p>After sending funds, return to your GitHub issue and reply with the <strong>Transaction Hash (TX)</strong>.</p>
+        <a href="https://github.com/GERMANKBR/signal-protocol/issues" id="returnBtn" class="btn btn-outline" style="margin-top: 10px;">Return to GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const WALLET = "H5Va5uQnpkboW9CJZMG7VLRPM4sA87FwmgkDuT28LYM1";
+    
+    // Parse URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    const orderId = urlParams.get('order') || 'unknown';
+    const amount = urlParams.get('amount') || '0';
+    const type = urlParams.get('type') || 'Custom';
+
+    // Update UI
+    document.getElementById('displayOrderId').innerText = orderId;
+    document.getElementById('displayType').innerText = type.replace('_', ' ').toUpperCase();
+    document.getElementById('displayAmount').innerText = amount + " SOL";
+    document.getElementById('manualAmount').innerText = amount + " SOL";
+
+    if (orderId !== 'unknown') {
+      document.getElementById('returnBtn').href = `https://github.com/GERMANKBR/signal-protocol/issues/${orderId}`;
+    }
+
+    // Generate Solana Pay URL
+    // Format: solana:<RECIPIENT>?amount=<AMOUNT>&reference=<REF>&label=<LABEL>&message=<MESSAGE>&memo=<MEMO>
+    // Using memo for order tracking
+    const solanaUrl = `solana:${WALLET}?amount=${amount}&label=SIGNAL+Protocol&message=Order+${orderId}&memo=${orderId}`;
+    
+    document.getElementById('solanaPayBtn').href = solanaUrl;
+
+    // Generate QR Code
+    if (amount > 0) {
+      new QRCode(document.getElementById("qrcode"), {
+        text: solanaUrl,
+        width: 200,
+        height: 200,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.L
+      });
+    } else {
+      document.getElementById("qrcode").innerHTML = "<p style='color:red;'>Invalid Amount</p>";
+    }
+
+    function copyWallet() {
+      navigator.clipboard.writeText(WALLET).then(() => {
+        alert("Wallet address copied!");
+      });
+    }
+  </script>
+</body>
+</html>

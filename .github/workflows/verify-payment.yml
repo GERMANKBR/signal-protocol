@@ -1,0 +1,61 @@
+name: Verify Payment TX
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  issues: write
+
+jobs:
+  verify:
+    # Only run on issues with awaiting-payment label and if comment looks like a TX hash (alphanumeric, ~88 chars)
+    if: contains(github.event.issue.labels.*.name, 'awaiting-payment') && !github.event.comment.user.login.includes('bot')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check TX Hash Format
+        id: check
+        run: |
+          COMMENT="${{ github.event.comment.body }}"
+          # Extremely basic regex to find a Solana TX hash (base58, 87-88 chars)
+          # We'll just look for a long string
+          TX=$(echo "$COMMENT" | grep -oE '[1-9A-HJ-NP-Za-km-z]{87,88}' | head -1 || echo "")
+          
+          if [ -z "$TX" ]; then
+            echo "No TX hash found in comment."
+            echo "has_tx=false" >> $GITHUB_OUTPUT
+          else
+            echo "Found possible TX: $TX"
+            echo "has_tx=true" >> $GITHUB_OUTPUT
+            echo "tx=$TX" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Acknowledge TX receipt
+        if: steps.check.outputs.has_tx == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const tx = "${{ steps.check.outputs.tx }}";
+            const comment = `⏳ **TX Hash Received:** \`${tx}\`\n\nThe transaction hash has been logged. The core team will manually verify the payment amount, recipient, and memo on the Solana blockchain.\n\nOnce verified, your tokens will be transferred or your sponsorship will be activated, and this issue will be closed.`;
+            
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body: comment
+            });
+            
+            // Swap labels
+            await github.rest.issues.removeLabel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              name: 'awaiting-payment'
+            });
+            
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              labels: ['verification-pending']
+            });

@@ -1,0 +1,37 @@
+name: SIGNAL OTC Purchase Request
+description: Request a direct OTC purchase of $SIGNAL tokens
+title: "[OTC]: <amount> $SIGNAL"
+labels: ["otc-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## ⚠️ RISK DISCLOSURE
+        **$SIGNAL currently has NO liquidity pool (LP) and NO profit guarantee.** 
+        This is a direct Over-The-Counter (OTC) purchase. Delivery is manual and may take up to 24 hours after payment verification.
+  - type: dropdown
+    id: offer_type
+    attributes:
+      label: Select OTC Tier
+      description: Choose the amount you wish to purchase.
+      options:
+        - "otc_tier1 (1T SIGNAL for 0.5 SOL)"
+        - "otc_tier2 (5T SIGNAL for 2.0 SOL)"
+    validations:
+      required: true
+  - type: input
+    id: wallet
+    attributes:
+      label: Your Solana Wallet Address (To receive tokens)
+      placeholder: "e.g., HN7cABqLq46Es1jh92dQQisAq662SmxELLLsHHe4YWrH"
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Acknowledgement
+      options:
+        - label: I understand there is no guaranteed market value and no LP.
+          required: true
+        - label: I will wait for the automated bot to provide the checkout link before sending funds.
+          required: true
