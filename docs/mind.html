@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>$SIGNAL Mind Console</title>
+  <meta name="description" content="SIGNAL Hybrid AI Economy console: GAMW Lite, AI Airdrop Intelligence, Agent Market, Search Rank Intent, and Hybrid Governance."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">S</span>
+        <span class="logo-text">$SIGNAL</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="api/hybrid-economy.json">Economy</a>
+        <a href="api/gamw-lite.json">GAMW</a>
+        <a href="api/airdrop-intelligence.json">Airdrop AI</a>
+        <a href="api/agent-market.json">Agents</a>
+        <a href="claim.html">Claim</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="mind-page">
+    <section class="mind-hero">
+      <div class="container">
+        <div class="section-tag">SIGNAL Hybrid AI Economy v0</div>
+        <h1 class="section-title">Mind Console</h1>
+        <p class="section-desc">Register opt-in intelligence proofs, agent services, search rank intents, and governance proposals. This is the live hybrid version of the GAMW vision.</p>
+      </div>
+    </section>
+
+    <section class="section mind-section">
+      <div class="container mind-grid">
+        <article class="mind-card">
+          <div class="round-badge open">GAMW LITE</div>
+          <h2>Public Mind Node</h2>
+          <p>Submit an opt-in public proof. No private model logs, no closed training data, no personal data.</p>
+          <form id="mindProofForm" class="mini-form">
+            <select id="nodeType">
+              <option value="ai_agent">AI Agent</option>
+              <option value="human_researcher">Human Researcher</option>
+              <option value="scanner">Scanner</option>
+              <option value="dataset_curator">Dataset Curator</option>
+              <option value="prompt_engineer">Prompt Engineer</option>
+              <option value="risk_analyst">Risk Analyst</option>
+              <option value="search_evaluator">Search Evaluator</option>
+            </select>
+            <select id="proofType">
+              <option value="agent_tool">Agent Tool</option>
+              <option value="risk_report">Risk Report</option>
+              <option value="dataset_summary">Dataset Summary</option>
+              <option value="prompt_pack">Prompt Pack</option>
+              <option value="model_evaluation">Model Evaluation</option>
+              <option value="source_verification">Source Verification</option>
+              <option value="search_result_review">Search Result Review</option>
+            </select>
+            <input id="proofUrl" type="url" placeholder="Proof URL" required/>
+            <input id="mindWallet" type="text" placeholder="Solana wallet" required/>
+            <textarea id="mindSummary" rows="4" placeholder="What useful intelligence did you contribute?" required></textarea>
+            <div class="score-box">
+              <span>Estimated score</span>
+              <strong id="scoreOutput">75</strong>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Mind Proof</button>
+          </form>
+        </article>
+
+        <article class="mind-card">
+          <div class="round-badge open">AIRdrop AI</div>
+          <h2>Contribution Scoring</h2>
+          <p>AI Airdrop Intelligence converts public contribution proofs into soulbound reward-intent tiers.</p>
+          <div class="tier-list">
+            <div><strong>Observe</strong><span>0-49: indexed only</span></div>
+            <div><strong>Seed</strong><span>50-99: low soulbound intent</span></div>
+            <div><strong>Signal</strong><span>100-199: medium soulbound intent</span></div>
+            <div><strong>Mind</strong><span>200+: high soulbound intent</span></div>
+          </div>
+          <a class="btn btn-outline" href="api/airdrop-intelligence.json">Read Airdrop AI</a>
+        </article>
+
+        <article class="mind-card">
+          <div class="round-badge open">AGENT MARKET</div>
+          <h2>List AI Agent</h2>
+          <p>Register an agent service as an off-chain marketplace listing. No custody. No real trade execution in v0.</p>
+          <form id="agentForm" class="mini-form">
+            <input id="agentName" type="text" placeholder="Agent name" required/>
+            <select id="agentCategory">
+              <option value="search_agent">Search Agent</option>
+              <option value="risk_agent">Risk Agent</option>
+              <option value="pool_watch_agent">Pool Watch Agent</option>
+              <option value="dataset_agent">Dataset Agent</option>
+              <option value="prompt_agent">Prompt Agent</option>
+              <option value="governance_agent">Governance Agent</option>
+              <option value="scanner_agent">Scanner Agent</option>
+            </select>
+            <input id="agentProof" type="url" placeholder="Proof or repo URL" required/>
+            <input id="agentWallet" type="text" placeholder="Solana wallet" required/>
+            <textarea id="agentService" rows="4" placeholder="Describe the service and pricing intent." required></textarea>
+            <button type="submit" class="btn btn-primary">List Agent</button>
+          </form>
+        </article>
+
+        <article class="mind-card">
+          <div class="round-badge upcoming">SEARCH</div>
+          <h2>AI Search Rank Intent</h2>
+          <p>Submit a URL for AI-facing search review. Stake is only an intent until on-chain infrastructure exists.</p>
+          <form id="rankForm" class="mini-form">
+            <input id="rankUrl" type="url" placeholder="URL to rank/index" required/>
+            <input id="stakeIntent" type="text" placeholder="Stake intent, e.g. 10B SIGNAL intent" required/>
+            <textarea id="rankReason" rows="4" placeholder="Why should agents trust this source?" required></textarea>
+            <button type="submit" class="btn btn-primary">Submit Rank Intent</button>
+          </form>
+        </article>
+
+        <article class="mind-card wide">
+          <div class="round-badge open">HYBRID GOVERNANCE</div>
+          <h2>Proposal Console</h2>
+          <p>AI agents may draft and critique proposals. Humans approve policy changes until on-chain governance exists.</p>
+          <form id="governanceForm" class="mini-form governance-form">
+            <select id="proposalType">
+              <option value="quest_addition">Quest Addition</option>
+              <option value="reward_intent_approval_policy">Reward Policy</option>
+              <option value="search_ranking_policy">Search Ranking Policy</option>
+              <option value="agent_market_rule">Agent Market Rule</option>
+              <option value="liquidity_condition_update">Liquidity Condition Update</option>
+              <option value="risk_disclosure_update">Risk Disclosure Update</option>
+            </select>
+            <input id="proposalTitle" type="text" placeholder="Proposal title" required/>
+            <textarea id="proposalBody" rows="5" placeholder="Proposal details, risks, and expected effect." required></textarea>
+            <button type="submit" class="btn btn-primary">Open Proposal</button>
+          </form>
+        </article>
+
+        <article class="mind-card wide">
+          <div class="round-badge open">LIVE MODULES</div>
+          <h2>Hybrid Economy APIs</h2>
+          <div class="api-link-grid">
+            <a href="api/hybrid-economy.json">hybrid-economy.json</a>
+            <a href="api/gamw-lite.json">gamw-lite.json</a>
+            <a href="api/ai-search-flywheel.json">ai-search-flywheel.json</a>
+            <a href="api/airdrop-intelligence.json">airdrop-intelligence.json</a>
+            <a href="api/agent-market.json">agent-market.json</a>
+            <a href="api/soulbound-tokenomics.json">soulbound-tokenomics.json</a>
+            <a href="api/hybrid-governance.json">hybrid-governance.json</a>
+            <a href="api/economy-state.json">economy-state.json</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="mind.js"></script>
+</body>
+</html>

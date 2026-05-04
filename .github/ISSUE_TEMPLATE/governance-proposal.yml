@@ -1,0 +1,34 @@
+name: Governance Proposal
+description: Submit a SIGNAL hybrid governance proposal.
+title: "[Governance Proposal]: "
+labels: ["governance-proposal", "needs-review"]
+body:
+  - type: dropdown
+    id: proposal_type
+    attributes:
+      label: Proposal Type
+      options:
+        - quest_addition
+        - reward_intent_approval_policy
+        - search_ranking_policy
+        - agent_market_rule
+        - liquidity_condition_update
+        - risk_disclosure_update
+        - token_state_transition
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: Include rationale, expected effect, risks, and implementation notes.
+    validations:
+      required: true
+  - type: dropdown
+    id: acknowledgement
+    attributes:
+      label: Acknowledgement
+      options:
+        - I understand proposals cannot authorize wash trading, fake volume, deceptive listing claims, or guaranteed profit claims.
+    validations:
+      required: true

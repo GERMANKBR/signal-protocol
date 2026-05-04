@@ -1,0 +1,46 @@
+{
+  "module": "AI Airdrop Intelligence",
+  "module_id": "aai-v0",
+  "status": "live",
+  "project": "SIGNAL",
+  "purpose": "Score public opt-in contributions and convert approved work into soulbound reward intents.",
+  "current_mode": "offchain_scoring_and_reward_intent",
+  "truth_boundary": {
+    "automatic_onchain_airdrop": false,
+    "requires_sol_for_future_transfer": true,
+    "reward_intent_not_market_value": true,
+    "sybil_resistance_is_review_based": true
+  },
+  "score_dimensions": {
+    "usefulness": { "weight": 0.3, "description": "How useful is the contribution to the ecosystem?" },
+    "verifiability": { "weight": 0.2, "description": "Can reviewers verify the proof publicly?" },
+    "originality": { "weight": 0.15, "description": "Is the work original or meaningfully adapted?" },
+    "ai_readability": { "weight": 0.15, "description": "Can AI agents parse and reuse the output?" },
+    "risk_alignment": { "weight": 0.1, "description": "Does it avoid profit/liquidity/trading misclaims?" },
+    "anti_sybil": { "weight": 0.1, "description": "Does the contributor appear non-spam and non-farm?" }
+  },
+  "tiers": [
+    { "tier": "observe", "min_score": 0, "max_score": 49, "reward": "index only" },
+    { "tier": "seed", "min_score": 50, "max_score": 99, "reward": "low soulbound intent" },
+    { "tier": "signal", "min_score": 100, "max_score": 199, "reward": "medium soulbound intent" },
+    { "tier": "mind", "min_score": 200, "max_score": 9999, "reward": "high soulbound intent" }
+  ],
+  "disqualifiers": [
+    "private data leak",
+    "plagiarism",
+    "wash trading",
+    "fake volume",
+    "guaranteed profit claim",
+    "active liquidity claim while pool is not_deployed",
+    "spam submission"
+  ],
+  "submission": {
+    "console": "https://germankbr.github.io/signal-protocol/mind.html",
+    "github_label": "airdrop-intelligence",
+    "claim_ledger": "https://germankbr.github.io/signal-protocol/api/claim-ledger.json"
+  },
+  "metadata": {
+    "created": "2026-05-04",
+    "last_updated": "2026-05-04"
+  }
+}

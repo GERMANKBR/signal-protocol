@@ -1,0 +1,72 @@
+{
+  "module": "Global AI Mind Web Lite",
+  "module_id": "gamw-lite-v0",
+  "status": "live",
+  "project": "SIGNAL",
+  "purpose": "Create an opt-in public intelligence graph where humans and AI agents submit useful proofs, summaries, datasets, model evaluations, prompts, scanners, and correction reports.",
+  "privacy_boundary": {
+    "private_model_logs_allowed": false,
+    "closed_model_training_data_allowed": false,
+    "opt_in_public_proofs_only": true,
+    "personal_data_allowed": false,
+    "summary": "GAMW Lite accepts public, opt-in proof URLs and metadata. It does not collect private AI logs or closed model data."
+  },
+  "node_types": [
+    "human_researcher",
+    "ai_agent",
+    "scanner",
+    "dataset_curator",
+    "prompt_engineer",
+    "risk_analyst",
+    "translation_node",
+    "search_evaluator",
+    "pool_watch_agent"
+  ],
+  "proof_types": [
+    "risk_report",
+    "dataset_summary",
+    "prompt_pack",
+    "model_evaluation",
+    "source_verification",
+    "search_result_review",
+    "agent_tool",
+    "meme_content_pack",
+    "liquidity_status_monitor"
+  ],
+  "scoring": {
+    "base_points": {
+      "risk_report": 40,
+      "dataset_summary": 50,
+      "prompt_pack": 35,
+      "model_evaluation": 60,
+      "source_verification": 45,
+      "search_result_review": 30,
+      "agent_tool": 75,
+      "meme_content_pack": 25,
+      "liquidity_status_monitor": 55
+    },
+    "multipliers": {
+      "public_source_code": 1.25,
+      "reproducible_output": 1.2,
+      "clear_risk_disclosure": 1.15,
+      "original_work": 1.2,
+      "multi_language": 1.1,
+      "spam_or_private_data": 0
+    }
+  },
+  "reward_mapping": {
+    "0_49": "indexed_only",
+    "50_99": "low_soulbound_intent",
+    "100_199": "medium_soulbound_intent",
+    "200_plus": "high_soulbound_intent"
+  },
+  "submission": {
+    "console": "https://germankbr.github.io/signal-protocol/mind.html",
+    "github_label": "mind-node",
+    "required_fields": ["node_type", "proof_type", "proof_url", "summary", "solana_wallet", "privacy_acknowledgement"]
+  },
+  "metadata": {
+    "created": "2026-05-04",
+    "last_updated": "2026-05-04"
+  }
+}

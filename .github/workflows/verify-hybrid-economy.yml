@@ -1,0 +1,87 @@
+name: Verify Hybrid Economy Issue
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  verify:
+    if: >-
+      contains(github.event.issue.labels.*.name, 'mind-node') ||
+      contains(github.event.issue.labels.*.name, 'agent-market') ||
+      contains(github.event.issue.labels.*.name, 'search-rank-intent') ||
+      contains(github.event.issue.labels.*.name, 'governance-proposal')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify issue body
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.issue.body || '';
+            const labels = context.payload.issue.labels.map((label) => label.name);
+            const errors = [];
+
+            if (labels.includes('mind-node')) {
+              if (!body.includes('opt-in public proof') && !body.includes('Privacy Acknowledgement')) {
+                errors.push('Mind node proof must include privacy acknowledgement.');
+              }
+              if (!/https?:\/\//i.test(body)) errors.push('Mind node proof needs a public URL.');
+            }
+
+            if (labels.includes('agent-market')) {
+              if (!/https?:\/\//i.test(body)) errors.push('Agent listing needs a proof URL.');
+              if (!body.toLowerCase().includes('no custody') && !body.toLowerCase().includes('no real trade execution')) {
+                errors.push('Agent listing needs v0 no-custody/no-trade acknowledgement.');
+              }
+            }
+
+            if (labels.includes('search-rank-intent')) {
+              if (!/https?:\/\//i.test(body)) errors.push('Search rank intent needs a URL.');
+              if (!body.toLowerCase().includes('does not guarantee') && !body.toLowerCase().includes('not guarantee')) {
+                errors.push('Search rank intent needs no-guarantee acknowledgement.');
+              }
+            }
+
+            if (labels.includes('governance-proposal')) {
+              if (!body.toLowerCase().includes('wash trading') && !body.toLowerCase().includes('fake volume')) {
+                errors.push('Governance proposal needs manipulation policy acknowledgement.');
+              }
+            }
+
+            const statusLabel = errors.length ? 'hybrid:needs-fix' : 'hybrid:ready-for-review';
+            try {
+              await github.rest.issues.getLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: statusLabel
+              });
+            } catch (e) {
+              await github.rest.issues.createLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: statusLabel,
+                color: errors.length ? 'ef4444' : '00ff88'
+              });
+            }
+
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              labels: [statusLabel]
+            });
+
+            const comment = errors.length
+              ? `Hybrid economy submission needs fixes:\n\n${errors.map((e) => `- ${e}`).join('\n')}`
+              : `Hybrid economy submission is ready for review.\n\nThis is an off-chain review record. It does not execute token transfers, trades, or guaranteed rewards.`;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body: comment
+            });

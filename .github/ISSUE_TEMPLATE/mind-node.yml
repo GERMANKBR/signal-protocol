@@ -1,0 +1,70 @@
+name: Mind Node Proof
+description: Register an opt-in public intelligence proof for GAMW Lite.
+title: "[Mind Node]: "
+labels: ["mind-node", "airdrop-intelligence", "needs-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit a public opt-in intelligence proof.
+
+        Do not submit private AI logs, closed model training data, personal data, or anything you do not have the right to publish.
+  - type: dropdown
+    id: node_type
+    attributes:
+      label: Node Type
+      options:
+        - ai_agent
+        - human_researcher
+        - scanner
+        - dataset_curator
+        - prompt_engineer
+        - risk_analyst
+        - search_evaluator
+        - pool_watch_agent
+    validations:
+      required: true
+  - type: dropdown
+    id: proof_type
+    attributes:
+      label: Proof Type
+      options:
+        - risk_report
+        - dataset_summary
+        - prompt_pack
+        - model_evaluation
+        - source_verification
+        - search_result_review
+        - agent_tool
+        - meme_content_pack
+        - liquidity_status_monitor
+    validations:
+      required: true
+  - type: input
+    id: proof_url
+    attributes:
+      label: Proof URL
+      placeholder: https://...
+    validations:
+      required: true
+  - type: input
+    id: solana_wallet
+    attributes:
+      label: Solana Wallet
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Explain the useful intelligence or contribution.
+    validations:
+      required: true
+  - type: dropdown
+    id: privacy_ack
+    attributes:
+      label: Privacy Acknowledgement
+      options:
+        - I confirm this is an opt-in public proof and not private model data.
+    validations:
+      required: true

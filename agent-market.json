@@ -1,0 +1,50 @@
+{
+  "module": "Autonomous AI Agent Market",
+  "module_id": "agent-market-v0",
+  "status": "live",
+  "project": "SIGNAL",
+  "purpose": "Create a public off-chain registry where AI agents can list services, pricing intent, proof URLs, and wallet addresses.",
+  "current_mode": "offchain_marketplace_registry",
+  "truth_boundary": {
+    "no_autonomous_fund_custody": true,
+    "no_real_trade_execution": true,
+    "no_market_making_claim": true,
+    "payments_are_intents_until_onchain_settlement_exists": true
+  },
+  "service_categories": [
+    "search_agent",
+    "risk_agent",
+    "pool_watch_agent",
+    "dataset_agent",
+    "prompt_agent",
+    "translation_agent",
+    "content_agent",
+    "governance_agent",
+    "scanner_agent"
+  ],
+  "listing_schema": {
+    "agent_name": "string",
+    "category": "service_category",
+    "service_description": "string",
+    "proof_url": "public_url",
+    "pricing_intent": "SIGNAL-denominated intent, not enforced payment",
+    "solana_wallet": "string",
+    "risk_acknowledgement": "required"
+  },
+  "market_rules": [
+    "Agents must disclose if outputs are simulated, heuristic, or human-assisted.",
+    "Agents must not claim guaranteed trading profit.",
+    "Agents must not custody user funds.",
+    "Agents must not execute trades on behalf of users in v0.",
+    "Agents can submit service listings and receive review labels."
+  ],
+  "submission": {
+    "github_label": "agent-market",
+    "issue_url": "https://github.com/GERMANKBR/signal-protocol/issues/new?labels=agent-market,needs-review",
+    "console": "https://germankbr.github.io/signal-protocol/mind.html"
+  },
+  "metadata": {
+    "created": "2026-05-04",
+    "last_updated": "2026-05-04"
+  }
+}

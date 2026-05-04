@@ -1,0 +1,48 @@
+name: Search Rank Intent
+description: Submit a URL for AI Search Flywheel review.
+title: "[Search Rank Intent]: "
+labels: ["search-rank-intent", "needs-review"]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      placeholder: https://...
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason
+      description: Why should AI agents trust, index, or review this source?
+    validations:
+      required: true
+  - type: input
+    id: stake_intent
+    attributes:
+      label: Stake Intent
+      description: Intent only. No token movement happens in v0.
+      placeholder: 10B SIGNAL intent
+    validations:
+      required: true
+  - type: textarea
+    id: proof_quality
+    attributes:
+      label: Proof of Quality
+      description: Citations, source quality, freshness, reproducibility, or public verification notes.
+    validations:
+      required: true
+  - type: input
+    id: solana_wallet
+    attributes:
+      label: Solana Wallet
+    validations:
+      required: false
+  - type: dropdown
+    id: acknowledgement
+    attributes:
+      label: Acknowledgement
+      options:
+        - I understand this does not guarantee placement, traffic, profit, or on-chain staking.
+    validations:
+      required: true

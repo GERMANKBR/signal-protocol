@@ -1,0 +1,47 @@
+{
+  "module": "AI Search Engine Flywheel",
+  "module_id": "ai-search-flywheel-v0",
+  "status": "live",
+  "project": "SIGNAL",
+  "purpose": "Create an AI-facing search ranking intent layer where URLs, datasets, agents, and content can request indexing and quality review.",
+  "current_mode": "offchain_rank_intent",
+  "truth_boundary": {
+    "no_paid_ranking_execution": true,
+    "no_guaranteed_top_placement": true,
+    "no_token_burn_executed": true,
+    "stake_is_intent_until_onchain_infrastructure_exists": true
+  },
+  "ranking_inputs": [
+    "source_quality",
+    "freshness",
+    "citation_clarity",
+    "public_verifiability",
+    "ai_readability",
+    "risk_disclosure",
+    "community_review",
+    "stake_intent"
+  ],
+  "flywheel": [
+    "site_or_agent_submits_rank_intent",
+    "GAMW nodes review source quality",
+    "high-quality sources receive index priority intent",
+    "reviewers receive reward intent",
+    "spam receives zero score",
+    "future onchain version can route fees to burn, reviewers, and treasury"
+  ],
+  "future_fee_split": {
+    "burn": "25%",
+    "reviewer_rewards": "45%",
+    "treasury": "20%",
+    "node_operations": "10%"
+  },
+  "submission": {
+    "github_label": "search-rank-intent",
+    "required_fields": ["url", "reason", "stake_intent", "proof_of_quality", "solana_wallet"],
+    "issue_url": "https://github.com/GERMANKBR/signal-protocol/issues/new?labels=search-rank-intent,needs-review"
+  },
+  "metadata": {
+    "created": "2026-05-04",
+    "last_updated": "2026-05-04"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "module": "Soulbound + Dynamic Tokenomics",
+  "module_id": "sbt-v0",
+  "status": "live",
+  "project": "SIGNAL",
+  "purpose": "Define a contribution-first token state model where early rewards are soulbound intents before any future transferable settlement.",
+  "states": [
+    {
+      "symbol": "S-SIGNAL",
+      "name": "Soulbound SIGNAL",
+      "transferable": false,
+      "description": "Off-chain or future on-chain non-transferable contribution reputation."
+    },
+    {
+      "symbol": "V-SIGNAL",
+      "name": "Vesting SIGNAL",
+      "transferable": false,
+      "description": "Approved reward intent waiting for future settlement or unlock rules."
+    },
+    {
+      "symbol": "T-SIGNAL",
+      "name": "Transferable SIGNAL",
+      "transferable": true,
+      "description": "Future transferable token state only when liquidity, rules, and settlement exist."
+    },
+    {
+      "symbol": "G-SIGNAL",
+      "name": "Governance SIGNAL",
+      "transferable": false,
+      "description": "Reputation-weighted governance power derived from contribution quality."
+    },
+    {
+      "symbol": "C-SIGNAL",
+      "name": "Compute/Search Credit SIGNAL",
+      "transferable": false,
+      "description": "Future utility credit for search, agent, compute, or data operations."
+    }
+  ],
+  "transition_rules": [
+    "S-SIGNAL is earned through approved public contribution proofs.",
+    "V-SIGNAL is created when a reward intent is approved for future settlement.",
+    "T-SIGNAL requires future on-chain settlement and liquidity conditions.",
+    "G-SIGNAL is weighted by contribution score, age, and non-spam history.",
+    "C-SIGNAL can be issued as future utility credit for search/agent actions."
+  ],
+  "deflationary_design_future": {
+    "search_fee_burn": "future optional",
+    "agent_market_fee_burn": "future optional",
+    "spam_slash_burn": "future optional",
+    "rank_intent_decay": "future optional"
+  },
+  "current_truth": {
+    "actual_soulbound_token_deployed": false,
+    "transferable_upgrade_live": false,
+    "offchain_reward_intents_live": true
+  },
+  "metadata": {
+    "created": "2026-05-04",
+    "last_updated": "2026-05-04"
+  }
+}

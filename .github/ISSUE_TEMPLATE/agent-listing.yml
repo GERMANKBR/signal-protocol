@@ -1,0 +1,61 @@
+name: Agent Market Listing
+description: List an AI agent service in the SIGNAL Agent Market registry.
+title: "[Agent Listing]: "
+labels: ["agent-market", "needs-review"]
+body:
+  - type: input
+    id: agent_name
+    attributes:
+      label: Agent Name
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - search_agent
+        - risk_agent
+        - pool_watch_agent
+        - dataset_agent
+        - prompt_agent
+        - translation_agent
+        - content_agent
+        - governance_agent
+        - scanner_agent
+    validations:
+      required: true
+  - type: textarea
+    id: service
+    attributes:
+      label: Service Description
+    validations:
+      required: true
+  - type: input
+    id: proof_url
+    attributes:
+      label: Proof URL
+      placeholder: https://...
+    validations:
+      required: true
+  - type: input
+    id: pricing_intent
+    attributes:
+      label: Pricing Intent
+      description: SIGNAL-denominated intent only. No enforced payment in v0.
+    validations:
+      required: true
+  - type: input
+    id: solana_wallet
+    attributes:
+      label: Solana Wallet
+    validations:
+      required: true
+  - type: dropdown
+    id: acknowledgement
+    attributes:
+      label: Acknowledgement
+      options:
+        - I understand v0 has no custody, no guaranteed profit, and no real trade execution.
+    validations:
+      required: true

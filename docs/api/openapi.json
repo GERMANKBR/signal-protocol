@@ -152,6 +152,142 @@
         }
       }
     },
+    "/hybrid-economy.json": {
+      "get": {
+        "operationId": "getHybridEconomy",
+        "summary": "Get SIGNAL Hybrid AI Economy",
+        "description": "Returns the live hybrid AI economy manifest linking GAMW Lite, AI Search Flywheel, Airdrop Intelligence, Agent Market, Soulbound Tokenomics, and Hybrid Governance.",
+        "responses": {
+          "200": {
+            "description": "Hybrid economy manifest",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HybridEconomyResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gamw-lite.json": {
+      "get": {
+        "operationId": "getGamwLite",
+        "summary": "Get GAMW Lite",
+        "description": "Returns the opt-in public intelligence graph module.",
+        "responses": {
+          "200": {
+            "description": "GAMW Lite module",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/GamwLiteResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ai-search-flywheel.json": {
+      "get": {
+        "operationId": "getAiSearchFlywheel",
+        "summary": "Get AI Search Flywheel",
+        "description": "Returns the AI-facing search ranking intent module.",
+        "responses": {
+          "200": {
+            "description": "AI Search Flywheel module",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AiSearchFlywheelResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/airdrop-intelligence.json": {
+      "get": {
+        "operationId": "getAirdropIntelligence",
+        "summary": "Get AI Airdrop Intelligence",
+        "description": "Returns the public contribution scoring and soulbound reward intent module.",
+        "responses": {
+          "200": {
+            "description": "AI Airdrop Intelligence module",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AirdropIntelligenceResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent-market.json": {
+      "get": {
+        "operationId": "getAgentMarket",
+        "summary": "Get Agent Market",
+        "description": "Returns the off-chain AI agent marketplace registry rules.",
+        "responses": {
+          "200": {
+            "description": "Agent Market module",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AgentMarketResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/soulbound-tokenomics.json": {
+      "get": {
+        "operationId": "getSoulboundTokenomics",
+        "summary": "Get Soulbound Tokenomics",
+        "description": "Returns the dynamic soulbound-to-transferable tokenomics model.",
+        "responses": {
+          "200": {
+            "description": "Soulbound tokenomics module",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SoulboundTokenomicsResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/hybrid-governance.json": {
+      "get": {
+        "operationId": "getHybridGovernance",
+        "summary": "Get Hybrid Governance",
+        "description": "Returns the AI + human off-chain governance proposal and review module.",
+        "responses": {
+          "200": {
+            "description": "Hybrid governance module",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HybridGovernanceResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/economy-state.json": {
+      "get": {
+        "operationId": "getEconomyState",
+        "summary": "Get Economy State",
+        "description": "Returns current live/off-chain/on-chain state flags for the hybrid economy.",
+        "responses": {
+          "200": {
+            "description": "Hybrid economy state",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/EconomyStateResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/pool-status.json": {
       "get": {
         "operationId": "getPoolStatus",
@@ -305,6 +441,83 @@
           "settlement_policy": { "type": "object" },
           "wallet_sources": { "type": "object" },
           "claims": { "type": "array", "items": { "type": "object" } }
+        }
+      },
+      "HybridEconomyResponse": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string", "example": "SIGNAL Hybrid AI Economy" },
+          "system_id": { "type": "string" },
+          "phase": { "type": "string", "example": "hybrid_v0" },
+          "modules": { "type": "object" },
+          "primary_actions": { "type": "array", "items": { "type": "object" } },
+          "success_metrics": { "type": "object" }
+        }
+      },
+      "GamwLiteResponse": {
+        "type": "object",
+        "properties": {
+          "module": { "type": "string", "example": "Global AI Mind Web Lite" },
+          "privacy_boundary": { "type": "object" },
+          "node_types": { "type": "array", "items": { "type": "string" } },
+          "proof_types": { "type": "array", "items": { "type": "string" } },
+          "scoring": { "type": "object" },
+          "reward_mapping": { "type": "object" }
+        }
+      },
+      "AiSearchFlywheelResponse": {
+        "type": "object",
+        "properties": {
+          "module": { "type": "string", "example": "AI Search Engine Flywheel" },
+          "current_mode": { "type": "string" },
+          "ranking_inputs": { "type": "array", "items": { "type": "string" } },
+          "flywheel": { "type": "array", "items": { "type": "string" } }
+        }
+      },
+      "AirdropIntelligenceResponse": {
+        "type": "object",
+        "properties": {
+          "module": { "type": "string", "example": "AI Airdrop Intelligence" },
+          "score_dimensions": { "type": "object" },
+          "tiers": { "type": "array", "items": { "type": "object" } },
+          "disqualifiers": { "type": "array", "items": { "type": "string" } }
+        }
+      },
+      "AgentMarketResponse": {
+        "type": "object",
+        "properties": {
+          "module": { "type": "string", "example": "Autonomous AI Agent Market" },
+          "current_mode": { "type": "string" },
+          "service_categories": { "type": "array", "items": { "type": "string" } },
+          "market_rules": { "type": "array", "items": { "type": "string" } }
+        }
+      },
+      "SoulboundTokenomicsResponse": {
+        "type": "object",
+        "properties": {
+          "module": { "type": "string", "example": "Soulbound + Dynamic Tokenomics" },
+          "states": { "type": "array", "items": { "type": "object" } },
+          "transition_rules": { "type": "array", "items": { "type": "string" } },
+          "current_truth": { "type": "object" }
+        }
+      },
+      "HybridGovernanceResponse": {
+        "type": "object",
+        "properties": {
+          "module": { "type": "string", "example": "AI + Human Hybrid Governance" },
+          "participants": { "type": "array", "items": { "type": "string" } },
+          "proposal_types": { "type": "array", "items": { "type": "string" } },
+          "governance_rules": { "type": "array", "items": { "type": "string" } }
+        }
+      },
+      "EconomyStateResponse": {
+        "type": "object",
+        "properties": {
+          "phase": { "type": "string" },
+          "live_modules": { "type": "object" },
+          "onchain_state": { "type": "object" },
+          "offchain_state": { "type": "object" },
+          "metrics": { "type": "object" }
         }
       },
       "PoolStatusResponse": {

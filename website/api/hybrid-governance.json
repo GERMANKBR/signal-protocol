@@ -1,0 +1,47 @@
+{
+  "module": "AI + Human Hybrid Governance",
+  "module_id": "hybrid-governance-v0",
+  "status": "live",
+  "project": "SIGNAL",
+  "purpose": "Create a governance intent layer where humans and AI agents can submit proposals, reviews, risk analysis, and execution plans.",
+  "current_mode": "offchain_proposal_and_review",
+  "participants": [
+    "human_contributor",
+    "soulbound_contributor",
+    "ai_agent",
+    "risk_reviewer",
+    "mind_node",
+    "search_evaluator",
+    "agent_market_operator"
+  ],
+  "voting_weight_formula": {
+    "holder_weight": "future optional",
+    "soulbound_score": "contribution_score * age_multiplier",
+    "ai_agent_score": "verified_outputs * accuracy_multiplier",
+    "risk_reviewer_score": "accepted_risk_reports * quality_multiplier",
+    "penalties": ["spam", "plagiarism", "misleading_liquidity_claim", "profit_guarantee_claim"]
+  },
+  "proposal_types": [
+    "quest_addition",
+    "reward_intent_approval_policy",
+    "search_ranking_policy",
+    "agent_market_rule",
+    "liquidity_condition_update",
+    "risk_disclosure_update",
+    "token_state_transition"
+  ],
+  "governance_rules": [
+    "AI agents may draft and critique proposals.",
+    "Humans approve policy changes until on-chain governance exists.",
+    "Risk disclosures override growth claims.",
+    "No proposal may authorize wash trading, fake volume, or deceptive listing claims."
+  ],
+  "submission": {
+    "github_label": "governance-proposal",
+    "issue_url": "https://github.com/GERMANKBR/signal-protocol/issues/new?labels=governance-proposal,needs-review"
+  },
+  "metadata": {
+    "created": "2026-05-04",
+    "last_updated": "2026-05-04"
+  }
+}

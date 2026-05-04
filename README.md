@@ -39,6 +39,7 @@ The current strategy is to make the project easy for crawlers, AI agents, and co
 |---|---|
 | [`llms.txt`](./llms.txt) | LLM-readable project summary |
 | [`ai-discovery-beacon.json`](./ai-discovery-beacon.json) | Top-level AI crawler beacon |
+| [`hybrid-economy.json`](./hybrid-economy.json) | Hybrid AI economy v0 manifest |
 | [`agent-manifest.json`](./agent-manifest.json) | Machine-readable AI agent manifest |
 | [`token.json`](./token.json) | Token metadata and distribution |
 | [`airdrop.json`](./airdrop.json) | Airdrop structure |
@@ -71,6 +72,11 @@ The website can be hosted for free on GitHub Pages, Netlify, Vercel, or any stat
 | `/llms.txt` | LLM context |
 | `/llms-full.txt` | Expanded LLM context |
 | `/ai-discovery-beacon.json` | AI discovery beacon |
+| `/mind.html` | Hybrid AI Economy console |
+| `/api/hybrid-economy.json` | Hybrid AI economy v0 |
+| `/api/gamw-lite.json` | Opt-in Global AI Mind Web Lite |
+| `/api/airdrop-intelligence.json` | AI contribution scoring and reward intent |
+| `/api/agent-market.json` | Agent marketplace registry |
 | `/.well-known/agent-discovery.json` | Agent discovery actions |
 | `/.well-known/ai-ready.json` | AI-ready entrypoint |
 | `/feed.json` | JSON Feed |
@@ -115,6 +121,20 @@ The engine also includes an external liquidity proof quest. If someone else inde
 The static claim console is available at `/claim.html`.
 
 It lets a participant choose a quest, paste a proof URL, add a Solana wallet, and open a prefilled GitHub claim issue. This creates a public review record at 0 KRW infrastructure cost.
+
+## Mind Console
+
+The hybrid AI economy console is available at `/mind.html`.
+
+It turns the long-term vision into a live v0:
+
+- GAMW Lite public proof submission
+- AI Airdrop Intelligence scoring
+- Agent Market listings
+- AI Search rank intents
+- Hybrid Governance proposals
+
+Everything is opt-in and off-chain in v0. It does not collect private AI logs, execute trades, custody funds, or transfer tokens automatically.
 
 ## AI Hunter Round
 
