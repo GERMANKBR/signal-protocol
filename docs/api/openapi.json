@@ -288,6 +288,23 @@
         }
       }
     },
+    "/dashboard-state.json": {
+      "get": {
+        "operationId": "getDashboardState",
+        "summary": "Get Operations Dashboard State",
+        "description": "Returns dashboard milestones, tracked sources, label groups, and risk truth for the SIGNAL operations dashboard.",
+        "responses": {
+          "200": {
+            "description": "Operations dashboard state",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/DashboardStateResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/pool-status.json": {
       "get": {
         "operationId": "getPoolStatus",
@@ -518,6 +535,20 @@
           "onchain_state": { "type": "object" },
           "offchain_state": { "type": "object" },
           "metrics": { "type": "object" }
+        }
+      },
+      "DashboardStateResponse": {
+        "type": "object",
+        "properties": {
+          "project": { "type": "string", "example": "SIGNAL" },
+          "dashboard": { "type": "string", "example": "SIGNAL Operations Dashboard" },
+          "status": { "type": "string", "example": "live" },
+          "phase": { "type": "string", "example": "hybrid_v0" },
+          "canonical_url": { "type": "string" },
+          "tracked_sources": { "type": "object" },
+          "milestones": { "type": "array", "items": { "type": "object" } },
+          "label_groups": { "type": "object" },
+          "risk_truth": { "type": "object" }
         }
       },
       "PoolStatusResponse": {

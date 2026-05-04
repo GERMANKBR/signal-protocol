@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>$SIGNAL Operations Dashboard</title>
+  <meta name="description" content="Live SIGNAL operations dashboard for AI activation, hybrid economy modules, GitHub submissions, claim ledger, pool status, and zero-cost deployment state."/>
+  <meta property="og:title" content="$SIGNAL Operations Dashboard"/>
+  <meta property="og:description" content="One screen for SIGNAL AI activation progress, module health, claims, public APIs, and risk truth."/>
+  <meta property="og:type" content="website"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="alternate" type="text/plain" href="llms.txt" title="LLM Context"/>
+  <link rel="alternate" type="application/json" href="api/dashboard-state.json" title="Dashboard State API"/>
+  <link rel="alternate" type="application/json" href="api/economy-state.json" title="Economy State API"/>
+  <link rel="alternate" type="application/json" href="api/pool-status.json" title="Pool Status API"/>
+</head>
+<body>
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">S</span>
+        <span class="logo-text">$SIGNAL</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="mind.html">Mind</a>
+        <a href="claim.html">Claim</a>
+        <a href="api/openapi.json">API</a>
+        <a href="https://github.com/GERMANKBR/signal-protocol/issues" target="_blank" rel="noreferrer">Issues</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="dashboard-page">
+    <section class="dashboard-hero">
+      <div class="container">
+        <div class="section-tag">Live Operations</div>
+        <h1 class="section-title">Operations Dashboard</h1>
+        <p class="section-desc">A single control surface for SIGNAL activation status, hybrid AI economy modules, GitHub submissions, reward-intent data, and liquidity truth.</p>
+        <div class="dashboard-actions">
+          <a class="btn btn-primary" href="mind.html">Open Mind Console</a>
+          <a class="btn btn-outline" href="claim.html">Open Claim Console</a>
+          <a class="btn btn-outline" href="api/dashboard-state.json">Raw Dashboard API</a>
+        </div>
+        <div class="truth-strip">
+          <span>No deployed LP</span>
+          <span>No automatic AI trading</span>
+          <span>No profit guarantee</span>
+          <span>Off-chain reward intents only</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dashboard-section">
+      <div class="container">
+        <div class="dashboard-topline">
+          <div>
+            <span class="muted-label">Data refresh</span>
+            <strong id="lastUpdated">Loading...</strong>
+          </div>
+          <button class="btn btn-outline btn-small" id="refreshDashboard" type="button">Refresh</button>
+        </div>
+
+        <div class="metric-grid">
+          <article class="metric-card">
+            <span class="muted-label">Current Phase</span>
+            <strong id="metricPhase">-</strong>
+            <small id="metricStatus">Waiting for API</small>
+          </article>
+          <article class="metric-card">
+            <span class="muted-label">Live Modules</span>
+            <strong id="metricModules">-</strong>
+            <small>Hybrid economy surface</small>
+          </article>
+          <article class="metric-card">
+            <span class="muted-label">Reward Claims</span>
+            <strong id="metricClaims">-</strong>
+            <small>Ledger entries plus GitHub intake</small>
+          </article>
+          <article class="metric-card warning">
+            <span class="muted-label">Liquidity</span>
+            <strong id="metricLiquidity">-</strong>
+            <small id="metricRouting">Jupiter routing unknown</small>
+          </article>
+        </div>
+
+        <div class="dashboard-layout">
+          <article class="dash-panel dash-wide">
+            <div class="panel-head">
+              <div>
+                <span class="muted-label">Roadmap</span>
+                <h2>Milestone Status</h2>
+              </div>
+              <span class="status-pill" id="milestoneCount">Loading</span>
+            </div>
+            <div class="milestone-list" id="milestoneList"></div>
+          </article>
+
+          <article class="dash-panel">
+            <div class="panel-head">
+              <div>
+                <span class="muted-label">GitHub Intake</span>
+                <h2>Submission Window</h2>
+              </div>
+              <span class="status-pill" id="githubStatus">Loading</span>
+            </div>
+            <div class="issue-summary" id="issueSummary"></div>
+            <div class="issue-label-grid" id="issueLabelGrid"></div>
+          </article>
+
+          <article class="dash-panel">
+            <div class="panel-head">
+              <div>
+                <span class="muted-label">Health</span>
+                <h2>Live Modules</h2>
+              </div>
+              <span class="status-pill ok" id="moduleStatus">Checking</span>
+            </div>
+            <div class="module-grid" id="moduleGrid"></div>
+          </article>
+
+          <article class="dash-panel">
+            <div class="panel-head">
+              <div>
+                <span class="muted-label">Boundary</span>
+                <h2>Risk Truth</h2>
+              </div>
+              <span class="status-pill blocked">Required</span>
+            </div>
+            <div class="truth-list" id="truthList"></div>
+          </article>
+
+          <article class="dash-panel">
+            <div class="panel-head">
+              <div>
+                <span class="muted-label">Next</span>
+                <h2>Machine Action</h2>
+              </div>
+            </div>
+            <p class="next-action" id="nextAction">Loading next machine action...</p>
+            <div class="quick-links">
+              <a href="ai-discovery-beacon.json">AI Beacon</a>
+              <a href=".well-known/agent-discovery.json">Agent Discovery</a>
+              <a href="llms-full.txt">Full LLM Context</a>
+              <a href="api/hybrid-economy.json">Hybrid Economy</a>
+              <a href="api/quests.json">Quests</a>
+              <a href="https://solscan.io/token/GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2" target="_blank" rel="noreferrer">Solscan</a>
+            </div>
+          </article>
+
+          <article class="dash-panel dash-wide data-window">
+            <div class="panel-head">
+              <div>
+                <span class="muted-label">Raw Data</span>
+                <h2>Data Window</h2>
+              </div>
+              <span class="status-pill" id="dataStatus">Ready</span>
+            </div>
+            <div class="data-tabs" id="dataTabs">
+              <button class="data-tab active" type="button" data-dataset="dashboard">Dashboard</button>
+              <button class="data-tab" type="button" data-dataset="economy">Economy</button>
+              <button class="data-tab" type="button" data-dataset="pool">Pool</button>
+              <button class="data-tab" type="button" data-dataset="claims">Claims</button>
+              <button class="data-tab" type="button" data-dataset="quests">Quests</button>
+            </div>
+            <pre class="json-viewer" id="jsonViewer">Loading dashboard data...</pre>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p class="footer-risk">SIGNAL is experimental. No intrinsic value. No deployed liquidity. No profit guarantee. Not financial advice.</p>
+        <p class="footer-copy">2026 SIGNAL - Operations Dashboard v0.1</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

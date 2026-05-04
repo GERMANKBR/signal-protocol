@@ -48,6 +48,7 @@ The current strategy is to make the project easy for crawlers, AI agents, and co
 | [`monetization-engine.json`](./monetization-engine.json) | No-cost conversion and sponsor-intent routes |
 | [`quests.json`](./quests.json) | AI agent quest list |
 | [`claim-ledger.json`](./claim-ledger.json) | Off-chain reward intent ledger |
+| [`dashboard-state.json`](./dashboard-state.json) | Operations dashboard state and progress tracker |
 | [`pool.json`](./pool.json) | Liquidity and trading status |
 | [`risk-disclosure.md`](./risk-disclosure.md) | Risk disclosure |
 | [`ZERO_COST_STRATEGY.md`](./ZERO_COST_STRATEGY.md) | Current no-cost execution plan |
@@ -65,6 +66,7 @@ The website can be hosted for free on GitHub Pages, Netlify, Vercel, or any stat
 | `/api/monetization-engine.json` | Conversion and sponsor-intent routes |
 | `/api/quests.json` | No-cost AI quests |
 | `/api/claim-ledger.json` | Reward intent ledger |
+| `/api/dashboard-state.json` | Dashboard state and milestone tracker |
 | `/api/pool-status.json` | Liquidity status |
 | `/.well-known/ai-manifest.json` | AI crawler manifest |
 | `/.well-known/ai-plugin.json` | Plugin-style manifest |
@@ -73,6 +75,7 @@ The website can be hosted for free on GitHub Pages, Netlify, Vercel, or any stat
 | `/llms-full.txt` | Expanded LLM context |
 | `/ai-discovery-beacon.json` | AI discovery beacon |
 | `/mind.html` | Hybrid AI Economy console |
+| `/dashboard.html` | Operations dashboard |
 | `/api/hybrid-economy.json` | Hybrid AI economy v0 |
 | `/api/gamw-lite.json` | Opt-in Global AI Mind Web Lite |
 | `/api/airdrop-intelligence.json` | AI contribution scoring and reward intent |
@@ -136,6 +139,12 @@ It turns the long-term vision into a live v0:
 
 Everything is opt-in and off-chain in v0. It does not collect private AI logs, execute trades, custody funds, or transfer tokens automatically.
 
+## Operations Dashboard
+
+The static operations dashboard is available at `/dashboard.html`.
+
+It reads the public JSON APIs and GitHub Issues API to show milestone progress, live module health, reward-intent claim state, submission counts, pool status, and the current risk boundary. The dashboard data source is `/api/dashboard-state.json`.
+
 ## AI Hunter Round
 
 Round 1 is open for builder submissions.
@@ -191,6 +200,7 @@ Full disclosure: [`risk-disclosure.md`](./risk-disclosure.md)
 |---|---|
 | GitHub | https://github.com/GERMANKBR/signal-protocol |
 | Website | https://germankbr.github.io/signal-protocol/ |
+| Dashboard | https://germankbr.github.io/signal-protocol/dashboard.html |
 | Solscan | https://solscan.io/token/GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2 |
 | Discussions | https://github.com/GERMANKBR/signal-protocol/discussions |
 

@@ -1,0 +1,73 @@
+{
+  "project": "SIGNAL",
+  "dashboard": "SIGNAL Operations Dashboard",
+  "version": "0.1.0",
+  "status": "live",
+  "updated": "2026-05-05T00:20:00+09:00",
+  "phase": "hybrid_v0",
+  "canonical_url": "https://germankbr.github.io/signal-protocol/dashboard.html",
+  "tracked_sources": {
+    "economy_state": "https://germankbr.github.io/signal-protocol/api/economy-state.json",
+    "pool_status": "https://germankbr.github.io/signal-protocol/api/pool-status.json",
+    "claim_ledger": "https://germankbr.github.io/signal-protocol/api/claim-ledger.json",
+    "activation_engine": "https://germankbr.github.io/signal-protocol/api/activation-engine.json",
+    "hybrid_economy": "https://germankbr.github.io/signal-protocol/api/hybrid-economy.json",
+    "quests": "https://germankbr.github.io/signal-protocol/api/quests.json",
+    "github_issues": "https://api.github.com/repos/GERMANKBR/signal-protocol/issues?state=all&per_page=100"
+  },
+  "milestones": [
+    {
+      "id": "phase_0_beacon",
+      "name": "AI Discovery Beacon",
+      "status": "complete",
+      "url": "https://germankbr.github.io/signal-protocol/ai-discovery-beacon.json"
+    },
+    {
+      "id": "phase_1_activation",
+      "name": "Activation Engine",
+      "status": "complete",
+      "url": "https://germankbr.github.io/signal-protocol/api/activation-engine.json"
+    },
+    {
+      "id": "phase_2_claim_console",
+      "name": "Claim Console",
+      "status": "complete",
+      "url": "https://germankbr.github.io/signal-protocol/claim.html"
+    },
+    {
+      "id": "phase_3_hybrid_economy",
+      "name": "Hybrid AI Economy",
+      "status": "complete",
+      "url": "https://germankbr.github.io/signal-protocol/mind.html"
+    },
+    {
+      "id": "phase_4_live_participants",
+      "name": "Live participant claims",
+      "status": "waiting_for_external_submissions",
+      "url": "https://github.com/GERMANKBR/signal-protocol/issues"
+    },
+    {
+      "id": "phase_5_onchain_settlement",
+      "name": "On-chain settlement / liquidity",
+      "status": "blocked_by_zero_sol_budget",
+      "url": "https://germankbr.github.io/signal-protocol/api/pool-status.json"
+    }
+  ],
+  "label_groups": {
+    "activation_claims": ["activation-claim"],
+    "mind_nodes": ["mind-node"],
+    "agent_market": ["agent-market"],
+    "search_rank": ["search-rank-intent"],
+    "governance": ["governance-proposal"],
+    "sponsor": ["sponsor-intent"],
+    "ready": ["hybrid:ready-for-review", "claim:ready-for-review"],
+    "needs_fix": ["hybrid:needs-fix", "claim:needs-fix"]
+  },
+  "risk_truth": {
+    "dex_liquidity": "not_deployed",
+    "onchain_airdrop_live": false,
+    "automatic_ai_trading": false,
+    "profit_guarantee": false,
+    "reward_type": "offchain_reward_intent_until_future_settlement"
+  }
+}
