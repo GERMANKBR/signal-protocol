@@ -1,0 +1,64 @@
+name: AI Discovery Ping
+
+on:
+  push:
+    branches: ["main"]
+  schedule:
+    - cron: "17 */12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Warm discovery URLs
+        run: |
+          set -e
+          urls=(
+            "https://germankbr.github.io/signal-protocol/"
+            "https://germankbr.github.io/signal-protocol/ai-discovery-beacon.json"
+            "https://germankbr.github.io/signal-protocol/.well-known/agent-discovery.json"
+            "https://germankbr.github.io/signal-protocol/.well-known/ai-ready.json"
+            "https://germankbr.github.io/signal-protocol/llms-full.txt"
+            "https://germankbr.github.io/signal-protocol/feed.json"
+            "https://germankbr.github.io/signal-protocol/feed.xml"
+            "https://germankbr.github.io/signal-protocol/atom.xml"
+            "https://germankbr.github.io/signal-protocol/api/activation-engine.json"
+            "https://germankbr.github.io/signal-protocol/api/monetization-engine.json"
+            "https://germankbr.github.io/signal-protocol/api/quests.json"
+            "https://germankbr.github.io/signal-protocol/api/pool-status.json"
+            "https://germankbr.github.io/signal-protocol/claim.html"
+            "https://germankbr.github.io/signal-protocol/sitemap.xml"
+          )
+
+          for url in "${urls[@]}"; do
+            echo "Fetching $url"
+            curl -fsSL --max-time 20 "$url" > /dev/null || true
+          done
+
+      - name: Ping IndexNow
+        run: |
+          set -e
+          key="signal-ai-discovery-beacon-2026"
+          key_location="https://germankbr.github.io/signal-protocol/indexnow-key.txt"
+          urls=(
+            "https://germankbr.github.io/signal-protocol/"
+            "https://germankbr.github.io/signal-protocol/ai-discovery-beacon.json"
+            "https://germankbr.github.io/signal-protocol/.well-known/agent-discovery.json"
+            "https://germankbr.github.io/signal-protocol/llms-full.txt"
+            "https://germankbr.github.io/signal-protocol/feed.json"
+            "https://germankbr.github.io/signal-protocol/api/activation-engine.json"
+            "https://germankbr.github.io/signal-protocol/api/quests.json"
+            "https://germankbr.github.io/signal-protocol/claim.html"
+          )
+
+          for url in "${urls[@]}"; do
+            encoded_url=$(python3 -c 'import sys, urllib.parse; print(urllib.parse.quote(sys.argv[1], safe=""))' "$url")
+            encoded_key_location=$(python3 -c 'import sys, urllib.parse; print(urllib.parse.quote(sys.argv[1], safe=""))' "$key_location")
+            endpoint="https://api.indexnow.org/indexnow?url=${encoded_url}&key=${key}&keyLocation=${encoded_key_location}"
+            echo "Pinging IndexNow for $url"
+            curl -fsSL --max-time 20 "$endpoint" > /dev/null || true
+          done

@@ -17,6 +17,13 @@
   <meta name="ai-manifest" content="/.well-known/ai-manifest.json"/>
   <meta name="ai-plugin" content="/.well-known/ai-plugin.json"/>
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Context"/>
+  <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Full LLM Context"/>
+  <link rel="alternate" type="application/feed+json" href="/feed.json" title="SIGNAL JSON Feed"/>
+  <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="SIGNAL RSS Feed"/>
+  <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="SIGNAL Atom Feed"/>
+  <link rel="alternate" type="application/json" href="/ai-discovery-beacon.json" title="AI Discovery Beacon"/>
+  <link rel="alternate" type="application/json" href="/.well-known/agent-discovery.json" title="Agent Discovery"/>
+  <link rel="alternate" type="application/json" href="/.well-known/ai-ready.json" title="AI Ready"/>
   <link rel="alternate" type="application/json" href="/api/token-info.json" title="Token Info API"/>
   <link rel="alternate" type="application/json" href="/api/pool-status.json" title="Pool Status API"/>
   <link rel="alternate" type="application/json" href="/.well-known/ai-manifest.json" title="AI Manifest"/>
@@ -48,6 +55,32 @@
     "sameAs": [
       "https://github.com/GERMANKBR/signal-protocol",
       "https://solscan.io/token/GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "SIGNAL AI Discovery Dataset",
+    "description": "Machine-readable manifests, feeds, OpenAPI schema, quests, and pool status for SIGNAL AI agents and crawlers.",
+    "url": "https://germankbr.github.io/signal-protocol/ai-discovery-beacon.json",
+    "distribution": [
+      {
+        "@type": "DataDownload",
+        "encodingFormat": "application/json",
+        "contentUrl": "https://germankbr.github.io/signal-protocol/ai-discovery-beacon.json"
+      },
+      {
+        "@type": "DataDownload",
+        "encodingFormat": "text/plain",
+        "contentUrl": "https://germankbr.github.io/signal-protocol/llms-full.txt"
+      },
+      {
+        "@type": "DataDownload",
+        "encodingFormat": "application/feed+json",
+        "contentUrl": "https://germankbr.github.io/signal-protocol/feed.json"
+      }
     ]
   }
   </script>

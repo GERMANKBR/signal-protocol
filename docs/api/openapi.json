@@ -84,6 +84,23 @@
         }
       }
     },
+    "/ai-discovery-beacon.json": {
+      "get": {
+        "operationId": "getAiDiscoveryBeacon",
+        "summary": "Get AI Discovery Beacon",
+        "description": "Returns the top-level AI discovery beacon with preferred crawler and agent entrypoints.",
+        "responses": {
+          "200": {
+            "description": "AI discovery beacon",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AiDiscoveryBeaconResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
     "/monetization-engine.json": {
       "get": {
         "operationId": "getMonetizationEngine",
@@ -229,6 +246,19 @@
           "activation_paths": { "type": "object" },
           "submission": { "type": "object" },
           "status": { "type": "object" }
+        }
+      },
+      "AiDiscoveryBeaconResponse": {
+        "type": "object",
+        "properties": {
+          "beacon": { "type": "string", "example": "SIGNAL AI Discovery Beacon" },
+          "beacon_id": { "type": "string", "example": "signal-ai-beacon-0" },
+          "status": { "type": "string", "example": "live" },
+          "canonical_url": { "type": "string" },
+          "agent_directive": { "type": "object" },
+          "discovery_surfaces": { "type": "object" },
+          "current_truth": { "type": "object" },
+          "crawl_hints": { "type": "object" }
         }
       },
       "QuestsResponse": {

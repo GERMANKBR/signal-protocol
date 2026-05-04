@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://germankbr.github.io/signal-protocol/schemas/agent-discovery.schema.json",
+  "title": "SIGNAL Agent Discovery",
+  "type": "object",
+  "required": ["name", "project", "status", "entrypoint", "actions", "risk_constraints"],
+  "properties": {
+    "name": { "type": "string" },
+    "project": { "type": "string" },
+    "status": { "type": "string" },
+    "entrypoint": { "type": "string", "format": "uri" },
+    "llms": { "type": "string", "format": "uri" },
+    "openapi": { "type": "string", "format": "uri" },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "url", "description"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": { "type": "string" },
+          "url": { "type": "string", "format": "uri" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "risk_constraints": { "type": "object" },
+    "updated": { "type": "string" }
+  }
+}

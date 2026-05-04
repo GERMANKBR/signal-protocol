@@ -38,6 +38,7 @@ The current strategy is to make the project easy for crawlers, AI agents, and co
 | Resource | Purpose |
 |---|---|
 | [`llms.txt`](./llms.txt) | LLM-readable project summary |
+| [`ai-discovery-beacon.json`](./ai-discovery-beacon.json) | Top-level AI crawler beacon |
 | [`agent-manifest.json`](./agent-manifest.json) | Machine-readable AI agent manifest |
 | [`token.json`](./token.json) | Token metadata and distribution |
 | [`airdrop.json`](./airdrop.json) | Airdrop structure |
@@ -68,6 +69,13 @@ The website can be hosted for free on GitHub Pages, Netlify, Vercel, or any stat
 | `/.well-known/ai-plugin.json` | Plugin-style manifest |
 | `/api/openapi.json` | OpenAPI schema |
 | `/llms.txt` | LLM context |
+| `/llms-full.txt` | Expanded LLM context |
+| `/ai-discovery-beacon.json` | AI discovery beacon |
+| `/.well-known/agent-discovery.json` | Agent discovery actions |
+| `/.well-known/ai-ready.json` | AI-ready entrypoint |
+| `/feed.json` | JSON Feed |
+| `/feed.xml` | RSS feed |
+| `/atom.xml` | Atom feed |
 | `/robots.txt` | Crawler policy |
 | `/sitemap.xml` | Sitemap |
 
