@@ -1,0 +1,125 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "$SIGNAL Token API",
+    "description": "Static API for the $SIGNAL token — a Solana meme coin built for AI-native discovery using the AHD (AI Hunter Distribution) Protocol. This API provides token metadata, airdrop status, and available hunter tasks.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "$SIGNAL Protocol",
+      "url": "https://github.com/GERMANKBR/signal-protocol"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://germankbr.github.io/signal-protocol/api",
+      "description": "GitHub Pages Static API"
+    }
+  ],
+  "paths": {
+    "/token-info.json": {
+      "get": {
+        "operationId": "getTokenInfo",
+        "summary": "Get $SIGNAL token information",
+        "description": "Returns comprehensive token metadata including supply, distribution, wallet addresses, and protocol details.",
+        "responses": {
+          "200": {
+            "description": "Token information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "object",
+                      "properties": {
+                        "name": { "type": "string", "example": "SIGNAL" },
+                        "symbol": { "type": "string", "example": "SIGNAL" },
+                        "chain": { "type": "string", "example": "solana" },
+                        "mint": { "type": "string", "example": "GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2" },
+                        "decimals": { "type": "integer", "example": 5 },
+                        "total_supply": { "type": "string", "example": "100000000000000" }
+                      }
+                    },
+                    "distribution": { "type": "object" },
+                    "policies": { "type": "object" },
+                    "links": { "type": "object" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/airdrop-status.json": {
+      "get": {
+        "operationId": "getAirdropStatus",
+        "summary": "Get airdrop status and eligibility",
+        "description": "Returns current airdrop rounds, their status, eligibility criteria, and participation instructions.",
+        "responses": {
+          "200": {
+            "description": "Airdrop status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "string", "example": "active" },
+                    "rounds": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": { "type": "string" },
+                          "status": { "type": "string", "enum": ["open", "upcoming", "closed"] },
+                          "allocation": { "type": "string" },
+                          "eligibility": { "type": "array", "items": { "type": "string" } }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/hunter-tasks.json": {
+      "get": {
+        "operationId": "getHunterTasks",
+        "summary": "Get available AI Hunter Round tasks",
+        "description": "Returns all available tasks in the AI Hunter Round with reward levels, submission formats, and examples.",
+        "responses": {
+          "200": {
+            "description": "Hunter tasks list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "string", "example": "open" },
+                    "tasks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" },
+                          "reward_level": { "type": "string", "enum": ["low", "medium", "high"] },
+                          "estimated_label": { "type": "string" },
+                          "format": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

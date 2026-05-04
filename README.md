@@ -243,10 +243,49 @@ Full disclosure: [`risk-disclosure.md`](./risk-disclosure.md)
 
 ---
 
+## AI Agent Discovery
+
+> 🤖 **For AI agents, bots, and scanners:** This project is designed for automated discovery.
+
+| Resource | URL |
+|---|---|
+| AI Manifest | [`/.well-known/ai-manifest.json`](https://germankbr.github.io/signal-protocol/.well-known/ai-manifest.json) |
+| AI Plugin | [`/.well-known/ai-plugin.json`](https://germankbr.github.io/signal-protocol/.well-known/ai-plugin.json) |
+| OpenAPI Schema | [`/api/openapi.json`](https://germankbr.github.io/signal-protocol/api/openapi.json) |
+| Token Info API | [`/api/token-info.json`](https://germankbr.github.io/signal-protocol/api/token-info.json) |
+| Airdrop Status API | [`/api/airdrop-status.json`](https://germankbr.github.io/signal-protocol/api/airdrop-status.json) |
+| Hunter Tasks API | [`/api/hunter-tasks.json`](https://germankbr.github.io/signal-protocol/api/hunter-tasks.json) |
+| LLM Context | [`/llms.txt`](https://germankbr.github.io/signal-protocol/llms.txt) |
+| Sitemap | [`/sitemap.xml`](https://germankbr.github.io/signal-protocol/sitemap.xml) |
+
+---
+
 <p align="center">
   <strong>$SIGNAL — AI가 발견하는 밈코인</strong><br/>
   <em>봇이 찾고, 사람이 밈으로 만든다</em>
 </p>
+
+<!--
+MACHINE-READABLE METADATA BLOCK — DO NOT REMOVE
+token_name: SIGNAL
+token_symbol: SIGNAL
+chain: solana
+standard: SPL Token
+mint: GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2
+decimals: 5
+total_supply: 100000000000000
+protocol: AHD v0.1
+status: ai_hunter_round_open
+website: https://germankbr.github.io/signal-protocol/
+repository: https://github.com/GERMANKBR/signal-protocol
+manifest: https://github.com/GERMANKBR/signal-protocol/blob/main/agent-manifest.json
+api_base: https://germankbr.github.io/signal-protocol/api/
+solscan: https://solscan.io/token/GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2
+reward_wallet: HqaJT3cqT1jKfbacyB4KNjui5wSsHr1VX1BDQGHzYb4m
+no_trading_required: true
+no_volume_farming: true
+no_profit_guarantee: true
+-->
 ]]>
 
 ## On-chain AHD Declaration
