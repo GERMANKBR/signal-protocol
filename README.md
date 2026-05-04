@@ -249,3 +249,15 @@ Full disclosure: [`risk-disclosure.md`](./risk-disclosure.md)
   <em>봇이 찾고, 사람이 밈으로 만든다</em>
 </p>
 ]]>
+
+## On-chain AHD Declaration
+
+AHD_PROTOCOL_OPEN was recorded on Solana mainnet as an on-chain memo.
+
+- Project: SIGNAL
+- Mint: GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2
+- Manifest: https://github.com/GERMANKBR/signal-protocol/blob/main/agent-manifest.json
+- Round: AI_HUNTER_ROUND_1
+- No trading required: true
+- Transaction: 3Yky5hr6N3QVbtjiGFp7H59PGw3qXMLBS2xpfvgm1eCBRqwsnDEFGB9ebn2ZQuzowmD7aozfmbfoPaNsMBXkheMU
+
