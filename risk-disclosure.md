@@ -1,4 +1,4 @@
-﻿# Risk Disclosure — $SIGNAL
+# Risk Disclosure — $SIGNAL
 
 ## English
 
