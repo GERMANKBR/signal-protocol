@@ -1,0 +1,72 @@
+{
+  "project": "SIGNAL",
+  "protocol": "AHD v0.1",
+  "wallets": {
+    "ai_hunter_reward": {
+      "address": "YOUR_REWARD_WALLET_ADDRESS",
+      "purpose": "AI Hunter Round rewards distribution",
+      "allocation_percentage": "10%",
+      "allocation_amount": "10000000000000",
+      "status": "pending_creation",
+      "visibility": "public",
+      "multisig": false,
+      "notes": "All transactions from this wallet are publicly verifiable on Solscan"
+    },
+    "community_airdrop": {
+      "address": "YOUR_AIRDROP_WALLET",
+      "purpose": "Community airdrop distribution",
+      "allocation_percentage": "35%",
+      "allocation_amount": "35000000000000",
+      "status": "pending_creation",
+      "visibility": "public"
+    },
+    "meme_war_rewards": {
+      "address": "YOUR_MEME_WAR_WALLET",
+      "purpose": "Meme War Round rewards",
+      "allocation_percentage": "20%",
+      "allocation_amount": "20000000000000",
+      "status": "pending_creation",
+      "visibility": "public"
+    },
+    "liquidity_reserve": {
+      "address": "YOUR_LIQUIDITY_WALLET",
+      "purpose": "DEX liquidity (conditional deployment)",
+      "allocation_percentage": "15%",
+      "allocation_amount": "15000000000000",
+      "status": "pending_creation",
+      "visibility": "public",
+      "deployment_conditions": {
+        "min_waitlist": 300,
+        "min_active_participants": 50,
+        "min_content_pieces": 100,
+        "min_hunter_submissions": 10,
+        "min_organic_x_mentions": 30,
+        "min_github_stars": 30
+      },
+      "lp_policy": "LP tokens will be locked or burned upon deployment"
+    },
+    "core_dev_ops": {
+      "address": "YOUR_DEV_OPS_WALLET",
+      "purpose": "Operations, development, management",
+      "allocation_percentage": "10%",
+      "allocation_amount": "10000000000000",
+      "status": "pending_creation",
+      "visibility": "public"
+    },
+    "reserve": {
+      "address": "YOUR_RESERVE_WALLET",
+      "purpose": "Partnerships, contingency",
+      "allocation_percentage": "10%",
+      "allocation_amount": "10000000000000",
+      "status": "pending_creation",
+      "visibility": "public"
+    }
+  },
+  "transparency_policy": {
+    "all_wallets_public": true,
+    "transaction_history_visible": true,
+    "no_hidden_wallets": true,
+    "reporting_frequency": "On each distribution event"
+  },
+  "metadata": { "created": "2026-05-03", "last_updated": "2026-05-03" }
+}
