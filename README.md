@@ -1,4 +1,4 @@
-﻿<![CDATA[<p align="center">
+<![CDATA[<p align="center">
   <img src="./website/assets/signal-mascot.png" alt="SIGNAL Mascot" width="200" />
 </p>
 
@@ -236,11 +236,10 @@ Full disclosure: [`risk-disclosure.md`](./risk-disclosure.md)
 
 | Platform | Link |
 |---|---|
-| GitHub | This repository |
-| X (Twitter) | Coming soon |
-| Telegram | Coming soon |
-| Website | Coming soon |
-| Solscan | `GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2` |
+| GitHub | [signal-protocol](https://github.com/GERMANKBR/signal-protocol) |
+| Website | [GitHub Pages](https://germankbr.github.io/signal-protocol/) |
+| Discussions | [GitHub Discussions](https://github.com/GERMANKBR/signal-protocol/discussions) |
+| Solscan | [`GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2`](https://solscan.io/token/GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2) |
 
 ---
 
