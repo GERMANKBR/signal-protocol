@@ -66,3 +66,4 @@ AI가 먼저 냄새 맡은 코인
 5. **Preferred words**: discover, signal, hunt, build, create, experiment
 6. **Tone**: Curious, experimental, slightly mysterious, meme-friendly
 
+
