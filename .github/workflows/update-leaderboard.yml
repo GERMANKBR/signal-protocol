@@ -1,0 +1,75 @@
+name: Auto-Update On-Chain Leaderboard
+
+on:
+  schedule:
+    - cron: '0 */12 * * *' # Run every 12 hours
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  update-leaderboard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fetch Top Holders from Solana RPC
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const MINT = "GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2";
+            const RPC_URL = "https://api.mainnet-beta.solana.com";
+            
+            try {
+              const response = await fetch(RPC_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  jsonrpc: "2.0",
+                  id: 1,
+                  method: "getTokenLargestAccounts",
+                  params: [MINT]
+                })
+              });
+              
+              const data = await response.json();
+              
+              if (data.result && data.result.value) {
+                const accounts = data.result.value.map((acc, index) => {
+                  // Amounts are strings in uiAmountString
+                  return {
+                    rank: index + 1,
+                    address: acc.address,
+                    amount_raw: acc.amount,
+                    amount_ui: acc.uiAmountString,
+                    percentage: (parseFloat(acc.uiAmountString) / 100000000000000 * 100).toFixed(4) + "%"
+                  };
+                });
+                
+                const leaderboard = {
+                  last_updated: new Date().toISOString(),
+                  mint: MINT,
+                  top_accounts: accounts
+                };
+                
+                const fs = require('fs');
+                fs.writeFileSync('website/api/leaderboard.json', JSON.stringify(leaderboard, null, 2));
+                console.log("Leaderboard updated successfully.");
+              } else {
+                console.error("Invalid RPC response:", data);
+              }
+            } catch (error) {
+              console.error("Failed to fetch from Solana RPC:", error);
+            }
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add website/api/leaderboard.json
+          # Only commit if there are changes
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Auto-update on-chain leaderboard" && git push)
