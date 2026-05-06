@@ -34,6 +34,7 @@ jobs:
         id: verify_tx
         run: |
           TX="${{ steps.check.outputs.tx }}"
+          TREASURY_WALLET="H5Va5uQnpkboW9CJZMG7VLRPM4sA87FwmgkDuT28LYM1"
           echo "Verifying TX: $TX"
           
           # Request TX data from Solana RPC
@@ -65,9 +66,18 @@ jobs:
             exit 0
           fi
           
-          echo "Transaction is valid!"
+          # Deeper verification: Check if the transaction involves the Treasury Wallet
+          RECIPIENT_FOUND=$(echo "$RESPONSE" | jq -r '.result.transaction.message.accountKeys[] | select(. == "'"$TREASURY_WALLET"'") // empty' | head -1)
+          if [ -z "$RECIPIENT_FOUND" ]; then
+            echo "Treasury wallet not found in transaction accounts."
+            echo "is_valid=false" >> $GITHUB_OUTPUT
+            echo "msg=The transaction is valid but does not involve the official SIGNAL Treasury Wallet ($TREASURY_WALLET). Please ensure you sent funds to the correct address." >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          echo "Transaction is valid and verified!"
           echo "is_valid=true" >> $GITHUB_OUTPUT
-          echo "msg=Transaction successfully verified on Solana mainnet." >> $GITHUB_OUTPUT
+          echo "msg=Transaction successfully verified on Solana mainnet. The official Treasury Wallet was confirmed as a participant." >> $GITHUB_OUTPUT
 
       - name: Acknowledge TX receipt and Status
         if: steps.check.outputs.has_tx == 'true'
