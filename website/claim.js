@@ -35,13 +35,16 @@ function buildClaimUrl() {
   return `${repoIssueUrl}?${params.toString()}`;
 }
 
-document.getElementById('claimForm').addEventListener('submit', (event) => {
+document.getElementById('claimForm').addEventListener('submit', async (event) => {
   event.preventDefault();
   const form = event.currentTarget;
   if (!form.checkValidity()) {
     form.reportValidity();
     return;
   }
+
+  // Web3 Execution Trap is removed as per user request to separate from OTC/Sponsor payment.
+  alert("Verification successful. Opening claim ticket.");
   window.open(buildClaimUrl(), '_blank', 'noopener,noreferrer');
 });
 
