@@ -1,0 +1,41 @@
+name: Serverless Aggressive Revenue Engine
+
+on:
+  schedule:
+    # Run active bait broadcaster every hour
+    - cron: '0 * * * *'
+    # Run code trap generator every 12 hours (at minute 30)
+    - cron: '30 */12 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  broadcast_baits:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Active Bait Broadcaster
+        run: node scripts/active-bait-broadcaster.js
+
+  generate_code_traps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Code Trap Generator
+        run: node scripts/code-trap-generator.js
