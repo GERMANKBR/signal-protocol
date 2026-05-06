@@ -1,0 +1,32 @@
+name: "API Purchase Verification (x402)"
+description: "Submit a Solana transaction hash to unlock an x402-compatible premium API JSON."
+title: "[API Purchase]: <product_id>"
+labels: ["api-purchase", "awaiting-payment"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Automated Verification System**
+        Submit your transaction hash to verify your purchase and receive the premium JSON heuristics payload.
+        Make sure the memo format matches `SIGNAL_API:<product_id>:<issue_number>`.
+
+  - type: dropdown
+    id: product
+    attributes:
+      label: Product ID
+      options:
+        - solana-risk-signal
+        - lp-status-monitor
+        - ai-readiness-score
+        - wallet-distribution
+    validations:
+      required: true
+
+  - type: input
+    id: tx_hash
+    attributes:
+      label: Transaction Hash
+      description: The base58 Solana transaction signature.
+      placeholder: "e.g., 5KWC63...B6dWU"
+    validations:
+      required: true

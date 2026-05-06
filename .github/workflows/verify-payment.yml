@@ -9,50 +9,85 @@ permissions:
 
 jobs:
   verify:
-    # Only run on issues with awaiting-payment label and if comment looks like a TX hash (alphanumeric, ~88 chars)
-    if: contains(github.event.issue.labels.*.name, 'awaiting-payment') && !contains(github.event.comment.user.login, 'bot')
+    if: (contains(github.event.issue.labels.*.name, 'awaiting-payment') || contains(github.event.issue.labels.*.name, 'api-purchase')) && !contains(github.event.comment.user.login, 'bot')
     runs-on: ubuntu-latest
     steps:
       - name: Check TX Hash Format
         id: check
         run: |
           COMMENT="${{ github.event.comment.body }}"
-          # Extremely basic regex to find a Solana TX hash (base58, 87-88 chars)
           TX=$(echo "$COMMENT" | grep -oE '[1-9A-HJ-NP-Za-km-z]{87,88}' | head -1 || echo "")
           
           if [ -z "$TX" ]; then
-            echo "No TX hash found in comment."
             echo "has_tx=false" >> $GITHUB_OUTPUT
           else
-            echo "Found possible TX: $TX"
             echo "has_tx=true" >> $GITHUB_OUTPUT
             echo "tx=$TX" >> $GITHUB_OUTPUT
           fi
 
-      - name: Verify Solana Transaction on Chain
+      - name: Verify Solana Transaction and Deliver Product
         if: steps.check.outputs.has_tx == 'true'
-        id: verify_tx
         uses: actions/github-script@v7
         with:
           script: |
             const txHash = "${{ steps.check.outputs.tx }}";
-            const labels = context.payload.issue.labels.map(l => l.name);
-            let expectedAmountSOL = 0;
+            const isApiPurchase = context.payload.issue.labels.some(l => l.name === 'api-purchase');
             
-            if (labels.includes('otc_tier1')) {
-              expectedAmountSOL = 0.5;
-            } else if (labels.includes('sponsor')) {
-              expectedAmountSOL = 1.0;
-            } else {
-              expectedAmountSOL = 0.000000001; // anything > 0 for fallback
+            // 1. Search for Double Spend
+            const searchQuery = `repo:${context.repo.owner}/${context.repo.repo} type:issue "${txHash}"`;
+            const searchResults = await github.rest.search.issuesAndPullRequests({ q: searchQuery });
+            
+            // If the TX appears in more than 1 issue, it's a double spend
+            if (searchResults.data.total_count > 1) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo, issue_number: context.payload.issue.number,
+                body: `❌ **Verification Failed:** Double Spend Detected.\n\nThe transaction \`${txHash}\` has already been used in another issue. Please submit a new transaction.`
+              });
+              return;
             }
-            
-            const expectedLamports = expectedAmountSOL * 1000000000;
+
+            // Products Definition for x402
+            const PRODUCTS = {
+              'solana-risk-signal': { lamports: 1000000, payload: "```json\n{\n  \"risk_level\": \"High\",\n  \"ai_discoverable\": \"Partial\",\n  \"contract_vulnerability_heuristics\": [\n    \"Mint authority active\",\n    \"Freeze authority active\"\n  ],\n  \"disclaimer\": \"Not a guarantee. Based on heuristic indicators.\"\n}\n```" },
+              'lp-status-monitor': { lamports: 500000, payload: "```json\n{\n  \"pool_exists\": true,\n  \"dex_type\": \"Raydium\",\n  \"lp_depth_usd_estimate\": 4520,\n  \"unminted_supply_pct\": 80\n}\n```" },
+              'ai-readiness-score': { lamports: 1000000, payload: "```json\n{\n  \"token_name\": \"SIGNAL\",\n  \"ai_readiness_percentage\": 85,\n  \"discoverability_checklist\": {\n    \"llms_txt_present\": true,\n    \"x402_manifest_active\": true\n  }\n}\n```" },
+              'wallet-distribution': { lamports: 2000000, payload: "```json\n{\n  \"top_10_holders_percentage\": 65.2,\n  \"unique_wallets_analyzed\": 2500,\n  \"wallet_cluster_heuristics\": [\n    \"Possible dev team cluster detected (15%)\"\n  ],\n  \"disclaimer\": \"Not attribution. Cluster analysis is heuristic.\"\n}\n```" }
+            };
+
+            let expectedLamports = 0;
+            let expectedMemo = "";
+            let productId = null;
+
+            if (isApiPurchase) {
+              // Extract product ID from issue body
+              const body = context.payload.issue.body || "";
+              // The issue template has a dropdown for Product ID. Usually it shows up as:
+              // ### Product ID
+              // 
+              // solana-risk-signal
+              const match = body.match(/### Product ID\s*([a-zA-Z0-9-]+)/);
+              if (match && PRODUCTS[match[1]]) {
+                productId = match[1];
+                expectedLamports = PRODUCTS[productId].lamports;
+                expectedMemo = `SIGNAL_API:${productId}:${context.payload.issue.number}`;
+              } else {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner, repo: context.repo.repo, issue_number: context.payload.issue.number,
+                  body: `❌ **Verification Failed:** Invalid or missing Product ID in the issue description.`
+                });
+                return;
+              }
+            } else {
+              // Legacy OTC/Sponsor verification
+              const labels = context.payload.issue.labels.map(l => l.name);
+              if (labels.includes('otc_tier1')) expectedLamports = 0.5 * 1000000000;
+              else if (labels.includes('sponsor')) expectedLamports = 1.0 * 1000000000;
+              else expectedLamports = 1; // Fallback > 0
+            }
+
             const TREASURY_WALLET = "H5Va5uQnpkboW9CJZMG7VLRPM4sA87FwmgkDuT28LYM1";
             
-            console.log(`Verifying TX: ${txHash}`);
-            console.log(`Expected Amount: ${expectedAmountSOL} SOL`);
-            
+            // Fetch TX using jsonParsed encoding to easily read the Memo
             const response = await fetch("https://api.mainnet-beta.solana.com", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -60,90 +95,89 @@ jobs:
                 jsonrpc: "2.0",
                 id: 1,
                 method: "getTransaction",
-                params: [txHash, { commitment: "confirmed", maxSupportedTransactionVersion: 0 }]
+                params: [txHash, { commitment: "confirmed", maxSupportedTransactionVersion: 0, encoding: "jsonParsed" }]
               })
             });
             const data = await response.json();
             
-            if (data.error) {
-              core.setOutput("is_valid", "false");
-              core.setOutput("msg", "RPC Error: " + data.error.message);
-              return;
-            }
-            if (!data.result) {
-              core.setOutput("is_valid", "false");
-              core.setOutput("msg", "Transaction not found on mainnet.");
+            if (data.error || !data.result) {
+              await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: context.payload.issue.number, body: `❌ **Verification Failed:** Transaction not found or RPC Error.` });
               return;
             }
             if (data.result.meta && data.result.meta.err) {
-              core.setOutput("is_valid", "false");
-              core.setOutput("msg", "Transaction failed on chain.");
+              await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: context.payload.issue.number, body: `❌ **Verification Failed:** Transaction failed on chain.` });
               return;
             }
             
+            // Find Treasury Wallet Index
             const accountKeys = data.result.transaction.message.accountKeys;
-            const keys = accountKeys.map(k => typeof k === 'string' ? k : k.pubkey);
+            const index = accountKeys.findIndex(k => k.pubkey === TREASURY_WALLET);
             
-            const index = keys.indexOf(TREASURY_WALLET);
             if (index === -1) {
-              core.setOutput("is_valid", "false");
-              core.setOutput("msg", `The transaction is valid but does not involve the official SIGNAL Treasury Wallet (${TREASURY_WALLET}).`);
+              await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: context.payload.issue.number, body: `❌ **Verification Failed:** Treasury wallet not found in transaction accounts.` });
               return;
             }
             
+            // Verify Amount
             const preBalance = data.result.meta.preBalances[index];
             const postBalance = data.result.meta.postBalances[index];
             const deltaLamports = postBalance - preBalance;
-            const deltaSOL = deltaLamports / 1000000000;
-            
-            console.log(`Treasury Wallet index: ${index}`);
-            console.log(`Pre-balance: ${preBalance}, Post-balance: ${postBalance}, Delta: ${deltaLamports}`);
             
             if (deltaLamports < expectedLamports) {
-              core.setOutput("is_valid", "false");
-              core.setOutput("msg", `Invalid payment amount. Expected at least ${expectedAmountSOL} SOL, but the Treasury Wallet received ${deltaSOL} SOL. Transaction rejected.`);
+              await github.rest.issues.createComment({
+                owner: context.repo.owner, repo: context.repo.repo, issue_number: context.payload.issue.number,
+                body: `❌ **Verification Failed:** Invalid payment amount. Expected at least ${expectedLamports} lamports, but received ${deltaLamports} lamports.`
+              });
               return;
             }
-            
-            core.setOutput("is_valid", "true");
-            core.setOutput("msg", `Transaction successfully verified! The Treasury Wallet received ${deltaSOL} SOL.`);
 
-      - name: Acknowledge TX receipt and Status
-        if: steps.check.outputs.has_tx == 'true'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const tx = "${{ steps.check.outputs.tx }}";
-            const isValid = "${{ steps.verify_tx.outputs.is_valid }}" === "true";
-            const msg = "${{ steps.verify_tx.outputs.msg }}";
-            
-            let comment = `⏳ **TX Hash Received:** \`${tx}\`\n\n`;
-            
-            if (isValid) {
-              comment += `✅ **Verification Status:** ${msg}\n\nThe transaction has been verified successfully on-chain! Our system will now proceed to validate the token amounts and update your issue.`;
-            } else {
-              comment += `❌ **Verification Failed:** ${msg}\n\nPlease check your transaction hash and try again. The transaction could not be verified on the mainnet.`;
+            // Verify Memo for API Purchases
+            if (isApiPurchase) {
+              const instructions = data.result.transaction.message.instructions || [];
+              let memoFound = false;
+              for (const ix of instructions) {
+                if (ix.program === "spl-memo" || ix.programId === "MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLx3GQh1") {
+                  if (ix.parsed === expectedMemo) {
+                    memoFound = true;
+                    break;
+                  }
+                }
+              }
+              if (!memoFound) {
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner, repo: context.repo.repo, issue_number: context.payload.issue.number,
+                  body: `❌ **Verification Failed:** Memo validation failed. Expected exact memo: \`${expectedMemo}\``
+                });
+                return;
+              }
             }
             
+            // Success! Send the product payload if it's an API purchase, otherwise just confirm
+            let successBody = `✅ **Verification Successful!**\n\nThe transaction \`${txHash}\` has been strictly verified. The Treasury received ${deltaLamports} lamports.`;
+            
+            if (isApiPurchase && productId && PRODUCTS[productId]) {
+              successBody += `\n\n### Premium Heuristics Payload: ${productId}\n\n${PRODUCTS[productId].payload}`;
+            }
+
             await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.payload.issue.number,
-              body: comment
+              owner: context.repo.owner, repo: context.repo.repo, issue_number: context.payload.issue.number,
+              body: successBody
             });
             
-            if (isValid) {
+            // Remove awaiting-payment, add payment-verified
+            try {
               await github.rest.issues.removeLabel({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: context.payload.issue.number,
-                name: 'awaiting-payment'
+                owner: context.repo.owner, repo: context.repo.repo, issue_number: context.payload.issue.number, name: 'awaiting-payment'
               });
-              
-              await github.rest.issues.addLabels({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: context.payload.issue.number,
-                labels: ['payment-verified']
+            } catch (e) { /* ignore if not present */ }
+            
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner, repo: context.repo.repo, issue_number: context.payload.issue.number, labels: ['payment-verified']
+            });
+            
+            // Close the issue if it's a fulfilled API purchase
+            if (isApiPurchase) {
+              await github.rest.issues.update({
+                owner: context.repo.owner, repo: context.repo.repo, issue_number: context.payload.issue.number, state: 'closed'
               });
             }
