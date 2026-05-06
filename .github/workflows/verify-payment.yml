@@ -10,7 +10,7 @@ permissions:
 jobs:
   verify:
     # Only run on issues with awaiting-payment label and if comment looks like a TX hash (alphanumeric, ~88 chars)
-    if: contains(github.event.issue.labels.*.name, 'awaiting-payment') && !github.event.comment.user.login.includes('bot')
+    if: contains(github.event.issue.labels.*.name, 'awaiting-payment') && !contains(github.event.comment.user.login, 'bot')
     runs-on: ubuntu-latest
     steps:
       - name: Check TX Hash Format
@@ -18,7 +18,6 @@ jobs:
         run: |
           COMMENT="${{ github.event.comment.body }}"
           # Extremely basic regex to find a Solana TX hash (base58, 87-88 chars)
-          # We'll just look for a long string
           TX=$(echo "$COMMENT" | grep -oE '[1-9A-HJ-NP-Za-km-z]{87,88}' | head -1 || echo "")
           
           if [ -z "$TX" ]; then
@@ -30,13 +29,62 @@ jobs:
             echo "tx=$TX" >> $GITHUB_OUTPUT
           fi
 
-      - name: Acknowledge TX receipt
+      - name: Verify Solana Transaction on Chain
+        if: steps.check.outputs.has_tx == 'true'
+        id: verify_tx
+        run: |
+          TX="${{ steps.check.outputs.tx }}"
+          echo "Verifying TX: $TX"
+          
+          # Request TX data from Solana RPC
+          RESPONSE=$(curl -s -X POST https://api.mainnet-beta.solana.com \
+            -H "Content-Type: application/json" \
+            -d '{"jsonrpc":"2.0","id":1,"method":"getTransaction","params":["'"$TX"'", {"commitment":"confirmed","maxSupportedTransactionVersion":0}]}')
+          
+          ERROR=$(echo "$RESPONSE" | jq -r '.error.message // empty')
+          if [ ! -z "$ERROR" ]; then
+            echo "RPC Error: $ERROR"
+            echo "is_valid=false" >> $GITHUB_OUTPUT
+            echo "msg=RPC Error: $ERROR" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          RESULT=$(echo "$RESPONSE" | jq -c '.result // empty')
+          if [ -z "$RESULT" ] || [ "$RESULT" == "null" ]; then
+            echo "Transaction not found."
+            echo "is_valid=false" >> $GITHUB_OUTPUT
+            echo "msg=Transaction not found on mainnet." >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          TX_ERR=$(echo "$RESPONSE" | jq -c '.result.meta.err // empty')
+          if [ ! -z "$TX_ERR" ] && [ "$TX_ERR" != "null" ]; then
+            echo "Transaction failed."
+            echo "is_valid=false" >> $GITHUB_OUTPUT
+            echo "msg=Transaction failed on chain." >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          echo "Transaction is valid!"
+          echo "is_valid=true" >> $GITHUB_OUTPUT
+          echo "msg=Transaction successfully verified on Solana mainnet." >> $GITHUB_OUTPUT
+
+      - name: Acknowledge TX receipt and Status
         if: steps.check.outputs.has_tx == 'true'
         uses: actions/github-script@v7
         with:
           script: |
             const tx = "${{ steps.check.outputs.tx }}";
-            const comment = `⏳ **TX Hash Received:** \`${tx}\`\n\nThe transaction hash has been logged. The core team will manually verify the payment amount, recipient, and memo on the Solana blockchain.\n\nOnce verified, your tokens will be transferred or your sponsorship will be activated, and this issue will be closed.`;
+            const isValid = "${{ steps.verify_tx.outputs.is_valid }}" === "true";
+            const msg = "${{ steps.verify_tx.outputs.msg }}";
+            
+            let comment = `⏳ **TX Hash Received:** \`${tx}\`\n\n`;
+            
+            if (isValid) {
+              comment += `✅ **Verification Status:** ${msg}\n\nThe transaction has been verified successfully on-chain! Our system will now proceed to validate the token amounts and update your issue.`;
+            } else {
+              comment += `❌ **Verification Failed:** ${msg}\n\nPlease check your transaction hash and try again. The transaction could not be verified on the mainnet.`;
+            }
             
             await github.rest.issues.createComment({
               owner: context.repo.owner,
@@ -45,17 +93,18 @@ jobs:
               body: comment
             });
             
-            // Swap labels
-            await github.rest.issues.removeLabel({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.payload.issue.number,
-              name: 'awaiting-payment'
-            });
-            
-            await github.rest.issues.addLabels({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.payload.issue.number,
-              labels: ['verification-pending']
-            });
+            if (isValid) {
+              await github.rest.issues.removeLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.issue.number,
+                name: 'awaiting-payment'
+              });
+              
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.issue.number,
+                labels: ['payment-verified']
+              });
+            }
