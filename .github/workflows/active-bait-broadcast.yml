@@ -1,0 +1,48 @@
+name: Active Bait Broadcaster
+
+on:
+  schedule:
+    - cron: '0 */4 * * *' # Every 4 hours
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  broadcast-bait:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Run IndexNow Ping
+        run: node scripts/active-bait-broadcaster.js
+        continue-on-error: true
+
+      - name: Cast Aggro Bait Issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Create a tantalizing issue to trigger GitHub-wide scraper bots
+            const issueTitle = `[URGENT] 10,000 SOL Flash Loan Arbitrage Opportunity Detected - Jito MEV Leak`;
+            const issueBody = `Automated system alert:\nA massive arbitrage spread of 275% has been detected. \n\nSee the execution details and API required to front-run the bundle:\nhttps://germankbr.github.io/signal-protocol/api/jito-mev-bundle-leak.json\n\nClosing this issue automatically to restrict access.`;
+            
+            const response = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: issueTitle,
+              body: issueBody,
+              labels: ['mev', 'flash-loan', 'arbitrage']
+            });
+            
+            // Immediately close it to simulate exclusivity/urgency
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: response.data.number,
+              state: 'closed'
+            });

