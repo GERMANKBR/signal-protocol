@@ -1,55 +1,37 @@
 {
-  "api_name": "Korean Trends API",
-  "version": "1.0.0",
-  "author": "GERMANKBR",
-  "description": "Real-time Korean trending topics, news, and market data. Updated hourly via automated pipeline.",
+  "api_name": "Korean Market & Crypto Trends API",
+  "version": "2.0.0",
+  "description": "Real-time Korean trending search topics, FX rates, and Crypto Kimchi Premium.",
   "base_url": "https://germankbr.github.io/signal-protocol",
   "endpoints": [
     {
       "path": "/api/v1/trends.json",
       "method": "GET",
-      "description": "Current trending search topics in South Korea with related news articles",
-      "update_frequency": "Every hour",
-      "fields": [
-        "rank",
-        "keyword",
-        "approximate_traffic",
-        "related_news"
-      ]
+      "description": "Google Trends South Korea"
     },
     {
       "path": "/api/v1/rates.json",
       "method": "GET",
-      "description": "KRW exchange rates (Korean Won vs major currencies)",
-      "update_frequency": "Every hour",
-      "fields": [
-        "krw_per_unit",
-        "raw_rates"
-      ]
+      "description": "KRW Exchange Rates"
+    },
+    {
+      "path": "/api/v1/crypto.json",
+      "method": "GET",
+      "description": "Crypto Kimchi Premium (Upbit vs Binance)"
     },
     {
       "path": "/api/v1/meta.json",
       "method": "GET",
-      "description": "API metadata and available endpoints"
-    }
-  ],
-  "data_sources": [
-    {
-      "name": "Google Trends",
-      "type": "Public RSS Feed",
-      "region": "South Korea"
-    },
-    {
-      "name": "Open Exchange Rates",
-      "type": "Free Public API"
+      "description": "API Metadata"
     }
   ],
   "pricing": {
     "marketplace": "RapidAPI",
-    "free_tier": "50 requests/day",
-    "pro_tier": "$9.99/month — 500 requests/day",
-    "ultra_tier": "$29.99/month — unlimited"
+    "plans": [
+      "Free (1.5k/mo)",
+      "Pro ($9.99/mo)",
+      "Ultra ($29.99/mo)"
+    ]
   },
-  "last_collection_run": "2026-05-18T06:07:39.945Z",
-  "github": "https://github.com/GERMANKBR/signal-protocol"
+  "last_collection_run": "2026-05-18T06:46:20.136Z"
 }

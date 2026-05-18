@@ -1,5 +1,5 @@
 /**
- * Korean Trends API — Data Collection Engine
+ * Korean Market & Crypto Trends API — Data Collection Engine
  * 
  * Runs via GitHub Actions every hour.
  * Collects publicly available Korean trend data and generates
@@ -8,6 +8,7 @@
  * Data Sources (all public, no API keys required):
  *  - Google Trends (Korea) RSS feed
  *  - Open Exchange Rate API (free tier)
+ *  - Upbit & Binance Public APIs (Kimchi Premium Calculator)
  */
 
 const fs = require('fs');
@@ -23,15 +24,12 @@ async function fetchGoogleTrendsKR() {
   try {
     const response = await fetch(url, {
       headers: {
-        'User-Agent': 'KoreanTrendsAPI/1.0 (https://github.com/GERMANKBR/signal-protocol)',
+        'User-Agent': 'KoreanMarketAPI/2.0 (https://github.com/GERMANKBR/signal-protocol)',
         'Accept': 'application/rss+xml, application/xml, text/xml'
       }
     });
 
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-    }
-
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const xml = await response.text();
     return parseTrendsRSS(xml);
   } catch (error) {
@@ -52,9 +50,7 @@ function parseTrendsRSS(xml) {
     const link = extractTag(block, 'link');
     const pubDate = extractTag(block, 'pubDate');
     const traffic = extractTag(block, 'ht:approx_traffic');
-    const description = extractTag(block, 'description');
-    const newsItems = extractNewsItems(block);
-
+    
     if (title) {
       items.push({
         rank: rank++,
@@ -62,59 +58,16 @@ function parseTrendsRSS(xml) {
         url: link || null,
         published_at: pubDate ? new Date(pubDate).toISOString() : null,
         approximate_traffic: traffic || null,
-        description: description ? cleanHtml(description) : null,
-        related_news: newsItems
       });
     }
   }
-
   return items;
 }
 
 function extractTag(xml, tag) {
-  // Handle both plain text and CDATA content
-  const regex = new RegExp(
-    `<${tag}[^>]*>(?:<!\\[CDATA\\[)?([\\s\\S]*?)(?:\\]\\]>)?<\\/${tag}>`,
-    'i'
-  );
+  const regex = new RegExp(`<${tag}[^>]*>(?:<!\\[CDATA\\[)?([\\s\\S]*?)(?:\\]\\]>)?<\\/${tag}>`, 'i');
   const match = xml.match(regex);
-  if (!match) return null;
-  return match[1].trim();
-}
-
-function extractNewsItems(xml) {
-  const newsItems = [];
-  const newsRegex = /<ht:news_item>([\s\S]*?)<\/ht:news_item>/g;
-  let match;
-
-  while ((match = newsRegex.exec(xml)) !== null) {
-    const block = match[1];
-    const title = extractTag(block, 'ht:news_item_title');
-    const url = extractTag(block, 'ht:news_item_url');
-    const source = extractTag(block, 'ht:news_item_source');
-
-    if (title || url) {
-      newsItems.push({
-        title: title || null,
-        url: url || null,
-        source: source || null
-      });
-    }
-  }
-
-  return newsItems;
-}
-
-function cleanHtml(html) {
-  return html
-    .replace(/<[^>]*>/g, '')
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/\s+/g, ' ')
-    .trim();
+  return match ? match[1].trim() : null;
 }
 
 // ──────────────────────────────────────────────
@@ -126,24 +79,19 @@ async function fetchExchangeRates() {
     const data = await response.json();
 
     if (data.result === 'success') {
-      // Invert rates to show "1 USD = ? KRW" format (more intuitive)
       const krwPerUnit = {};
-      const targetCurrencies = ['USD', 'EUR', 'JPY', 'CNY', 'GBP', 'AUD', 'CAD', 'CHF', 'SGD', 'HKD'];
-
+      const targetCurrencies = ['USD', 'EUR', 'JPY', 'CNY', 'GBP'];
       for (const currency of targetCurrencies) {
         if (data.rates[currency]) {
           krwPerUnit[currency] = parseFloat((1 / data.rates[currency]).toFixed(2));
         }
       }
-
+      // Return both USD/KRW explicitly for the Crypto calculator
       return {
         base: 'KRW',
+        krw_per_usd: krwPerUnit['USD'],
         krw_per_unit: krwPerUnit,
-        raw_rates: Object.fromEntries(
-          targetCurrencies
-            .filter(c => data.rates[c])
-            .map(c => [c, data.rates[c]])
-        ),
+        raw_rates: data.rates,
         source_updated_at: data.time_last_update_utc || null
       };
     }
@@ -154,31 +102,64 @@ async function fetchExchangeRates() {
 }
 
 // ──────────────────────────────────────────────
-// 3. Summary / Statistics Generator
+// 3. Kimchi Premium Calculator (Upbit vs Binance)
 // ──────────────────────────────────────────────
-function generateSummary(trends) {
-  if (!trends || trends.length === 0) return null;
+async function fetchCryptoKimchiPremium(krwPerUsd) {
+  if (!krwPerUsd) {
+    console.error('❌ Cannot calculate Kimchi Premium without USD/KRW rate.');
+    return null;
+  }
 
-  // Extract traffic numbers for statistics
-  const trafficNumbers = trends
-    .map(t => {
-      if (!t.approximate_traffic) return 0;
-      const num = t.approximate_traffic.replace(/[^0-9]/g, '');
-      return parseInt(num) || 0;
-    })
-    .filter(n => n > 0);
+  try {
+    // Fetch Upbit (KRW)
+    const upbitRes = await fetch('https://api.upbit.com/v1/ticker?markets=KRW-BTC,KRW-ETH,KRW-SOL');
+    const upbitData = await upbitRes.json();
+    
+    // Fetch Binance (USDT)
+    const binanceRes = await fetch('https://api.binance.com/api/v3/ticker/price?symbols=["BTCUSDT","ETHUSDT","SOLUSDT"]');
+    const binanceData = await binanceRes.json();
 
-  const totalNewsLinks = trends.reduce((sum, t) => sum + (t.related_news?.length || 0), 0);
+    const result = {
+      usd_krw_rate: krwPerUsd,
+      assets: []
+    };
 
-  return {
-    total_trending_topics: trends.length,
-    total_related_news: totalNewsLinks,
-    top_keywords: trends.slice(0, 5).map(t => t.keyword),
-    traffic_stats: trafficNumbers.length > 0 ? {
-      highest: Math.max(...trafficNumbers).toLocaleString() + '+',
-      average: Math.round(trafficNumbers.reduce((a, b) => a + b, 0) / trafficNumbers.length).toLocaleString() + '+'
-    } : null
-  };
+    const symbols = ['BTC', 'ETH', 'SOL'];
+    for (const sym of symbols) {
+      const uData = upbitData.find(d => d.market === `KRW-${sym}`);
+      const bData = binanceData.find(d => d.symbol === `${sym}USDT`);
+
+      if (uData && bData) {
+        const upbitPriceKRW = uData.trade_price;
+        const binancePriceUSD = parseFloat(bData.price);
+        const binancePriceConverted = binancePriceUSD * krwPerUsd;
+        
+        const premiumKRW = upbitPriceKRW - binancePriceConverted;
+        const premiumPercentage = (premiumKRW / binancePriceConverted) * 100;
+
+        result.assets.push({
+          symbol: sym,
+          upbit_price_krw: upbitPriceKRW,
+          binance_price_usd: binancePriceUSD,
+          binance_price_krw_converted: parseFloat(binancePriceConverted.toFixed(0)),
+          premium_krw: parseFloat(premiumKRW.toFixed(0)),
+          premium_percentage: parseFloat(premiumPercentage.toFixed(2))
+        });
+      }
+    }
+    
+    // Calculate global market average premium
+    if (result.assets.length > 0) {
+      result.average_premium_percentage = parseFloat(
+        (result.assets.reduce((sum, a) => sum + a.premium_percentage, 0) / result.assets.length).toFixed(2)
+      );
+    }
+
+    return result;
+  } catch (error) {
+    console.error('❌ Crypto premium fetch failed:', error.message);
+    return null;
+  }
 }
 
 // ──────────────────────────────────────────────
@@ -186,106 +167,84 @@ function generateSummary(trends) {
 // ──────────────────────────────────────────────
 async function main() {
   const startTime = Date.now();
-  console.log('🇰🇷 Korean Trends API — Data Collection Starting...');
-  console.log(`⏰ ${new Date().toISOString()}\n`);
-
-  // Ensure output directory exists
+  console.log('🇰🇷 Korean Market API — Data Collection Starting...');
+  
   if (!fs.existsSync(API_DIR)) {
     fs.mkdirSync(API_DIR, { recursive: true });
   }
 
   const now = new Date().toISOString();
 
-  // ── Collect all data ──
-  const [trends, rates] = await Promise.all([
+  // 1. Fetch Rates (Needed for Kimchi Premium)
+  const rates = await fetchExchangeRates();
+  
+  // 2. Fetch Trends and Crypto Data concurrently
+  const [trends, crypto] = await Promise.all([
     fetchGoogleTrendsKR(),
-    fetchExchangeRates()
+    rates ? fetchCryptoKimchiPremium(rates.krw_per_usd) : null
   ]);
 
   console.log(`\n📊 Results:`);
   console.log(`   Trends: ${trends.length} topics collected`);
   console.log(`   Rates:  ${rates ? 'OK' : 'FAILED'}`);
+  console.log(`   Crypto: ${crypto ? 'OK (Premium: ' + crypto.average_premium_percentage + '%)' : 'FAILED'}`);
 
-  // ── Generate /api/v1/trends.json ──
-  const trendsPayload = {
+  // ── GENERATE: trends.json ──
+  writeJSON('trends.json', {
     status: 'ok',
-    api: 'Korean Trends API',
     endpoint: '/api/v1/trends.json',
-    description: 'Real-time trending search topics in South Korea',
     updated_at: now,
-    update_frequency: 'hourly',
     count: trends.length,
-    summary: generateSummary(trends),
     data: trends
-  };
-  writeJSON('trends.json', trendsPayload);
+  });
 
-  // ── Generate /api/v1/rates.json ──
+  // ── GENERATE: rates.json ──
   if (rates) {
-    const ratesPayload = {
+    writeJSON('rates.json', {
       status: 'ok',
-      api: 'Korean Trends API',
       endpoint: '/api/v1/rates.json',
-      description: 'KRW exchange rates against major world currencies',
       updated_at: now,
-      update_frequency: 'hourly',
       data: rates
-    };
-    writeJSON('rates.json', ratesPayload);
+    });
   }
 
-  // ── Generate /api/v1/meta.json ──
-  const metaPayload = {
-    api_name: 'Korean Trends API',
-    version: '1.0.0',
-    author: 'GERMANKBR',
-    description: 'Real-time Korean trending topics, news, and market data. Updated hourly via automated pipeline.',
+  // ── GENERATE: crypto.json (NEW) ──
+  if (crypto) {
+    writeJSON('crypto.json', {
+      status: 'ok',
+      endpoint: '/api/v1/crypto.json',
+      description: 'Real-time Kimchi Premium (Upbit vs Binance arbitrage spread)',
+      updated_at: now,
+      data: crypto
+    });
+  }
+
+  // ── GENERATE: meta.json (UPDATED) ──
+  writeJSON('meta.json', {
+    api_name: 'Korean Market & Crypto Trends API',
+    version: '2.0.0',
+    description: 'Real-time Korean trending search topics, FX rates, and Crypto Kimchi Premium.',
     base_url: 'https://germankbr.github.io/signal-protocol',
     endpoints: [
-      {
-        path: '/api/v1/trends.json',
-        method: 'GET',
-        description: 'Current trending search topics in South Korea with related news articles',
-        update_frequency: 'Every hour',
-        fields: ['rank', 'keyword', 'approximate_traffic', 'related_news']
-      },
-      {
-        path: '/api/v1/rates.json',
-        method: 'GET',
-        description: 'KRW exchange rates (Korean Won vs major currencies)',
-        update_frequency: 'Every hour',
-        fields: ['krw_per_unit', 'raw_rates']
-      },
-      {
-        path: '/api/v1/meta.json',
-        method: 'GET',
-        description: 'API metadata and available endpoints'
-      }
-    ],
-    data_sources: [
-      { name: 'Google Trends', type: 'Public RSS Feed', region: 'South Korea' },
-      { name: 'Open Exchange Rates', type: 'Free Public API' }
+      { path: '/api/v1/trends.json', method: 'GET', description: 'Google Trends South Korea' },
+      { path: '/api/v1/rates.json', method: 'GET', description: 'KRW Exchange Rates' },
+      { path: '/api/v1/crypto.json', method: 'GET', description: 'Crypto Kimchi Premium (Upbit vs Binance)' },
+      { path: '/api/v1/meta.json', method: 'GET', description: 'API Metadata' }
     ],
     pricing: {
       marketplace: 'RapidAPI',
-      free_tier: '50 requests/day',
-      pro_tier: '$9.99/month — 500 requests/day',
-      ultra_tier: '$29.99/month — unlimited'
+      plans: ['Free (1.5k/mo)', 'Pro ($9.99/mo)', 'Ultra ($29.99/mo)']
     },
-    last_collection_run: now,
-    github: 'https://github.com/GERMANKBR/signal-protocol'
-  };
-  writeJSON('meta.json', metaPayload);
+    last_collection_run: now
+  });
 
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
   console.log(`\n✅ All API files generated in ${elapsed}s`);
-  console.log(`📁 Output: ${API_DIR}`);
 }
 
 function writeJSON(filename, data) {
   const filepath = path.join(API_DIR, filename);
   fs.writeFileSync(filepath, JSON.stringify(data, null, 2), 'utf-8');
-  console.log(`   ✏️  ${filename} written (${(JSON.stringify(data).length / 1024).toFixed(1)} KB)`);
 }
 
 main().catch(error => {
