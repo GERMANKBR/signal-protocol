@@ -13,7 +13,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const API_DIR = path.join(__dirname, '..', 'website', 'api', 'v1');
+const API_DIR = path.join(__dirname, '..', 'docs', 'api', 'v1');
 
 // ──────────────────────────────────────────────
 // 1. Google Trends Korea (Public RSS Feed)
