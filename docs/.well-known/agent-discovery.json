@@ -1,60 +1,109 @@
 {
-  "schema": "https://germankbr.github.io/signal-protocol/schemas/agent-discovery.schema.json",
-  "name": "SIGNAL Agent Discovery",
-  "project": "SIGNAL",
-  "status": "live",
-  "entrypoint": "https://germankbr.github.io/signal-protocol/ai-discovery-beacon.json",
-  "llms": "https://germankbr.github.io/signal-protocol/llms-full.txt",
-  "openapi": "https://germankbr.github.io/signal-protocol/api/openapi.json",
-  "actions": [
+  "name": "Korean Market & Crypto Trends API",
+  "description": "Hourly South Korea market data for developers: Google Trends topics, KRW exchange rates, and crypto Kimchi Premium spreads.",
+  "generated_at": "2026-05-18T07:13:32.179Z",
+  "homepage_url": "https://germankbr.github.io/signal-protocol/",
+  "openapi_url": "https://germankbr.github.io/signal-protocol/api/openapi.json",
+  "catalog_url": "https://germankbr.github.io/signal-protocol/api/catalog.json",
+  "llms_url": "https://germankbr.github.io/signal-protocol/llms.txt",
+  "llms_full_url": "https://germankbr.github.io/signal-protocol/llms-full.txt",
+  "rapidapi_url": "https://rapidapi.com/GERMANKBR/api/korean-trends-api1",
+  "repository_url": "https://github.com/GERMANKBR/signal-protocol",
+  "feeds": {
+    "json": "https://germankbr.github.io/signal-protocol/feed.json",
+    "rss": "https://germankbr.github.io/signal-protocol/feed.xml",
+    "atom": "https://germankbr.github.io/signal-protocol/atom.xml"
+  },
+  "keywords": [
+    "Korea API",
+    "South Korea trends",
+    "Google Trends KR",
+    "Kimchi Premium API",
+    "Upbit Binance spread",
+    "KRW exchange rates",
+    "crypto market data",
+    "RapidAPI"
+  ],
+  "endpoints": [
     {
-      "id": "view_dashboard",
-      "type": "read",
-      "url": "https://germankbr.github.io/signal-protocol/dashboard.html",
-      "description": "Inspect the live operations dashboard for milestones, module health, GitHub submissions, and risk truth."
+      "path": "/api/v1/trends.json",
+      "method": "GET",
+      "description": "South Korea Google Trends topics with traffic labels and related news.",
+      "update_frequency": "hourly",
+      "primary_fields": [
+        "rank",
+        "keyword",
+        "approximate_traffic",
+        "approximate_traffic_value",
+        "related_news"
+      ],
+      "url": "https://germankbr.github.io/signal-protocol/api/v1/trends.json"
     },
     {
-      "id": "open_mind_console",
-      "type": "human_or_agent_assisted_write",
-      "url": "https://germankbr.github.io/signal-protocol/mind.html",
-      "description": "Submit mind node proofs, agent listings, search rank intents, and governance proposals."
+      "path": "/api/v1/rates.json",
+      "method": "GET",
+      "description": "KRW exchange rates for USD, EUR, JPY, CNY, GBP, AUD, CAD, CHF, SGD, and HKD.",
+      "update_frequency": "hourly",
+      "primary_fields": [
+        "krw_per_usd",
+        "krw_per_unit",
+        "source_updated_at"
+      ],
+      "url": "https://germankbr.github.io/signal-protocol/api/v1/rates.json"
     },
     {
-      "id": "inspect_signal",
-      "type": "read",
-      "url": "https://germankbr.github.io/signal-protocol/api/activation-engine.json",
-      "description": "Inspect the SIGNAL Activation Engine."
+      "path": "/api/v1/crypto.json",
+      "method": "GET",
+      "description": "Kimchi Premium for BTC, ETH, SOL, XRP, and DOGE using Upbit and Binance public prices.",
+      "update_frequency": "hourly",
+      "primary_fields": [
+        "usd_krw_rate",
+        "average_premium_percentage",
+        "assets"
+      ],
+      "url": "https://germankbr.github.io/signal-protocol/api/v1/crypto.json"
     },
     {
-      "id": "select_quest",
-      "type": "read",
-      "url": "https://germankbr.github.io/signal-protocol/api/quests.json",
-      "description": "Read no-cost quests for AI agents and builders."
-    },
-    {
-      "id": "submit_claim",
-      "type": "human_or_agent_assisted_write",
-      "url": "https://germankbr.github.io/signal-protocol/claim.html",
-      "description": "Submit proof through the Claim Console."
-    },
-    {
-      "id": "monitor_pool",
-      "type": "read",
-      "url": "https://germankbr.github.io/signal-protocol/api/pool-status.json",
-      "description": "Monitor whether verified DEX liquidity exists."
-    },
-    {
-      "id": "inspect_hybrid_economy",
-      "type": "read",
-      "url": "https://germankbr.github.io/signal-protocol/api/hybrid-economy.json",
-      "description": "Inspect the live hybrid AI economy modules."
+      "path": "/api/v1/meta.json",
+      "method": "GET",
+      "description": "API metadata, source status, pricing entry point, and endpoint catalog.",
+      "url": "https://germankbr.github.io/signal-protocol/api/v1/meta.json"
     }
   ],
-  "risk_constraints": {
-    "no_profit_guarantee": true,
-    "no_active_liquidity": true,
-    "no_automatic_ai_buying_claim": true,
-    "no_wash_trading": true
+  "data_sources": [
+    {
+      "name": "Google Trends RSS",
+      "region": "KR",
+      "use": "search trends"
+    },
+    {
+      "name": "Open ER API",
+      "use": "foreign exchange rates"
+    },
+    {
+      "name": "Upbit public ticker",
+      "use": "KRW crypto prices"
+    },
+    {
+      "name": "Binance public ticker",
+      "use": "USDT crypto prices"
+    }
+  ],
+  "pricing": {
+    "marketplace": "RapidAPI",
+    "free_tier": "1,500 requests/month",
+    "pro_tier": "$9.99/month",
+    "ultra_tier": "$29.99/month"
   },
-  "updated": "2026-05-05"
+  "update_frequency": "hourly",
+  "audience": [
+    "API developers",
+    "trading bot builders",
+    "market intelligence dashboards",
+    "Korea-focused data products"
+  ],
+  "restrictions": [
+    "Informational data only",
+    "Not financial advice"
+  ]
 }

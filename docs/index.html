@@ -1,196 +1,484 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Korean Market & Crypto Trends API</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
-        
-        :root {
-            --bg-color: #0d1117;
-            --card-bg: rgba(22, 27, 34, 0.6);
-            --border-color: rgba(255, 255, 255, 0.1);
-            --accent: #58a6ff;
-            --text-main: #c9d1d9;
-            --text-muted: #8b949e;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hourly South Korea market data API for Korean trends, KRW FX rates, and crypto Kimchi Premium. Available through RapidAPI.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://germankbr.github.io/signal-protocol/">
+  <link rel="alternate" title="Korean Market API JSON Feed" type="application/feed+json" href="https://germankbr.github.io/signal-protocol/feed.json">
+  <link rel="alternate" title="Korean Market API RSS Feed" type="application/rss+xml" href="https://germankbr.github.io/signal-protocol/feed.xml">
+  <link rel="alternate" title="Korean Market API Atom Feed" type="application/atom+xml" href="https://germankbr.github.io/signal-protocol/atom.xml">
+  <link rel="openapi" type="application/json" href="https://germankbr.github.io/signal-protocol/api/openapi.json">
+  <link rel="llms" type="text/markdown" href="https://germankbr.github.io/signal-protocol/llms.txt">
+  <link rel="icon" type="image/svg+xml" href="https://germankbr.github.io/signal-protocol/icon.svg">
+  <meta property="og:title" content="Korean Market & Crypto Trends API">
+  <meta property="og:description" content="Hourly South Korea Google Trends, KRW FX, and crypto Kimchi Premium data for developers.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://germankbr.github.io/signal-protocol/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Korean Market & Crypto Trends API">
+  <meta name="twitter:description" content="Hourly Korean trends, FX rates, and Kimchi Premium API data.">
+  <title>Korean Market & Crypto Trends API</title>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Korean Market & Crypto Trends API",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web",
+          "description": "Hourly South Korea market data API for Google Trends topics, KRW exchange rates, and crypto Kimchi Premium spreads.",
+          "url": "https://germankbr.github.io/signal-protocol/",
+          "sameAs": [
+            "https://rapidapi.com/GERMANKBR/api/korean-trends-api1",
+            "https://github.com/GERMANKBR/signal-protocol"
+          ],
+          "featureList": [
+            "South Korea Google Trends topics",
+            "KRW exchange rates",
+            "Upbit versus Binance Kimchi Premium spreads",
+            "OpenAPI schema",
+            "Machine-readable feeds"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "price": "9.99",
+            "priceCurrency": "USD",
+            "url": "https://rapidapi.com/GERMANKBR/api/korean-trends-api1"
+          }
+        },
+        {
+          "@type": "Dataset",
+          "name": "Korean Market API Hourly Snapshot",
+          "description": "Hourly JSON snapshots for Korean trends, KRW exchange rates, and Kimchi Premium data.",
+          "url": "https://germankbr.github.io/signal-protocol/api/catalog.json",
+          "distribution": [
+            {
+              "@type": "DataDownload",
+              "encodingFormat": "application/json",
+              "contentUrl": "https://germankbr.github.io/signal-protocol/api/v1/trends.json"
+            },
+            {
+              "@type": "DataDownload",
+              "encodingFormat": "application/json",
+              "contentUrl": "https://germankbr.github.io/signal-protocol/api/v1/crypto.json"
+            },
+            {
+              "@type": "DataDownload",
+              "encodingFormat": "application/json",
+              "contentUrl": "https://germankbr.github.io/signal-protocol/api/v1/rates.json"
+            }
+          ]
         }
+      ]
+    }
+  </script>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap");
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(88, 166, 255, 0.15), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(210, 168, 255, 0.15), transparent 25%);
-            background-attachment: fixed;
-            line-height: 1.6;
-        }
+    :root {
+      color-scheme: dark;
+      --bg: #070a12;
+      --panel: rgba(18, 24, 38, 0.72);
+      --panel-strong: rgba(24, 32, 50, 0.9);
+      --line: rgba(148, 163, 184, 0.22);
+      --text: #edf2f7;
+      --muted: #9aa8bd;
+      --blue: #52a8ff;
+      --cyan: #34d4d8;
+      --green: #3ee089;
+      --yellow: #f6c44f;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+    }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
+    * {
+      box-sizing: border-box;
+    }
 
-        header {
-            text-align: center;
-            margin-bottom: 60px;
-            animation: fadeInDown 1s ease-out;
-        }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 16% 12%, rgba(82, 168, 255, 0.22), transparent 30%),
+        radial-gradient(circle at 88% 18%, rgba(62, 224, 137, 0.14), transparent 28%),
+        linear-gradient(180deg, #080b14 0%, #0c111d 48%, #070a12 100%);
+      min-height: 100vh;
+      letter-spacing: 0;
+    }
 
-        h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #58a6ff, #d2a8ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    a {
+      color: inherit;
+    }
 
-        p.subtitle {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 30px auto;
-        }
+    .shell {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
 
-        .cta-button {
-            display: inline-block;
-            background-color: var(--accent);
-            color: #000;
-            text-decoration: none;
-            padding: 14px 28px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 20px rgba(88, 166, 255, 0.4);
-        }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+    }
 
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 30px rgba(88, 166, 255, 0.6);
-            background-color: #79b8ff;
-        }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+    }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
+    .mark {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(82, 168, 255, 0.42);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(82, 168, 255, 0.26), rgba(62, 224, 137, 0.12));
+      box-shadow: 0 0 28px rgba(82, 168, 255, 0.2);
+      font-family: "JetBrains Mono", monospace;
+    }
 
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 25px;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-        }
+    .link-button,
+    .primary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid var(--line);
+      white-space: nowrap;
+    }
 
-        .card h3 {
-            margin-top: 0;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    .primary-button {
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      color: #06111f;
+      border: 0;
+      box-shadow: 0 16px 40px rgba(52, 212, 216, 0.2);
+    }
 
-        .tag {
-            background: rgba(88, 166, 255, 0.1);
-            color: var(--accent);
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            border: 1px solid rgba(88, 166, 255, 0.3);
-        }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+      gap: 36px;
+      align-items: center;
+      padding: 64px 0 36px;
+    }
 
-        pre {
-            background: rgba(0,0,0,0.5);
-            padding: 15px;
-            border-radius: 8px;
-            overflow-x: auto;
-            font-size: 0.9rem;
-            color: #a5d6ff;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--cyan);
+      border: 1px solid rgba(52, 212, 216, 0.28);
+      background: rgba(52, 212, 216, 0.08);
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
 
-        footer {
-            margin-top: 80px;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
-        }
+    h1 {
+      margin: 0;
+      font-size: clamp(44px, 7vw, 82px);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
 
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    .hero p {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 680px;
+      margin: 22px 0 0;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .metric,
+    .card,
+    .console {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .metric {
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 2px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .console {
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .console-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--muted);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+    }
+
+    pre {
+      margin: 0;
+      padding: 20px;
+      overflow: auto;
+      color: #cde7ff;
+      font: 13px/1.7 "JetBrains Mono", monospace;
+    }
+
+    .section {
+      padding: 34px 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 30px;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      border-radius: 8px;
+      padding: 22px;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0;
+      flex: 1;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      width: max-content;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(82, 168, 255, 0.1);
+      border: 1px solid rgba(82, 168, 255, 0.28);
+      color: #9cd0ff;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .endpoint {
+      padding: 12px;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.28);
+      color: #d7f7ff;
+      font: 13px "JetBrains Mono", monospace;
+      overflow-wrap: anywhere;
+    }
+
+    .band {
+      margin: 34px 0 60px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-strong);
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .band h2 {
+      margin: 0 0 8px;
+    }
+
+    .band p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      padding: 24px 0 38px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 860px) {
+      .hero,
+      .grid,
+      .band {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        align-items: flex-start;
+        gap: 18px;
+        flex-direction: column;
+      }
+
+      .section-title {
+        display: block;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="shell">
+    <nav class="nav" aria-label="Main">
+      <div class="brand">
+        <span class="mark">KR</span>
+        <span>Korean Market API</span>
+      </div>
+      <div class="nav-actions">
+        <a class="link-button" href="api/openapi.json">OpenAPI</a>
+        <a class="primary-button" href="https://rapidapi.com/GERMANKBR/api/korean-trends-api1" target="_blank" rel="noreferrer">Subscribe</a>
+      </div>
+    </nav>
 
-<div class="container">
-    <header>
-        <h1>Korean Market & Crypto API</h1>
-        <p class="subtitle">Real-time data engine providing Korean search trends, FX rates, and live Crypto Kimchi Premium (Upbit vs Binance).</p>
-        <a href="https://rapidapi.com/GERMANKBR/api/korean-trends-api1" target="_blank" class="cta-button">Subscribe on RapidAPI</a>
-    </header>
-
-    <div class="grid">
-        <!-- Endpoint 1 -->
-        <div class="card">
-            <h3>📈 Korean Trends <span class="tag">GET</span></h3>
-            <p>Live trending search topics from South Korea, updated hourly.</p>
-            <pre>GET /api/v1/trends.json</pre>
-            <p style="font-size: 0.85rem; color: var(--text-muted);">Perfect for marketing dashboards, cultural analysis, and SEO tools targeting the KR market.</p>
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Hourly KR market intelligence for developers</div>
+          <h1>Korean trends, FX, and Kimchi Premium in one API.</h1>
+          <p>Ship Korea-aware dashboards, trading tools, SEO monitors, and market research products without maintaining scrapers or exchange integrations.</p>
+          <div class="cta-row">
+            <a class="primary-button" href="https://rapidapi.com/GERMANKBR/api/korean-trends-api1" target="_blank" rel="noreferrer">Get API Key</a>
+            <a class="link-button" href="api/v1/crypto.json">View Crypto JSON</a>
+            <a class="link-button" href="api/v1/meta.json">View Metadata</a>
+          </div>
+          <div class="metrics">
+            <div class="metric"><strong>4</strong><span>Production endpoints</span></div>
+            <div class="metric"><strong>Hourly</strong><span>Automated refresh</span></div>
+            <div class="metric"><strong>RapidAPI</strong><span>Billing and rate limits</span></div>
+          </div>
         </div>
 
-        <!-- Endpoint 2 -->
-        <div class="card">
-            <h3>🪙 Kimchi Premium <span class="tag">GET</span></h3>
-            <p>Arbitrage spread between Upbit (KRW) and Binance (USDT).</p>
-            <pre>GET /api/v1/crypto.json</pre>
-            <p style="font-size: 0.85rem; color: var(--text-muted);">Essential for crypto trading bots. Tracks BTC, ETH, and SOL price premiums in real-time.</p>
-        </div>
+        <aside class="console" aria-label="Sample request">
+          <div class="console-head">
+            <span>GET /api/v1/crypto.json</span>
+            <span>RapidAPI</span>
+          </div>
+          <pre>{
+  "symbol": "BTC",
+  "upbit_price_krw": 114209000,
+  "binance_price_usdt": 76878.24,
+  "premium_percentage": -0.76,
+  "direction": "kimchi_discount"
+}</pre>
+        </aside>
+      </section>
 
-        <!-- Endpoint 3 -->
-        <div class="card">
-            <h3>💱 FX Rates <span class="tag">GET</span></h3>
-            <p>Korean Won (KRW) exchange rates vs USD, EUR, JPY, CNY.</p>
-            <pre>GET /api/v1/rates.json</pre>
-            <p style="font-size: 0.85rem; color: var(--text-muted);">Accurate forex data for financial apps and e-commerce platforms.</p>
+      <section class="section">
+        <div class="section-title">
+          <h2>Data Feeds</h2>
+          <p>Each endpoint is designed for direct ingestion by bots, dashboards, analytics jobs, and low-code automation tools.</p>
         </div>
-    </div>
+        <div class="grid">
+          <article class="card">
+            <span class="pill">Trends</span>
+            <h3>Korean Search Trends</h3>
+            <p>Current South Korea search topics with traffic labels and related news links for SEO, content, and cultural monitoring.</p>
+            <div class="endpoint">GET /api/v1/trends.json</div>
+          </article>
+          <article class="card">
+            <span class="pill">Crypto</span>
+            <h3>Kimchi Premium</h3>
+            <p>Upbit KRW versus Binance USDT spread tracking for BTC, ETH, SOL, XRP, and DOGE.</p>
+            <div class="endpoint">GET /api/v1/crypto.json</div>
+          </article>
+          <article class="card">
+            <span class="pill">FX</span>
+            <h3>KRW Exchange Rates</h3>
+            <p>KRW conversion rates against major currencies for financial apps, commerce tools, and reporting workflows.</p>
+            <div class="endpoint">GET /api/v1/rates.json</div>
+          </article>
+        </div>
+      </section>
 
-    <div style="margin-top: 60px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 40px; text-align: center;">
-        <h2 style="color: #fff; margin-top: 0;">Built for Developers</h2>
-        <p style="max-width: 600px; margin: 0 auto 30px auto; color: var(--text-muted);">
-            Fully managed via RapidAPI. Enjoy seamless integration, automated billing, and reliable 99.9% uptime. 
-            Free tier available for testing.
-        </p>
-        <a href="https://rapidapi.com/GERMANKBR/api/korean-trends-api1" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 5px;">
-            View Documentation & Pricing <span>→</span>
-        </a>
-    </div>
+      <section class="band">
+        <div>
+          <h2>Built for paid API distribution</h2>
+          <p>GitHub Actions handles data collection, GitHub Pages serves a fast static origin, and RapidAPI handles keys, subscriptions, quotas, and billing.</p>
+        </div>
+        <a class="primary-button" href="https://rapidapi.com/GERMANKBR/api/korean-trends-api1" target="_blank" rel="noreferrer">View Pricing</a>
+      </section>
+    </main>
 
     <footer>
-        <p>Data updated hourly via automated GitHub Actions pipeline. Not financial advice.</p>
-        <p>&copy; 2026 GERMANKBR Open Data. Hosted on GitHub Pages.</p>
+      <div>Data is informational only and not financial advice. Last-mile access, auth, billing, and quotas are managed through RapidAPI.</div>
     </footer>
-</div>
-
+  </div>
 </body>
 </html>

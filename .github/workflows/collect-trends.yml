@@ -1,14 +1,16 @@
-name: 📊 Collect Korean Trends Data
+name: Collect Korean Market Data
 
 on:
   schedule:
-    # Run every hour at minute 15
-    - cron: '15 * * * *'
+    - cron: "15 * * * *"
   workflow_dispatch:
-    # Allow manual trigger from GitHub UI
 
 permissions:
   contents: write
+
+concurrency:
+  group: collect-korean-market-data
+  cancel-in-progress: true
 
 jobs:
   collect-and-deploy:
@@ -20,23 +22,35 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Run data collection
         run: node scripts/collect-data.js
 
-      - name: Commit and push updated data
+      - name: Publish discovery surfaces
+        run: node scripts/publish-discovery.js
+
+      - name: Validate generated files
         run: |
-          git config user.name "Korean Trends Bot"
-          git config user.email "trends-bot@noreply.github.com"
-          git add docs/api/v1/
-          
-          # Only commit if there are actual changes
+          node -e "const fs = require('fs'); for (const f of ['docs/api/v1/trends.json','docs/api/v1/rates.json','docs/api/v1/crypto.json','docs/api/v1/meta.json','docs/api/openapi.json','docs/api/catalog.json','docs/feed.json','docs/.well-known/ai-plugin.json','docs/.well-known/ai-manifest.json','docs/.well-known/agent-discovery.json']) { JSON.parse(fs.readFileSync(f, 'utf8')); console.log('valid', f); } for (const f of ['docs/llms.txt','docs/llms-full.txt','docs/feed.xml','docs/atom.xml','docs/sitemap.xml','docs/robots.txt','docs/indexnow-key.txt','docs/icon.svg']) { if (!fs.existsSync(f) || !fs.readFileSync(f, 'utf8').trim()) throw new Error('missing ' + f); console.log('present', f); }"
+
+      - name: Commit and push updated data
+        id: commit
+        run: |
+          git config user.name "Korean Market Data Bot"
+          git config user.email "market-data-bot@noreply.github.com"
+          git add docs/api/v1/ docs/api/catalog.json docs/llms.txt docs/llms-full.txt docs/feed.json docs/feed.xml docs/atom.xml docs/.well-known/ docs/indexnow-key.txt docs/icon.svg docs/robots.txt docs/sitemap.xml
+
           if git diff --quiet --cached; then
-            echo "ℹ️ No data changes detected, skipping commit."
+            echo "No data changes detected."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
-            git commit -m "📊 Update Korean trends data [$TIMESTAMP]"
+            git commit -m "data: update Korean market feeds [$TIMESTAMP]"
             git push
-            echo "✅ Data pushed successfully!"
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Notify search indexes
+        if: steps.commit.outputs.changed == 'true'
+        run: node scripts/ping-discovery.js

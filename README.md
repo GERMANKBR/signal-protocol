@@ -1,64 +1,96 @@
-# 🇰🇷 Korean Market & Crypto Trends API
+# Korean Market & Crypto Trends API
 
-[![RapidAPI](https://img.shields.io/badge/Available_on-RapidAPI-blue?logo=rapid&logoColor=white&style=for-the-badge)](https://rapidapi.com/GERMANKBR/api/korean-trends-api1)
-[![Data Update](https://img.shields.io/badge/Data_Update-Hourly-success?style=for-the-badge)]()
-[![License](https://img.shields.io/badge/License-MIT-gray?style=for-the-badge)]()
+Production-ready static data API for South Korea market intelligence, monetized through RapidAPI.
 
-A robust, fully automated API providing real-time data for the South Korean market. Designed for crypto traders, marketers, and financial analysts who need reliable, hourly-updated data without maintaining complex scrapers.
+[RapidAPI Listing](https://rapidapi.com/GERMANKBR/api/korean-trends-api1) | [Live Landing Page](https://germankbr.github.io/signal-protocol/) | [OpenAPI Schema](https://germankbr.github.io/signal-protocol/api/openapi.json) | [AI Context](https://germankbr.github.io/signal-protocol/llms.txt)
 
-## 🌟 Available Data Feeds
+## What It Provides
 
-1. **📈 Google Trends (Korea)**: Top 10-20 real-time trending search topics and news inside South Korea.
-2. **🪙 Kimchi Premium (Crypto)**: Live arbitrage spread tracking between Upbit (KRW) and Binance (USDT) for major assets like BTC, ETH, and SOL.
-3. **💱 FX Rates (KRW)**: Real-time Korean Won exchange rates against major global currencies (USD, EUR, JPY, CNY).
+- Korean search trends: hourly South Korea Google Trends topics with traffic labels and related news.
+- Kimchi Premium: Upbit KRW versus Binance USDT spreads for BTC, ETH, SOL, XRP, and DOGE.
+- KRW FX rates: KRW conversion rates for USD, EUR, JPY, CNY, GBP, AUD, CAD, CHF, SGD, and HKD.
+- API metadata: endpoint catalog, source health, update cadence, and RapidAPI pricing entry point.
 
-## 🚀 How to Use
-
-The API is fully managed and monetized via **RapidAPI**. We offer a **Generous Free Tier** for testing and building MVPs, along with Pro plans for production use.
-
-👉 **[Subscribe and get your API Key on RapidAPI](https://rapidapi.com/GERMANKBR/api/korean-trends-api1)**
-
-### Example Request (Kimchi Premium)
+## RapidAPI Usage
 
 ```bash
 curl --request GET \
-	--url https://korean-trends-api1.p.rapidapi.com/api/v1/crypto.json \
-	--header 'x-rapidapi-host: korean-trends-api1.p.rapidapi.com' \
-	--header 'x-rapidapi-key: YOUR_RAPID_API_KEY'
+  --url https://korean-trends-api1.p.rapidapi.com/api/v1/crypto.json \
+  --header 'x-rapidapi-host: korean-trends-api1.p.rapidapi.com' \
+  --header 'x-rapidapi-key: YOUR_RAPIDAPI_KEY'
 ```
 
-### Example Response (`/api/v1/crypto.json`)
+## Endpoints
+
+| Endpoint | Description | Update Cadence |
+| --- | --- | --- |
+| `/api/v1/trends.json` | Korean search trend topics, traffic labels, and related news | Hourly |
+| `/api/v1/crypto.json` | Kimchi Premium spreads between Upbit and Binance | Hourly |
+| `/api/v1/rates.json` | KRW exchange rates against major currencies | Hourly |
+| `/api/v1/meta.json` | API metadata and source status | Hourly |
+
+## Example: Kimchi Premium
 
 ```json
 {
   "status": "ok",
   "endpoint": "/api/v1/crypto.json",
-  "description": "Real-time Kimchi Premium (Upbit vs Binance arbitrage spread)",
-  "updated_at": "2026-05-18T06:00:00.000Z",
   "data": {
-    "usd_krw_rate": 1350.25,
+    "usd_krw_rate": 1497.01,
     "average_premium_percentage": -0.75,
     "assets": [
       {
         "symbol": "BTC",
-        "upbit_price_krw": 91500000,
-        "binance_price_usd": 68250.5,
-        "binance_price_krw_converted": 92155237,
-        "premium_krw": -655237,
-        "premium_percentage": -0.71
+        "upbit_price_krw": 114209000,
+        "binance_price_usdt": 76878.24,
+        "binance_price_krw_converted": 115087494,
+        "premium_krw": -878494,
+        "premium_percentage": -0.76,
+        "direction": "kimchi_discount"
       }
     ]
   }
 }
 ```
 
-## 🏗️ Architecture (Zero-Cost Engine)
+## Architecture
 
-This project runs on a 100% serverless, zero-cost architecture:
-- **Compute**: GitHub Actions triggers `scripts/collect-data.js` every hour to scrape and calculate data.
-- **Storage/Hosting**: The static JSON files are committed to the `docs/api/v1/` directory and served globally at lightning speed via GitHub Pages.
-- **Gateway**: RapidAPI acts as the commercial gateway, handling authentication, rate-limiting, and billing.
+This repository uses a low-maintenance static API architecture:
 
-## 📄 License
+- Collection: GitHub Actions runs `scripts/collect-data.js` every hour.
+- Discovery: `scripts/publish-discovery.js` regenerates `llms.txt`, feeds, sitemap, and AI manifests from the latest snapshot.
+- Notification: `scripts/ping-discovery.js` notifies IndexNow-compatible search engines when committed data changes.
+- Storage: generated JSON is committed under `docs/api/v1/`.
+- Delivery: GitHub Pages serves the public origin.
+- Monetization: RapidAPI handles API keys, billing, rate limits, and plan enforcement.
 
-This project is open-source under the MIT License. The data provided is for informational purposes only and does not constitute financial advice.
+## Automatic Distribution
+
+The repo now ships no-touch discovery surfaces that are updated by GitHub Actions, so the project can be found without manual posting or RapidAPI dashboard edits:
+
+| Surface | URL | Purpose |
+| --- | --- | --- |
+| LLM context | [`/llms.txt`](https://germankbr.github.io/signal-protocol/llms.txt) | Compact AI-readable product summary and endpoint links |
+| Full LLM context | [`/llms-full.txt`](https://germankbr.github.io/signal-protocol/llms-full.txt) | Expanded snapshot for AI agents and research tools |
+| API catalog | [`/api/catalog.json`](https://germankbr.github.io/signal-protocol/api/catalog.json) | Machine-readable product, endpoint, feed, and use-case metadata |
+| JSON Feed | [`/feed.json`](https://germankbr.github.io/signal-protocol/feed.json) | Feed-reader and automation friendly updates |
+| RSS | [`/feed.xml`](https://germankbr.github.io/signal-protocol/feed.xml) | Standard crawler/feed discovery |
+| Atom | [`/atom.xml`](https://germankbr.github.io/signal-protocol/atom.xml) | Standard crawler/feed discovery |
+| AI manifest | [`/.well-known/ai-manifest.json`](https://germankbr.github.io/signal-protocol/.well-known/ai-manifest.json) | Well-known metadata for agents and crawlers |
+
+This improves passive discovery. It does not guarantee traffic or sales by itself; conversion still depends on demand, pricing, and whether developers choose the RapidAPI listing for keyed access.
+
+## Data Sources
+
+- Google Trends RSS for South Korea search topics.
+- Open ER API for foreign exchange rates.
+- Upbit public ticker for KRW crypto prices.
+- Binance public ticker for offshore USDT crypto prices.
+
+## Repository Scope
+
+The repository is now scoped to the Korean Market & Crypto Trends API only. The active codebase and Pages surface contain only the RapidAPI product, collector, schema, and generated JSON feeds.
+
+## Disclaimer
+
+The API is provided for informational and developer use. It is not financial advice, trading advice, or a guarantee of exchange execution conditions.

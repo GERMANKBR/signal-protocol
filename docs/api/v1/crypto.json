@@ -1,36 +1,99 @@
 {
   "status": "ok",
+  "api": "Korean Market & Crypto Trends API",
   "endpoint": "/api/v1/crypto.json",
-  "description": "Real-time Kimchi Premium (Upbit vs Binance arbitrage spread)",
-  "updated_at": "2026-05-18T06:46:20.136Z",
+  "description": "Kimchi Premium monitor comparing Upbit KRW markets with Binance USDT markets.",
+  "updated_at": "2026-05-18T07:13:32.179Z",
+  "update_frequency": "hourly",
   "data": {
-    "usd_krw_rate": 1497.01,
+    "quote_currency": "KRW",
+    "offshore_pair_currency": "USDT",
+    "conversion_basis": "USD/KRW is used as a USDT/KRW proxy.",
+    "usd_krw_rate": 1497.53,
+    "tracked_assets": 5,
+    "average_premium_percentage": -0.78,
+    "highest_premium": {
+      "symbol": "SOL",
+      "premium_percentage": -0.69,
+      "direction": "kimchi_discount"
+    },
+    "lowest_premium": {
+      "symbol": "DOGE",
+      "premium_percentage": -0.86,
+      "direction": "kimchi_discount"
+    },
     "assets": [
       {
         "symbol": "BTC",
-        "upbit_price_krw": 114209000,
-        "binance_price_usd": 76878.24,
-        "binance_price_krw_converted": 115087494,
-        "premium_krw": -878494,
-        "premium_percentage": -0.76
+        "name": "Bitcoin",
+        "upbit_market": "KRW-BTC",
+        "binance_symbol": "BTCUSDT",
+        "upbit_price_krw": 114321000,
+        "binance_price_usdt": 76947.11,
+        "binance_price_krw_converted": 115230605.64,
+        "premium_krw": -909605.64,
+        "premium_percentage": -0.79,
+        "absolute_premium_percentage": 0.79,
+        "direction": "kimchi_discount",
+        "upbit_trade_timestamp": "2026-05-18T07:13:30.910Z"
       },
       {
         "symbol": "ETH",
-        "upbit_price_krw": 3146000,
-        "binance_price_usd": 2118.29,
-        "binance_price_krw_converted": 3171101,
-        "premium_krw": -25101,
-        "premium_percentage": -0.79
+        "name": "Ethereum",
+        "upbit_market": "KRW-ETH",
+        "binance_symbol": "ETHUSDT",
+        "upbit_price_krw": 3145000,
+        "binance_price_usdt": 2117.6,
+        "binance_price_krw_converted": 3171169.53,
+        "premium_krw": -26169.53,
+        "premium_percentage": -0.83,
+        "absolute_premium_percentage": 0.83,
+        "direction": "kimchi_discount",
+        "upbit_trade_timestamp": "2026-05-18T07:13:30.241Z"
       },
       {
         "symbol": "SOL",
-        "upbit_price_krw": 125900,
-        "binance_price_usd": 84.7,
-        "binance_price_krw_converted": 126797,
-        "premium_krw": -897,
-        "premium_percentage": -0.71
+        "name": "Solana",
+        "upbit_market": "KRW-SOL",
+        "binance_symbol": "SOLUSDT",
+        "upbit_price_krw": 126000,
+        "binance_price_usdt": 84.72,
+        "binance_price_krw_converted": 126870.74,
+        "premium_krw": -870.74,
+        "premium_percentage": -0.69,
+        "absolute_premium_percentage": 0.69,
+        "direction": "kimchi_discount",
+        "upbit_trade_timestamp": "2026-05-18T07:13:00.343Z"
+      },
+      {
+        "symbol": "XRP",
+        "name": "XRP",
+        "upbit_market": "KRW-XRP",
+        "binance_symbol": "XRPUSDT",
+        "upbit_price_krw": 2060,
+        "binance_price_usdt": 1.3858,
+        "binance_price_krw_converted": 2075.28,
+        "premium_krw": -15.28,
+        "premium_percentage": -0.74,
+        "absolute_premium_percentage": 0.74,
+        "direction": "kimchi_discount",
+        "upbit_trade_timestamp": "2026-05-18T07:13:32.865Z"
+      },
+      {
+        "symbol": "DOGE",
+        "name": "Dogecoin",
+        "upbit_market": "KRW-DOGE",
+        "binance_symbol": "DOGEUSDT",
+        "upbit_price_krw": 155,
+        "binance_price_usdt": 0.1044,
+        "binance_price_krw_converted": 156.34,
+        "premium_krw": -1.34,
+        "premium_percentage": -0.86,
+        "absolute_premium_percentage": 0.86,
+        "direction": "kimchi_discount",
+        "upbit_trade_timestamp": "2026-05-18T07:13:33.799Z"
       }
-    ],
-    "average_premium_percentage": -0.75
-  }
+    ]
+  },
+  "disclaimer": "Informational data only. Not financial advice."
 }

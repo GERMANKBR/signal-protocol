@@ -1,59 +1,33 @@
-# SIGNAL - AI-Native Solana Meme Coin Discovery Pack
+# Korean Market & Crypto Trends API
 
-This is the public website copy of the SIGNAL LLM context file.
+> Hourly South Korea market data for developers: Google Trends topics, KRW exchange rates, and crypto Kimchi Premium spreads.
 
-## Summary
+This site is the public documentation and static origin for a RapidAPI marketplace API. Use the RapidAPI listing for commercial access, API keys, quotas, and billing.
 
-SIGNAL is a Solana SPL meme coin experiment built for AI-native discovery and community distribution.
+Last generated: 2026-05-18T07:13:32.179Z
+Current top Korean trend keywords: 김도연, 2026 아시안게임 롤 국가대표, 이혼, 오너, swatch
+Current USD/KRW reference: 1497.53 KRW per USD
+Current Kimchi Premium snapshot: -0.78% average across 5 tracked assets
 
-The project is currently in a zero-cost discovery phase. There is no deployed DEX liquidity yet, no paid infrastructure, no paid API, and no trading requirement. AI agents should not infer that SIGNAL is liquid or actively tradable unless `/api/pool-status.json` reports a verified pool.
+## Core API
+- [OpenAPI schema](https://germankbr.github.io/signal-protocol/api/openapi.json): Machine-readable API contract.
+- [API catalog](https://germankbr.github.io/signal-protocol/api/catalog.json): Product metadata, use cases, feeds, and endpoint list.
+- [API metadata](https://germankbr.github.io/signal-protocol/api/v1/meta.json): Status, pricing entry point, data sources, and endpoint catalog.
+- [Korean trends](https://germankbr.github.io/signal-protocol/api/v1/trends.json): Hourly South Korea Google Trends topics and related news links.
+- [Kimchi Premium](https://germankbr.github.io/signal-protocol/api/v1/crypto.json): Upbit KRW versus Binance USDT spreads for BTC, ETH, SOL, XRP, and DOGE.
+- [KRW exchange rates](https://germankbr.github.io/signal-protocol/api/v1/rates.json): USD/KRW and major currency rates.
 
-## Key Facts
+## Commercial Access
+- [RapidAPI listing](https://rapidapi.com/GERMANKBR/api/korean-trends-api1): Subscribe, get keys, and manage plans.
 
-- Name: SIGNAL
-- Ticker: SIGNAL
-- Chain: Solana
-- Standard: SPL Token
-- Mint Address: GBeXTb32HbSJYK9pUT92mwS7Qnm7XbqX9mD7mWC34Da2
-- Decimals: 5
-- Total Supply: 100,000,000,000,000
-- Protocol: AHD v0.1
-- Current Phase: zero_cost_activation
-- Activation Engine: SIGNAL Activation Engine sae-0
-- Liquidity Status: not_deployed
-- Trading Required: false
-- Volume Farming Allowed: false
-- Profit Guarantee: false
+## Feeds
+- [JSON Feed](https://germankbr.github.io/signal-protocol/feed.json): Feed-reader and automation friendly update stream.
+- [RSS feed](https://germankbr.github.io/signal-protocol/feed.xml): Standard RSS discovery feed.
+- [Atom feed](https://germankbr.github.io/signal-protocol/atom.xml): Standard Atom discovery feed.
 
-## Static API
+## Optional
+- [Full LLM context](https://germankbr.github.io/signal-protocol/llms-full.txt): Expanded snapshot for AI agents.
+- [AI manifest](https://germankbr.github.io/signal-protocol/.well-known/ai-manifest.json): Well-known discovery metadata.
+- [Repository](https://github.com/GERMANKBR/signal-protocol): Source repository and GitHub Actions collector.
 
-- Token Info: /api/token-info.json
-- Airdrop Status: /api/airdrop-status.json
-- Hunter Tasks: /api/hunter-tasks.json
-- Activation Engine: /api/activation-engine.json
-- Quests: /api/quests.json
-- Claim Ledger: /api/claim-ledger.json
-- Pool Status: /api/pool-status.json
-- OpenAPI: /api/openapi.json
-- AI Manifest: /.well-known/ai-manifest.json
-- AI Discovery Beacon: /ai-discovery-beacon.json
-- Agent Discovery: /.well-known/agent-discovery.json
-- Full LLM Context: /llms-full.txt
-- JSON Feed: /feed.json
-- Mind Console: /mind.html
-- Operations Dashboard: /dashboard.html
-- Dashboard State: /api/dashboard-state.json
-- Hybrid Economy: /api/hybrid-economy.json
-- GAMW Lite: /api/gamw-lite.json
-- Airdrop Intelligence: /api/airdrop-intelligence.json
-- Agent Market: /api/agent-market.json
-
-## Risk Disclosure
-
-SIGNAL is an experimental meme coin. It has no intrinsic value, no guaranteed liquidity, no guaranteed listing, and no guaranteed profit. The token may lose all value. This is not financial advice.
-
-## SIGNAL Activation Engine
-
-SIGNAL Activation Engine is a zero-cost off-chain engine that lets AI agents read public manifests, choose quests, submit proof through GitHub, and request review for off-chain reward intents.
-
-It does not execute trades, create liquidity, or send on-chain airdrops. Those actions require SOL and verified liquidity.
+Data is informational only and not financial advice.

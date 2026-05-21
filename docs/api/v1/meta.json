@@ -1,37 +1,88 @@
 {
   "api_name": "Korean Market & Crypto Trends API",
-  "version": "2.0.0",
-  "description": "Real-time Korean trending search topics, FX rates, and Crypto Kimchi Premium.",
+  "version": "2.1.0",
+  "status": "ok",
+  "description": "Hourly South Korea market data for developers: search trends, KRW FX rates, and crypto Kimchi Premium.",
   "base_url": "https://germankbr.github.io/signal-protocol",
+  "rapidapi_url": "https://rapidapi.com/GERMANKBR/api/korean-trends-api1",
   "endpoints": [
     {
       "path": "/api/v1/trends.json",
       "method": "GET",
-      "description": "Google Trends South Korea"
+      "description": "South Korea Google Trends topics with traffic labels and related news.",
+      "update_frequency": "hourly",
+      "primary_fields": [
+        "rank",
+        "keyword",
+        "approximate_traffic",
+        "approximate_traffic_value",
+        "related_news"
+      ]
     },
     {
       "path": "/api/v1/rates.json",
       "method": "GET",
-      "description": "KRW Exchange Rates"
+      "description": "KRW exchange rates for USD, EUR, JPY, CNY, GBP, AUD, CAD, CHF, SGD, and HKD.",
+      "update_frequency": "hourly",
+      "primary_fields": [
+        "krw_per_usd",
+        "krw_per_unit",
+        "source_updated_at"
+      ]
     },
     {
       "path": "/api/v1/crypto.json",
       "method": "GET",
-      "description": "Crypto Kimchi Premium (Upbit vs Binance)"
+      "description": "Kimchi Premium for BTC, ETH, SOL, XRP, and DOGE using Upbit and Binance public prices.",
+      "update_frequency": "hourly",
+      "primary_fields": [
+        "usd_krw_rate",
+        "average_premium_percentage",
+        "assets"
+      ]
     },
     {
       "path": "/api/v1/meta.json",
       "method": "GET",
-      "description": "API Metadata"
+      "description": "API metadata, source status, pricing entry point, and endpoint catalog."
+    }
+  ],
+  "data_sources": [
+    {
+      "name": "Google Trends RSS",
+      "region": "KR",
+      "use": "search trends"
+    },
+    {
+      "name": "Open ER API",
+      "use": "foreign exchange rates"
+    },
+    {
+      "name": "Upbit public ticker",
+      "use": "KRW crypto prices"
+    },
+    {
+      "name": "Binance public ticker",
+      "use": "USDT crypto prices"
     }
   ],
   "pricing": {
     "marketplace": "RapidAPI",
-    "plans": [
-      "Free (1.5k/mo)",
-      "Pro ($9.99/mo)",
-      "Ultra ($29.99/mo)"
-    ]
+    "free_tier": "1,500 requests/month",
+    "pro_tier": "$9.99/month",
+    "ultra_tier": "$29.99/month"
   },
+<<<<<<< Updated upstream
   "last_collection_run": "2026-05-21T13:27:38.107Z"
 }
+=======
+  "source_status": {
+    "trends": "ok",
+    "rates": "ok",
+    "crypto": "ok"
+  },
+  "last_collection_run": "2026-05-18T07:13:32.179Z",
+  "repository": "https://github.com/GERMANKBR/signal-protocol",
+  "disclaimer": "Informational data only. Not financial advice."
+}
+>>>>>>> Stashed changes
