@@ -3,12 +3,11 @@
   "description": "Hourly South Korea market data for developers: Google Trends topics, KRW exchange rates, and crypto Kimchi Premium spreads.",
   "generated_at": "2026-05-22T01:53:27.755Z",
   "homepage_url": "https://germankbr.github.io/signal-protocol/",
+  "repository_url": "https://github.com/GERMANKBR/signal-protocol",
+  "rapidapi_url": "https://rapidapi.com/GERMANKBR/api/korean-trends-api1",
   "openapi_url": "https://germankbr.github.io/signal-protocol/api/openapi.json",
-  "catalog_url": "https://germankbr.github.io/signal-protocol/api/catalog.json",
   "llms_url": "https://germankbr.github.io/signal-protocol/llms.txt",
   "llms_full_url": "https://germankbr.github.io/signal-protocol/llms-full.txt",
-  "rapidapi_url": "https://rapidapi.com/GERMANKBR/api/korean-trends-api1",
-  "repository_url": "https://github.com/GERMANKBR/signal-protocol",
   "feeds": {
     "json": "https://germankbr.github.io/signal-protocol/feed.json",
     "rss": "https://germankbr.github.io/signal-protocol/feed.xml",
@@ -70,40 +69,46 @@
       "url": "https://germankbr.github.io/signal-protocol/api/v1/meta.json"
     }
   ],
-  "data_sources": [
-    {
-      "name": "Google Trends RSS",
-      "region": "KR",
-      "use": "search trends"
+  "example_use_cases": [
+    "Korean trend monitoring dashboards",
+    "Crypto arbitrage and premium alerts",
+    "Korean market sentiment research",
+    "KRW-denominated trading bots",
+    "Newsroom and social listening workflows"
+  ],
+  "latest_snapshot": {
+    "top_trends": [
+      "경복궁",
+      "삼성증권",
+      "더불어민주당",
+      "문화체육관광부",
+      "국립중앙박물관"
+    ],
+    "krw_per_usd": 1504.94,
+    "kimchi_premium": {
+      "average_premium_percentage": -1.31,
+      "tracked_assets": 5,
+      "highest_premium": {
+        "symbol": "XRP",
+        "premium_percentage": -1.22,
+        "direction": "kimchi_discount"
+      },
+      "lowest_premium": {
+        "symbol": "DOGE",
+        "premium_percentage": -1.51,
+        "direction": "kimchi_discount"
+      }
     },
-    {
-      "name": "Open ER API",
-      "use": "foreign exchange rates"
-    },
-    {
-      "name": "Upbit public ticker",
-      "use": "KRW crypto prices"
-    },
-    {
-      "name": "Binance public ticker",
-      "use": "USDT crypto prices"
+    "source_status": {
+      "trends": "ok",
+      "rates": "ok",
+      "crypto": "ok"
     }
-  ],
-  "pricing": {
-    "marketplace": "RapidAPI",
-    "free_tier": "1,500 requests/month",
-    "pro_tier": "$9.99/month",
-    "ultra_tier": "$29.99/month"
   },
-  "update_frequency": "hourly",
-  "audience": [
-    "API developers",
-    "trading bot builders",
-    "market intelligence dashboards",
-    "Korea-focused data products"
-  ],
-  "restrictions": [
-    "Informational data only",
-    "Not financial advice"
-  ]
+  "commercial_access": {
+    "marketplace": "RapidAPI",
+    "url": "https://rapidapi.com/GERMANKBR/api/korean-trends-api1",
+    "note": "RapidAPI manages API keys, subscriptions, quotas, and billing."
+  },
+  "disclaimer": "Informational data only. Not financial advice."
 }
