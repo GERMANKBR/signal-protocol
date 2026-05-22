@@ -80,16 +80,17 @@
 
     :root {
       color-scheme: dark;
-      --bg: #070a12;
-      --panel: rgba(18, 24, 38, 0.72);
-      --panel-strong: rgba(24, 32, 50, 0.9);
+      --bg: #090d0b;
+      --panel: rgba(18, 24, 22, 0.78);
+      --panel-strong: rgba(25, 28, 26, 0.94);
       --line: rgba(148, 163, 184, 0.22);
       --text: #edf2f7;
-      --muted: #9aa8bd;
-      --blue: #52a8ff;
-      --cyan: #34d4d8;
+      --muted: #a4aea9;
+      --blue: #7bb4ff;
+      --cyan: #36d8c4;
       --green: #3ee089;
-      --yellow: #f6c44f;
+      --yellow: #f5b84b;
+      --red: #ff7a90;
       --shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
     }
 
@@ -101,10 +102,7 @@
       margin: 0;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(circle at 16% 12%, rgba(82, 168, 255, 0.22), transparent 30%),
-        radial-gradient(circle at 88% 18%, rgba(62, 224, 137, 0.14), transparent 28%),
-        linear-gradient(180deg, #080b14 0%, #0c111d 48%, #070a12 100%);
+      background: linear-gradient(180deg, #09100e 0%, #101016 46%, #0b0d10 100%);
       min-height: 100vh;
       letter-spacing: 0;
     }
@@ -151,7 +149,8 @@
     }
 
     .link-button,
-    .primary-button {
+    .primary-button,
+    .segment-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -162,6 +161,13 @@
       font-weight: 700;
       border: 1px solid var(--line);
       white-space: nowrap;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .link-button {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
     }
 
     .primary-button {
@@ -169,6 +175,39 @@
       color: #06111f;
       border: 0;
       box-shadow: 0 16px 40px rgba(52, 212, 216, 0.2);
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 36px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.03);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .status-pill::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--yellow);
+      box-shadow: 0 0 0 4px rgba(245, 184, 75, 0.12);
+    }
+
+    .status-pill.ok::before {
+      background: var(--green);
+      box-shadow: 0 0 0 4px rgba(62, 224, 137, 0.12);
+    }
+
+    .status-pill.error::before {
+      background: var(--red);
+      box-shadow: 0 0 0 4px rgba(255, 122, 144, 0.12);
     }
 
     .hero {
@@ -195,7 +234,7 @@
 
     h1 {
       margin: 0;
-      font-size: clamp(44px, 7vw, 82px);
+      font-size: clamp(42px, 4.8rem, 78px);
       line-height: 0.98;
       letter-spacing: 0;
     }
@@ -300,16 +339,28 @@
       gap: 16px;
     }
 
-    .card {
+    .snapshot-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 0.9fr);
+      gap: 16px;
+    }
+
+    .card,
+    .snapshot-panel,
+    .explorer {
       border-radius: 8px;
       padding: 22px;
+    }
+
+    .card {
       min-height: 230px;
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
 
-    .card h3 {
+    .card h3,
+    .snapshot-panel h3 {
       margin: 0;
       font-size: 20px;
     }
@@ -334,6 +385,29 @@
       font-weight: 700;
     }
 
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .small-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 0 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
+      text-decoration: none;
+      font: 700 12px Inter, system-ui, sans-serif;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
     .endpoint {
       padding: 12px;
       border-radius: 8px;
@@ -341,6 +415,192 @@
       color: #d7f7ff;
       font: 13px "JetBrains Mono", monospace;
       overflow-wrap: anywhere;
+    }
+
+    .snapshot-panel,
+    .explorer {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .panel-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .panel-note {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 6px 0 0;
+    }
+
+    .trend-list {
+      display: grid;
+      gap: 10px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .trend-item {
+      display: grid;
+      grid-template-columns: 34px 1fr auto;
+      gap: 10px;
+      align-items: center;
+      min-height: 44px;
+      padding: 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .rank {
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: rgba(54, 216, 196, 0.1);
+      color: var(--cyan);
+      font: 700 13px "JetBrains Mono", monospace;
+    }
+
+    .keyword {
+      min-width: 0;
+      font-weight: 800;
+      overflow-wrap: anywhere;
+    }
+
+    .traffic {
+      color: var(--muted);
+      font: 700 12px "JetBrains Mono", monospace;
+      white-space: nowrap;
+    }
+
+    .crypto-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .crypto-table th,
+    .crypto-table td {
+      padding: 11px 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .crypto-table th:first-child,
+    .crypto-table td:first-child {
+      text-align: left;
+    }
+
+    .crypto-table th {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .positive {
+      color: var(--green);
+    }
+
+    .negative {
+      color: var(--red);
+    }
+
+    .rates-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .rate-chip {
+      min-height: 58px;
+      padding: 11px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .rate-chip span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .rate-chip strong {
+      font: 700 15px "JetBrains Mono", monospace;
+    }
+
+    .explorer {
+      display: grid;
+      gap: 16px;
+    }
+
+    .segmented {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .segment-button {
+      min-height: 38px;
+      padding: 0 12px;
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--muted);
+    }
+
+    .segment-button.active {
+      color: #06111f;
+      background: var(--cyan);
+      border-color: transparent;
+    }
+
+    .explorer-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .meta-cell {
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .meta-cell span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+
+    .meta-cell strong {
+      overflow-wrap: anywhere;
+    }
+
+    .code-box {
+      min-height: 144px;
+      max-height: 260px;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
     }
 
     .band {
@@ -374,6 +634,7 @@
     @media (max-width: 860px) {
       .hero,
       .grid,
+      .snapshot-grid,
       .band {
         grid-template-columns: 1fr;
       }
@@ -386,6 +647,22 @@
         align-items: flex-start;
         gap: 18px;
         flex-direction: column;
+      }
+
+      h1 {
+        font-size: 42px;
+      }
+
+      .explorer-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .crypto-table {
+        min-width: 520px;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
       }
 
       .section-title {
@@ -402,6 +679,7 @@
         <span>Korean Market API</span>
       </div>
       <div class="nav-actions">
+        <span id="apiStatus" class="status-pill">Checking feed</span>
         <a class="link-button" href="api/openapi.json">OpenAPI</a>
         <a class="primary-button" href="https://rapidapi.com/GERMANKBR/api/korean-trends-api1" target="_blank" rel="noreferrer">Subscribe</a>
       </div>
@@ -419,24 +697,18 @@
             <a class="link-button" href="api/v1/meta.json">View Metadata</a>
           </div>
           <div class="metrics">
-            <div class="metric"><strong>4</strong><span>Production endpoints</span></div>
-            <div class="metric"><strong>Hourly</strong><span>Automated refresh</span></div>
-            <div class="metric"><strong>RapidAPI</strong><span>Billing and rate limits</span></div>
+            <div class="metric"><strong id="endpointCount">4</strong><span>Production endpoints</span></div>
+            <div class="metric"><strong id="lastUpdated">Loading</strong><span>Latest snapshot</span></div>
+            <div class="metric"><strong id="avgPremium">Loading</strong><span>Average premium</span></div>
           </div>
         </div>
 
         <aside class="console" aria-label="Sample request">
           <div class="console-head">
-            <span>GET /api/v1/crypto.json</span>
-            <span>RapidAPI</span>
+            <span id="consoleEndpoint">GET /api/v1/crypto.json</span>
+            <span id="consoleStatus">Loading</span>
           </div>
-          <pre>{
-  "symbol": "BTC",
-  "upbit_price_krw": 114209000,
-  "binance_price_usdt": 76878.24,
-  "premium_percentage": -0.76,
-  "direction": "kimchi_discount"
-}</pre>
+          <pre id="samplePayload">Loading latest Kimchi Premium snapshot...</pre>
         </aside>
       </section>
 
@@ -451,19 +723,123 @@
             <h3>Korean Search Trends</h3>
             <p>Current South Korea search topics with traffic labels and related news links for SEO, content, and cultural monitoring.</p>
             <div class="endpoint">GET /api/v1/trends.json</div>
+            <div class="card-actions">
+              <a class="small-button" href="api/v1/trends.json">Open JSON</a>
+              <button class="small-button" type="button" data-copy-text="/api/v1/trends.json">Copy Path</button>
+            </div>
           </article>
           <article class="card">
             <span class="pill">Crypto</span>
             <h3>Kimchi Premium</h3>
             <p>Upbit KRW versus Binance USDT spread tracking for BTC, ETH, SOL, XRP, and DOGE.</p>
             <div class="endpoint">GET /api/v1/crypto.json</div>
+            <div class="card-actions">
+              <a class="small-button" href="api/v1/crypto.json">Open JSON</a>
+              <button class="small-button" type="button" data-copy-text="/api/v1/crypto.json">Copy Path</button>
+            </div>
           </article>
           <article class="card">
             <span class="pill">FX</span>
             <h3>KRW Exchange Rates</h3>
             <p>KRW conversion rates against major currencies for financial apps, commerce tools, and reporting workflows.</p>
             <div class="endpoint">GET /api/v1/rates.json</div>
+            <div class="card-actions">
+              <a class="small-button" href="api/v1/rates.json">Open JSON</a>
+              <button class="small-button" type="button" data-copy-text="/api/v1/rates.json">Copy Path</button>
+            </div>
           </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="live-title">
+        <div class="section-title">
+          <div>
+            <h2 id="live-title">Live Snapshot</h2>
+            <p>Loaded directly from the current static JSON feeds served by this site.</p>
+          </div>
+          <button id="refreshData" class="link-button" type="button">Refresh Data</button>
+        </div>
+        <div class="snapshot-grid">
+          <article class="snapshot-panel">
+            <div class="panel-head">
+              <div>
+                <h3>Top Trends</h3>
+                <p id="trendCount" class="panel-note">Loading topics</p>
+              </div>
+              <a class="small-button" href="api/v1/trends.json">JSON</a>
+            </div>
+            <ol id="trendList" class="trend-list">
+              <li class="trend-item"><span class="rank">--</span><span class="keyword">Loading</span><span class="traffic">--</span></li>
+            </ol>
+          </article>
+
+          <article class="snapshot-panel">
+            <div class="panel-head">
+              <div>
+                <h3>Kimchi Premium</h3>
+                <p id="cryptoNote" class="panel-note">Loading spreads</p>
+              </div>
+              <a class="small-button" href="api/v1/crypto.json">JSON</a>
+            </div>
+            <div class="table-wrap">
+              <table class="crypto-table">
+                <thead>
+                  <tr>
+                    <th>Asset</th>
+                    <th>Upbit KRW</th>
+                    <th>Binance USDT</th>
+                    <th>Premium</th>
+                  </tr>
+                </thead>
+                <tbody id="cryptoRows">
+                  <tr><td>Loading</td><td>--</td><td>--</td><td>--</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="snapshot-panel">
+            <div class="panel-head">
+              <div>
+                <h3>KRW FX</h3>
+                <p id="ratesNote" class="panel-note">Loading rates</p>
+              </div>
+              <a class="small-button" href="api/v1/rates.json">JSON</a>
+            </div>
+            <div id="ratesGrid" class="rates-grid">
+              <div class="rate-chip"><span>USD</span><strong>Loading</strong></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="explorer-title">
+        <div class="section-title">
+          <div>
+            <h2 id="explorer-title">API Explorer</h2>
+            <p>Select an endpoint, inspect the live path, and copy a RapidAPI-ready cURL request.</p>
+          </div>
+        </div>
+        <div class="explorer">
+          <div class="segmented" role="tablist" aria-label="Endpoint selector">
+            <button class="segment-button active" type="button" data-endpoint="crypto">Crypto</button>
+            <button class="segment-button" type="button" data-endpoint="trends">Trends</button>
+            <button class="segment-button" type="button" data-endpoint="rates">Rates</button>
+            <button class="segment-button" type="button" data-endpoint="meta">Meta</button>
+          </div>
+          <div class="explorer-meta">
+            <div class="meta-cell"><span>Endpoint</span><strong id="explorerPath">/api/v1/crypto.json</strong></div>
+            <div class="meta-cell"><span>Update</span><strong id="explorerCadence">Hourly</strong></div>
+            <div class="meta-cell"><span>Status</span><strong id="explorerStatus">Checking</strong></div>
+          </div>
+          <pre id="curlSample" class="code-box"></pre>
+          <div class="cta-row">
+            <button class="primary-button" type="button" data-copy-target="curlSample">Copy cURL</button>
+            <a id="explorerJsonLink" class="link-button" href="api/v1/crypto.json">Open JSON</a>
+            <a class="link-button" href="api/catalog.json">API Catalog</a>
+            <a class="link-button" href="llms.txt">LLM Context</a>
+          </div>
+          <span id="copyStatus" class="visually-hidden" aria-live="polite"></span>
         </div>
       </section>
 
@@ -480,5 +856,277 @@
       <div>Data is informational only and not financial advice. Last-mile access, auth, billing, and quotas are managed through RapidAPI.</div>
     </footer>
   </div>
+  <script>
+    const RAPIDAPI_HOST = "korean-trends-api1.p.rapidapi.com";
+    const ENDPOINTS = {
+      crypto: {
+        label: "Crypto",
+        path: "/api/v1/crypto.json",
+        local: "api/v1/crypto.json",
+        description: "Kimchi Premium spreads between Upbit and Binance."
+      },
+      trends: {
+        label: "Trends",
+        path: "/api/v1/trends.json",
+        local: "api/v1/trends.json",
+        description: "South Korea Google Trends topics and related news."
+      },
+      rates: {
+        label: "Rates",
+        path: "/api/v1/rates.json",
+        local: "api/v1/rates.json",
+        description: "KRW exchange rates against major currencies."
+      },
+      meta: {
+        label: "Meta",
+        path: "/api/v1/meta.json",
+        local: "api/v1/meta.json",
+        description: "API metadata, source status, and endpoint catalog."
+      }
+    };
+
+    const state = {
+      selectedEndpoint: "crypto",
+      payloads: {}
+    };
+
+    const formatNumber = new Intl.NumberFormat("en-US");
+    const formatKrw = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
+    const formatRate = new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setupExplorer();
+      setupCopyButtons();
+      document.getElementById("refreshData").addEventListener("click", loadDashboard);
+      loadDashboard();
+    });
+
+    async function loadDashboard() {
+      setStatus("Checking feed", "loading");
+      setText("refreshData", "Refreshing...");
+
+      try {
+        const entries = await Promise.all(Object.entries(ENDPOINTS).map(async ([key, endpoint]) => {
+          const response = await fetch(endpoint.local, { cache: "no-store" });
+          if (!response.ok) throw new Error(`${endpoint.path} returned HTTP ${response.status}`);
+          return [key, await response.json()];
+        }));
+
+        state.payloads = Object.fromEntries(entries);
+        renderDashboard();
+        setStatus("Live feeds online", "ok");
+      } catch (error) {
+        setStatus("Feed load failed", "error");
+        renderError(error);
+      } finally {
+        setText("refreshData", "Refresh Data");
+      }
+    }
+
+    function renderDashboard() {
+      const { crypto, trends, rates, meta } = state.payloads;
+      const endpoints = Array.isArray(meta.endpoints) ? meta.endpoints.length : 4;
+      const updatedAt = latestUpdatedAt([crypto, trends, rates, meta]);
+
+      setText("endpointCount", String(endpoints));
+      setText("lastUpdated", formatAge(updatedAt));
+      setText("avgPremium", formatPercent(crypto.data && crypto.data.average_premium_percentage));
+      setText("consoleStatus", crypto.status || "ok");
+      setText("consoleEndpoint", "GET /api/v1/crypto.json");
+
+      renderSamplePayload(crypto);
+      renderTrends(trends);
+      renderCrypto(crypto);
+      renderRates(rates);
+      renderExplorer();
+    }
+
+    function renderSamplePayload(crypto) {
+      const firstAsset = crypto.data && crypto.data.assets ? crypto.data.assets[0] : null;
+      if (!firstAsset) {
+        setText("samplePayload", "Crypto snapshot is temporarily unavailable.");
+        return;
+      }
+
+      const sample = {
+        symbol: firstAsset.symbol,
+        upbit_price_krw: firstAsset.upbit_price_krw,
+        binance_price_usdt: firstAsset.binance_price_usdt,
+        premium_percentage: firstAsset.premium_percentage,
+        direction: firstAsset.direction
+      };
+      setText("samplePayload", JSON.stringify(sample, null, 2));
+    }
+
+    function renderTrends(trends) {
+      const list = document.getElementById("trendList");
+      const rows = Array.isArray(trends.data) ? trends.data.slice(0, 6) : [];
+      setText("trendCount", `${trends.count || rows.length} topics / ${trends.summary ? trends.summary.total_related_news : 0} news links`);
+
+      if (!rows.length) {
+        list.innerHTML = '<li class="trend-item"><span class="rank">--</span><span class="keyword">No trend data</span><span class="traffic">--</span></li>';
+        return;
+      }
+
+      list.innerHTML = rows.map((trend) => `
+        <li class="trend-item">
+          <span class="rank">${escapeHtml(trend.rank)}</span>
+          <span class="keyword">${escapeHtml(trend.keyword)}</span>
+          <span class="traffic">${escapeHtml(trend.approximate_traffic || "--")}</span>
+        </li>
+      `).join("");
+    }
+
+    function renderCrypto(crypto) {
+      const body = document.getElementById("cryptoRows");
+      const assets = crypto.data && Array.isArray(crypto.data.assets) ? crypto.data.assets : [];
+      const updatedAt = crypto.updated_at ? formatAge(new Date(crypto.updated_at)) : "unknown";
+      setText("cryptoNote", `${assets.length} assets / updated ${updatedAt}`);
+
+      if (!assets.length) {
+        body.innerHTML = "<tr><td>No crypto data</td><td>--</td><td>--</td><td>--</td></tr>";
+        return;
+      }
+
+      body.innerHTML = assets.map((asset) => {
+        const premiumClass = asset.premium_percentage >= 0 ? "positive" : "negative";
+        return `
+          <tr>
+            <td><strong>${escapeHtml(asset.symbol)}</strong></td>
+            <td>${formatKrw.format(asset.upbit_price_krw)}</td>
+            <td>${formatRate.format(asset.binance_price_usdt)}</td>
+            <td class="${premiumClass}">${formatPercent(asset.premium_percentage)}</td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function renderRates(rates) {
+      const grid = document.getElementById("ratesGrid");
+      const rateMap = rates.data && rates.data.krw_per_unit ? rates.data.krw_per_unit : {};
+      const currencies = ["USD", "EUR", "JPY", "CNY", "GBP", "AUD"];
+      setText("ratesNote", rates.data && rates.data.source_updated_at ? `Source: ${rates.data.provider}` : "Source unavailable");
+
+      grid.innerHTML = currencies.map((currency) => `
+        <div class="rate-chip">
+          <span>${currency}/KRW</span>
+          <strong>${rateMap[currency] ? formatRate.format(rateMap[currency]) : "--"}</strong>
+        </div>
+      `).join("");
+    }
+
+    function setupExplorer() {
+      document.querySelectorAll("[data-endpoint]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.selectedEndpoint = button.dataset.endpoint;
+          renderExplorer();
+        });
+      });
+      renderExplorer();
+    }
+
+    function renderExplorer() {
+      const endpoint = ENDPOINTS[state.selectedEndpoint];
+      const payload = state.payloads[state.selectedEndpoint];
+
+      document.querySelectorAll("[data-endpoint]").forEach((button) => {
+        button.classList.toggle("active", button.dataset.endpoint === state.selectedEndpoint);
+      });
+
+      setText("explorerPath", endpoint.path);
+      setText("explorerCadence", payload && payload.update_frequency ? payload.update_frequency : "Hourly");
+      setText("explorerStatus", payload && payload.status ? payload.status : "Ready");
+      document.getElementById("explorerJsonLink").href = endpoint.local;
+      setText("curlSample", buildCurl(endpoint));
+    }
+
+    function setupCopyButtons() {
+      document.addEventListener("click", async (event) => {
+        const button = event.target.closest("[data-copy-text], [data-copy-target]");
+        if (!button) return;
+
+        const value = button.dataset.copyText || document.getElementById(button.dataset.copyTarget).textContent;
+        const original = button.textContent;
+
+        try {
+          await navigator.clipboard.writeText(value.trim());
+          button.textContent = "Copied";
+          setText("copyStatus", "Copied to clipboard");
+        } catch (error) {
+          button.textContent = "Copy failed";
+          setText("copyStatus", "Clipboard copy failed");
+        }
+
+        setTimeout(() => {
+          button.textContent = original;
+        }, 1400);
+      });
+    }
+
+    function buildCurl(endpoint) {
+      return [
+        "curl --request GET \\",
+        `  --url https://${RAPIDAPI_HOST}${endpoint.path} \\`,
+        `  --header 'x-rapidapi-host: ${RAPIDAPI_HOST}' \\`,
+        "  --header 'x-rapidapi-key: YOUR_RAPIDAPI_KEY'"
+      ].join("\n");
+    }
+
+    function renderError(error) {
+      setText("samplePayload", `Unable to load local JSON feeds.\n${error.message}\n\nRun this page through a local web server or GitHub Pages so fetch() can read /api/v1/*.json.`);
+      setText("trendCount", "Feed unavailable");
+      setText("cryptoNote", "Feed unavailable");
+      setText("ratesNote", "Feed unavailable");
+      document.getElementById("trendList").innerHTML = '<li class="trend-item"><span class="rank">--</span><span class="keyword">Feed unavailable</span><span class="traffic">--</span></li>';
+      document.getElementById("cryptoRows").innerHTML = "<tr><td>Feed unavailable</td><td>--</td><td>--</td><td>--</td></tr>";
+      document.getElementById("ratesGrid").innerHTML = '<div class="rate-chip"><span>Status</span><strong>Unavailable</strong></div>';
+    }
+
+    function setStatus(label, mode) {
+      const node = document.getElementById("apiStatus");
+      node.textContent = label;
+      node.classList.toggle("ok", mode === "ok");
+      node.classList.toggle("error", mode === "error");
+    }
+
+    function setText(id, value) {
+      const node = document.getElementById(id);
+      if (node) node.textContent = value;
+    }
+
+    function latestUpdatedAt(payloads) {
+      const dates = payloads
+        .map((payload) => payload && (payload.updated_at || payload.last_collection_run))
+        .filter(Boolean)
+        .map((value) => new Date(value))
+        .filter((date) => Number.isFinite(date.getTime()));
+      return dates.length ? new Date(Math.max(...dates.map((date) => date.getTime()))) : null;
+    }
+
+    function formatAge(date) {
+      if (!date) return "Unknown";
+      const seconds = Math.max(0, Math.floor((Date.now() - date.getTime()) / 1000));
+      if (seconds < 60) return "Just now";
+      const minutes = Math.floor(seconds / 60);
+      if (minutes < 60) return `${minutes}m ago`;
+      const hours = Math.floor(minutes / 60);
+      if (hours < 48) return `${hours}h ago`;
+      return date.toISOString().slice(0, 10);
+    }
+
+    function formatPercent(value) {
+      if (!Number.isFinite(Number(value))) return "--";
+      return `${Number(value).toFixed(2)}%`;
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
 </body>
 </html>
