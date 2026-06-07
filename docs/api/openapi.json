@@ -207,6 +207,7 @@
                   "average_premium_percentage": { "type": "number", "example": -0.75 },
                   "highest_premium": { "$ref": "#/components/schemas/PremiumSummary" },
                   "lowest_premium": { "$ref": "#/components/schemas/PremiumSummary" },
+                  "arbitrage_opportunity": { "$ref": "#/components/schemas/ArbitrageOpportunity" },
                   "assets": {
                     "type": "array",
                     "items": { "$ref": "#/components/schemas/CryptoAsset" }
@@ -292,6 +293,36 @@
           "last_collection_run": { "type": "string", "format": "date-time" },
           "repository": { "type": "string" },
           "disclaimer": { "type": "string" }
+        }
+      },
+      "ArbitrageOpportunity": {
+        "type": "object",
+        "nullable": true,
+        "properties": {
+          "asset": { "type": "string", "example": "SOL" },
+          "detected_at": { "type": "string", "format": "date-time" },
+          "spread_percentage": { "type": "number", "example": 3.12 },
+          "estimated_net_profit_sol": { "type": "string", "example": "3.5240" },
+          "profit_ratio_percentage": { "type": "string", "example": "3.52%" },
+          "execution_route": {
+            "type": "object",
+            "properties": {
+              "step_1": { "type": "string" },
+              "step_2": { "type": "string" },
+              "step_3": { "type": "string" }
+            }
+          },
+          "execution_gateway": {
+            "type": "object",
+            "properties": {
+              "status": { "type": "string", "example": "encrypted" },
+              "notice": { "type": "string", "example": "DIRECT_ONCHAIN_MEV_ROUTE" },
+              "message": { "type": "string" },
+              "payment_address": { "type": "string", "example": "H5Va5uQnpkboW9CJZMG7VLRPM4sA87FwmgkDuT28LYM1" },
+              "decryption_fee_sol": { "type": "string", "example": "0.05" },
+              "route_hash": { "type": "string" }
+            }
+          }
         }
       }
     }

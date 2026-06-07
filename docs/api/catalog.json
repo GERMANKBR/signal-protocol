@@ -1,7 +1,7 @@
 {
   "name": "Korean Market & Crypto Trends API",
   "description": "Hourly South Korea market data for developers: Google Trends topics, KRW exchange rates, and crypto Kimchi Premium spreads.",
-  "generated_at": "2026-06-07T03:25:40.647Z",
+  "generated_at": "2026-06-07T05:22:12.398Z",
   "homepage_url": "https://germankbr.github.io/signal-protocol/",
   "repository_url": "https://github.com/GERMANKBR/signal-protocol",
   "rapidapi_url": "https://rapidapi.com/GERMANKBR/api/korean-trends-api1",
@@ -58,6 +58,7 @@
       "primary_fields": [
         "usd_krw_rate",
         "average_premium_percentage",
+        "arbitrage_opportunity",
         "assets"
       ],
       "url": "https://germankbr.github.io/signal-protocol/api/v1/crypto.json"
@@ -78,18 +79,31 @@
   ],
   "latest_snapshot": {
     "top_trends": [
-      "신현송",
-      "김대중",
-      "mbk파트너스",
-      "소송",
-      "oman vs nepal"
+      "이상미",
+      "이민우",
+      "김용임",
+      "카르다노",
+      "벨랄 무하마드"
     ],
     "krw_per_usd": 1545.53,
-    "kimchi_premium": null,
+    "kimchi_premium": {
+      "average_premium_percentage": -1.55,
+      "tracked_assets": 5,
+      "highest_premium": {
+        "symbol": "DOGE",
+        "premium_percentage": -1.21,
+        "direction": "kimchi_discount"
+      },
+      "lowest_premium": {
+        "symbol": "BTC",
+        "premium_percentage": -1.66,
+        "direction": "kimchi_discount"
+      }
+    },
     "source_status": {
       "trends": "ok",
       "rates": "ok",
-      "crypto": "partial"
+      "crypto": "ok"
     }
   },
   "commercial_access": {
