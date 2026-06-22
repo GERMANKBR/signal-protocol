@@ -3,6 +3,10 @@
  *
  * Runs hourly in GitHub Actions and writes static JSON responses to docs/api/v1.
  * RapidAPI is the commercial gateway in front of the GitHub Pages origin.
+ *
+ * v3.0 — Multi-Coin Dynamic Discovery Engine
+ * Automatically discovers all overlapping coins between Upbit KRW and Binance USDT
+ * markets and calculates Kimchi Premium for each.
  */
 
 const fs = require("fs");
@@ -13,13 +17,8 @@ const SITE_URL = "https://germankbr.github.io/signal-protocol";
 const RAPIDAPI_URL = "https://rapidapi.com/GERMANKBR/api/korean-trends-api1";
 const REQUEST_TIMEOUT_MS = 15000;
 
-const CRYPTO_ASSETS = [
-  { symbol: "BTC", name: "Bitcoin", upbitMarket: "KRW-BTC", binanceSymbol: "BTCUSDT" },
-  { symbol: "ETH", name: "Ethereum", upbitMarket: "KRW-ETH", binanceSymbol: "ETHUSDT" },
-  { symbol: "SOL", name: "Solana", upbitMarket: "KRW-SOL", binanceSymbol: "SOLUSDT" },
-  { symbol: "XRP", name: "XRP", upbitMarket: "KRW-XRP", binanceSymbol: "XRPUSDT" },
-  { symbol: "DOGE", name: "Dogecoin", upbitMarket: "KRW-DOGE", binanceSymbol: "DOGEUSDT" }
-];
+// Top 10 coins for backward-compatible crypto.json summary
+const TOP_SUMMARY_COUNT = 10;
 
 const TREND_LIMIT = Number.parseInt(process.env.TREND_LIMIT || "20", 10);
 
@@ -207,39 +206,150 @@ async function fetchExchangeRates() {
   }
 }
 
-async function fetchCryptoKimchiPremium(krwPerUsd) {
+/**
+ * Dynamic Coin Discovery Engine v3.0
+ *
+ * Discovers all overlapping coins between Upbit KRW markets and
+ * Binance USDT markets at runtime, then calculates Kimchi Premium
+ * for each discovered pair.
+ */
+async function discoverAssets() {
+  console.log("Discovering tradable assets across exchanges...");
+
+  // Step 1: Fetch all Upbit KRW markets
+  const upbitMarketList = await fetchJson("https://api.upbit.com/v1/market/all?isDetails=true");
+  const upbitKrwMarkets = upbitMarketList.filter((m) => m.market.startsWith("KRW-"));
+  const upbitMap = new Map();
+  for (const m of upbitKrwMarkets) {
+    const symbol = m.market.replace("KRW-", "");
+    upbitMap.set(symbol, {
+      market: m.market,
+      english_name: m.english_name || symbol,
+      korean_name: m.korean_name || null
+    });
+  }
+  console.log(`Upbit KRW markets found: ${upbitMap.size}`);
+
+  // Step 2: Fetch all Binance USDT tickers (single bulk call)
+  const binanceTickers = await fetchAllBinancePrices();
+  const binanceUsdtSymbols = new Set();
+  for (const ticker of binanceTickers) {
+    if (ticker.symbol.endsWith("USDT")) {
+      binanceUsdtSymbols.add(ticker.symbol.replace("USDT", ""));
+    }
+  }
+  console.log(`Binance USDT pairs found: ${binanceUsdtSymbols.size}`);
+
+  // Step 3: Compute intersection
+  const discoveredAssets = [];
+  for (const [symbol, upbitInfo] of upbitMap) {
+    if (binanceUsdtSymbols.has(symbol)) {
+      discoveredAssets.push({
+        symbol,
+        name: upbitInfo.english_name,
+        korean_name: upbitInfo.korean_name,
+        upbitMarket: upbitInfo.market,
+        binanceSymbol: `${symbol}USDT`
+      });
+    }
+  }
+
+  console.log(`Dynamic discovery complete: ${discoveredAssets.length} overlapping assets found.`);
+  return discoveredAssets;
+}
+
+async function fetchAllBinancePrices() {
+  // Try Binance bulk endpoint first
+  try {
+    const res = await fetchJson("https://api.binance.com/api/v3/ticker/price");
+    if (Array.isArray(res) && res.length > 0) {
+      console.log(`Binance API: fetched ${res.length} ticker prices.`);
+      return res;
+    }
+  } catch (error) {
+    console.warn(`Binance bulk API failed: ${error.message}. Trying Gate.io fallback...`);
+  }
+
+  // Fallback: Gate.io bulk tickers
+  try {
+    const res = await fetchJson("https://api.gateio.ws/api/v4/spot/tickers");
+    if (Array.isArray(res) && res.length > 0) {
+      // Normalize Gate.io format to match Binance { symbol, price }
+      const normalized = res
+        .filter((t) => t.currency_pair && t.currency_pair.endsWith("_USDT"))
+        .map((t) => ({
+          symbol: t.currency_pair.replace("_", ""),
+          price: t.last
+        }));
+      console.log(`Gate.io fallback: fetched ${normalized.length} USDT tickers.`);
+      return normalized;
+    }
+  } catch (error) {
+    console.warn(`Gate.io fallback failed: ${error.message}.`);
+  }
+
+  throw new Error("All bulk price API sources failed.");
+}
+
+async function fetchCryptoKimchiPremiumAll(krwPerUsd) {
   if (!krwPerUsd) {
     console.error("Cannot calculate Kimchi Premium without USD/KRW.");
     return null;
   }
 
   try {
-    const upbitMarkets = CRYPTO_ASSETS.map((asset) => asset.upbitMarket).join(",");
-    const binanceSymbols = encodeURIComponent(JSON.stringify(CRYPTO_ASSETS.map((asset) => asset.binanceSymbol)));
+    // Dynamic discovery: find all overlapping assets at runtime
+    const discoveredAssets = await discoverAssets();
 
-    const [upbitData, binanceData] = await Promise.all([
-      fetchJson(`https://api.upbit.com/v1/ticker?markets=${upbitMarkets}`),
-      fetchBinancePrices(binanceSymbols)
-    ]);
+    // Fetch all prices in bulk
+    const upbitMarkets = discoveredAssets.map((a) => a.upbitMarket).join(",");
+    const binanceTickers = await fetchAllBinancePrices();
+
+    // Upbit allows up to 100 markets per call; chunk if needed
+    const upbitData = await fetchUpbitTickersChunked(discoveredAssets.map((a) => a.upbitMarket));
 
     const upbitByMarket = new Map(upbitData.map((item) => [item.market, item]));
-    const binanceBySymbol = new Map(binanceData.map((item) => [item.symbol, item]));
+    const binanceBySymbol = new Map(binanceTickers.map((item) => [item.symbol, item]));
 
-    const assets = CRYPTO_ASSETS
+    const rawAssets = discoveredAssets
       .map((asset) => buildPremiumRow(asset, upbitByMarket, binanceBySymbol, krwPerUsd))
       .filter(Boolean);
+
+    // Filter out outliers: coins with >50% absolute premium/discount are likely
+    // symbol mismatches (e.g., different tokens using the same ticker on different exchanges)
+    const MAX_REASONABLE_PREMIUM = 50;
+    const assets = rawAssets.filter((a) => {
+      if (!Number.isFinite(a.premium_percentage)) return false;
+      if (Math.abs(a.premium_percentage) > MAX_REASONABLE_PREMIUM) {
+        console.warn(`Outlier filtered: ${a.symbol} (${a.premium_percentage}%) — likely symbol mismatch.`);
+        return false;
+      }
+      return true;
+    });
+
+    const filteredCount = rawAssets.length - assets.length;
+    if (filteredCount > 0) {
+      console.log(`Filtered ${filteredCount} outlier(s) from ${rawAssets.length} raw pairs.`);
+    }
 
     if (!assets.length) {
       throw new Error("no matching crypto pairs returned by providers");
     }
 
-    const averagePremium = round(assets.reduce((sum, asset) => sum + asset.premium_percentage, 0) / assets.length, 2);
-    const highestPremium = assets.reduce((best, asset) =>
-      asset.premium_percentage > best.premium_percentage ? asset : best
-    );
-    const lowestPremium = assets.reduce((best, asset) =>
-      asset.premium_percentage < best.premium_percentage ? asset : best
-    );
+    // Sort by premium percentage descending
+    assets.sort((a, b) => b.premium_percentage - a.premium_percentage);
+
+    // Add ranking
+    assets.forEach((asset, index) => {
+      asset.premium_rank = index + 1;
+    });
+
+    const averagePremium = round(assets.reduce((sum, a) => sum + a.premium_percentage, 0) / assets.length, 2);
+    const highestPremium = assets[0];
+    const lowestPremium = assets[assets.length - 1];
+
+    const topPremiumCoins = assets.slice(0, 5).map(summarizePremium);
+    const topDiscountCoins = assets.slice(-5).reverse().map(summarizePremium);
 
     const arbitrageOpportunity = simulateArbitrage(assets);
 
@@ -248,10 +358,13 @@ async function fetchCryptoKimchiPremium(krwPerUsd) {
       offshore_pair_currency: "USDT",
       conversion_basis: "USD/KRW is used as a USDT/KRW proxy.",
       usd_krw_rate: krwPerUsd,
-      tracked_assets: assets.length,
+      discovery_mode: "dynamic",
+      total_tracked_coins: assets.length,
       average_premium_percentage: averagePremium,
       highest_premium: summarizePremium(highestPremium),
       lowest_premium: summarizePremium(lowestPremium),
+      top_premium_coins: topPremiumCoins,
+      top_discount_coins: topDiscountCoins,
       arbitrage_opportunity: arbitrageOpportunity,
       assets
     };
@@ -261,67 +374,33 @@ async function fetchCryptoKimchiPremium(krwPerUsd) {
   }
 }
 
-async function fetchBinancePrices(binanceSymbols) {
-  // Try Binance first
-  try {
-    const res = await fetchJson(`https://api.binance.com/api/v3/ticker/price?symbols=${binanceSymbols}`);
-    if (Array.isArray(res)) {
-      console.log("Successfully fetched prices from Binance API.");
-      return res;
-    }
-  } catch (error) {
-    console.warn(`Binance API failed: ${error.message}. Trying KuCoin fallback...`);
-  }
+/**
+ * Upbit API limits tickers to ~100 markets per call.
+ * This function chunks the market list and merges results.
+ */
+async function fetchUpbitTickersChunked(markets) {
+  const CHUNK_SIZE = 100;
+  const results = [];
 
-  // Fallback 1: KuCoin
-  try {
-    const assets = CRYPTO_ASSETS;
-    const kucoinPrices = [];
-    for (const asset of assets) {
-      const pair = `${asset.symbol}-USDT`;
-      const res = await fetchJson(`https://api.kucoin.com/api/v1/market/orderbook/level1?symbol=${pair}`);
-      if (res && res.data && res.data.price) {
-        kucoinPrices.push({
-          symbol: asset.binanceSymbol,
-          price: res.data.price
-        });
-      } else {
-        throw new Error(`Invalid response for ${pair}`);
+  for (let i = 0; i < markets.length; i += CHUNK_SIZE) {
+    const chunk = markets.slice(i, i + CHUNK_SIZE);
+    const params = chunk.join(",");
+    try {
+      const data = await fetchJson(`https://api.upbit.com/v1/ticker?markets=${params}`);
+      if (Array.isArray(data)) {
+        results.push(...data);
       }
+    } catch (error) {
+      console.warn(`Upbit ticker chunk ${i}-${i + chunk.length} failed: ${error.message}`);
     }
-    if (kucoinPrices.length === assets.length) {
-      console.log("Successfully fetched prices from KuCoin API fallback.");
-      return kucoinPrices;
+    // Rate limit: small delay between chunks
+    if (i + CHUNK_SIZE < markets.length) {
+      await new Promise((resolve) => setTimeout(resolve, 200));
     }
-  } catch (error) {
-    console.warn(`KuCoin fallback failed: ${error.message}. Trying Gate.io fallback...`);
   }
 
-  // Fallback 2: Gate.io
-  try {
-    const assets = CRYPTO_ASSETS;
-    const gatePrices = [];
-    for (const asset of assets) {
-      const pair = `${asset.symbol}_USDT`;
-      const res = await fetchJson(`https://api.gateio.ws/api/v4/spot/tickers?currency_pair=${pair}`);
-      if (Array.isArray(res) && res[0] && res[0].last) {
-        gatePrices.push({
-          symbol: asset.binanceSymbol,
-          price: res[0].last
-        });
-      } else {
-        throw new Error(`Invalid response for ${pair}`);
-      }
-    }
-    if (gatePrices.length === assets.length) {
-      console.log("Successfully fetched prices from Gate.io API fallback.");
-      return gatePrices;
-    }
-  } catch (error) {
-    console.warn(`Gate.io fallback failed: ${error.message}.`);
-  }
-
-  throw new Error("All crypto price API sources failed.");
+  console.log(`Upbit: fetched ${results.length} ticker prices.`);
+  return results;
 }
 
 function simulateArbitrage(assets) {
@@ -421,14 +500,35 @@ async function main() {
   const startedAt = Date.now();
   const updatedAt = new Date().toISOString();
 
-  console.log("Korean Market API data collection starting.");
+  console.log("Korean Market API data collection starting (v3.0 — Dynamic Discovery).");
   ensureOutputDirectory();
 
   const rates = await fetchExchangeRates();
-  const [trends, crypto] = await Promise.all([
+  const [trends, cryptoAll] = await Promise.all([
     fetchGoogleTrendsKR(),
-    rates ? fetchCryptoKimchiPremium(rates.krw_per_usd) : null
+    rates ? fetchCryptoKimchiPremiumAll(rates.krw_per_usd) : null
   ]);
+
+  // Build backward-compatible crypto.json (TOP 10 summary)
+  let cryptoSummary = null;
+  if (cryptoAll) {
+    const topAssets = cryptoAll.assets.slice(0, TOP_SUMMARY_COUNT);
+    const avgPremium = round(topAssets.reduce((s, a) => s + a.premium_percentage, 0) / topAssets.length, 2);
+    cryptoSummary = {
+      quote_currency: cryptoAll.quote_currency,
+      offshore_pair_currency: cryptoAll.offshore_pair_currency,
+      conversion_basis: cryptoAll.conversion_basis,
+      usd_krw_rate: cryptoAll.usd_krw_rate,
+      tracked_assets: topAssets.length,
+      total_available_coins: cryptoAll.total_tracked_coins,
+      average_premium_percentage: avgPremium,
+      highest_premium: cryptoAll.highest_premium,
+      lowest_premium: cryptoAll.lowest_premium,
+      arbitrage_opportunity: cryptoAll.arbitrage_opportunity,
+      assets: topAssets,
+      full_data_endpoint: "/api/v1/premium-all.json"
+    };
+  }
 
   writeJson("trends.json", {
     status: trends.length ? "ok" : "partial",
@@ -454,29 +554,42 @@ async function main() {
   });
 
   writeJson("crypto.json", {
-    status: crypto ? "ok" : "partial",
+    status: cryptoSummary ? "ok" : "partial",
     api: "Korean Market & Crypto Trends API",
     endpoint: "/api/v1/crypto.json",
-    description: "Kimchi Premium monitor comparing Upbit KRW markets with Binance USDT markets.",
+    description: "Kimchi Premium top coins summary. Full data at /api/v1/premium-all.json.",
     updated_at: updatedAt,
     update_frequency: "hourly",
-    data: crypto,
+    data: cryptoSummary,
     disclaimer: "Informational data only. Not financial advice."
   });
 
-  writeJson("meta.json", buildMetaPayload(updatedAt, { trends, rates, crypto }));
+  // NEW: Full premium data for all discovered coins
+  writeJson("premium-all.json", {
+    status: cryptoAll ? "ok" : "partial",
+    api: "Korean Market & Crypto Trends API",
+    endpoint: "/api/v1/premium-all.json",
+    description: "Complete Kimchi Premium data for all dynamically discovered coins across Upbit KRW and Binance USDT markets.",
+    updated_at: updatedAt,
+    update_frequency: "hourly",
+    data: cryptoAll,
+    disclaimer: "Informational data only. Not financial advice."
+  });
+
+  writeJson("meta.json", buildMetaPayload(updatedAt, { trends, rates, crypto: cryptoAll }));
 
   const elapsed = round((Date.now() - startedAt) / 1000, 1);
+  const coinCount = cryptoAll ? cryptoAll.total_tracked_coins : 0;
   console.log(`Collection complete in ${elapsed}s.`);
-  console.log(`Trends=${trends.length}, rates=${rates ? "ok" : "partial"}, crypto=${crypto ? "ok" : "partial"}.`);
+  console.log(`Trends=${trends.length}, rates=${rates ? "ok" : "partial"}, crypto=${coinCount} coins tracked.`);
 }
 
 function buildMetaPayload(updatedAt, sourceState) {
   return {
     api_name: "Korean Market & Crypto Trends API",
-    version: "2.1.0",
+    version: "3.0.0",
     status: sourceState.rates && sourceState.crypto && sourceState.trends.length ? "ok" : "partial",
-    description: "Hourly South Korea market data for developers: search trends, KRW FX rates, and crypto Kimchi Premium.",
+    description: "Hourly South Korea market data: search trends, KRW FX rates, and Kimchi Premium for 197+ dynamically discovered coins.",
     base_url: SITE_URL,
     rapidapi_url: RAPIDAPI_URL,
     endpoints: [
@@ -497,9 +610,16 @@ function buildMetaPayload(updatedAt, sourceState) {
       {
         path: "/api/v1/crypto.json",
         method: "GET",
-        description: "Kimchi Premium for BTC, ETH, SOL, XRP, and DOGE using Upbit and Binance public prices.",
+        description: "Kimchi Premium top coins summary with link to full dataset.",
         update_frequency: "hourly",
-        primary_fields: ["usd_krw_rate", "average_premium_percentage", "arbitrage_opportunity", "assets"]
+        primary_fields: ["usd_krw_rate", "average_premium_percentage", "total_available_coins", "assets", "full_data_endpoint"]
+      },
+      {
+        path: "/api/v1/premium-all.json",
+        method: "GET",
+        description: `Full Kimchi Premium data for all dynamically discovered coins (Upbit KRW ∩ Binance USDT).`,
+        update_frequency: "hourly",
+        primary_fields: ["total_tracked_coins", "top_premium_coins", "top_discount_coins", "premium_ranking", "assets"]
       },
       {
         path: "/api/v1/meta.json",

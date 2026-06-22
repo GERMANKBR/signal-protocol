@@ -2,8 +2,8 @@
   "openapi": "3.0.3",
   "info": {
     "title": "Korean Market & Crypto Trends API",
-    "version": "2.1.0",
-    "description": "Hourly South Korea market intelligence API: Google Trends KR topics, KRW exchange rates, and crypto Kimchi Premium spreads between Upbit and Binance.",
+    "version": "3.0.0",
+    "description": "Hourly South Korea market intelligence API: Google Trends KR topics, KRW exchange rates, and crypto Kimchi Premium for 197+ dynamically discovered coins across Upbit and Binance.",
     "contact": {
       "name": "GERMANKBR",
       "url": "https://rapidapi.com/GERMANKBR/api/korean-trends-api1"
@@ -89,6 +89,23 @@
             "content": {
               "application/json": {
                 "schema": { "$ref": "#/components/schemas/MetaResponse" }
+              }
+            }
+          }
+        }
+    },
+    "/api/v1/premium-all.json": {
+      "get": {
+        "operationId": "getFullKimchiPremium",
+        "summary": "Get full Kimchi Premium for all discovered coins",
+        "description": "Returns Kimchi Premium data for all dynamically discovered coins that overlap between Upbit KRW and Binance USDT markets (~197+ coins).",
+        "tags": ["Crypto"],
+        "responses": {
+          "200": {
+            "description": "Full Kimchi Premium response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/PremiumAllResponse" }
               }
             }
           }
@@ -203,7 +220,8 @@
                   "offshore_pair_currency": { "type": "string", "example": "USDT" },
                   "conversion_basis": { "type": "string" },
                   "usd_krw_rate": { "type": "number", "example": 1497.01 },
-                  "tracked_assets": { "type": "integer", "example": 5 },
+                  "tracked_assets": { "type": "integer", "example": 10 },
+                  "total_available_coins": { "type": "integer", "example": 197 },
                   "average_premium_percentage": { "type": "number", "example": -0.75 },
                   "highest_premium": { "$ref": "#/components/schemas/PremiumSummary" },
                   "lowest_premium": { "$ref": "#/components/schemas/PremiumSummary" },
@@ -324,6 +342,45 @@
             }
           }
         }
+      }
+      },
+      "PremiumAllResponse": {
+        "allOf": [
+          { "$ref": "#/components/schemas/BaseResponse" },
+          {
+            "type": "object",
+            "required": ["data"],
+            "properties": {
+              "data": {
+                "type": "object",
+                "nullable": true,
+                "properties": {
+                  "quote_currency": { "type": "string", "example": "KRW" },
+                  "offshore_pair_currency": { "type": "string", "example": "USDT" },
+                  "discovery_mode": { "type": "string", "example": "dynamic" },
+                  "usd_krw_rate": { "type": "number" },
+                  "total_tracked_coins": { "type": "integer", "example": 197 },
+                  "average_premium_percentage": { "type": "number" },
+                  "highest_premium": { "$ref": "#/components/schemas/PremiumSummary" },
+                  "lowest_premium": { "$ref": "#/components/schemas/PremiumSummary" },
+                  "top_premium_coins": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/PremiumSummary" }
+                  },
+                  "top_discount_coins": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/PremiumSummary" }
+                  },
+                  "assets": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/CryptoAsset" }
+                  }
+                }
+              },
+              "disclaimer": { "type": "string" }
+            }
+          }
+        ]
       }
     }
   },

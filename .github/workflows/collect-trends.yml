@@ -35,7 +35,7 @@ jobs:
 
       - name: Validate generated files
         run: |
-          node -e "const fs = require('fs'); for (const f of ['docs/api/v1/trends.json','docs/api/v1/rates.json','docs/api/v1/crypto.json','docs/api/v1/meta.json','docs/api/openapi.json','docs/api/catalog.json','docs/feed.json','docs/.well-known/ai-plugin.json','docs/.well-known/ai-manifest.json','docs/.well-known/agent-discovery.json']) { JSON.parse(fs.readFileSync(f, 'utf8')); console.log('valid', f); } for (const f of ['docs/llms.txt','docs/llms-full.txt','docs/feed.xml','docs/atom.xml','docs/sitemap.xml','docs/robots.txt','docs/indexnow-key.txt','docs/icon.svg']) { if (!fs.existsSync(f) || !fs.readFileSync(f, 'utf8').trim()) throw new Error('missing ' + f); console.log('present', f); }"
+          node -e "const fs = require('fs'); for (const f of ['docs/api/v1/trends.json','docs/api/v1/rates.json','docs/api/v1/crypto.json','docs/api/v1/premium-all.json','docs/api/v1/meta.json','docs/api/openapi.json','docs/api/catalog.json','docs/feed.json','docs/.well-known/ai-plugin.json','docs/.well-known/ai-manifest.json','docs/.well-known/agent-discovery.json']) { JSON.parse(fs.readFileSync(f, 'utf8')); console.log('valid', f); } for (const f of ['docs/llms.txt','docs/llms-full.txt','docs/feed.xml','docs/atom.xml','docs/sitemap.xml','docs/robots.txt','docs/indexnow-key.txt','docs/icon.svg']) { if (!fs.existsSync(f) || !fs.readFileSync(f, 'utf8').trim()) throw new Error('missing ' + f); console.log('present', f); }"
 
       - name: Commit and push updated data
         id: commit
