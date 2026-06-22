@@ -219,7 +219,7 @@ async function fetchCryptoKimchiPremium(krwPerUsd) {
 
     const [upbitData, binanceData] = await Promise.all([
       fetchJson(`https://api.upbit.com/v1/ticker?markets=${upbitMarkets}`),
-      fetchJson(`https://api.binance.com/api/v3/ticker/price?symbols=${binanceSymbols}`)
+      fetchBinancePrices(binanceSymbols)
     ]);
 
     const upbitByMarket = new Map(upbitData.map((item) => [item.market, item]));
@@ -259,6 +259,69 @@ async function fetchCryptoKimchiPremium(krwPerUsd) {
     console.error(`Crypto premium fetch failed: ${error.message}`);
     return null;
   }
+}
+
+async function fetchBinancePrices(binanceSymbols) {
+  // Try Binance first
+  try {
+    const res = await fetchJson(`https://api.binance.com/api/v3/ticker/price?symbols=${binanceSymbols}`);
+    if (Array.isArray(res)) {
+      console.log("Successfully fetched prices from Binance API.");
+      return res;
+    }
+  } catch (error) {
+    console.warn(`Binance API failed: ${error.message}. Trying KuCoin fallback...`);
+  }
+
+  // Fallback 1: KuCoin
+  try {
+    const assets = CRYPTO_ASSETS;
+    const kucoinPrices = [];
+    for (const asset of assets) {
+      const pair = `${asset.symbol}-USDT`;
+      const res = await fetchJson(`https://api.kucoin.com/api/v1/market/orderbook/level1?symbol=${pair}`);
+      if (res && res.data && res.data.price) {
+        kucoinPrices.push({
+          symbol: asset.binanceSymbol,
+          price: res.data.price
+        });
+      } else {
+        throw new Error(`Invalid response for ${pair}`);
+      }
+    }
+    if (kucoinPrices.length === assets.length) {
+      console.log("Successfully fetched prices from KuCoin API fallback.");
+      return kucoinPrices;
+    }
+  } catch (error) {
+    console.warn(`KuCoin fallback failed: ${error.message}. Trying Gate.io fallback...`);
+  }
+
+  // Fallback 2: Gate.io
+  try {
+    const assets = CRYPTO_ASSETS;
+    const gatePrices = [];
+    for (const asset of assets) {
+      const pair = `${asset.symbol}_USDT`;
+      const res = await fetchJson(`https://api.gateio.ws/api/v4/spot/tickers?currency_pair=${pair}`);
+      if (Array.isArray(res) && res[0] && res[0].last) {
+        gatePrices.push({
+          symbol: asset.binanceSymbol,
+          price: res[0].last
+        });
+      } else {
+        throw new Error(`Invalid response for ${pair}`);
+      }
+    }
+    if (gatePrices.length === assets.length) {
+      console.log("Successfully fetched prices from Gate.io API fallback.");
+      return gatePrices;
+    }
+  } catch (error) {
+    console.warn(`Gate.io fallback failed: ${error.message}.`);
+  }
+
+  throw new Error("All crypto price API sources failed.");
 }
 
 function simulateArbitrage(assets) {
