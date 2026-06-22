@@ -1,7 +1,7 @@
 {
   "name": "Korean Market & Crypto Trends API",
   "description": "Hourly South Korea market data for developers: Google Trends topics, KRW exchange rates, and crypto Kimchi Premium spreads.",
-  "generated_at": "2026-06-22T16:01:17.712Z",
+  "generated_at": "2026-06-22T16:55:05.072Z",
   "homepage_url": "https://germankbr.github.io/signal-protocol/",
   "repository_url": "https://github.com/GERMANKBR/signal-protocol",
   "rapidapi_url": "https://rapidapi.com/GERMANKBR/api/korean-trends-api1",
@@ -53,15 +53,30 @@
     {
       "path": "/api/v1/crypto.json",
       "method": "GET",
-      "description": "Kimchi Premium for BTC, ETH, SOL, XRP, and DOGE using Upbit and Binance public prices.",
+      "description": "Kimchi Premium top coins summary with link to full dataset.",
       "update_frequency": "hourly",
       "primary_fields": [
         "usd_krw_rate",
         "average_premium_percentage",
-        "arbitrage_opportunity",
-        "assets"
+        "total_available_coins",
+        "assets",
+        "full_data_endpoint"
       ],
       "url": "https://germankbr.github.io/signal-protocol/api/v1/crypto.json"
+    },
+    {
+      "path": "/api/v1/premium-all.json",
+      "method": "GET",
+      "description": "Full Kimchi Premium data for all dynamically discovered coins (Upbit KRW ∩ Binance USDT).",
+      "update_frequency": "hourly",
+      "primary_fields": [
+        "total_tracked_coins",
+        "top_premium_coins",
+        "top_discount_coins",
+        "premium_ranking",
+        "assets"
+      ],
+      "url": "https://germankbr.github.io/signal-protocol/api/v1/premium-all.json"
     },
     {
       "path": "/api/v1/meta.json",
@@ -79,24 +94,24 @@
   ],
   "latest_snapshot": {
     "top_trends": [
+      "새마을 금고",
       "황치열",
       "트위터",
       "심수창",
-      "레알 마드리드 cf",
-      "보험"
+      "레알 마드리드 cf"
     ],
     "krw_per_usd": 1531,
     "kimchi_premium": {
-      "average_premium_percentage": -1.49,
-      "tracked_assets": 5,
+      "average_premium_percentage": -0.37,
+      "tracked_assets": 10,
       "highest_premium": {
-        "symbol": "SOL",
-        "premium_percentage": -1.45,
-        "direction": "kimchi_discount"
+        "symbol": "TAIKO",
+        "premium_percentage": 1,
+        "direction": "kimchi_premium"
       },
       "lowest_premium": {
-        "symbol": "BTC",
-        "premium_percentage": -1.54,
+        "symbol": "TT",
+        "premium_percentage": -5.69,
         "direction": "kimchi_discount"
       }
     },

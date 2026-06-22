@@ -2,7 +2,7 @@
 
 > Hourly South Korea market data for developers: Google Trends topics, KRW exchange rates, and crypto Kimchi Premium spreads.
 
-Generated at: 2026-06-22T16:01:17.712Z
+Generated at: 2026-06-22T16:55:05.072Z
 Homepage: https://germankbr.github.io/signal-protocol/
 Commercial access: https://rapidapi.com/GERMANKBR/api/korean-trends-api1
 OpenAPI: https://germankbr.github.io/signal-protocol/api/openapi.json
@@ -13,27 +13,33 @@ The API is built for developers who need Korea-specific market intelligence with
 ## Endpoints
 - GET /api/v1/trends.json: South Korea Google Trends topics with traffic labels and related news.
 - GET /api/v1/rates.json: KRW exchange rates for USD, EUR, JPY, CNY, GBP, AUD, CAD, CHF, SGD, and HKD.
-- GET /api/v1/crypto.json: Kimchi Premium for BTC, ETH, SOL, XRP, and DOGE using Upbit and Binance public prices.
+- GET /api/v1/crypto.json: Kimchi Premium top coins summary with link to full dataset.
+- GET /api/v1/premium-all.json: Full Kimchi Premium data for all dynamically discovered coins (Upbit KRW ∩ Binance USDT).
 - GET /api/v1/meta.json: API metadata, source status, pricing entry point, and endpoint catalog.
 
 ## Latest Korean Trends
-- 1. 황치열 (100+)
-- 2. 트위터 (5000+)
-- 3. 심수창 (100+)
-- 4. 레알 마드리드 cf (500+)
-- 5. 보험 (1000+)
-- 6. 항공사 (100+)
-- 7. 비상계엄 (10000+)
-- 8. 심야괴담회 (200+)
-- 9. 지연수 (5000+)
-- 10. 군인 (500+)
+- 1. 새마을 금고 (200+)
+- 2. 황치열 (100+)
+- 3. 트위터 (5000+)
+- 4. 심수창 (100+)
+- 5. 레알 마드리드 cf (500+)
+- 6. 보험 (1000+)
+- 7. 항공사 (100+)
+- 8. 비상계엄 (10000+)
+- 9. 심야괴담회 (200+)
+- 10. 지연수 (5000+)
 
 ## Latest Kimchi Premium
-- BTC: -1.54% kimchi_discount, Upbit 97583000 KRW, Binance 64732.45 USDT
-- ETH: -1.54% kimchi_discount, Upbit 2625000 KRW, Binance 1741.4 USDT
-- SOL: -1.45% kimchi_discount, Upbit 110200 KRW, Binance 73.04 USDT
-- XRP: -1.46% kimchi_discount, Upbit 1717 KRW, Binance 1.1381 USDT
-- DOGE: -1.45% kimchi_discount, Upbit 126 KRW, Binance 0.08351 USDT
+- TAIKO: 1% kimchi_premium, Upbit 113 KRW, Binance 0.07308 USDT
+- MED: 0.04% kimchi_premium, Upbit 2.25 KRW, Binance 0.001469 USDT
+- BIRB: -0.17% kimchi_discount, Upbit 105 KRW, Binance 0.0687 USDT
+- B3: -0.44% kimchi_discount, Upbit 0.86 KRW, Binance 0.0005655 USDT
+- PRL: -0.54% kimchi_discount, Upbit 217 KRW, Binance 0.1425 USDT
+- MANA: -0.55% kimchi_discount, Upbit 112 KRW, Binance 0.07356 USDT
+- STRAX: -0.55% kimchi_discount, Upbit 16.4 KRW, Binance 0.010771 USDT
+- POWR: -0.68% kimchi_discount, Upbit 69.2 KRW, Binance 0.04551 USDT
+- MIRA: -0.9% kimchi_discount, Upbit 74.3 KRW, Binance 0.04897 USDT
+- G: -0.95% kimchi_discount, Upbit 4.04 KRW, Binance 0.002664 USDT
 
 ## Latest FX Snapshot
 - USD/KRW: 1531
@@ -51,24 +57,24 @@ The API is built for developers who need Korea-specific market intelligence with
 ```json
 {
   "top_trends": [
+    "새마을 금고",
     "황치열",
     "트위터",
     "심수창",
-    "레알 마드리드 cf",
-    "보험"
+    "레알 마드리드 cf"
   ],
   "krw_per_usd": 1531,
   "kimchi_premium": {
-    "average_premium_percentage": -1.49,
-    "tracked_assets": 5,
+    "average_premium_percentage": -0.37,
+    "tracked_assets": 10,
     "highest_premium": {
-      "symbol": "SOL",
-      "premium_percentage": -1.45,
-      "direction": "kimchi_discount"
+      "symbol": "TAIKO",
+      "premium_percentage": 1,
+      "direction": "kimchi_premium"
     },
     "lowest_premium": {
-      "symbol": "BTC",
-      "premium_percentage": -1.54,
+      "symbol": "TT",
+      "premium_percentage": -5.69,
       "direction": "kimchi_discount"
     }
   },
