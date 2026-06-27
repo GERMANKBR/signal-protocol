@@ -2,7 +2,7 @@
 
 > Hourly South Korea market data for developers: Google Trends topics, KRW exchange rates, and crypto Kimchi Premium spreads.
 
-Generated at: 2026-06-27T01:16:21.871Z
+Generated at: 2026-06-27T03:24:33.963Z
 Homepage: https://germankbr.github.io/signal-protocol/
 Commercial access: https://rapidapi.com/GERMANKBR/api/korean-trends-api1
 OpenAPI: https://germankbr.github.io/signal-protocol/api/openapi.json
@@ -18,28 +18,19 @@ The API is built for developers who need Korea-specific market intelligence with
 - GET /api/v1/meta.json: API metadata, source status, pricing entry point, and endpoint catalog.
 
 ## Latest Korean Trends
-- 1. cabo verde vs saudi arabia (500+)
-- 2. 크리스 플렉센 (200+)
-- 3. 건강보험 (500+)
-- 4. 샌디스크 (200+)
-- 5. 미셸 강 (200+)
-- 6. 부산 도시철도 (500+)
-- 7. 우루과이 대 스페인 (10000+)
-- 8. 카보베르데 대 사우디아라비아 (5000+)
-- 9. uruguay vs spain (1000+)
-- 10. 다이아몬드백스 대 레이스 (500+)
+- 1. 이집트 대 이란 (2000+)
+- 2. 뉴질랜드 대 벨기에 (2000+)
+- 3. 협죽도 (2000+)
+- 4. 대만 해협 (200+)
+- 5. 월드컵 순위 (1000+)
+- 6. 르브론 제임스 (200+)
+- 7. 남편 (200+)
+- 8. uruguay – tây ban nha (100+)
+- 9. 대형주 (5000+)
+- 10. уругвай – испания (100+)
 
 ## Latest Kimchi Premium
-- KNC: 1.04% kimchi_premium, Upbit 167 KRW, Binance 0.1076 USDT
-- MIRA: 0.96% kimchi_premium, Upbit 69.8 KRW, Binance 0.04501 USDT
-- IQ: 0.94% kimchi_premium, Upbit 1.13 KRW, Binance 0.0007288 USDT
-- PUNDIX: 0.45% kimchi_premium, Upbit 181 KRW, Binance 0.11731 USDT
-- BORA: -0.23% kimchi_discount, Upbit 39 KRW, Binance 0.02545 USDT
-- QKC: -0.29% kimchi_discount, Upbit 2.89 KRW, Binance 0.001887 USDT
-- MANA: -0.3% kimchi_discount, Upbit 100 KRW, Binance 0.0653 USDT
-- QTUM: -0.32% kimchi_discount, Upbit 1035 KRW, Binance 0.676 USDT
-- YGG: -0.44% kimchi_discount, Upbit 35.8 KRW, Binance 0.02341 USDT
-- CBK: -0.54% kimchi_discount, Upbit 273 KRW, Binance 0.1787 USDT
+- Crypto premium data is temporarily partial.
 
 ## Latest FX Snapshot
 - USD/KRW: 1536.01
@@ -57,31 +48,18 @@ The API is built for developers who need Korea-specific market intelligence with
 ```json
 {
   "top_trends": [
-    "cabo verde vs saudi arabia",
-    "크리스 플렉센",
-    "건강보험",
-    "샌디스크",
-    "미셸 강"
+    "이집트 대 이란",
+    "뉴질랜드 대 벨기에",
+    "협죽도",
+    "대만 해협",
+    "월드컵 순위"
   ],
   "krw_per_usd": 1536.01,
-  "kimchi_premium": {
-    "average_premium_percentage": 0.13,
-    "tracked_assets": 10,
-    "highest_premium": {
-      "symbol": "KNC",
-      "premium_percentage": 1.04,
-      "direction": "kimchi_premium"
-    },
-    "lowest_premium": {
-      "symbol": "MLK",
-      "premium_percentage": -4.56,
-      "direction": "kimchi_discount"
-    }
-  },
+  "kimchi_premium": null,
   "source_status": {
     "trends": "ok",
     "rates": "ok",
-    "crypto": "ok"
+    "crypto": "partial"
   }
 }
 ```
