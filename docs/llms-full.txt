@@ -2,7 +2,7 @@
 
 > Hourly South Korea market data for developers: Google Trends topics, KRW exchange rates, and crypto Kimchi Premium spreads.
 
-Generated at: 2026-07-05T20:30:36.576Z
+Generated at: 2026-07-05T22:12:35.681Z
 Homepage: https://germankbr.github.io/signal-protocol/
 Commercial access: https://rapidapi.com/GERMANKBR/api/korean-trends-api1
 OpenAPI: https://germankbr.github.io/signal-protocol/api/openapi.json
@@ -18,19 +18,28 @@ The API is built for developers who need Korea-specific market intelligence with
 - GET /api/v1/meta.json: API metadata, source status, pricing entry point, and endpoint catalog.
 
 ## Latest Korean Trends
-- 1. 브라질 대 노르웨이 (10000+)
-- 2. 야닉 시너 (500+)
-- 3. 이찬원 (100+)
-- 4. 다니엘 근황 (200+)
-- 5. 셰프 (2000+)
-- 6. 안드레이 산투스 (100+)
-- 7. 파산 (500+)
-- 8. 대전 도시철도 2호선 (200+)
-- 9. 한식대첩 - 시즌 3 (2000+)
-- 10. 이엘 (1000+)
+- 1. 북대서양 조약 기구 (100+)
+- 2. 도경완 (100+)
+- 3. бразилия – норвегия (200+)
+- 4. fifa world cup (200+)
+- 5. 윔블던 2026 (200+)
+- 6. 버스 (200+)
+- 7. 롯데 자이언츠 (10000+)
+- 8. 국채 (500+)
+- 9. 제주특별자치도 (500+)
+- 10. 신동빈 (500+)
 
 ## Latest Kimchi Premium
-- Crypto premium data is temporarily partial.
+- AI: 34.27% kimchi_premium, Upbit 43.4 KRW, Binance 0.02109 USDT
+- TAIKO: 0.65% kimchi_premium, Upbit 154 KRW, Binance 0.09983 USDT
+- STRAX: 0.1% kimchi_premium, Upbit 14.9 KRW, Binance 0.009712 USDT
+- MLK: -0.44% kimchi_discount, Upbit 52.9 KRW, Binance 0.03467 USDT
+- ASTR: -0.5% kimchi_discount, Upbit 7.93 KRW, Binance 0.0052 USDT
+- WAXP: -0.52% kimchi_discount, Upbit 6.51 KRW, Binance 0.00427 USDT
+- MTL: -0.78% kimchi_discount, Upbit 349 KRW, Binance 0.2295 USDT
+- A: -0.81% kimchi_discount, Upbit 110 KRW, Binance 0.07236 USDT
+- ORDER: -0.89% kimchi_discount, Upbit 55 KRW, Binance 0.03621 USDT
+- NEWT: -0.91% kimchi_discount, Upbit 78.5 KRW, Binance 0.05169 USDT
 
 ## Latest FX Snapshot
 - USD/KRW: 1532.63
@@ -48,18 +57,31 @@ The API is built for developers who need Korea-specific market intelligence with
 ```json
 {
   "top_trends": [
-    "브라질 대 노르웨이",
-    "야닉 시너",
-    "이찬원",
-    "다니엘 근황",
-    "셰프"
+    "북대서양 조약 기구",
+    "도경완",
+    "бразилия – норвегия",
+    "fifa world cup",
+    "윔블던 2026"
   ],
   "krw_per_usd": 1532.63,
-  "kimchi_premium": null,
+  "kimchi_premium": {
+    "average_premium_percentage": 3.02,
+    "tracked_assets": 10,
+    "highest_premium": {
+      "symbol": "AI",
+      "premium_percentage": 34.27,
+      "direction": "kimchi_premium"
+    },
+    "lowest_premium": {
+      "symbol": "MVL",
+      "premium_percentage": -7.66,
+      "direction": "kimchi_discount"
+    }
+  },
   "source_status": {
     "trends": "ok",
     "rates": "ok",
-    "crypto": "partial"
+    "crypto": "ok"
   }
 }
 ```
