@@ -11,6 +11,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { calculateArbitrageSignals } = require("./calculate-arbitrage");
 
 const API_DIR = path.join(__dirname, "..", "docs", "api", "v1");
 const SITE_URL = "https://germankbr.github.io/signal-protocol";
@@ -578,6 +579,9 @@ async function main() {
 
   writeJson("meta.json", buildMetaPayload(updatedAt, { trends, rates, crypto: cryptoAll }));
 
+  // NEW: Calculate net arbitrage profit signals
+  calculateArbitrageSignals();
+
   const elapsed = round((Date.now() - startedAt) / 1000, 1);
   const coinCount = cryptoAll ? cryptoAll.total_tracked_coins : 0;
   console.log(`Collection complete in ${elapsed}s.`);
@@ -620,6 +624,13 @@ function buildMetaPayload(updatedAt, sourceState) {
         description: `Full Kimchi Premium data for all dynamically discovered coins (Upbit KRW ∩ Binance USDT).`,
         update_frequency: "hourly",
         primary_fields: ["total_tracked_coins", "top_premium_coins", "top_discount_coins", "premium_ranking", "assets"]
+      },
+      {
+        path: "/api/v1/arbitrage-signals.json",
+        method: "GET",
+        description: "Net ROI profit signals considering Upbit/Binance trading fees and network slippage.",
+        update_frequency: "hourly",
+        primary_fields: ["total_tracked_coins", "strong_buy_signals_count", "buy_signals_count", "signals"]
       },
       {
         path: "/api/v1/meta.json",

@@ -1,7 +1,7 @@
 {
   "name": "Korean Market & Crypto Trends API",
   "description": "Hourly South Korea market data for developers: Google Trends topics, KRW exchange rates, and crypto Kimchi Premium spreads.",
-  "generated_at": "2026-08-07T05:49:55.126Z",
+  "generated_at": "2026-08-07T06:33:26.647Z",
   "homepage_url": "https://germankbr.github.io/signal-protocol/",
   "repository_url": "https://github.com/GERMANKBR/signal-protocol",
   "rapidapi_url": "https://rapidapi.com/GERMANKBR/api/korean-trends-api1",
@@ -79,6 +79,19 @@
       "url": "https://germankbr.github.io/signal-protocol/api/v1/premium-all.json"
     },
     {
+      "path": "/api/v1/arbitrage-signals.json",
+      "method": "GET",
+      "description": "Net ROI profit signals considering Upbit/Binance trading fees and network slippage.",
+      "update_frequency": "hourly",
+      "primary_fields": [
+        "total_tracked_coins",
+        "strong_buy_signals_count",
+        "buy_signals_count",
+        "signals"
+      ],
+      "url": "https://germankbr.github.io/signal-protocol/api/v1/arbitrage-signals.json"
+    },
+    {
       "path": "/api/v1/meta.json",
       "method": "GET",
       "description": "API metadata, source status, pricing entry point, and endpoint catalog.",
@@ -94,24 +107,24 @@
   ],
   "latest_snapshot": {
     "top_trends": [
-      "대통령기록관",
-      "홍수",
-      "서장훈",
-      "틈만나면,",
-      "오픈ai"
+      "여자 배구",
+      "멕시코",
+      "데이터 센터",
+      "골프장",
+      "테슬라"
     ],
     "krw_per_usd": 1423.48,
     "kimchi_premium": {
-      "average_premium_percentage": 8.02,
+      "average_premium_percentage": 3.57,
       "tracked_assets": 10,
       "highest_premium": {
-        "symbol": "TT",
-        "premium_percentage": 31.75,
+        "symbol": "BONK",
+        "premium_percentage": 16.92,
         "direction": "kimchi_premium"
       },
       "lowest_premium": {
-        "symbol": "ZIL",
-        "premium_percentage": -15.47,
+        "symbol": "ARDR",
+        "premium_percentage": -16.21,
         "direction": "kimchi_discount"
       }
     },

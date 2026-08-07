@@ -1,7 +1,7 @@
 {
   "name": "Korean Market & Crypto Trends API",
   "description": "Hourly South Korea market data for developers: Google Trends topics, KRW exchange rates, and crypto Kimchi Premium spreads.",
-  "generated_at": "2026-08-07T05:49:55.126Z",
+  "generated_at": "2026-08-07T06:33:26.647Z",
   "homepage_url": "https://germankbr.github.io/signal-protocol/",
   "openapi_url": "https://germankbr.github.io/signal-protocol/api/openapi.json",
   "catalog_url": "https://germankbr.github.io/signal-protocol/api/catalog.json",
@@ -78,6 +78,19 @@
         "assets"
       ],
       "url": "https://germankbr.github.io/signal-protocol/api/v1/premium-all.json"
+    },
+    {
+      "path": "/api/v1/arbitrage-signals.json",
+      "method": "GET",
+      "description": "Net ROI profit signals considering Upbit/Binance trading fees and network slippage.",
+      "update_frequency": "hourly",
+      "primary_fields": [
+        "total_tracked_coins",
+        "strong_buy_signals_count",
+        "buy_signals_count",
+        "signals"
+      ],
+      "url": "https://germankbr.github.io/signal-protocol/api/v1/arbitrage-signals.json"
     },
     {
       "path": "/api/v1/meta.json",
