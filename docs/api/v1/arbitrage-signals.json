@@ -3,46 +3,28 @@
   "api": "Arbitrage Profit Signal API",
   "endpoint": "/api/v1/arbitrage-signals.json",
   "description": "Net ROI profit signals considering Upbit/Binance trading fees and network slippage.",
-  "updated_at": "2026-08-15T06:56:42.558Z",
+  "updated_at": "2026-08-15T07:43:52.429Z",
   "summary": {
     "total_tracked_coins": 259,
     "strong_buy_signals_count": 3,
-    "buy_signals_count": 5,
+    "buy_signals_count": 6,
     "max_net_roi_coin": {
       "symbol": "AI",
-      "net_roi_pct": 14.77
+      "net_roi_pct": 16.32
     }
   },
   "signals": [
     {
       "symbol": "AI",
-      "gross_premium_pct": 15.12,
-      "net_roi_pct": 14.77,
+      "gross_premium_pct": 16.67,
+      "net_roi_pct": 16.32,
       "signal_grade": "STRONG_BUY",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 28.4,
-        "binance_usdt": 0.01743,
-        "binance_krw_equiv": 24.67
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "RVN",
-      "gross_premium_pct": -8.08,
-      "net_roi_pct": 8.32,
-      "signal_grade": "STRONG_BUY",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 3.47,
-        "binance_usdt": 0.002667,
-        "binance_krw_equiv": 3.77
+        "upbit_krw": 28.7,
+        "binance_usdt": 0.01738,
+        "binance_krw_equiv": 24.6
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -52,15 +34,33 @@
     },
     {
       "symbol": "ZIL",
-      "gross_premium_pct": -6.52,
-      "net_roi_pct": 6.78,
+      "gross_premium_pct": -6.85,
+      "net_roi_pct": 7.15,
       "signal_grade": "STRONG_BUY",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 3.1,
-        "binance_usdt": 0.002343,
-        "binance_krw_equiv": 3.32
+        "upbit_krw": 3.08,
+        "binance_usdt": 0.002336,
+        "binance_krw_equiv": 3.31
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "RVN",
+      "gross_premium_pct": -6.98,
+      "net_roi_pct": 7.09,
+      "signal_grade": "STRONG_BUY",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 3.51,
+        "binance_usdt": 0.002666,
+        "binance_krw_equiv": 3.77
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -70,13 +70,13 @@
     },
     {
       "symbol": "BIRB",
-      "gross_premium_pct": 2.06,
-      "net_roi_pct": 1.75,
+      "gross_premium_pct": 3.28,
+      "net_roi_pct": 2.97,
       "signal_grade": "BUY",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 74.9,
+        "upbit_krw": 75.8,
         "binance_usdt": 0.05185,
         "binance_krw_equiv": 73.39
       },
@@ -87,16 +87,16 @@
       }
     },
     {
-      "symbol": "LSK",
-      "gross_premium_pct": -1.97,
-      "net_roi_pct": 1.71,
+      "symbol": "MEW",
+      "gross_premium_pct": -0.42,
+      "net_roi_pct": 1.92,
       "signal_grade": "BUY",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 110,
-        "binance_usdt": 0.07928,
-        "binance_krw_equiv": 112.22
+        "upbit_krw": 0.45,
+        "binance_usdt": 0.0003221,
+        "binance_krw_equiv": 0.46
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -106,15 +106,15 @@
     },
     {
       "symbol": "STORJ",
-      "gross_premium_pct": 1.67,
-      "net_roi_pct": 1.37,
+      "gross_premium_pct": 1.88,
+      "net_roi_pct": 1.59,
       "signal_grade": "BUY",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 62.6,
-        "binance_usdt": 0.0435,
-        "binance_krw_equiv": 61.57
+        "upbit_krw": 62.5,
+        "binance_usdt": 0.04334,
+        "binance_krw_equiv": 61.34
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -123,16 +123,34 @@
       }
     },
     {
-      "symbol": "SC",
-      "gross_premium_pct": 0.1,
-      "net_roi_pct": 1.23,
+      "symbol": "ELF",
+      "gross_premium_pct": 1.74,
+      "net_roi_pct": 1.44,
       "signal_grade": "BUY",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 0.66,
-        "binance_usdt": 0.0004623,
-        "binance_krw_equiv": 0.65
+        "upbit_krw": 80.3,
+        "binance_usdt": 0.05576,
+        "binance_krw_equiv": 78.92
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "B3",
+      "gross_premium_pct": 0.9,
+      "net_roi_pct": 1.42,
+      "signal_grade": "BUY",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 0.59,
+        "binance_usdt": 0.0004131,
+        "binance_krw_equiv": 0.58
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -142,15 +160,15 @@
     },
     {
       "symbol": "DRV",
-      "gross_premium_pct": 1.37,
+      "gross_premium_pct": 1.36,
       "net_roi_pct": 1.06,
       "signal_grade": "BUY",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
         "upbit_krw": 132,
-        "binance_usdt": 0.092,
-        "binance_krw_equiv": 130.22
+        "binance_usdt": 0.09201,
+        "binance_krw_equiv": 130.23
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -177,16 +195,52 @@
       }
     },
     {
-      "symbol": "QKC",
-      "gross_premium_pct": -1.1,
-      "net_roi_pct": 0.78,
+      "symbol": "BLEND",
+      "gross_premium_pct": -1.18,
+      "net_roi_pct": 0.89,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 2.78,
-        "binance_usdt": 0.001986,
-        "binance_krw_equiv": 2.81
+        "upbit_krw": 90.6,
+        "binance_usdt": 0.06477,
+        "binance_krw_equiv": 91.68
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "IQ",
+      "gross_premium_pct": -1.1,
+      "net_roi_pct": 0.86,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 0.86,
+        "binance_usdt": 0.0006172,
+        "binance_krw_equiv": 0.87
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "MLK",
+      "gross_premium_pct": 1.03,
+      "net_roi_pct": 0.72,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 43.6,
+        "binance_usdt": 0.03049,
+        "binance_krw_equiv": 43.16
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -231,16 +285,16 @@
       }
     },
     {
-      "symbol": "W",
-      "gross_premium_pct": -0.95,
-      "net_roi_pct": 0.64,
+      "symbol": "LSK",
+      "gross_premium_pct": -0.92,
+      "net_roi_pct": 0.63,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 11.7,
-        "binance_usdt": 0.008345,
-        "binance_krw_equiv": 11.81
+        "upbit_krw": 111,
+        "binance_usdt": 0.07915,
+        "binance_krw_equiv": 112.03
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -249,34 +303,16 @@
       }
     },
     {
-      "symbol": "CPOOL",
-      "gross_premium_pct": -0.91,
-      "net_roi_pct": 0.62,
+      "symbol": "KMNO",
+      "gross_premium_pct": -0.88,
+      "net_roi_pct": 0.59,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 23.9,
-        "binance_usdt": 0.01704,
-        "binance_krw_equiv": 24.12
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ELF",
-      "gross_premium_pct": 0.86,
-      "net_roi_pct": 0.56,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 79.6,
-        "binance_usdt": 0.05576,
-        "binance_krw_equiv": 78.92
+        "upbit_krw": 25.8,
+        "binance_usdt": 0.01839,
+        "binance_krw_equiv": 26.03
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -286,14 +322,14 @@
     },
     {
       "symbol": "CKB",
-      "gross_premium_pct": 0.62,
+      "gross_premium_pct": 0.74,
       "net_roi_pct": 0.56,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
         "upbit_krw": 1.17,
-        "binance_usdt": 0.0008215,
+        "binance_usdt": 0.0008205,
         "binance_krw_equiv": 1.16
       },
       "estimated_fees": {
@@ -321,34 +357,16 @@
       }
     },
     {
-      "symbol": "POKT",
-      "gross_premium_pct": 0.79,
-      "net_roi_pct": 0.54,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 9.54,
-        "binance_usdt": 0.006687,
-        "binance_krw_equiv": 9.46
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "WET",
-      "gross_premium_pct": -0.84,
+      "symbol": "CARV",
+      "gross_premium_pct": -0.83,
       "net_roi_pct": 0.54,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 102,
-        "binance_usdt": 0.07267,
-        "binance_krw_equiv": 102.86
+        "upbit_krw": 42.8,
+        "binance_usdt": 0.03049,
+        "binance_krw_equiv": 43.16
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -357,16 +375,16 @@
       }
     },
     {
-      "symbol": "EDGE",
-      "gross_premium_pct": -0.82,
-      "net_roi_pct": 0.53,
+      "symbol": "MANA",
+      "gross_premium_pct": -0.81,
+      "net_roi_pct": 0.52,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 86.8,
-        "binance_usdt": 0.06183,
-        "binance_krw_equiv": 87.52
+        "upbit_krw": 91.1,
+        "binance_usdt": 0.06489,
+        "binance_krw_equiv": 91.85
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -375,16 +393,16 @@
       }
     },
     {
-      "symbol": "SKR",
+      "symbol": "TAIKO",
       "gross_premium_pct": -0.78,
       "net_roi_pct": 0.49,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 10.1,
-        "binance_usdt": 0.007192,
-        "binance_krw_equiv": 10.18
+        "upbit_krw": 98.7,
+        "binance_usdt": 0.07028,
+        "binance_krw_equiv": 99.48
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -411,52 +429,16 @@
       }
     },
     {
-      "symbol": "BSV",
-      "gross_premium_pct": -0.75,
-      "net_roi_pct": 0.46,
+      "symbol": "GEOD",
+      "gross_premium_pct": -0.73,
+      "net_roi_pct": 0.44,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 21760,
-        "binance_usdt": 15.49,
-        "binance_krw_equiv": 21925.01
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "DEEP",
-      "gross_premium_pct": -0.76,
-      "net_roi_pct": 0.46,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 19.6,
-        "binance_usdt": 0.013954,
-        "binance_krw_equiv": 19.75
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ICX",
-      "gross_premium_pct": -0.76,
-      "net_roi_pct": 0.46,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 26.1,
-        "binance_usdt": 0.01858,
-        "binance_krw_equiv": 26.3
+        "upbit_krw": 262,
+        "binance_usdt": 0.18647,
+        "binance_krw_equiv": 263.94
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -483,16 +465,16 @@
       }
     },
     {
-      "symbol": "HIVE",
-      "gross_premium_pct": 0.72,
-      "net_roi_pct": 0.42,
+      "symbol": "LA",
+      "gross_premium_pct": -0.73,
+      "net_roi_pct": 0.43,
       "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 55.7,
-        "binance_usdt": 0.03907,
-        "binance_krw_equiv": 55.3
+        "upbit_krw": 71,
+        "binance_usdt": 0.05053,
+        "binance_krw_equiv": 71.52
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -501,16 +483,16 @@
       }
     },
     {
-      "symbol": "MANA",
+      "symbol": "LPT",
       "gross_premium_pct": -0.7,
       "net_roi_pct": 0.41,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 91.2,
-        "binance_usdt": 0.06489,
-        "binance_krw_equiv": 91.85
+        "upbit_krw": 1688,
+        "binance_usdt": 1.201,
+        "binance_krw_equiv": 1699.93
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -519,430 +501,16 @@
       }
     },
     {
-      "symbol": "SLX",
-      "gross_premium_pct": 0.68,
-      "net_roi_pct": 0.37,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 108,
-        "binance_usdt": 0.07579,
-        "binance_krw_equiv": 107.28
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "SOMI",
-      "gross_premium_pct": -0.67,
+      "symbol": "ZK",
+      "gross_premium_pct": -0.65,
       "net_roi_pct": 0.37,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 129,
-        "binance_usdt": 0.09175,
-        "binance_krw_equiv": 129.87
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "T",
-      "gross_premium_pct": -0.62,
-      "net_roi_pct": 0.33,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 4.77,
-        "binance_usdt": 0.003391,
-        "binance_krw_equiv": 4.8
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ENA",
-      "gross_premium_pct": 0.62,
-      "net_roi_pct": 0.32,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 121,
-        "binance_usdt": 0.08496,
-        "binance_krw_equiv": 120.25
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "DOOD",
-      "gross_premium_pct": -0.41,
-      "net_roi_pct": 0.32,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 1.6,
-        "binance_usdt": 0.001135,
-        "binance_krw_equiv": 1.61
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "KERNEL",
-      "gross_premium_pct": -0.62,
-      "net_roi_pct": 0.32,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 46.7,
-        "binance_usdt": 0.0332,
-        "binance_krw_equiv": 46.99
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "WIF",
-      "gross_premium_pct": -0.6,
-      "net_roi_pct": 0.3,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 195,
-        "binance_usdt": 0.1386,
-        "binance_krw_equiv": 196.18
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "AWE",
-      "gross_premium_pct": -0.59,
-      "net_roi_pct": 0.29,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 87.8,
-        "binance_usdt": 0.0624,
-        "binance_krw_equiv": 88.32
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "BREV",
-      "gross_premium_pct": -0.59,
-      "net_roi_pct": 0.29,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 94.4,
-        "binance_usdt": 0.06709,
-        "binance_krw_equiv": 94.96
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "MED",
-      "gross_premium_pct": 0.85,
-      "net_roi_pct": 0.28,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 1.74,
-        "binance_usdt": 0.001219,
-        "binance_krw_equiv": 1.73
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "MOCA",
-      "gross_premium_pct": 0.57,
-      "net_roi_pct": 0.27,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 10.5,
-        "binance_usdt": 0.007376,
-        "binance_krw_equiv": 10.44
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "G",
-      "gross_premium_pct": -0.55,
-      "net_roi_pct": 0.27,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 5.27,
-        "binance_usdt": 0.003744,
-        "binance_krw_equiv": 5.3
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "AVNT",
-      "gross_premium_pct": -0.56,
-      "net_roi_pct": 0.27,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 143,
-        "binance_usdt": 0.1016,
-        "binance_krw_equiv": 143.81
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "MLK",
-      "gross_premium_pct": 0.56,
-      "net_roi_pct": 0.26,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 43.3,
-        "binance_usdt": 0.03042,
-        "binance_krw_equiv": 43.06
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "GEOD",
-      "gross_premium_pct": -0.55,
-      "net_roi_pct": 0.25,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 263,
-        "binance_usdt": 0.18683,
-        "binance_krw_equiv": 264.44
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "BAT",
-      "gross_premium_pct": 0.54,
-      "net_roi_pct": 0.24,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 81.2,
-        "binance_usdt": 0.05706,
-        "binance_krw_equiv": 80.76
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "SUPER",
-      "gross_premium_pct": 0.53,
-      "net_roi_pct": 0.24,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 120,
-        "binance_usdt": 0.08433,
-        "binance_krw_equiv": 119.36
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ARB",
-      "gross_premium_pct": 0.53,
-      "net_roi_pct": 0.23,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 107,
-        "binance_usdt": 0.0752,
-        "binance_krw_equiv": 106.44
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ZETA",
-      "gross_premium_pct": -0.51,
-      "net_roi_pct": 0.22,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 38.4,
-        "binance_usdt": 0.02727,
-        "binance_krw_equiv": 38.6
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ALGO",
-      "gross_premium_pct": -0.51,
-      "net_roi_pct": 0.21,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 112,
-        "binance_usdt": 0.07953,
-        "binance_krw_equiv": 112.57
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "TRUMP",
-      "gross_premium_pct": -0.51,
-      "net_roi_pct": 0.21,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 1995,
-        "binance_usdt": 1.4167,
-        "binance_krw_equiv": 2005.24
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "BARD",
-      "gross_premium_pct": -0.51,
-      "net_roi_pct": 0.21,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 148,
-        "binance_usdt": 0.1051,
-        "binance_krw_equiv": 148.76
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ME",
-      "gross_premium_pct": -0.51,
-      "net_roi_pct": 0.2,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 91.1,
-        "binance_usdt": 0.06469,
-        "binance_krw_equiv": 91.56
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "CTC",
-      "gross_premium_pct": 0.5,
-      "net_roi_pct": 0.19,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 93.4,
-        "binance_usdt": 0.06566,
-        "binance_krw_equiv": 92.94
+        "upbit_krw": 10.4,
+        "binance_usdt": 0.007396,
+        "binance_krw_equiv": 10.47
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -952,15 +520,357 @@
     },
     {
       "symbol": "IO",
+      "gross_premium_pct": -0.65,
+      "net_roi_pct": 0.35,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 161,
+        "binance_usdt": 0.11449,
+        "binance_krw_equiv": 162.05
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "SAHARA",
+      "gross_premium_pct": -0.6,
+      "net_roi_pct": 0.34,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 10.9,
+        "binance_usdt": 0.007747,
+        "binance_krw_equiv": 10.97
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "POKT",
+      "gross_premium_pct": 0.67,
+      "net_roi_pct": 0.33,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 9.53,
+        "binance_usdt": 0.006688,
+        "binance_krw_equiv": 9.47
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "CC",
+      "gross_premium_pct": 0.61,
+      "net_roi_pct": 0.32,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 137,
+        "binance_usdt": 0.0962,
+        "binance_krw_equiv": 136.16
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "1INCH",
+      "gross_premium_pct": 0.59,
+      "net_roi_pct": 0.29,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 118,
+        "binance_usdt": 0.08288,
+        "binance_krw_equiv": 117.31
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "QTUM",
+      "gross_premium_pct": -0.58,
+      "net_roi_pct": 0.29,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 949,
+        "binance_usdt": 0.6744,
+        "binance_krw_equiv": 954.57
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "SUPER",
+      "gross_premium_pct": 0.58,
+      "net_roi_pct": 0.28,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 120,
+        "binance_usdt": 0.08429,
+        "binance_krw_equiv": 119.31
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "KITE",
+      "gross_premium_pct": 0.58,
+      "net_roi_pct": 0.28,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 136,
+        "binance_usdt": 0.09553,
+        "binance_krw_equiv": 135.22
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "WAXP",
+      "gross_premium_pct": -0.55,
+      "net_roi_pct": 0.28,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 5.18,
+        "binance_usdt": 0.00368,
+        "binance_krw_equiv": 5.21
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "MOCA",
+      "gross_premium_pct": 0.62,
+      "net_roi_pct": 0.27,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 10.6,
+        "binance_usdt": 0.007443,
+        "binance_krw_equiv": 10.54
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "YGG",
+      "gross_premium_pct": 0.57,
+      "net_roi_pct": 0.27,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 28.1,
+        "binance_usdt": 0.01974,
+        "binance_krw_equiv": 27.94
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "BORA",
+      "gross_premium_pct": 0.56,
+      "net_roi_pct": 0.26,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 27,
+        "binance_usdt": 0.01897,
+        "binance_krw_equiv": 26.85
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "ORDER",
+      "gross_premium_pct": -0.53,
+      "net_roi_pct": 0.24,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 40.9,
+        "binance_usdt": 0.02905,
+        "binance_krw_equiv": 41.12
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "FF",
+      "gross_premium_pct": -0.54,
+      "net_roi_pct": 0.24,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 92.2,
+        "binance_usdt": 0.06549,
+        "binance_krw_equiv": 92.7
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "WIF",
+      "gross_premium_pct": -0.53,
+      "net_roi_pct": 0.23,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 195,
+        "binance_usdt": 0.1385,
+        "binance_krw_equiv": 196.04
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "TRUST",
+      "gross_premium_pct": -0.51,
+      "net_roi_pct": 0.22,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 70.9,
+        "binance_usdt": 0.05035,
+        "binance_krw_equiv": 71.27
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "ONG",
+      "gross_premium_pct": 0.51,
+      "net_roi_pct": 0.21,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 69.1,
+        "binance_usdt": 0.04857,
+        "binance_krw_equiv": 68.75
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "EDGE",
+      "gross_premium_pct": -0.52,
+      "net_roi_pct": 0.21,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 87.5,
+        "binance_usdt": 0.06214,
+        "binance_krw_equiv": 87.95
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "CPOOL",
+      "gross_premium_pct": -0.49,
+      "net_roi_pct": 0.2,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 24,
+        "binance_usdt": 0.01704,
+        "binance_krw_equiv": 24.12
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "CELO",
       "gross_premium_pct": -0.49,
       "net_roi_pct": 0.19,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 164,
-        "binance_usdt": 0.11644,
-        "binance_krw_equiv": 164.81
+        "upbit_krw": 85.1,
+        "binance_usdt": 0.06042,
+        "binance_krw_equiv": 85.52
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -987,16 +897,16 @@
       }
     },
     {
-      "symbol": "ESP",
-      "gross_premium_pct": 0.47,
-      "net_roi_pct": 0.17,
+      "symbol": "XCN",
+      "gross_premium_pct": -0.53,
+      "net_roi_pct": 0.18,
       "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 103,
-        "binance_usdt": 0.07243,
-        "binance_krw_equiv": 102.52
+        "upbit_krw": 4.19,
+        "binance_usdt": 0.002976,
+        "binance_krw_equiv": 4.21
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1005,16 +915,16 @@
       }
     },
     {
-      "symbol": "LPT",
+      "symbol": "RAY",
       "gross_premium_pct": -0.47,
       "net_roi_pct": 0.17,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 1692,
-        "binance_usdt": 1.201,
-        "binance_krw_equiv": 1699.93
+        "upbit_krw": 877,
+        "binance_usdt": 0.6225,
+        "binance_krw_equiv": 881.11
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1023,16 +933,34 @@
       }
     },
     {
-      "symbol": "SYRUP",
-      "gross_premium_pct": 0.46,
+      "symbol": "BSV",
+      "gross_premium_pct": -0.47,
+      "net_roi_pct": 0.17,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 21850,
+        "binance_usdt": 15.51,
+        "binance_krw_equiv": 21953.32
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "HP",
+      "gross_premium_pct": 0.41,
       "net_roi_pct": 0.16,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 215,
-        "binance_usdt": 0.1512,
-        "binance_krw_equiv": 214.01
+        "upbit_krw": 8.65,
+        "binance_usdt": 0.006086,
+        "binance_krw_equiv": 8.61
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1041,16 +969,34 @@
       }
     },
     {
-      "symbol": "FF",
-      "gross_premium_pct": -0.44,
+      "symbol": "ENSO",
+      "gross_premium_pct": -0.46,
+      "net_roi_pct": 0.16,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 1094,
+        "binance_usdt": 0.7765,
+        "binance_krw_equiv": 1099.08
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "SIGN",
+      "gross_premium_pct": -0.42,
       "net_roi_pct": 0.14,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 92.7,
-        "binance_usdt": 0.06578,
-        "binance_krw_equiv": 93.11
+        "upbit_krw": 8.99,
+        "binance_usdt": 0.006378,
+        "binance_krw_equiv": 9.03
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1059,16 +1005,16 @@
       }
     },
     {
-      "symbol": "DKA",
-      "gross_premium_pct": 0.47,
-      "net_roi_pct": 0.13,
+      "symbol": "T",
+      "gross_premium_pct": 0.45,
+      "net_roi_pct": 0.12,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 4.66,
-        "binance_usdt": 0.003277,
-        "binance_krw_equiv": 4.64
+        "upbit_krw": 4.8,
+        "binance_usdt": 0.003376,
+        "binance_krw_equiv": 4.78
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1077,16 +1023,34 @@
       }
     },
     {
-      "symbol": "TRAC",
-      "gross_premium_pct": -0.43,
-      "net_roi_pct": 0.13,
+      "symbol": "EGLD",
+      "gross_premium_pct": 0.42,
+      "net_roi_pct": 0.12,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 3771,
+        "binance_usdt": 2.653,
+        "binance_krw_equiv": 3755.14
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "SKY",
+      "gross_premium_pct": -0.41,
+      "net_roi_pct": 0.12,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 367,
-        "binance_usdt": 0.2604,
-        "binance_krw_equiv": 368.58
+        "upbit_krw": 72.1,
+        "binance_usdt": 0.05115,
+        "binance_krw_equiv": 72.4
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1095,106 +1059,16 @@
       }
     },
     {
-      "symbol": "LA",
-      "gross_premium_pct": -0.43,
-      "net_roi_pct": 0.13,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 71.3,
-        "binance_usdt": 0.05059,
-        "binance_krw_equiv": 71.61
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "SOON",
-      "gross_premium_pct": -0.43,
-      "net_roi_pct": 0.13,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 279,
-        "binance_usdt": 0.19796,
-        "binance_krw_equiv": 280.2
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "SENT",
-      "gross_premium_pct": -0.46,
-      "net_roi_pct": 0.13,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 18.5,
-        "binance_usdt": 0.01313,
-        "binance_krw_equiv": 18.58
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "BIGTIME",
-      "gross_premium_pct": -0.49,
-      "net_roi_pct": 0.13,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 7,
-        "binance_usdt": 0.00497,
-        "binance_krw_equiv": 7.03
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "AXS",
+      "symbol": "NEO",
       "gross_premium_pct": -0.42,
       "net_roi_pct": 0.12,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 1247,
-        "binance_usdt": 0.8847,
-        "binance_krw_equiv": 1252.23
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "HYPER",
-      "gross_premium_pct": -0.42,
-      "net_roi_pct": 0.12,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 90,
-        "binance_usdt": 0.06385,
-        "binance_krw_equiv": 90.38
+        "upbit_krw": 2389,
+        "binance_usdt": 1.695,
+        "binance_krw_equiv": 2399.15
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1221,16 +1095,16 @@
       }
     },
     {
-      "symbol": "LAYER",
-      "gross_premium_pct": -0.4,
+      "symbol": "AVNT",
+      "gross_premium_pct": -0.41,
       "net_roi_pct": 0.11,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 85.4,
-        "binance_usdt": 0.06058,
-        "binance_krw_equiv": 85.75
+        "upbit_krw": 140,
+        "binance_usdt": 0.09932,
+        "binance_krw_equiv": 140.58
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1239,16 +1113,34 @@
       }
     },
     {
-      "symbol": "POWR",
-      "gross_premium_pct": -0.4,
+      "symbol": "AUCTION",
+      "gross_premium_pct": -0.41,
       "net_roi_pct": 0.11,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 51.5,
-        "binance_usdt": 0.03653,
-        "binance_krw_equiv": 51.71
+        "upbit_krw": 3985,
+        "binance_usdt": 2.827,
+        "binance_krw_equiv": 4001.42
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "BERA",
+      "gross_premium_pct": -0.41,
+      "net_roi_pct": 0.11,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 202,
+        "binance_usdt": 0.1433,
+        "binance_krw_equiv": 202.83
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1264,9 +1156,27 @@
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 244,
-        "binance_usdt": 0.1731,
-        "binance_krw_equiv": 245.01
+        "upbit_krw": 256,
+        "binance_usdt": 0.1816,
+        "binance_krw_equiv": 257.04
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "OPG",
+      "gross_premium_pct": 0.41,
+      "net_roi_pct": 0.1,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 132,
+        "binance_usdt": 0.09288,
+        "binance_krw_equiv": 131.47
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1293,6 +1203,24 @@
       }
     },
     {
+      "symbol": "ZAMA",
+      "gross_premium_pct": -0.4,
+      "net_roi_pct": 0.1,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 62.3,
+        "binance_usdt": 0.04419,
+        "binance_krw_equiv": 62.55
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
       "symbol": "TFUEL",
       "gross_premium_pct": 0.39,
       "net_roi_pct": 0.09,
@@ -1311,16 +1239,16 @@
       }
     },
     {
-      "symbol": "WLFI",
+      "symbol": "0G",
       "gross_premium_pct": -0.38,
       "net_roi_pct": 0.09,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 80.2,
-        "binance_usdt": 0.05688,
-        "binance_krw_equiv": 80.51
+        "upbit_krw": 228,
+        "binance_usdt": 0.1617,
+        "binance_krw_equiv": 228.88
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1329,16 +1257,16 @@
       }
     },
     {
-      "symbol": "SAND",
-      "gross_premium_pct": -0.39,
+      "symbol": "STX",
+      "gross_premium_pct": -0.4,
       "net_roi_pct": 0.09,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 56,
-        "binance_usdt": 0.03972,
-        "binance_krw_equiv": 56.22
+        "upbit_krw": 172,
+        "binance_usdt": 0.122,
+        "binance_krw_equiv": 172.68
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1347,16 +1275,16 @@
       }
     },
     {
-      "symbol": "MOODENG",
-      "gross_premium_pct": -0.39,
-      "net_roi_pct": 0.09,
+      "symbol": "G",
+      "gross_premium_pct": 0.44,
+      "net_roi_pct": 0.08,
       "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 50.9,
-        "binance_usdt": 0.0361,
-        "binance_krw_equiv": 51.1
+        "upbit_krw": 5.34,
+        "binance_usdt": 0.003756,
+        "binance_krw_equiv": 5.32
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1365,448 +1293,16 @@
       }
     },
     {
-      "symbol": "IN",
+      "symbol": "WAL",
       "gross_premium_pct": 0.39,
       "net_roi_pct": 0.08,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 44.9,
-        "binance_usdt": 0.0316,
-        "binance_krw_equiv": 44.73
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ENS",
-      "gross_premium_pct": -0.38,
-      "net_roi_pct": 0.08,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 5715,
-        "binance_usdt": 4.053,
-        "binance_krw_equiv": 5736.74
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "QTUM",
-      "gross_premium_pct": -0.37,
-      "net_roi_pct": 0.07,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 951,
-        "binance_usdt": 0.6744,
-        "binance_krw_equiv": 954.57
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "SAHARA",
-      "gross_premium_pct": 0.41,
-      "net_roi_pct": 0.06,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 11,
-        "binance_usdt": 0.00774,
-        "binance_krw_equiv": 10.96
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ONDO",
-      "gross_premium_pct": -0.36,
-      "net_roi_pct": 0.06,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 463,
-        "binance_usdt": 0.3283,
-        "binance_krw_equiv": 464.69
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "VANA",
-      "gross_premium_pct": -0.36,
-      "net_roi_pct": 0.06,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 1195,
-        "binance_usdt": 0.8473,
-        "binance_krw_equiv": 1199.29
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "KMNO",
-      "gross_premium_pct": -0.33,
-      "net_roi_pct": 0.05,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 26,
-        "binance_usdt": 0.01843,
-        "binance_krw_equiv": 26.09
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "HP",
-      "gross_premium_pct": -0.39,
-      "net_roi_pct": 0.05,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 8.61,
-        "binance_usdt": 0.006107,
-        "binance_krw_equiv": 8.64
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "GMT",
-      "gross_premium_pct": 0.35,
-      "net_roi_pct": 0.04,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 8.9,
-        "binance_usdt": 0.006266,
-        "binance_krw_equiv": 8.87
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "JST",
-      "gross_premium_pct": -0.34,
-      "net_roi_pct": 0.04,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 149,
-        "binance_usdt": 0.10563,
-        "binance_krw_equiv": 149.51
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "XLM",
-      "gross_premium_pct": -0.34,
-      "net_roi_pct": 0.04,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 224,
-        "binance_usdt": 0.15879,
-        "binance_krw_equiv": 224.76
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "BERA",
-      "gross_premium_pct": -0.34,
-      "net_roi_pct": 0.04,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 202,
-        "binance_usdt": 0.1432,
-        "binance_krw_equiv": 202.69
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "CHZ",
-      "gross_premium_pct": -0.36,
-      "net_roi_pct": 0.04,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 17.8,
-        "binance_usdt": 0.012621,
-        "binance_krw_equiv": 17.86
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "COW",
-      "gross_premium_pct": 0.34,
-      "net_roi_pct": 0.03,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 145,
-        "binance_usdt": 0.1021,
-        "binance_krw_equiv": 144.52
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "LINEA",
-      "gross_premium_pct": -0.26,
-      "net_roi_pct": 0.03,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 3.01,
-        "binance_usdt": 0.002132,
-        "binance_krw_equiv": 3.02
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "XTZ",
-      "gross_premium_pct": 0.32,
-      "net_roi_pct": 0.02,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 281,
-        "binance_usdt": 0.1979,
-        "binance_krw_equiv": 280.11
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "FLOCK",
-      "gross_premium_pct": 0.31,
-      "net_roi_pct": 0.01,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 41.7,
-        "binance_usdt": 0.02937,
-        "binance_krw_equiv": 41.57
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "AAVE",
-      "gross_premium_pct": -0.31,
-      "net_roi_pct": 0.01,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 123000,
-        "binance_usdt": 87.17,
-        "binance_krw_equiv": 123383.03
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ADA",
-      "gross_premium_pct": -0.31,
-      "net_roi_pct": 0.01,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 254,
-        "binance_usdt": 0.18001,
-        "binance_krw_equiv": 254.79
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "SPX",
-      "gross_premium_pct": -0.31,
-      "net_roi_pct": 0.01,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 449,
-        "binance_usdt": 0.3182,
-        "binance_krw_equiv": 450.39
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ONG",
-      "gross_premium_pct": -0.31,
-      "net_roi_pct": 0.01,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 69.9,
-        "binance_usdt": 0.04954,
-        "binance_krw_equiv": 70.12
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ANIME",
-      "gross_premium_pct": -0.21,
-      "net_roi_pct": 0,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 3.37,
-        "binance_usdt": 0.002386,
-        "binance_krw_equiv": 3.38
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "LINK",
-      "gross_premium_pct": -0.3,
-      "net_roi_pct": 0,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 13300,
-        "binance_usdt": 9.425,
-        "binance_krw_equiv": 13340.43
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "CFG",
-      "gross_premium_pct": 0.29,
-      "net_roi_pct": -0.01,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 220,
-        "binance_usdt": 0.15498,
-        "binance_krw_equiv": 219.36
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ZAMA",
-      "gross_premium_pct": -0.28,
-      "net_roi_pct": -0.01,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 62.5,
-        "binance_usdt": 0.04428,
-        "binance_krw_equiv": 62.68
+        "upbit_krw": 29.3,
+        "binance_usdt": 0.02062,
+        "binance_krw_equiv": 29.19
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1816,15 +1312,15 @@
     },
     {
       "symbol": "EUL",
-      "gross_premium_pct": -0.29,
-      "net_roi_pct": -0.01,
+      "gross_premium_pct": -0.37,
+      "net_roi_pct": 0.08,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 1674,
-        "binance_usdt": 1.1861,
-        "binance_krw_equiv": 1678.84
+        "upbit_krw": 1671,
+        "binance_usdt": 1.185,
+        "binance_krw_equiv": 1677.28
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1833,16 +1329,16 @@
       }
     },
     {
-      "symbol": "CELO",
-      "gross_premium_pct": -0.29,
-      "net_roi_pct": -0.01,
+      "symbol": "ALGO",
+      "gross_premium_pct": -0.38,
+      "net_roi_pct": 0.08,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 85.1,
-        "binance_usdt": 0.0603,
-        "binance_krw_equiv": 85.35
+        "upbit_krw": 112,
+        "binance_usdt": 0.07943,
+        "binance_krw_equiv": 112.43
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1851,16 +1347,52 @@
       }
     },
     {
-      "symbol": "YGG",
+      "symbol": "SENT",
+      "gross_premium_pct": -0.38,
+      "net_roi_pct": 0.08,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 18.5,
+        "binance_usdt": 0.01312,
+        "binance_krw_equiv": 18.57
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "BREV",
+      "gross_premium_pct": -0.38,
+      "net_roi_pct": 0.08,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 94.6,
+        "binance_usdt": 0.06709,
+        "binance_krw_equiv": 94.96
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "ATH",
       "gross_premium_pct": -0.3,
-      "net_roi_pct": -0.01,
+      "net_roi_pct": 0.07,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 27.8,
-        "binance_usdt": 0.0197,
-        "binance_krw_equiv": 27.88
+        "upbit_krw": 5.33,
+        "binance_usdt": 0.003777,
+        "binance_krw_equiv": 5.35
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1869,16 +1401,70 @@
       }
     },
     {
-      "symbol": "TAO",
+      "symbol": "OP",
+      "gross_premium_pct": -0.37,
+      "net_roi_pct": 0.07,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 122,
+        "binance_usdt": 0.08651,
+        "binance_krw_equiv": 122.45
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "ALT",
+      "gross_premium_pct": 0.36,
+      "net_roi_pct": 0.05,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 8.51,
+        "binance_usdt": 0.005991,
+        "binance_krw_equiv": 8.48
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "ZKP",
+      "gross_premium_pct": 0.35,
+      "net_roi_pct": 0.05,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 57.2,
+        "binance_usdt": 0.04027,
+        "binance_krw_equiv": 57
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "QKC",
       "gross_premium_pct": -0.28,
-      "net_roi_pct": -0.02,
+      "net_roi_pct": 0.05,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 279900,
-        "binance_usdt": 198.3,
-        "binance_krw_equiv": 280679.77
+        "upbit_krw": 2.82,
+        "binance_usdt": 0.001998,
+        "binance_krw_equiv": 2.83
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1887,16 +1473,16 @@
       }
     },
     {
-      "symbol": "HBAR",
-      "gross_premium_pct": -0.26,
-      "net_roi_pct": -0.03,
+      "symbol": "CHIP",
+      "gross_premium_pct": -0.34,
+      "net_roi_pct": 0.05,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 93.2,
-        "binance_usdt": 0.06602,
-        "binance_krw_equiv": 93.45
+        "upbit_krw": 34.7,
+        "binance_usdt": 0.0246,
+        "binance_krw_equiv": 34.82
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1905,16 +1491,160 @@
       }
     },
     {
-      "symbol": "POLYX",
-      "gross_premium_pct": -0.26,
-      "net_roi_pct": -0.03,
+      "symbol": "VVV",
+      "gross_premium_pct": -0.35,
+      "net_roi_pct": 0.05,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 40.6,
-        "binance_usdt": 0.02876,
-        "binance_krw_equiv": 40.71
+        "upbit_krw": 16650,
+        "binance_usdt": 11.8047,
+        "binance_krw_equiv": 16708.73
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "KAT",
+      "gross_premium_pct": -0.34,
+      "net_roi_pct": 0.03,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 6.08,
+        "binance_usdt": 0.00431,
+        "binance_krw_equiv": 6.1
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "BIO",
+      "gross_premium_pct": -0.31,
+      "net_roi_pct": 0.02,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 34.6,
+        "binance_usdt": 0.02452,
+        "binance_krw_equiv": 34.71
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "ETC",
+      "gross_premium_pct": -0.32,
+      "net_roi_pct": 0.02,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 8810,
+        "binance_usdt": 6.244,
+        "binance_krw_equiv": 8837.94
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "POL",
+      "gross_premium_pct": 0.31,
+      "net_roi_pct": 0.01,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 107,
+        "binance_usdt": 0.07536,
+        "binance_krw_equiv": 106.67
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "ZRO",
+      "gross_premium_pct": 0.31,
+      "net_roi_pct": 0.01,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 1109,
+        "binance_usdt": 0.7811,
+        "binance_krw_equiv": 1105.59
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "CFX",
+      "gross_premium_pct": -0.31,
+      "net_roi_pct": 0.01,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 60.8,
+        "binance_usdt": 0.04309,
+        "binance_krw_equiv": 60.99
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "WAVES",
+      "gross_premium_pct": 0.3,
+      "net_roi_pct": 0,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 274,
+        "binance_usdt": 0.193,
+        "binance_krw_equiv": 273.18
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "SNT",
+      "gross_premium_pct": 0.25,
+      "net_roi_pct": 0,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 6.76,
+        "binance_usdt": 0.004764,
+        "binance_krw_equiv": 6.74
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1924,15 +1654,15 @@
     },
     {
       "symbol": "JTO",
-      "gross_premium_pct": -0.27,
-      "net_roi_pct": -0.03,
+      "gross_premium_pct": -0.3,
+      "net_roi_pct": 0,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
         "upbit_krw": 821,
-        "binance_usdt": 0.5816,
-        "binance_krw_equiv": 823.21
+        "binance_usdt": 0.5818,
+        "binance_krw_equiv": 823.5
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1941,16 +1671,196 @@
       }
     },
     {
-      "symbol": "MON",
+      "symbol": "ID",
+      "gross_premium_pct": -0.3,
+      "net_roi_pct": 0,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 42.9,
+        "binance_usdt": 0.0304,
+        "binance_krw_equiv": 43.03
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "ELSA",
+      "gross_premium_pct": -0.3,
+      "net_roi_pct": 0,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 67.3,
+        "binance_usdt": 0.04769,
+        "binance_krw_equiv": 67.5
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "DOS",
+      "gross_premium_pct": -0.3,
+      "net_roi_pct": 0,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 395,
+        "binance_usdt": 0.2799,
+        "binance_krw_equiv": 396.18
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "SAND",
+      "gross_premium_pct": -0.29,
+      "net_roi_pct": -0.01,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 56,
+        "binance_usdt": 0.03968,
+        "binance_krw_equiv": 56.16
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "AXS",
+      "gross_premium_pct": -0.29,
+      "net_roi_pct": -0.01,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 1237,
+        "binance_usdt": 0.8765,
+        "binance_krw_equiv": 1240.62
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "PYTH",
+      "gross_premium_pct": -0.29,
+      "net_roi_pct": -0.01,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 56,
+        "binance_usdt": 0.03968,
+        "binance_krw_equiv": 56.16
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "MOODENG",
+      "gross_premium_pct": 0.28,
+      "net_roi_pct": -0.02,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 51,
+        "binance_usdt": 0.03593,
+        "binance_krw_equiv": 50.86
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "BIGTIME",
+      "gross_premium_pct": -0.23,
+      "net_roi_pct": -0.02,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 7.03,
+        "binance_usdt": 0.004978,
+        "binance_krw_equiv": 7.05
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "TRX",
+      "gross_premium_pct": -0.28,
+      "net_roi_pct": -0.02,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 470,
+        "binance_usdt": 0.333,
+        "binance_krw_equiv": 471.34
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "ORBS",
+      "gross_premium_pct": 0.27,
+      "net_roi_pct": -0.03,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 7.41,
+        "binance_usdt": 0.005221,
+        "binance_krw_equiv": 7.39
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "RENDER",
       "gross_premium_pct": -0.27,
       "net_roi_pct": -0.03,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 29.6,
-        "binance_usdt": 0.02097,
-        "binance_krw_equiv": 29.68
+        "upbit_krw": 1794,
+        "binance_usdt": 1.2709,
+        "binance_krw_equiv": 1798.87
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1959,16 +1869,34 @@
       }
     },
     {
-      "symbol": "RE",
-      "gross_premium_pct": 0.26,
-      "net_roi_pct": -0.04,
+      "symbol": "MORPHO",
+      "gross_premium_pct": -0.27,
+      "net_roi_pct": -0.03,
       "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 641,
-        "binance_usdt": 0.4517,
-        "binance_krw_equiv": 639.35
+        "upbit_krw": 2752,
+        "binance_usdt": 1.9495,
+        "binance_krw_equiv": 2759.38
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "TREE",
+      "gross_premium_pct": -0.28,
+      "net_roi_pct": -0.03,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 48.5,
+        "binance_usdt": 0.03436,
+        "binance_krw_equiv": 48.63
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -1995,16 +1923,16 @@
       }
     },
     {
-      "symbol": "PLUME",
-      "gross_premium_pct": -0.24,
+      "symbol": "HBAR",
+      "gross_premium_pct": -0.25,
       "net_roi_pct": -0.04,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 19.1,
-        "binance_usdt": 0.013527,
-        "binance_krw_equiv": 19.15
+        "upbit_krw": 92.9,
+        "binance_usdt": 0.0658,
+        "binance_krw_equiv": 93.14
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2013,16 +1941,16 @@
       }
     },
     {
-      "symbol": "BLEND",
+      "symbol": "VIRTUAL",
       "gross_premium_pct": -0.26,
       "net_roi_pct": -0.04,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 91.1,
-        "binance_usdt": 0.06453,
-        "binance_krw_equiv": 91.34
+        "upbit_krw": 791,
+        "binance_usdt": 0.5603,
+        "binance_krw_equiv": 793.07
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2031,16 +1959,16 @@
       }
     },
     {
-      "symbol": "BIO",
-      "gross_premium_pct": -0.27,
+      "symbol": "MEGA",
+      "gross_premium_pct": -0.26,
       "net_roi_pct": -0.04,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 34.6,
-        "binance_usdt": 0.02451,
-        "binance_krw_equiv": 34.69
+        "upbit_krw": 45.7,
+        "binance_usdt": 0.03237,
+        "binance_krw_equiv": 45.82
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2049,106 +1977,16 @@
       }
     },
     {
-      "symbol": "GRT",
-      "gross_premium_pct": -0.27,
-      "net_roi_pct": -0.04,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 19.3,
-        "binance_usdt": 0.013672,
-        "binance_krw_equiv": 19.35
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "F",
-      "gross_premium_pct": -0.39,
-      "net_roi_pct": -0.04,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 3.79,
-        "binance_usdt": 0.002688,
-        "binance_krw_equiv": 3.8
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "HOLO",
-      "gross_premium_pct": 0.25,
+      "symbol": "ZBT",
+      "gross_premium_pct": 0.26,
       "net_roi_pct": -0.05,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 88.4,
-        "binance_usdt": 0.0623,
-        "binance_krw_equiv": 88.18
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "EGLD",
-      "gross_premium_pct": -0.25,
-      "net_roi_pct": -0.05,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 3771,
-        "binance_usdt": 2.671,
-        "binance_krw_equiv": 3780.61
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ZKP",
-      "gross_premium_pct": -0.25,
-      "net_roi_pct": -0.05,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 56.9,
-        "binance_usdt": 0.0403,
-        "binance_krw_equiv": 57.04
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "DOT",
-      "gross_premium_pct": -0.25,
-      "net_roi_pct": -0.05,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 1091,
-        "binance_usdt": 0.7727,
-        "binance_krw_equiv": 1093.7
+        "upbit_krw": 126,
+        "binance_usdt": 0.08879,
+        "binance_krw_equiv": 125.68
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2158,15 +1996,15 @@
     },
     {
       "symbol": "PUMP",
-      "gross_premium_pct": -0.3,
+      "gross_premium_pct": -0.15,
       "net_roi_pct": -0.05,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 3.92,
-        "binance_usdt": 0.0027779,
-        "binance_krw_equiv": 3.93
+        "upbit_krw": 3.94,
+        "binance_usdt": 0.0027877,
+        "binance_krw_equiv": 3.95
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2175,16 +2013,52 @@
       }
     },
     {
-      "symbol": "POL",
-      "gross_premium_pct": 0.25,
+      "symbol": "XAUT",
+      "gross_premium_pct": -0.25,
+      "net_roi_pct": -0.05,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 6159000,
+        "binance_usdt": 4362.3,
+        "binance_krw_equiv": 6174530.29
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "W",
+      "gross_premium_pct": -0.28,
+      "net_roi_pct": -0.05,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 11.8,
+        "binance_usdt": 0.00836,
+        "binance_krw_equiv": 11.83
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "SAFE",
+      "gross_premium_pct": 0.24,
       "net_roi_pct": -0.06,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 107,
-        "binance_usdt": 0.07541,
-        "binance_krw_equiv": 106.74
+        "upbit_krw": 125,
+        "binance_usdt": 0.0881,
+        "binance_krw_equiv": 124.7
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2193,16 +2067,16 @@
       }
     },
     {
-      "symbol": "XCN",
-      "gross_premium_pct": -0.19,
+      "symbol": "AZTEC",
+      "gross_premium_pct": 0.23,
       "net_roi_pct": -0.06,
       "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 4.2,
-        "binance_usdt": 0.002973,
-        "binance_krw_equiv": 4.21
+        "upbit_krw": 16.4,
+        "binance_usdt": 0.01156,
+        "binance_krw_equiv": 16.36
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2211,16 +2085,16 @@
       }
     },
     {
-      "symbol": "PIEVERSE",
+      "symbol": "HYPER",
       "gross_premium_pct": -0.24,
       "net_roi_pct": -0.06,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 1193,
-        "binance_usdt": 0.8449,
-        "binance_krw_equiv": 1195.9
+        "upbit_krw": 90.3,
+        "binance_usdt": 0.06395,
+        "binance_krw_equiv": 90.52
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2229,34 +2103,16 @@
       }
     },
     {
-      "symbol": "NEAR",
-      "gross_premium_pct": -0.24,
-      "net_roi_pct": -0.06,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 2320,
-        "binance_usdt": 1.643,
-        "binance_krw_equiv": 2325.55
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ALT",
-      "gross_premium_pct": 0.21,
+      "symbol": "ZETA",
+      "gross_premium_pct": -0.22,
       "net_roi_pct": -0.07,
       "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 8.56,
-        "binance_usdt": 0.006035,
-        "binance_krw_equiv": 8.54
+        "upbit_krw": 38.4,
+        "binance_usdt": 0.02719,
+        "binance_krw_equiv": 38.49
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2265,16 +2121,16 @@
       }
     },
     {
-      "symbol": "SEI",
+      "symbol": "A",
       "gross_premium_pct": -0.23,
       "net_roi_pct": -0.07,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 56.7,
-        "binance_usdt": 0.04015,
-        "binance_krw_equiv": 56.83
+        "upbit_krw": 87.5,
+        "binance_usdt": 0.06196,
+        "binance_krw_equiv": 87.7
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2283,16 +2139,16 @@
       }
     },
     {
-      "symbol": "SIGN",
-      "gross_premium_pct": -0.2,
+      "symbol": "DKA",
+      "gross_premium_pct": 0.25,
       "net_roi_pct": -0.08,
       "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 9.01,
-        "binance_usdt": 0.006378,
-        "binance_krw_equiv": 9.03
+        "upbit_krw": 4.65,
+        "binance_usdt": 0.003277,
+        "binance_krw_equiv": 4.64
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2301,16 +2157,70 @@
       }
     },
     {
-      "symbol": "ZRO",
+      "symbol": "GMT",
+      "gross_premium_pct": 0.19,
+      "net_roi_pct": -0.08,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 8.93,
+        "binance_usdt": 0.006297,
+        "binance_krw_equiv": 8.91
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "MOVE",
+      "gross_premium_pct": 0.17,
+      "net_roi_pct": -0.08,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 9.26,
+        "binance_usdt": 0.006531,
+        "binance_krw_equiv": 9.24
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "TIA",
       "gross_premium_pct": -0.22,
       "net_roi_pct": -0.08,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 1103,
-        "binance_usdt": 0.781,
-        "binance_krw_equiv": 1105.45
+        "upbit_krw": 434,
+        "binance_usdt": 0.3073,
+        "binance_krw_equiv": 434.96
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "POLYX",
+      "gross_premium_pct": -0.23,
+      "net_roi_pct": -0.08,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 40.5,
+        "binance_usdt": 0.02868,
+        "binance_krw_equiv": 40.59
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2337,34 +2247,16 @@
       }
     },
     {
-      "symbol": "NXPC",
-      "gross_premium_pct": 0.22,
-      "net_roi_pct": -0.09,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 261,
-        "binance_usdt": 0.184,
-        "binance_krw_equiv": 260.44
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "MASK",
+      "symbol": "WET",
       "gross_premium_pct": 0.21,
       "net_roi_pct": -0.09,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 496,
-        "binance_usdt": 0.3497,
-        "binance_krw_equiv": 494.98
+        "upbit_krw": 104,
+        "binance_usdt": 0.07332,
+        "binance_krw_equiv": 103.78
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2373,70 +2265,16 @@
       }
     },
     {
-      "symbol": "WAL",
-      "gross_premium_pct": 0.2,
+      "symbol": "SOPH",
+      "gross_premium_pct": 0.11,
       "net_roi_pct": -0.09,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 29.3,
-        "binance_usdt": 0.02066,
-        "binance_krw_equiv": 29.24
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "PROM",
-      "gross_premium_pct": -0.21,
-      "net_roi_pct": -0.09,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 3162,
-        "binance_usdt": 2.2386,
-        "binance_krw_equiv": 3168.58
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "FIL",
-      "gross_premium_pct": -0.21,
-      "net_roi_pct": -0.09,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 977,
-        "binance_usdt": 0.6917,
-        "binance_krw_equiv": 979.05
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "RLUSD",
-      "gross_premium_pct": -0.21,
-      "net_roi_pct": -0.09,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 1414,
-        "binance_usdt": 1.0011,
-        "binance_krw_equiv": 1416.99
+        "upbit_krw": 4.88,
+        "binance_usdt": 0.003444,
+        "binance_krw_equiv": 4.87
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2463,16 +2301,16 @@
       }
     },
     {
-      "symbol": "XPL",
+      "symbol": "HOLO",
       "gross_premium_pct": 0.2,
       "net_roi_pct": -0.1,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 110,
-        "binance_usdt": 0.07756,
-        "binance_krw_equiv": 109.78
+        "upbit_krw": 88.9,
+        "binance_usdt": 0.06268,
+        "binance_krw_equiv": 88.72
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2481,70 +2319,16 @@
       }
     },
     {
-      "symbol": "SOPH",
-      "gross_premium_pct": 0.2,
-      "net_roi_pct": -0.1,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 4.9,
-        "binance_usdt": 0.003455,
-        "binance_krw_equiv": 4.89
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "IMX",
-      "gross_premium_pct": 0.19,
-      "net_roi_pct": -0.1,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 154,
-        "binance_usdt": 0.10859,
-        "binance_krw_equiv": 153.7
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "MEGA",
-      "gross_premium_pct": -0.19,
-      "net_roi_pct": -0.1,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 45.7,
-        "binance_usdt": 0.03235,
-        "binance_krw_equiv": 45.79
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ATOM",
+      "symbol": "AGLD",
       "gross_premium_pct": -0.2,
       "net_roi_pct": -0.1,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 2102,
-        "binance_usdt": 1.488,
-        "binance_krw_equiv": 2106.16
+        "upbit_krw": 227,
+        "binance_usdt": 0.1607,
+        "binance_krw_equiv": 227.46
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2553,16 +2337,16 @@
       }
     },
     {
-      "symbol": "XAUT",
+      "symbol": "ICP",
       "gross_premium_pct": -0.2,
       "net_roi_pct": -0.1,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 6159000,
-        "binance_usdt": 4360.2,
-        "binance_krw_equiv": 6171557.89
+        "upbit_krw": 3225,
+        "binance_usdt": 2.283,
+        "binance_krw_equiv": 3231.43
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2571,16 +2355,16 @@
       }
     },
     {
-      "symbol": "STX",
+      "symbol": "TRAC",
       "gross_premium_pct": 0.19,
       "net_roi_pct": -0.11,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 174,
-        "binance_usdt": 0.1227,
-        "binance_krw_equiv": 173.67
+        "upbit_krw": 370,
+        "binance_usdt": 0.2609,
+        "binance_krw_equiv": 369.29
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2589,16 +2373,16 @@
       }
     },
     {
-      "symbol": "WAXP",
-      "gross_premium_pct": -0.17,
+      "symbol": "CTC",
+      "gross_premium_pct": 0.19,
       "net_roi_pct": -0.11,
       "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 5.2,
-        "binance_usdt": 0.00368,
-        "binance_krw_equiv": 5.21
+        "upbit_krw": 93.3,
+        "binance_usdt": 0.06579,
+        "binance_krw_equiv": 93.12
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2607,16 +2391,16 @@
       }
     },
     {
-      "symbol": "BORA",
+      "symbol": "TAO",
       "gross_premium_pct": -0.19,
       "net_roi_pct": -0.11,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 26.8,
-        "binance_usdt": 0.01897,
-        "binance_krw_equiv": 26.85
+        "upbit_krw": 278800,
+        "binance_usdt": 197.34,
+        "binance_krw_equiv": 279320.96
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2625,16 +2409,16 @@
       }
     },
     {
-      "symbol": "USDC",
+      "symbol": "XRP",
       "gross_premium_pct": -0.19,
       "net_roi_pct": -0.11,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 1414,
-        "binance_usdt": 1.0009,
-        "binance_krw_equiv": 1416.7
+        "upbit_krw": 1418,
+        "binance_usdt": 1.0037,
+        "binance_krw_equiv": 1420.67
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2643,16 +2427,16 @@
       }
     },
     {
-      "symbol": "TRX",
-      "gross_premium_pct": -0.19,
+      "symbol": "KERNEL",
+      "gross_premium_pct": -0.2,
       "net_roi_pct": -0.11,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 470,
-        "binance_usdt": 0.3327,
-        "binance_krw_equiv": 470.91
+        "upbit_krw": 46.9,
+        "binance_usdt": 0.0332,
+        "binance_krw_equiv": 46.99
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2661,88 +2445,16 @@
       }
     },
     {
-      "symbol": "AKT",
-      "gross_premium_pct": -0.19,
-      "net_roi_pct": -0.11,
+      "symbol": "API3",
+      "gross_premium_pct": 0.18,
+      "net_roi_pct": -0.12,
       "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 753,
-        "binance_usdt": 0.533,
-        "binance_krw_equiv": 754.42
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "PENDLE",
-      "gross_premium_pct": -0.19,
-      "net_roi_pct": -0.11,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 1855,
-        "binance_usdt": 1.313,
-        "binance_krw_equiv": 1858.46
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ATH",
-      "gross_premium_pct": -0.19,
-      "net_roi_pct": -0.11,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 5.37,
-        "binance_usdt": 0.003801,
-        "binance_krw_equiv": 5.38
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "DATA",
-      "gross_premium_pct": -0.19,
-      "net_roi_pct": -0.11,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 268,
+        "upbit_krw": 269,
         "binance_usdt": 0.1897,
         "binance_krw_equiv": 268.51
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "DOS",
-      "gross_premium_pct": -0.19,
-      "net_roi_pct": -0.11,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 395,
-        "binance_usdt": 0.2796,
-        "binance_krw_equiv": 395.75
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2769,16 +2481,34 @@
       }
     },
     {
-      "symbol": "CC",
+      "symbol": "O",
+      "gross_premium_pct": 0.18,
+      "net_roi_pct": -0.12,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 624,
+        "binance_usdt": 0.44007,
+        "binance_krw_equiv": 622.89
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "LAYER",
       "gross_premium_pct": -0.17,
       "net_roi_pct": -0.12,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 137,
-        "binance_usdt": 0.09696,
-        "binance_krw_equiv": 137.24
+        "upbit_krw": 85.4,
+        "binance_usdt": 0.06044,
+        "binance_krw_equiv": 85.55
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2787,16 +2517,16 @@
       }
     },
     {
-      "symbol": "CHIP",
-      "gross_premium_pct": 0.19,
-      "net_roi_pct": -0.13,
+      "symbol": "PRL",
+      "gross_premium_pct": -0.18,
+      "net_roi_pct": -0.12,
       "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 34.7,
-        "binance_usdt": 0.02447,
-        "binance_krw_equiv": 34.64
+        "upbit_krw": 568,
+        "binance_usdt": 0.402,
+        "binance_krw_equiv": 569
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2805,16 +2535,16 @@
       }
     },
     {
-      "symbol": "2Z",
+      "symbol": "ARB",
       "gross_premium_pct": 0.17,
       "net_roi_pct": -0.13,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 71.6,
-        "binance_usdt": 0.0505,
-        "binance_krw_equiv": 71.48
+        "upbit_krw": 106,
+        "binance_usdt": 0.07476,
+        "binance_krw_equiv": 105.82
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2823,34 +2553,16 @@
       }
     },
     {
-      "symbol": "KNC",
-      "gross_premium_pct": 0.17,
-      "net_roi_pct": -0.13,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 141,
-        "binance_usdt": 0.09945,
-        "binance_krw_equiv": 140.76
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "OP",
+      "symbol": "APT",
       "gross_premium_pct": -0.17,
       "net_roi_pct": -0.13,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 123,
-        "binance_usdt": 0.08705,
-        "binance_krw_equiv": 123.21
+        "upbit_krw": 765,
+        "binance_usdt": 0.5414,
+        "binance_krw_equiv": 766.31
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2859,16 +2571,16 @@
       }
     },
     {
-      "symbol": "BTC",
+      "symbol": "DOT",
       "gross_premium_pct": -0.17,
       "net_roi_pct": -0.13,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 89202000,
-        "binance_usdt": 63129.3,
-        "binance_krw_equiv": 89355105.1
+        "upbit_krw": 1089,
+        "binance_usdt": 0.7707,
+        "binance_krw_equiv": 1090.87
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2895,16 +2607,16 @@
       }
     },
     {
-      "symbol": "KAT",
-      "gross_premium_pct": 0.23,
+      "symbol": "ONDO",
+      "gross_premium_pct": 0.16,
       "net_roi_pct": -0.14,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 6.12,
-        "binance_usdt": 0.004314,
-        "binance_krw_equiv": 6.11
+        "upbit_krw": 463,
+        "binance_usdt": 0.3266,
+        "binance_krw_equiv": 462.28
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -2913,160 +2625,16 @@
       }
     },
     {
-      "symbol": "VIRTUAL",
-      "gross_premium_pct": -0.15,
+      "symbol": "GRT",
+      "gross_premium_pct": -0.13,
       "net_roi_pct": -0.14,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 790,
-        "binance_usdt": 0.559,
-        "binance_krw_equiv": 791.23
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "DOGE",
-      "gross_premium_pct": -0.16,
-      "net_roi_pct": -0.14,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 99.2,
-        "binance_usdt": 0.0702,
-        "binance_krw_equiv": 99.36
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "AUCTION",
-      "gross_premium_pct": -0.16,
-      "net_roi_pct": -0.14,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 3995,
-        "binance_usdt": 2.827,
-        "binance_krw_equiv": 4001.42
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ORCA",
-      "gross_premium_pct": -0.16,
-      "net_roi_pct": -0.14,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 1452,
-        "binance_usdt": 1.0275,
-        "binance_krw_equiv": 1454.35
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "SUI",
-      "gross_premium_pct": -0.16,
-      "net_roi_pct": -0.14,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 969,
-        "binance_usdt": 0.6857,
-        "binance_krw_equiv": 970.56
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ID",
-      "gross_premium_pct": -0.17,
-      "net_roi_pct": -0.14,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 42.8,
-        "binance_usdt": 0.03029,
-        "binance_krw_equiv": 42.87
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "VET",
-      "gross_premium_pct": -0.21,
-      "net_roi_pct": -0.14,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 6.37,
-        "binance_usdt": 0.00451,
-        "binance_krw_equiv": 6.38
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "1INCH",
-      "gross_premium_pct": -0.14,
-      "net_roi_pct": -0.15,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 117,
-        "binance_usdt": 0.08278,
-        "binance_krw_equiv": 117.17
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "HOME",
-      "gross_premium_pct": -0.14,
-      "net_roi_pct": -0.15,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 13.2,
-        "binance_usdt": 0.009339,
-        "binance_krw_equiv": 13.22
+        "upbit_krw": 19.2,
+        "binance_usdt": 0.013583,
+        "binance_krw_equiv": 19.23
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3076,15 +2644,15 @@
     },
     {
       "symbol": "ETHFI",
-      "gross_premium_pct": -0.15,
-      "net_roi_pct": -0.15,
+      "gross_premium_pct": -0.16,
+      "net_roi_pct": -0.14,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 633,
-        "binance_usdt": 0.4479,
-        "binance_krw_equiv": 633.97
+        "upbit_krw": 640,
+        "binance_usdt": 0.4529,
+        "binance_krw_equiv": 641.05
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3093,16 +2661,16 @@
       }
     },
     {
-      "symbol": "TRUST",
-      "gross_premium_pct": -0.15,
-      "net_roi_pct": -0.15,
+      "symbol": "CYBER",
+      "gross_premium_pct": -0.16,
+      "net_roi_pct": -0.14,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 71.4,
-        "binance_usdt": 0.05052,
-        "binance_krw_equiv": 71.51
+        "upbit_krw": 421,
+        "binance_usdt": 0.2979,
+        "binance_krw_equiv": 421.66
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3111,16 +2679,106 @@
       }
     },
     {
-      "symbol": "TAIKO",
+      "symbol": "INJ",
+      "gross_premium_pct": -0.16,
+      "net_roi_pct": -0.14,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 5910,
+        "binance_usdt": 4.182,
+        "binance_krw_equiv": 5919.33
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "OPEN",
+      "gross_premium_pct": -0.16,
+      "net_roi_pct": -0.14,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 269,
+        "binance_usdt": 0.19035,
+        "binance_krw_equiv": 269.43
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "JST",
+      "gross_premium_pct": 0.16,
+      "net_roi_pct": -0.15,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 150,
+        "binance_usdt": 0.10581,
+        "binance_krw_equiv": 149.77
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "ONT",
+      "gross_premium_pct": 0.16,
+      "net_roi_pct": -0.15,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 52,
+        "binance_usdt": 0.03668,
+        "binance_krw_equiv": 51.92
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "DEEP",
+      "gross_premium_pct": -0.13,
+      "net_roi_pct": -0.15,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 19.7,
+        "binance_usdt": 0.013936,
+        "binance_krw_equiv": 19.73
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "AERO",
       "gross_premium_pct": -0.15,
       "net_roi_pct": -0.15,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 99.4,
-        "binance_usdt": 0.07033,
-        "binance_krw_equiv": 99.55
+        "upbit_krw": 570,
+        "binance_usdt": 0.4033,
+        "binance_krw_equiv": 570.84
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3147,16 +2805,16 @@
       }
     },
     {
-      "symbol": "KITE",
+      "symbol": "ORCA",
       "gross_premium_pct": -0.15,
       "net_roi_pct": -0.15,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 135,
-        "binance_usdt": 0.09552,
-        "binance_krw_equiv": 135.2
+        "upbit_krw": 1451,
+        "binance_usdt": 1.0267,
+        "binance_krw_equiv": 1453.22
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3165,16 +2823,16 @@
       }
     },
     {
-      "symbol": "OPEN",
+      "symbol": "ARKM",
       "gross_premium_pct": 0.14,
       "net_roi_pct": -0.16,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 264,
-        "binance_usdt": 0.18625,
-        "binance_krw_equiv": 263.62
+        "upbit_krw": 130,
+        "binance_usdt": 0.09172,
+        "binance_krw_equiv": 129.82
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3183,16 +2841,88 @@
       }
     },
     {
-      "symbol": "ORBS",
-      "gross_premium_pct": -0.1,
+      "symbol": "ESP",
+      "gross_premium_pct": 0.14,
+      "net_roi_pct": -0.16,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 103,
+        "binance_usdt": 0.07267,
+        "binance_krw_equiv": 102.86
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "MANTRA",
+      "gross_premium_pct": -0.07,
       "net_roi_pct": -0.16,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 7.39,
-        "binance_usdt": 0.005226,
-        "binance_krw_equiv": 7.4
+        "upbit_krw": 6.99,
+        "binance_usdt": 0.004942,
+        "binance_krw_equiv": 7
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "ENA",
+      "gross_premium_pct": 0.13,
+      "net_roi_pct": -0.17,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 120,
+        "binance_usdt": 0.08467,
+        "binance_krw_equiv": 119.84
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "ADA",
+      "gross_premium_pct": 0.13,
+      "net_roi_pct": -0.17,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 254,
+        "binance_usdt": 0.17921,
+        "binance_krw_equiv": 253.66
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "GAS",
+      "gross_premium_pct": 0.13,
+      "net_roi_pct": -0.17,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 1340,
+        "binance_usdt": 0.9455,
+        "binance_krw_equiv": 1338.29
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3202,105 +2932,15 @@
     },
     {
       "symbol": "BCH",
-      "gross_premium_pct": -0.14,
-      "net_roi_pct": -0.16,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 290900,
-        "binance_usdt": 205.8,
-        "binance_krw_equiv": 291295.49
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "INJ",
-      "gross_premium_pct": -0.14,
-      "net_roi_pct": -0.16,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 5925,
-        "binance_usdt": 4.192,
-        "binance_krw_equiv": 5933.48
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "XRP",
-      "gross_premium_pct": -0.14,
-      "net_roi_pct": -0.16,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 1422,
-        "binance_usdt": 1.0061,
-        "binance_krw_equiv": 1424.06
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ZBT",
-      "gross_premium_pct": -0.14,
-      "net_roi_pct": -0.16,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 125,
-        "binance_usdt": 0.08844,
-        "binance_krw_equiv": 125.18
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "PRL",
-      "gross_premium_pct": 0.14,
-      "net_roi_pct": -0.17,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 559,
-        "binance_usdt": 0.3944,
-        "binance_krw_equiv": 558.25
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "CFX",
       "gross_premium_pct": -0.13,
       "net_roi_pct": -0.17,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 60.9,
-        "binance_usdt": 0.04308,
-        "binance_krw_equiv": 60.98
+        "upbit_krw": 291000,
+        "binance_usdt": 205.86,
+        "binance_krw_equiv": 291380.42
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3309,16 +2949,34 @@
       }
     },
     {
-      "symbol": "SOL",
+      "symbol": "AKT",
       "gross_premium_pct": -0.13,
       "net_roi_pct": -0.17,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 106700,
-        "binance_usdt": 75.48,
-        "binance_krw_equiv": 106836.66
+        "upbit_krw": 755,
+        "binance_usdt": 0.5341,
+        "binance_krw_equiv": 755.98
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "ENS",
+      "gross_premium_pct": -0.13,
+      "net_roi_pct": -0.17,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 5715,
+        "binance_usdt": 4.043,
+        "binance_krw_equiv": 5722.58
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3345,16 +3003,88 @@
       }
     },
     {
-      "symbol": "ENSO",
+      "symbol": "WLD",
       "gross_premium_pct": -0.12,
       "net_roi_pct": -0.18,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 1091,
-        "binance_usdt": 0.7717,
-        "binance_krw_equiv": 1092.29
+        "upbit_krw": 492,
+        "binance_usdt": 0.348,
+        "binance_krw_equiv": 492.57
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "STEEM",
+      "gross_premium_pct": -0.12,
+      "net_roi_pct": -0.18,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 49.2,
+        "binance_usdt": 0.0348,
+        "binance_krw_equiv": 49.26
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "SPX",
+      "gross_premium_pct": -0.12,
+      "net_roi_pct": -0.18,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 449,
+        "binance_usdt": 0.3176,
+        "binance_krw_equiv": 449.54
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "SUI",
+      "gross_premium_pct": -0.12,
+      "net_roi_pct": -0.18,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 965,
+        "binance_usdt": 0.6826,
+        "binance_krw_equiv": 966.17
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "BTC",
+      "gross_premium_pct": -0.12,
+      "net_roi_pct": -0.18,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 89180000,
+        "binance_usdt": 63084,
+        "binance_krw_equiv": 89290986.12
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3381,34 +3111,16 @@
       }
     },
     {
-      "symbol": "PENGU",
-      "gross_premium_pct": -0.16,
-      "net_roi_pct": -0.18,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 8.55,
-        "binance_usdt": 0.00605,
-        "binance_krw_equiv": 8.56
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "VVV",
+      "symbol": "IMX",
       "gross_premium_pct": 0.11,
       "net_roi_pct": -0.19,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 16760,
-        "binance_usdt": 11.8282,
-        "binance_krw_equiv": 16741.99
+        "upbit_krw": 154,
+        "binance_usdt": 0.10868,
+        "binance_krw_equiv": 153.83
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3417,16 +3129,16 @@
       }
     },
     {
-      "symbol": "MOVE",
-      "gross_premium_pct": 0.06,
+      "symbol": "FLUID",
+      "gross_premium_pct": 0.11,
       "net_roi_pct": -0.19,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 9.27,
-        "binance_usdt": 0.006545,
-        "binance_krw_equiv": 9.26
+        "upbit_krw": 1600,
+        "binance_usdt": 1.1292,
+        "binance_krw_equiv": 1598.3
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3435,34 +3147,16 @@
       }
     },
     {
-      "symbol": "ETH",
-      "gross_premium_pct": -0.1,
-      "net_roi_pct": -0.19,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 2663000,
-        "binance_usdt": 1883.38,
-        "binance_krw_equiv": 2665792.55
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "IOTA",
+      "symbol": "NXPC",
       "gross_premium_pct": -0.11,
       "net_roi_pct": -0.19,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 46.5,
-        "binance_usdt": 0.03289,
-        "binance_krw_equiv": 46.55
+        "upbit_krw": 262,
+        "binance_usdt": 0.1853,
+        "binance_krw_equiv": 262.28
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3471,52 +3165,16 @@
       }
     },
     {
-      "symbol": "MIRA",
-      "gross_premium_pct": -0.11,
-      "net_roi_pct": -0.19,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 54.9,
-        "binance_usdt": 0.03883,
-        "binance_krw_equiv": 54.96
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "OPG",
-      "gross_premium_pct": -0.12,
-      "net_roi_pct": -0.19,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 131,
-        "binance_usdt": 0.09266,
-        "binance_krw_equiv": 131.15
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "JUP",
-      "gross_premium_pct": 0.1,
+      "symbol": "MON",
+      "gross_premium_pct": 0.11,
       "net_roi_pct": -0.2,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 240,
-        "binance_usdt": 0.16939,
-        "binance_krw_equiv": 239.76
+        "upbit_krw": 29.7,
+        "binance_usdt": 0.02096,
+        "binance_krw_equiv": 29.67
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3525,34 +3183,16 @@
       }
     },
     {
-      "symbol": "SAFE",
-      "gross_premium_pct": 0.1,
-      "net_roi_pct": -0.2,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 125,
-        "binance_usdt": 0.08822,
-        "binance_krw_equiv": 124.87
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "SKY",
+      "symbol": "TRUMP",
       "gross_premium_pct": -0.1,
       "net_roi_pct": -0.2,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 72.3,
-        "binance_usdt": 0.05113,
-        "binance_krw_equiv": 72.37
+        "upbit_krw": 1994,
+        "binance_usdt": 1.4101,
+        "binance_krw_equiv": 1995.9
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3561,16 +3201,16 @@
       }
     },
     {
-      "symbol": "GAS",
+      "symbol": "NEAR",
       "gross_premium_pct": -0.1,
       "net_roi_pct": -0.2,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 1345,
-        "binance_usdt": 0.9512,
-        "binance_krw_equiv": 1346.36
+        "upbit_krw": 2312,
+        "binance_usdt": 1.635,
+        "binance_krw_equiv": 2314.23
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3579,16 +3219,34 @@
       }
     },
     {
-      "symbol": "NEO",
-      "gross_premium_pct": 0.09,
+      "symbol": "FLOCK",
+      "gross_premium_pct": -0.1,
+      "net_roi_pct": -0.2,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 41.5,
+        "binance_usdt": 0.02935,
+        "binance_krw_equiv": 41.54
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "SEI",
+      "gross_premium_pct": -0.08,
       "net_roi_pct": -0.21,
       "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 2397,
-        "binance_usdt": 1.692,
-        "binance_krw_equiv": 2394.91
+        "upbit_krw": 56.6,
+        "binance_usdt": 0.04002,
+        "binance_krw_equiv": 56.65
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3597,34 +3255,34 @@
       }
     },
     {
-      "symbol": "IRYS",
-      "gross_premium_pct": 0.08,
-      "net_roi_pct": -0.21,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 23.6,
-        "binance_usdt": 0.01666,
-        "binance_krw_equiv": 23.58
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "WLD",
+      "symbol": "UNI",
       "gross_premium_pct": -0.09,
       "net_roi_pct": -0.21,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 492,
-        "binance_usdt": 0.3479,
-        "binance_krw_equiv": 492.43
+        "upbit_krw": 4582,
+        "binance_usdt": 3.24,
+        "binance_krw_equiv": 4585.99
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "XLM",
+      "gross_premium_pct": -0.09,
+      "net_roi_pct": -0.21,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 224,
+        "binance_usdt": 0.1584,
+        "binance_krw_equiv": 224.2
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3651,16 +3309,16 @@
       }
     },
     {
-      "symbol": "STEEM",
-      "gross_premium_pct": 0.09,
-      "net_roi_pct": -0.22,
+      "symbol": "XPL",
+      "gross_premium_pct": -0.09,
+      "net_roi_pct": -0.21,
       "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 49.3,
-        "binance_usdt": 0.0348,
-        "binance_krw_equiv": 49.26
+        "upbit_krw": 109,
+        "binance_usdt": 0.07708,
+        "binance_krw_equiv": 109.1
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3669,16 +3327,16 @@
       }
     },
     {
-      "symbol": "TIA",
+      "symbol": "IRYS",
       "gross_premium_pct": 0.08,
       "net_roi_pct": -0.22,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 438,
-        "binance_usdt": 0.3092,
-        "binance_krw_equiv": 437.65
+        "upbit_krw": 23.7,
+        "binance_usdt": 0.01673,
+        "binance_krw_equiv": 23.68
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3687,16 +3345,34 @@
       }
     },
     {
-      "symbol": "ARKM",
+      "symbol": "ZKC",
+      "gross_premium_pct": 0.07,
+      "net_roi_pct": -0.22,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 53.1,
+        "binance_usdt": 0.03749,
+        "binance_krw_equiv": 53.06
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "RE",
       "gross_premium_pct": -0.08,
       "net_roi_pct": -0.22,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 130,
-        "binance_usdt": 0.09192,
-        "binance_krw_equiv": 130.11
+        "upbit_krw": 640,
+        "binance_usdt": 0.4525,
+        "binance_krw_equiv": 640.48
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3705,25 +3381,7 @@
       }
     },
     {
-      "symbol": "APT",
-      "gross_premium_pct": -0.08,
-      "net_roi_pct": -0.22,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 768,
-        "binance_usdt": 0.543,
-        "binance_krw_equiv": 768.58
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "API3",
+      "symbol": "DATA",
       "gross_premium_pct": -0.08,
       "net_roi_pct": -0.22,
       "signal_grade": "NEUTRAL",
@@ -3741,34 +3399,16 @@
       }
     },
     {
-      "symbol": "AGLD",
+      "symbol": "LINK",
       "gross_premium_pct": -0.08,
       "net_roi_pct": -0.22,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 227,
-        "binance_usdt": 0.1605,
-        "binance_krw_equiv": 227.18
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "WAVES",
-      "gross_premium_pct": -0.07,
-      "net_roi_pct": -0.23,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 273,
-        "binance_usdt": 0.193,
-        "binance_krw_equiv": 273.18
+        "upbit_krw": 13270,
+        "binance_usdt": 9.383,
+        "binance_krw_equiv": 13280.98
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3778,15 +3418,69 @@
     },
     {
       "symbol": "ERA",
+      "gross_premium_pct": 0.07,
+      "net_roi_pct": -0.23,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 85.2,
+        "binance_usdt": 0.06015,
+        "binance_krw_equiv": 85.14
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "RLUSD",
+      "gross_premium_pct": 0.07,
+      "net_roi_pct": -0.23,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 1418,
+        "binance_usdt": 1.0011,
+        "binance_krw_equiv": 1416.99
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "DOGE",
       "gross_premium_pct": -0.07,
       "net_roi_pct": -0.23,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 84.6,
-        "binance_usdt": 0.05981,
-        "binance_krw_equiv": 84.66
+        "upbit_krw": 99.1,
+        "binance_usdt": 0.07006,
+        "binance_krw_equiv": 99.17
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "ETH",
+      "gross_premium_pct": -0.07,
+      "net_roi_pct": -0.23,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 2661000,
+        "binance_usdt": 1881.36,
+        "binance_krw_equiv": 2662933.38
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3813,34 +3507,16 @@
       }
     },
     {
-      "symbol": "ZKC",
-      "gross_premium_pct": 0.07,
-      "net_roi_pct": -0.24,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 53,
-        "binance_usdt": 0.03742,
-        "binance_krw_equiv": 52.97
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "O",
+      "symbol": "THETA",
       "gross_premium_pct": 0.06,
       "net_roi_pct": -0.24,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 626,
-        "binance_usdt": 0.44202,
-        "binance_krw_equiv": 625.65
+        "upbit_krw": 198,
+        "binance_usdt": 0.1398,
+        "binance_krw_equiv": 197.88
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3867,16 +3543,106 @@
       }
     },
     {
-      "symbol": "AZTEC",
+      "symbol": "XTZ",
       "gross_premium_pct": 0.06,
       "net_roi_pct": -0.24,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 16.4,
-        "binance_usdt": 0.01158,
-        "binance_krw_equiv": 16.39
+        "upbit_krw": 280,
+        "binance_usdt": 0.1977,
+        "binance_krw_equiv": 279.83
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "SYRUP",
+      "gross_premium_pct": 0.06,
+      "net_roi_pct": -0.24,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 214,
+        "binance_usdt": 0.1511,
+        "binance_krw_equiv": 213.87
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "CHZ",
+      "gross_premium_pct": -0.04,
+      "net_roi_pct": -0.24,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 17.8,
+        "binance_usdt": 0.012581,
+        "binance_krw_equiv": 17.81
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "CRO",
+      "gross_premium_pct": -0.05,
+      "net_roi_pct": -0.24,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 68.5,
+        "binance_usdt": 0.04842,
+        "binance_krw_equiv": 68.54
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "SOON",
+      "gross_premium_pct": -0.06,
+      "net_roi_pct": -0.24,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 282,
+        "binance_usdt": 0.19935,
+        "binance_krw_equiv": 282.17
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "SOL",
+      "gross_premium_pct": -0.06,
+      "net_roi_pct": -0.24,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 106500,
+        "binance_usdt": 75.29,
+        "binance_krw_equiv": 106567.72
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3903,16 +3669,16 @@
       }
     },
     {
-      "symbol": "CYBER",
+      "symbol": "FIL",
       "gross_premium_pct": 0.05,
       "net_roi_pct": -0.25,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 424,
-        "binance_usdt": 0.2994,
-        "binance_krw_equiv": 423.78
+        "upbit_krw": 973,
+        "binance_usdt": 0.6871,
+        "binance_krw_equiv": 972.54
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3921,16 +3687,16 @@
       }
     },
     {
-      "symbol": "AERO",
+      "symbol": "PLUME",
       "gross_premium_pct": 0.05,
       "net_roi_pct": -0.25,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 572,
-        "binance_usdt": 0.4039,
-        "binance_krw_equiv": 571.69
+        "upbit_krw": 18.9,
+        "binance_usdt": 0.013346,
+        "binance_krw_equiv": 18.89
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3939,16 +3705,52 @@
       }
     },
     {
-      "symbol": "ETC",
+      "symbol": "BAT",
+      "gross_premium_pct": 0.04,
+      "net_roi_pct": -0.25,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 80.8,
+        "binance_usdt": 0.05706,
+        "binance_krw_equiv": 80.76
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "USDC",
       "gross_premium_pct": -0.05,
       "net_roi_pct": -0.25,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 8835,
-        "binance_usdt": 6.245,
-        "binance_krw_equiv": 8839.36
+        "upbit_krw": 1416,
+        "binance_usdt": 1.0009,
+        "binance_krw_equiv": 1416.7
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "PIEVERSE",
+      "gross_premium_pct": -0.05,
+      "net_roi_pct": -0.25,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 1129,
+        "binance_usdt": 0.798,
+        "binance_krw_equiv": 1129.51
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3964,9 +3766,9 @@
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 9415,
-        "binance_usdt": 6.655,
-        "binance_krw_equiv": 9419.69
+        "upbit_krw": 9380,
+        "binance_usdt": 6.63,
+        "binance_krw_equiv": 9384.3
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -3975,34 +3777,16 @@
       }
     },
     {
-      "symbol": "ORDER",
-      "gross_premium_pct": -0.05,
-      "net_roi_pct": -0.25,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 40.7,
-        "binance_usdt": 0.02877,
-        "binance_krw_equiv": 40.72
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "0G",
+      "symbol": "USD1",
       "gross_premium_pct": 0.04,
       "net_roi_pct": -0.26,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 225,
-        "binance_usdt": 0.1589,
-        "binance_krw_equiv": 224.91
+        "upbit_krw": 1416,
+        "binance_usdt": 1,
+        "binance_krw_equiv": 1415.43
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -4029,16 +3813,34 @@
       }
     },
     {
-      "symbol": "ICP",
+      "symbol": "COW",
       "gross_premium_pct": 0.04,
       "net_roi_pct": -0.26,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 3230,
-        "binance_usdt": 2.281,
-        "binance_krw_equiv": 3228.6
+        "upbit_krw": 145,
+        "binance_usdt": 0.1024,
+        "binance_krw_equiv": 144.94
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "ME",
+      "gross_premium_pct": 0.04,
+      "net_roi_pct": -0.26,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 91.9,
+        "binance_usdt": 0.0649,
+        "binance_krw_equiv": 91.86
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -4055,8 +3857,26 @@
       "direction": "kimchi_discount",
       "prices": {
         "upbit_krw": 25.5,
-        "binance_usdt": 0.018022,
+        "binance_usdt": 0.018021,
         "binance_krw_equiv": 25.51
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "AAVE",
+      "gross_premium_pct": -0.04,
+      "net_roi_pct": -0.26,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 122800,
+        "binance_usdt": 86.79,
+        "binance_krw_equiv": 122845.17
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -4083,16 +3903,16 @@
       }
     },
     {
-      "symbol": "ELSA",
-      "gross_premium_pct": -0.04,
+      "symbol": "IN",
+      "gross_premium_pct": -0.06,
       "net_roi_pct": -0.26,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 67.9,
-        "binance_usdt": 0.04799,
-        "binance_krw_equiv": 67.93
+        "upbit_krw": 45,
+        "binance_usdt": 0.03181,
+        "binance_krw_equiv": 45.02
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -4101,52 +3921,34 @@
       }
     },
     {
-      "symbol": "CRO",
-      "gross_premium_pct": -0.05,
-      "net_roi_pct": -0.26,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 68.8,
-        "binance_usdt": 0.04863,
-        "binance_krw_equiv": 68.83
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "WCT",
-      "gross_premium_pct": -0.05,
-      "net_roi_pct": -0.26,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
-      "direction": "kimchi_discount",
-      "prices": {
-        "upbit_krw": 48.1,
-        "binance_usdt": 0.034,
-        "binance_krw_equiv": 48.12
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "USD1",
+      "symbol": "PENDLE",
       "gross_premium_pct": 0.03,
       "net_roi_pct": -0.27,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 1416,
-        "binance_usdt": 1.0001,
-        "binance_krw_equiv": 1415.57
+        "upbit_krw": 1852,
+        "binance_usdt": 1.308,
+        "binance_krw_equiv": 1851.38
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "AWE",
+      "gross_premium_pct": 0.03,
+      "net_roi_pct": -0.27,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 87.6,
+        "binance_usdt": 0.06187,
+        "binance_krw_equiv": 87.57
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -4173,16 +3975,16 @@
       }
     },
     {
-      "symbol": "KAITO",
-      "gross_premium_pct": 0.02,
-      "net_roi_pct": -0.28,
+      "symbol": "SOMI",
+      "gross_premium_pct": 0.03,
+      "net_roi_pct": -0.27,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 564,
-        "binance_usdt": 0.3984,
-        "binance_krw_equiv": 563.91
+        "upbit_krw": 129,
+        "binance_usdt": 0.09111,
+        "binance_krw_equiv": 128.96
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -4191,16 +3993,16 @@
       }
     },
     {
-      "symbol": "FLUID",
-      "gross_premium_pct": -0.02,
-      "net_roi_pct": -0.28,
+      "symbol": "2Z",
+      "gross_premium_pct": -0.03,
+      "net_roi_pct": -0.27,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 1600,
-        "binance_usdt": 1.1306,
-        "binance_krw_equiv": 1600.29
+        "upbit_krw": 71.6,
+        "binance_usdt": 0.0506,
+        "binance_krw_equiv": 71.62
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -4209,34 +4011,34 @@
       }
     },
     {
-      "symbol": "UNI",
-      "gross_premium_pct": 0.01,
-      "net_roi_pct": -0.29,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 4656,
-        "binance_usdt": 3.289,
-        "binance_krw_equiv": 4655.35
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "RAY",
-      "gross_premium_pct": -0.01,
-      "net_roi_pct": -0.29,
+      "symbol": "WLFI",
+      "gross_premium_pct": -0.03,
+      "net_roi_pct": -0.27,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
-        "upbit_krw": 881,
-        "binance_usdt": 0.6225,
-        "binance_krw_equiv": 881.11
+        "upbit_krw": 80.4,
+        "binance_usdt": 0.05682,
+        "binance_krw_equiv": 80.42
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "CFG",
+      "gross_premium_pct": -0.03,
+      "net_roi_pct": -0.27,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 219,
+        "binance_usdt": 0.15477,
+        "binance_krw_equiv": 219.07
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -4246,15 +4048,177 @@
     },
     {
       "symbol": "MNT",
-      "gross_premium_pct": -0.01,
-      "net_roi_pct": -0.29,
+      "gross_premium_pct": -0.03,
+      "net_roi_pct": -0.27,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
       "direction": "kimchi_discount",
       "prices": {
         "upbit_krw": 623,
-        "binance_usdt": 0.4402,
-        "binance_krw_equiv": 623.07
+        "binance_usdt": 0.4403,
+        "binance_krw_equiv": 623.21
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "BARD",
+      "gross_premium_pct": -0.04,
+      "net_roi_pct": -0.27,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 148,
+        "binance_usdt": 0.1046,
+        "binance_krw_equiv": 148.05
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "ATOM",
+      "gross_premium_pct": 0.02,
+      "net_roi_pct": -0.28,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 2101,
+        "binance_usdt": 1.484,
+        "binance_krw_equiv": 2100.5
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "POWR",
+      "gross_premium_pct": -0.01,
+      "net_roi_pct": -0.28,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 51.7,
+        "binance_usdt": 0.03653,
+        "binance_krw_equiv": 51.71
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "HIVE",
+      "gross_premium_pct": -0.02,
+      "net_roi_pct": -0.28,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 55.7,
+        "binance_usdt": 0.03936,
+        "binance_krw_equiv": 55.71
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "SLX",
+      "gross_premium_pct": -0.02,
+      "net_roi_pct": -0.28,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 107,
+        "binance_usdt": 0.07561,
+        "binance_krw_equiv": 107.02
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "IOTA",
+      "gross_premium_pct": -0.03,
+      "net_roi_pct": -0.28,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 46.4,
+        "binance_usdt": 0.03279,
+        "binance_krw_equiv": 46.41
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "PROM",
+      "gross_premium_pct": 0.01,
+      "net_roi_pct": -0.29,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 3177,
+        "binance_usdt": 2.2444,
+        "binance_krw_equiv": 3176.79
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "KAITO",
+      "gross_premium_pct": 0.01,
+      "net_roi_pct": -0.29,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 558,
+        "binance_usdt": 0.3942,
+        "binance_krw_equiv": 557.96
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "KNC",
+      "gross_premium_pct": 0,
+      "net_roi_pct": -0.29,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 141,
+        "binance_usdt": 0.09962,
+        "binance_krw_equiv": 141.01
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -4264,7 +4228,7 @@
     },
     {
       "symbol": "BLAST",
-      "gross_premium_pct": 0.58,
+      "gross_premium_pct": 0.28,
       "net_roi_pct": -0.3,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
@@ -4281,16 +4245,34 @@
       }
     },
     {
-      "symbol": "IOST",
+      "symbol": "MED",
+      "gross_premium_pct": 0.27,
+      "net_roi_pct": -0.3,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 1.73,
+        "binance_usdt": 0.001219,
+        "binance_krw_equiv": 1.73
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "TOSHI",
       "gross_premium_pct": 0.18,
       "net_roi_pct": -0.3,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 0.78,
-        "binance_usdt": 0.0005529,
-        "binance_krw_equiv": 0.78
+        "upbit_krw": 0.14,
+        "binance_usdt": 0.00009944,
+        "binance_krw_equiv": 0.14
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -4299,268 +4281,16 @@
       }
     },
     {
-      "symbol": "B3",
-      "gross_premium_pct": 0.15,
+      "symbol": "ANIME",
+      "gross_premium_pct": 0.08,
       "net_roi_pct": -0.3,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 0.59,
-        "binance_usdt": 0.0004162,
-        "binance_krw_equiv": 0.59
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "MBL",
-      "gross_premium_pct": 0.11,
-      "net_roi_pct": -0.3,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 0.82,
-        "binance_usdt": 0.0005787,
-        "binance_krw_equiv": 0.82
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "MANTRA",
-      "gross_premium_pct": 0.05,
-      "net_roi_pct": -0.3,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 7.01,
-        "binance_usdt": 0.00495,
-        "binance_krw_equiv": 7.01
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "TREE",
-      "gross_premium_pct": 0.01,
-      "net_roi_pct": -0.3,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 48.2,
-        "binance_usdt": 0.03405,
-        "binance_krw_equiv": 48.2
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "A",
-      "gross_premium_pct": 0,
-      "net_roi_pct": -0.3,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 87.7,
-        "binance_usdt": 0.06196,
-        "binance_krw_equiv": 87.7
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "THETA",
-      "gross_premium_pct": 0,
-      "net_roi_pct": -0.3,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 200,
-        "binance_usdt": 0.1413,
-        "binance_krw_equiv": 200
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "RENDER",
-      "gross_premium_pct": 0,
-      "net_roi_pct": -0.3,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 1802,
-        "binance_usdt": 1.2731,
-        "binance_krw_equiv": 1801.98
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "MORPHO",
-      "gross_premium_pct": 0,
-      "net_roi_pct": -0.3,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 2759,
-        "binance_usdt": 1.9492,
-        "binance_krw_equiv": 2758.96
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "CARV",
-      "gross_premium_pct": -0.01,
-      "net_roi_pct": -0.3,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 42.8,
-        "binance_usdt": 0.03024,
-        "binance_krw_equiv": 42.8
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "PYTH",
-      "gross_premium_pct": -0.01,
-      "net_roi_pct": -0.3,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 56.5,
-        "binance_usdt": 0.03992,
-        "binance_krw_equiv": 56.5
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ONT",
-      "gross_premium_pct": -0.01,
-      "net_roi_pct": -0.3,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 52,
-        "binance_usdt": 0.03674,
-        "binance_krw_equiv": 52
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "ZK",
-      "gross_premium_pct": -0.04,
-      "net_roi_pct": -0.3,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 10.5,
-        "binance_usdt": 0.007421,
-        "binance_krw_equiv": 10.5
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "SHIB",
-      "gross_premium_pct": -0.06,
-      "net_roi_pct": -0.3,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 0.01,
-        "binance_usdt": 0.0000046,
-        "binance_krw_equiv": 0.01
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "VTHO",
-      "gross_premium_pct": -0.06,
-      "net_roi_pct": -0.3,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 0.45,
-        "binance_usdt": 0.0003174,
-        "binance_krw_equiv": 0.45
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "SNT",
-      "gross_premium_pct": -0.07,
-      "net_roi_pct": -0.3,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 6.73,
-        "binance_usdt": 0.004758,
-        "binance_krw_equiv": 6.73
+        "upbit_krw": 3.38,
+        "binance_usdt": 0.002386,
+        "binance_krw_equiv": 3.38
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -4570,15 +4300,339 @@
     },
     {
       "symbol": "ZORA",
-      "gross_premium_pct": -0.07,
+      "gross_premium_pct": 0.05,
       "net_roi_pct": -0.3,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 6.89,
-        "binance_usdt": 0.004871,
-        "binance_krw_equiv": 6.89
+        "upbit_krw": 6.85,
+        "binance_usdt": 0.004837,
+        "binance_krw_equiv": 6.85
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "LINEA",
+      "gross_premium_pct": 0.03,
+      "net_roi_pct": -0.3,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 3.01,
+        "binance_usdt": 0.002126,
+        "binance_krw_equiv": 3.01
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "WCT",
+      "gross_premium_pct": 0.01,
+      "net_roi_pct": -0.3,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 48.1,
+        "binance_usdt": 0.03398,
+        "binance_krw_equiv": 48.1
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "JUP",
+      "gross_premium_pct": 0,
+      "net_roi_pct": -0.3,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 240,
+        "binance_usdt": 0.16956,
+        "binance_krw_equiv": 240
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "MASK",
+      "gross_premium_pct": 0,
+      "net_roi_pct": -0.3,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 495,
+        "binance_usdt": 0.3497,
+        "binance_krw_equiv": 494.98
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "VANA",
+      "gross_premium_pct": 0,
+      "net_roi_pct": -0.3,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "UPBIT_BUY_BINANCE_SELL",
+      "direction": "kimchi_discount",
+      "prices": {
+        "upbit_krw": 1197,
+        "binance_usdt": 0.8457,
+        "binance_krw_equiv": 1197.03
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "MIRA",
+      "gross_premium_pct": 0,
+      "net_roi_pct": -0.3,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 55.3,
+        "binance_usdt": 0.03907,
+        "binance_krw_equiv": 55.3
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "ICX",
+      "gross_premium_pct": 0,
+      "net_roi_pct": -0.3,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 26.2,
+        "binance_usdt": 0.01851,
+        "binance_krw_equiv": 26.2
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "HOME",
+      "gross_premium_pct": -0.01,
+      "net_roi_pct": -0.3,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 13.4,
+        "binance_usdt": 0.009468,
+        "binance_krw_equiv": 13.4
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "PENGU",
+      "gross_premium_pct": -0.02,
+      "net_roi_pct": -0.3,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 8.55,
+        "binance_usdt": 0.006042,
+        "binance_krw_equiv": 8.55
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "SHIB",
+      "gross_premium_pct": -0.04,
+      "net_roi_pct": -0.3,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 0.01,
+        "binance_usdt": 0.00000457,
+        "binance_krw_equiv": 0.01
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "SKR",
+      "gross_premium_pct": -0.04,
+      "net_roi_pct": -0.3,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 10.2,
+        "binance_usdt": 0.007209,
+        "binance_krw_equiv": 10.2
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "DOOD",
+      "gross_premium_pct": -0.05,
+      "net_roi_pct": -0.3,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 1.6,
+        "binance_usdt": 0.001131,
+        "binance_krw_equiv": 1.6
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "VET",
+      "gross_premium_pct": -0.06,
+      "net_roi_pct": -0.3,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 6.38,
+        "binance_usdt": 0.00451,
+        "binance_krw_equiv": 6.38
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "F",
+      "gross_premium_pct": -0.12,
+      "net_roi_pct": -0.3,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 3.8,
+        "binance_usdt": 0.002688,
+        "binance_krw_equiv": 3.8
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "SC",
+      "gross_premium_pct": -0.12,
+      "net_roi_pct": -0.3,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 0.65,
+        "binance_usdt": 0.0004619,
+        "binance_krw_equiv": 0.65
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "MBL",
+      "gross_premium_pct": -0.25,
+      "net_roi_pct": -0.3,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 0.82,
+        "binance_usdt": 0.0005822,
+        "binance_krw_equiv": 0.82
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "IOST",
+      "gross_premium_pct": -0.28,
+      "net_roi_pct": -0.3,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 0.78,
+        "binance_usdt": 0.0005512,
+        "binance_krw_equiv": 0.78
+      },
+      "estimated_fees": {
+        "upbit_fee_pct": 0.05,
+        "binance_fee_pct": 0.1,
+        "estimated_network_slippage_pct": 0.15
+      }
+    },
+    {
+      "symbol": "GAME2",
+      "gross_premium_pct": -0.29,
+      "net_roi_pct": -0.3,
+      "signal_grade": "NEUTRAL",
+      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
+      "direction": "kimchi_premium",
+      "prices": {
+        "upbit_krw": 0.99,
+        "binance_usdt": 0.0006986,
+        "binance_krw_equiv": 0.99
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
@@ -4588,7 +4642,7 @@
     },
     {
       "symbol": "XEC",
-      "gross_premium_pct": -0.09,
+      "gross_premium_pct": -0.31,
       "net_roi_pct": -0.3,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
@@ -4605,70 +4659,16 @@
       }
     },
     {
-      "symbol": "TOSHI",
-      "gross_premium_pct": -0.27,
+      "symbol": "VTHO",
+      "gross_premium_pct": -0.34,
       "net_roi_pct": -0.3,
       "signal_grade": "NEUTRAL",
       "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
       "direction": "kimchi_premium",
       "prices": {
-        "upbit_krw": 0.14,
-        "binance_usdt": 0.00009989,
-        "binance_krw_equiv": 0.14
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "MEW",
-      "gross_premium_pct": -0.32,
-      "net_roi_pct": -0.3,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 0.46,
-        "binance_usdt": 0.0003232,
-        "binance_krw_equiv": 0.46
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "GAME2",
-      "gross_premium_pct": -0.37,
-      "net_roi_pct": -0.3,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 0.99,
-        "binance_usdt": 0.0006985,
-        "binance_krw_equiv": 0.99
-      },
-      "estimated_fees": {
-        "upbit_fee_pct": 0.05,
-        "binance_fee_pct": 0.1,
-        "estimated_network_slippage_pct": 0.15
-      }
-    },
-    {
-      "symbol": "IQ",
-      "gross_premium_pct": -0.64,
-      "net_roi_pct": -0.3,
-      "signal_grade": "NEUTRAL",
-      "recommended_strategy": "BINANCE_BUY_UPBIT_SELL",
-      "direction": "kimchi_premium",
-      "prices": {
-        "upbit_krw": 0.87,
-        "binance_usdt": 0.0006172,
-        "binance_krw_equiv": 0.87
+        "upbit_krw": 0.45,
+        "binance_usdt": 0.0003183,
+        "binance_krw_equiv": 0.45
       },
       "estimated_fees": {
         "upbit_fee_pct": 0.05,
