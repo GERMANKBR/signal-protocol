@@ -2,7 +2,7 @@
 
 > Hourly South Korea market data for developers: Google Trends topics, KRW exchange rates, and crypto Kimchi Premium spreads.
 
-Generated at: 2026-10-18T20:42:17.982Z
+Generated at: 2026-10-18T23:11:48.319Z
 Homepage: https://germankbr.github.io/signal-protocol/
 Commercial access: https://rapidapi.com/GERMANKBR/api/korean-trends-api1
 OpenAPI: https://germankbr.github.io/signal-protocol/api/openapi.json
@@ -19,19 +19,28 @@ The API is built for developers who need Korea-specific market intelligence with
 - GET /api/v1/meta.json: API metadata, source status, pricing entry point, and endpoint catalog.
 
 ## Latest Korean Trends
-- 1. 극초음속 활공체 (500+)
-- 2. 레알 (100+)
-- 3. real madrid vs sevilla (200+)
-- 4. 편의점 (2000+)
-- 5. 말라가 대 레알 소시에다드 (100+)
-- 6. 레알 마드리드 대 세비야 (2000+)
-- 7. 연휴 (200+)
-- 8. 김건희 (200+)
-- 9. 빗썸 (200+)
-- 10. 윤여정 (100+)
+- 1. 사제 (1000+)
+- 2. gpt-6 아스트라 (200+)
+- 3. real madrid vs sevilla fc standings (1000+)
+- 4. 동아일보 (500+)
+- 5. 그래미 어워드 (200+)
+- 6. 동일노동 동일임금 (100+)
+- 7. 레이스 대 가디언즈 (2000+)
+- 8. 고우석 (200+)
+- 9. 진지희 (100+)
+- 10. 라리가 (500+)
 
 ## Latest Kimchi Premium
-- Crypto premium data is temporarily partial.
+- EGLD: 12.66% kimchi_premium, Upbit 5275 KRW, Binance 3.508 USDT
+- MANTRA: 12.3% kimchi_premium, Upbit 6.03 KRW, Binance 0.004023 USDT
+- SOPH: 7.44% kimchi_premium, Upbit 2.99 KRW, Binance 0.002085 USDT
+- PUNDIX: 3.9% kimchi_premium, Upbit 128 KRW, Binance 0.0923 USDT
+- BREV: 3.77% kimchi_premium, Upbit 96.6 KRW, Binance 0.06974 USDT
+- NEWT: 3.39% kimchi_premium, Upbit 55.2 KRW, Binance 0.04 USDT
+- WAXP: 3.37% kimchi_premium, Upbit 6.3 KRW, Binance 0.004566 USDT
+- GAS: 3.35% kimchi_premium, Upbit 1667 KRW, Binance 1.2084 USDT
+- BLUR: 3.34% kimchi_premium, Upbit 13.2 KRW, Binance 0.00957 USDT
+- ZRX: 3.18% kimchi_premium, Upbit 143 KRW, Binance 0.10383 USDT
 
 ## Latest FX Snapshot
 - USD/KRW: 1334.77
@@ -49,18 +58,31 @@ The API is built for developers who need Korea-specific market intelligence with
 ```json
 {
   "top_trends": [
-    "극초음속 활공체",
-    "레알",
-    "real madrid vs sevilla",
-    "편의점",
-    "말라가 대 레알 소시에다드"
+    "사제",
+    "gpt-6 아스트라",
+    "real madrid vs sevilla fc standings",
+    "동아일보",
+    "그래미 어워드"
   ],
   "krw_per_usd": 1334.77,
-  "kimchi_premium": null,
+  "kimchi_premium": {
+    "average_premium_percentage": 5.67,
+    "tracked_assets": 10,
+    "highest_premium": {
+      "symbol": "EGLD",
+      "premium_percentage": 12.66,
+      "direction": "kimchi_premium"
+    },
+    "lowest_premium": {
+      "symbol": "ELF",
+      "premium_percentage": -12.69,
+      "direction": "kimchi_discount"
+    }
+  },
   "source_status": {
     "trends": "ok",
     "rates": "ok",
-    "crypto": "partial"
+    "crypto": "ok"
   }
 }
 ```
