@@ -2,7 +2,7 @@
 
 > Hourly South Korea market data for developers: Google Trends topics, KRW exchange rates, and crypto Kimchi Premium spreads.
 
-Generated at: 2026-11-08T15:10:58.600Z
+Generated at: 2026-11-08T19:41:33.582Z
 Homepage: https://germankbr.github.io/signal-protocol/
 Commercial access: https://rapidapi.com/GERMANKBR/api/korean-trends-api1
 OpenAPI: https://germankbr.github.io/signal-protocol/api/openapi.json
@@ -19,28 +19,19 @@ The API is built for developers who need Korea-specific market intelligence with
 - GET /api/v1/meta.json: API metadata, source status, pricing entry point, and endpoint catalog.
 
 ## Latest Korean Trends
-- 1. palace vs liverpool (200+)
-- 2. 원더독스 (500+)
-- 3. elche vs betis (100+)
-- 4. 와이스 (100+)
-- 5. 인도네시아 (200+)
-- 6. 브라이턴 대 브렌트퍼드 (1000+)
-- 7. sbs (2000+)
-- 8. sunderland vs chelsea (500+)
-- 9. 크리스털 팰리스 대 리버풀 (5000+)
-- 10. 선덜랜드 대 첼시 (2000+)
+- 1. 프리미어리그 순위 (500+)
+- 2. sc 프라이부르크 대 우니온 베를린 (100+)
+- 3. 베식타시 대 겐칠레르빌리이 (500+)
+- 4. แมนยู พบ แอสตันวิลลา (200+)
+- 5. man utd đấu với aston villa (200+)
+- 6. premier league (1000+)
+- 7. 전력 (500+)
+- 8. man utd vs aston villa (2000+)
+- 9. 맨유 대 애스턴 빌라 (20000+)
+- 10. 올리브영 (500+)
 
 ## Latest Kimchi Premium
-- BLUR: 40.54% kimchi_premium, Upbit 12.9 KRW, Binance 0.006772 USDT
-- MANTRA: 26.06% kimchi_premium, Upbit 5.16 KRW, Binance 0.00302 USDT
-- ZIL: 20.58% kimchi_premium, Upbit 2.69 KRW, Binance 0.001646 USDT
-- EGLD: 16.82% kimchi_premium, Upbit 4679 KRW, Binance 2.955 USDT
-- SIGN: 7.28% kimchi_premium, Upbit 12.4 KRW, Binance 0.008528 USDT
-- TFUEL: 2.79% kimchi_premium, Upbit 10.4 KRW, Binance 0.007465 USDT
-- CKB: 2.04% kimchi_premium, Upbit 1.32 KRW, Binance 0.0009544 USDT
-- CTC: 1.87% kimchi_premium, Upbit 111 KRW, Binance 0.08039 USDT
-- IQ: 1.79% kimchi_premium, Upbit 0.91 KRW, Binance 0.0006567 USDT
-- YGG: 1.63% kimchi_premium, Upbit 29.3 KRW, Binance 0.02127 USDT
+- Crypto premium data is temporarily partial.
 
 ## Latest FX Snapshot
 - USD/KRW: 1355.38
@@ -58,31 +49,18 @@ The API is built for developers who need Korea-specific market intelligence with
 ```json
 {
   "top_trends": [
-    "palace vs liverpool",
-    "원더독스",
-    "elche vs betis",
-    "와이스",
-    "인도네시아"
+    "프리미어리그 순위",
+    "sc 프라이부르크 대 우니온 베를린",
+    "베식타시 대 겐칠레르빌리이",
+    "แมนยู พบ แอสตันวิลลา",
+    "man utd đấu với aston villa"
   ],
   "krw_per_usd": 1355.38,
-  "kimchi_premium": {
-    "average_premium_percentage": 12.14,
-    "tracked_assets": 10,
-    "highest_premium": {
-      "symbol": "BLUR",
-      "premium_percentage": 40.54,
-      "direction": "kimchi_premium"
-    },
-    "lowest_premium": {
-      "symbol": "ELF",
-      "premium_percentage": -14.34,
-      "direction": "kimchi_discount"
-    }
-  },
+  "kimchi_premium": null,
   "source_status": {
     "trends": "ok",
     "rates": "ok",
-    "crypto": "ok"
+    "crypto": "partial"
   }
 }
 ```
